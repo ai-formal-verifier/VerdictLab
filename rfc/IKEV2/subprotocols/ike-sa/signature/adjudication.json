@@ -1,0 +1,87 @@
+{
+  "protocol_id": "IKEV2-ike-sa-signature",
+  "adjudication_version": "2",
+  "audited": "2026-10-03",
+  "scope": "Where the expert formal model (formal/) departs from the source documents. Only the formal model and the documents are compared; results/, claims/ and flow/ are not part of this file. Entries marked material=false were found in passing; the minor list is not exhaustive.",
+  "categories": {
+    "contradiction": "The formal model does something the documents rule out.",
+    "convention": "The formal model fixes a choice the documents leave open or do not state.",
+    "scope": "The formal model contains content that is not in the documents."
+  },
+  "doc_check": {
+    "confirmed": "The quoted text was checked in the document, or the document was searched and is silent on the point.",
+    "pending": "Not yet confirmed against the whole document set."
+  },
+  "formal_files": [
+    ".DS_Store",
+    "main.pv",
+    "reachability.pv",
+    "reference"
+  ],
+  "source_documents": "rfc/IKEV2/source",
+  "entries": [
+    {
+      "id": "F1",
+      "category": "contradiction",
+      "material": true,
+      "formal": {
+        "file": "formal/proverif/main.pv",
+        "lines": "l.158, l.188",
+        "excerpt": "in(c, (SAr1: SA_t, SAr2: SA_t, IDi: host, IDr: host)); ... let (=IDi, AUTHi: bitstring, SAi2: SA_t, TSi: bitstring, TSr: bitstring) ="
+      },
+      "document": {
+        "status": "contradicts",
+        "file": "rfc/IKEV2/converted/main/rfc7296.md",
+        "lines": "l.2934-2935 (§3.3.6)",
+        "quote": "Responders MUST select a single complete set of parameters from the offers (or reject all offers if none are acceptable)."
+      },
+      "description": "The responder reads its child SA (SAr2) from the network at process start, independently of the SAi2 it receives; SAi2 is parsed but never used. The document says the responder selects SAr2 from the initiator's offer.",
+      "related_properties": [
+        "auth_resp_to_init"
+      ],
+      "doc_check": "confirmed"
+    },
+    {
+      "id": "F2",
+      "category": "convention",
+      "material": true,
+      "formal": {
+        "file": "formal/proverif/main.pv",
+        "lines": "l.141-144, l.188",
+        "excerpt": "out(c, mac(senc((IDi, AUTHi, SAi2, TSi, TSr), SK_ei), SK_ai));"
+      },
+      "document": {
+        "status": "partial",
+        "file": "rfc/IKEV2/converted/main/rfc7296.md",
+        "lines": "l.387, l.395-399 (§1.2)",
+        "quote": "The optional payload IDr enables the initiator to specify to which of the responder's identities it wants to talk."
+      },
+      "description": "The optional [IDr] payload of IKE_AUTH message 3 is always omitted, so the responder never learns or checks the identity the initiator intended. The document makes the payload optional and lets the responder finish with another IDr.",
+      "related_properties": [
+        "auth_resp_to_init"
+      ],
+      "doc_check": "confirmed"
+    },
+    {
+      "id": "F3",
+      "category": "contradiction",
+      "material": true,
+      "formal": {
+        "file": "formal/proverif/main.pv",
+        "lines": "l.139, l.146-147",
+        "excerpt": "let (=IDr, AUTHr: bitstring, =SAi2, =TSi, =TSr) ="
+      },
+      "document": {
+        "status": "contradicts",
+        "file": "rfc/IKEV2/converted/main/rfc7296.md",
+        "lines": "l.2937-2938 (§3.3.6); l.1433 (§2.9)",
+        "quote": "initiator of an exchange MUST check that the accepted offer is consistent with one of its proposals"
+      },
+      "description": "The initiator requires message 4 to echo its own SAi2, TSi and TSr byte-for-byte (and SAr1 = SAi1). The document has the responder choose one proposal and allows traffic-selector narrowing; the initiator only checks consistency with its proposals.",
+      "related_properties": [
+        "auth_init_to_resp"
+      ],
+      "doc_check": "confirmed"
+    }
+  ]
+}

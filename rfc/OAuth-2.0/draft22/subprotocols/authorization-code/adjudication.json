@@ -1,0 +1,154 @@
+{
+  "protocol_id": "OAuth-2.0-draft22-authorization-code",
+  "adjudication_version": "2",
+  "audited": "2026-10-03",
+  "scope": "Where the expert formal model (formal/) departs from the source documents. Only the formal model and the documents are compared; results/, claims/ and flow/ are not part of this file. Entries marked material=false were found in passing; the minor list is not exhaustive.",
+  "categories": {
+    "contradiction": "The formal model does something the documents rule out.",
+    "convention": "The formal model fixes a choice the documents leave open or do not state.",
+    "scope": "The formal model contains content that is not in the documents."
+  },
+  "doc_check": {
+    "confirmed": "The quoted text was checked in the document, or the document was searched and is silent on the point.",
+    "pending": "Not yet confirmed against the whole document set."
+  },
+  "formal_files": [
+    "README.md",
+    "UPSTREAM_README.md",
+    "main.pv",
+    "oauth2-authorization-code-no-enc.pv",
+    "oauth2-authorization-code-unified.pv"
+  ],
+  "source_documents": "rfc/OAuth-2.0/draft22/source",
+  "entries": [
+    {
+      "id": "F1",
+      "category": "convention",
+      "material": true,
+      "formal": {
+        "file": "formal/proverif/main.pv",
+        "lines": "l.14, l.131-141, l.219-230",
+        "excerpt": "in(TLS_pass, TLSchannel1:channel); ... out(net, auth_code);"
+      },
+      "document": {
+        "status": "contradicts",
+        "file": "rfc/OAuth-2.0/draft22/converted/main/draft-ietf-oauth-v2-22.txt",
+        "lines": "l.2692-2693 (§10.6); l.815-816 (§3.1)",
+        "quote": "An attacker can create an account at a legitimate client and initiate the authorization flow."
+      },
+      "description": "At the authorization endpoint the server talks only to the UserAgent process, over TLS channels handed out on a private channel the attacker never obtains, so only honest user agents can send an authorization request; there is no resource-owner process and no resource-owner authentication. TLS protects only the request direction: the authorization response goes out on the public net. The document treats the attacker as a party that can start authorization flows and requires the server to verify the resource owner's identity.",
+      "related_properties": [
+        "authserver_injective_agreement_with_useragent"
+      ],
+      "doc_check": "confirmed"
+    },
+    {
+      "id": "F2",
+      "category": "convention",
+      "material": true,
+      "formal": {
+        "file": "formal/proverif/main.pv",
+        "lines": "l.33-37, l.169, l.333-335",
+        "excerpt": "insert RegisteredClients(A_client_id, A_client_password);"
+      },
+      "document": {
+        "status": "partial",
+        "file": "rfc/OAuth-2.0/draft22/converted/main/draft-ietf-oauth-v2-22.txt",
+        "lines": "l.595-596 (§2)",
+        "quote": "Before initiating the protocol, the client registers with the authorization server."
+      },
+      "description": "Only one honest client (A) is registered and run; B is declared but unused, and the attacker cannot reach the token endpoint, so no attacker-registered client exists. The document places no limit on which clients register.",
+      "related_properties": [
+        "authserver_agreement_with_client_on_token_request",
+        "authserver_agreement_with_client_on_refresh_request",
+        "resourceserver_agreement_with_client_on_resource_request",
+        "secrecy_mac_key",
+        "secrecy_refresh_token"
+      ],
+      "doc_check": "confirmed"
+    },
+    {
+      "id": "F3",
+      "category": "convention",
+      "material": true,
+      "formal": {
+        "file": "formal/proverif/main.pv",
+        "lines": "l.284-286",
+        "excerpt": "get AuthCodes(auth_code, =client_id, client_redirect_uri) in"
+      },
+      "document": {
+        "status": "partial",
+        "file": "rfc/OAuth-2.0/draft22/converted/main/draft-ietf-oauth-v2-22.txt",
+        "lines": "l.506-507 (§1.5)",
+        "quote": "A refresh token is a string representing the authorization granted to the client by the resource owner."
+      },
+      "description": "On the refresh path the server fetches an arbitrary authorization code issued to the client; the refresh-token table does not record which grant the refresh token came from, so a refreshed token is not bound to its originating authorization.",
+      "related_properties": [
+        "token_grant_bound_to_issued_auth_code",
+        "resource_access_bound_to_issued_auth_code"
+      ],
+      "doc_check": "confirmed"
+    },
+    {
+      "id": "F4",
+      "category": "contradiction",
+      "material": false,
+      "formal": {
+        "file": "formal/proverif/main.pv",
+        "lines": "l.178, l.314",
+        "excerpt": "let(normalized_string:bitstring) = (N, resource_uri) in"
+      },
+      "document": {
+        "status": "contradicts",
+        "file": "rfc/OAuth-2.0/draft22/converted/refs/draft-ietf-oauth-v2-http-mac-00.txt",
+        "lines": "l.577-593 (§3.3.1)",
+        "quote": "The HTTP request method in upper case."
+      },
+      "description": "The MAC input is (nonce, URI) only; the document's normalized request string has seven elements (nonce, method, request-URI, host, port, body hash, ext).",
+      "related_properties": [
+        "resourceserver_agreement_with_client_on_resource_request"
+      ],
+      "doc_check": "confirmed"
+    },
+    {
+      "id": "F5",
+      "category": "contradiction",
+      "material": false,
+      "formal": {
+        "file": "formal/proverif/main.pv",
+        "lines": "l.312-321",
+        "excerpt": "get mac_keys(=token_code, mac_key) in"
+      },
+      "document": {
+        "status": "contradicts",
+        "file": "rfc/OAuth-2.0/draft22/converted/refs/draft-ietf-oauth-v2-http-mac-00.txt",
+        "lines": "l.700-701 (§4.1)",
+        "quote": "Ensure that the combination of nonce and MAC key identifier received from the client has not been used before"
+      },
+      "description": "The resource server never checks the nonce for replay.",
+      "related_properties": [
+        "resourceserver_agreement_with_client_on_resource_request"
+      ],
+      "doc_check": "confirmed"
+    },
+    {
+      "id": "F6",
+      "category": "contradiction",
+      "material": false,
+      "formal": {
+        "file": "formal/proverif/main.pv",
+        "lines": "l.245",
+        "excerpt": "get AuthCodes(=auth_code, =client_id, =client_redirect_uri) in"
+      },
+      "document": {
+        "status": "contradicts",
+        "file": "rfc/OAuth-2.0/draft22/converted/main/draft-ietf-oauth-v2-22.txt",
+        "lines": "l.1260-1261 (§4.1.2)",
+        "quote": "If an authorization code is used more than once, the authorization server MUST deny the request"
+      },
+      "description": "Authorization codes are looked up but never marked as used, so a code can be redeemed more than once.",
+      "related_properties": [],
+      "doc_check": "confirmed"
+    }
+  ]
+}

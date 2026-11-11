@@ -1,0 +1,71 @@
+{
+  "principals": [
+    {
+      "name": "A",
+      "description": "the initiator: generates nonces, encrypts and decrypts messages with the long-term key shared with KDC, and uses the session key to authenticate to B."
+    },
+    {
+      "name": "B",
+      "description": "the responder/service: generates nonces, decrypts and encrypts KDC-protected messages with its long-term key, and uses the session key to authenticate A."
+    },
+    {
+      "name": "KDC",
+      "description": "the trusted key distribution center: decrypts B's instruction with B's long-term key, generates the session key, encrypts A's response with A's long-term key, and issues the ticket encrypted for B."
+    }
+  ],
+  "values": [
+    {
+      "name": "A",
+      "derived_from": [],
+      "description": "A is a protocol identity.",
+      "holders": [
+        "A",
+        "B",
+        "KDC"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "B",
+      "derived_from": [],
+      "description": "B is a protocol identity.",
+      "holders": [
+        "A",
+        "B",
+        "KDC"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "KDC",
+      "derived_from": [],
+      "description": "The key distribution center KDC's identity.",
+      "holders": [
+        "A",
+        "B",
+        "KDC"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "K_ka",
+      "derived_from": [],
+      "description": "K_ka is a pre-run symmetric key or keying value.",
+      "holders": [
+        "A",
+        "KDC"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "K_kb",
+      "derived_from": [],
+      "description": "K_kb is a pre-run symmetric key or keying value.",
+      "holders": [
+        "B",
+        "KDC"
+      ],
+      "source": "generated"
+    }
+  ]
+}

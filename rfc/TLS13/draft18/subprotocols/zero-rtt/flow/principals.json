@@ -1,0 +1,138 @@
+{
+  "principals": [
+    {
+      "name": "Client",
+      "description": "The initiating TLS endpoint. It already holds the shared PSK and its identity, the server identity and provisioned 0-RTT parameters; it contributes negotiation offers, constructs the PSK binder, derives the client early traffic keys, and sends the protected 0-RTT application data."
+    },
+    {
+      "name": "Server",
+      "description": "The responding TLS endpoint. It already holds the shared PSK and its identity, the client identity and provisioned 0-RTT parameters; it validates the binder, contributes the negotiated selections, decides whether to accept early data, derives the early traffic keys, and decrypts/processes accepted 0-RTT data."
+    }
+  ],
+  "values": [
+    {
+      "name": "Client",
+      "derived_from": [],
+      "description": "The client's own identity.",
+      "holders": [
+        "Client",
+        "Server"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "Server",
+      "derived_from": [],
+      "description": "The server's own identity; the client's knowledge of the server is the SNI provisioned with the PSK.",
+      "holders": [
+        "Client",
+        "Server"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "PSK",
+      "derived_from": [],
+      "description": "The pre-shared key obtained out of band, shared by client and server.",
+      "holders": [
+        "Client",
+        "Server"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "identity",
+      "derived_from": [],
+      "description": "The PSK identity, provisioned with the out-of-band PSK; the server's PSK store is keyed by it.",
+      "holders": [
+        "Client",
+        "Server"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "PSK_cipher_suite",
+      "derived_from": [],
+      "description": "The cipher suite for use with the out-of-band PSK, which must be provisioned to both parties for 0-RTT.",
+      "holders": [
+        "Client",
+        "Server"
+      ],
+      "source": "specified"
+    },
+    {
+      "name": "PSK_ALPN",
+      "derived_from": [],
+      "description": "The ALPN protocol for use with the out-of-band PSK, provisioned to both parties for 0-RTT if one is used.",
+      "holders": [
+        "Client",
+        "Server"
+      ],
+      "source": "specified"
+    },
+    {
+      "name": "SNI",
+      "derived_from": [],
+      "description": "The server name indication for use with the out-of-band PSK, provisioned to both parties for 0-RTT if one is used.",
+      "holders": [
+        "Client",
+        "Server"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "versions",
+      "derived_from": [],
+      "description": "The protocol versions the client supports.",
+      "holders": [
+        "Client"
+      ],
+      "source": "specified"
+    },
+    {
+      "name": "cipher_suites",
+      "derived_from": [],
+      "description": "The cipher suites the client supports.",
+      "holders": [
+        "Client"
+      ],
+      "source": "specified"
+    },
+    {
+      "name": "ke_modes",
+      "derived_from": [],
+      "description": "The PSK key exchange modes the client supports.",
+      "holders": [
+        "Client"
+      ],
+      "source": "specified"
+    },
+    {
+      "name": "named_group_list",
+      "derived_from": [],
+      "description": "The named groups the client supports, in preference order.",
+      "holders": [
+        "Client"
+      ],
+      "source": "specified"
+    },
+    {
+      "name": "client_ALPN_protocols",
+      "derived_from": [],
+      "description": "The ALPN protocols the client supports.",
+      "holders": [
+        "Client"
+      ],
+      "source": "specified"
+    },
+    {
+      "name": "early_data_policy_Server",
+      "derived_from": [],
+      "description": "The server's local policy on whether to accept 0-RTT data.",
+      "holders": [
+        "Server"
+      ],
+      "source": "specified"
+    }
+  ]
+}

@@ -1,0 +1,394 @@
+{
+  "vocab_version": "4.0.0",
+  "protocol_id": "EDHOC-draft-08-handshake-asymmetric",
+  "names": {
+    "sk_U": "The private key of Party U, with which it signs COSE_SIG_U of message_3 using algorithm SIG_U (§2, §4.4.2).",
+    "sk_V": "The private key of Party V, with which it signs COSE_SIG_V of message_2 using algorithm SIG_V (§2, §4.3.2).",
+    "APP_2'": "The payload of sk_V's second use outside the protocol, introduced by assumption sig_key_reuse_V (key_reuse of sk_V, the private key with which Party V signs COSE_SIG_V of message_2, §4.3.2); not defined by the document.",
+    "pk_U": "The public key of Party U, identified by ID_U, with which Party V verifies COSE_SIG_U of message_3 (§4.1, §4.4.3).",
+    "pk_V": "The public key of Party V, identified by ID_V, with which Party U verifies COSE_SIG_V of message_2 (§4.1, §4.3.3).",
+    "U": "The principal U: The initiator: initially holds its identity and long-term signing key, V's public verification key or credential, and its proposal/application inputs; it sends message_1, verifies V's signature in message_2, and signs message_3.",
+    "V": "The principal V: The responder: initially holds its identity and long-term signing key, U's public verification key or credential, and its selection/application inputs; it processes message_1, signs message_2, and verifies U's signature in message_3.",
+    "E_U": "The ECDH ephemeral public key of Party U, sent in message_1 and formatted as a COSE_Key (§2, §3.1, §4.2.1).",
+    "E_V": "The ECDH ephemeral public key of Party V, sent in data_2 of message_2 on the same curve as E_U (§2, §4.3.1, §4.3.2).",
+    "ID_U": "ID_U, the identifier for the public key of Party U, which contains or uniquely identifies its authentication credential and is carried in the protected header of COSE_SIG_U inside COSE_ENC_3 of message_3 (§2, §4.1, §4.4.1).",
+    "ID_V": "ID_V, the identifier for the public key of Party V, which contains or uniquely identifies its authentication credential and is carried in the protected header of COSE_SIG_V inside COSE_ENC_2 of message_2 (§2, §4.1, §4.3.1).",
+    "APP_1": "The opaque application data Party U may send unprotected in message_1 (§3, §4.2.1, §8).",
+    "APP_2": "The opaque application data Party V sends in the plaintext of COSE_ENC_2 in message_2, covered by its signature COSE_SIG_V and encrypted and integrity protected under K_2, but, with asymmetric keys, sent to an unauthenticated party (§3, §4.3.1, §4.3.2, §8).",
+    "APP_3": "The opaque application data Party U sends in the plaintext of COSE_ENC_3 in message_3, covered by its signature COSE_SIG_U, protected under K_3 and mutually authenticated (§3, §4.4.1, §4.4.2)."
+  },
+  "scenarios": [
+    {
+      "name": "baseline_ltk_leaked_after_session",
+      "world": [
+        {
+          "axis": "data",
+          "target": {
+            "of": "sk_U"
+          },
+          "level": "leaked_after_session"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "sk_V"
+          },
+          "level": "leaked_after_session"
+        },
+        {
+          "axis": "key_reuse",
+          "target": {
+            "payload": "APP_2'",
+            "of": "sk_V"
+          },
+          "level": "observed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "pk_U"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "pk_V"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "seating",
+          "target": {
+            "principal": "U"
+          },
+          "level": "any_role"
+        },
+        {
+          "axis": "population",
+          "target": {
+            "principal": "U"
+          },
+          "level": "unbounded"
+        },
+        {
+          "axis": "sessions",
+          "target": {
+            "principal": "U"
+          },
+          "level": "twice"
+        },
+        {
+          "axis": "seating",
+          "target": {
+            "principal": "V"
+          },
+          "level": "any_role"
+        },
+        {
+          "axis": "population",
+          "target": {
+            "principal": "V"
+          },
+          "level": "unbounded"
+        },
+        {
+          "axis": "sessions",
+          "target": {
+            "principal": "V"
+          },
+          "level": "twice"
+        }
+      ]
+    },
+    {
+      "name": "baseline",
+      "world": [
+        {
+          "axis": "data",
+          "target": {
+            "of": "sk_U"
+          },
+          "level": "none"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "sk_V"
+          },
+          "level": "none"
+        },
+        {
+          "axis": "key_reuse",
+          "target": {
+            "payload": "APP_2'",
+            "of": "sk_V"
+          },
+          "level": "observed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "pk_U"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "pk_V"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "seating",
+          "target": {
+            "principal": "U"
+          },
+          "level": "any_role"
+        },
+        {
+          "axis": "population",
+          "target": {
+            "principal": "U"
+          },
+          "level": "unbounded"
+        },
+        {
+          "axis": "sessions",
+          "target": {
+            "principal": "U"
+          },
+          "level": "twice"
+        },
+        {
+          "axis": "seating",
+          "target": {
+            "principal": "V"
+          },
+          "level": "any_role"
+        },
+        {
+          "axis": "population",
+          "target": {
+            "principal": "V"
+          },
+          "level": "unbounded"
+        },
+        {
+          "axis": "sessions",
+          "target": {
+            "principal": "V"
+          },
+          "level": "twice"
+        }
+      ]
+    }
+  ],
+  "goals": [
+    {
+      "name": "auth_inj_mid_initiator_to_responder",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "U",
+        "subject": "V",
+        "of": [
+          "V",
+          "E_V",
+          "APP_2"
+        ]
+      }
+    },
+    {
+      "name": "auth_inj_end_responder_to_initiator",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "V",
+        "subject": "U",
+        "of": [
+          "U",
+          "V",
+          "E_U",
+          "APP_1",
+          "APP_3"
+        ]
+      }
+    },
+    {
+      "name": "privacy_initiator_phase0",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "ID_U"
+        ],
+        "holders": [
+          "U"
+        ]
+      }
+    },
+    {
+      "name": "privacy_responder_phase0",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "ID_V"
+        ],
+        "holders": [
+          "V"
+        ]
+      }
+    },
+    {
+      "name": "secrecy_app2_phase0",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "APP_2"
+        ],
+        "holders": [
+          "U",
+          "V"
+        ]
+      }
+    },
+    {
+      "name": "secrecy_app3_phase0",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "APP_3"
+        ],
+        "holders": [
+          "U",
+          "V"
+        ]
+      }
+    },
+    {
+      "name": "forward_secrecy_app2_resent",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "APP_2'"
+        ],
+        "holders": [
+          "V"
+        ]
+      }
+    }
+  ],
+  "questions": [
+    {
+      "id": "auth_inj_mid_initiator_to_responder",
+      "goal": "auth_inj_mid_initiator_to_responder",
+      "scenarios": [
+        "baseline_ltk_leaked_after_session"
+      ],
+      "verdict": "true"
+    },
+    {
+      "id": "auth_inj_end_initiator_to_responder",
+      "goal": "auth_inj_mid_initiator_to_responder",
+      "scenarios": [
+        "baseline_ltk_leaked_after_session"
+      ],
+      "verdict": "true"
+    },
+    {
+      "id": "auth_inj_end_responder_to_initiator",
+      "goal": "auth_inj_end_responder_to_initiator",
+      "scenarios": [
+        "baseline_ltk_leaked_after_session"
+      ],
+      "verdict": "true"
+    },
+    {
+      "id": "privacy_initiator_phase0",
+      "goal": "privacy_initiator_phase0",
+      "scenarios": [
+        "baseline"
+      ],
+      "verdict": "true"
+    },
+    {
+      "id": "privacy_responder_phase0",
+      "goal": "privacy_responder_phase0",
+      "scenarios": [
+        "baseline"
+      ],
+      "verdict": "unknown"
+    },
+    {
+      "id": "secrecy_app2_phase0",
+      "goal": "secrecy_app2_phase0",
+      "scenarios": [
+        "baseline"
+      ],
+      "verdict": "unknown"
+    },
+    {
+      "id": "secrecy_app3_phase0",
+      "goal": "secrecy_app3_phase0",
+      "scenarios": [
+        "baseline"
+      ],
+      "verdict": "true"
+    },
+    {
+      "id": "forward_secrecy_app2_resent",
+      "goal": "forward_secrecy_app2_resent",
+      "scenarios": [
+        "baseline_ltk_leaked_after_session"
+      ],
+      "verdict": "true"
+    },
+    {
+      "id": "secrecy_app2_resent_phase0",
+      "goal": "forward_secrecy_app2_resent",
+      "scenarios": [
+        "baseline"
+      ],
+      "verdict": "true"
+    },
+    {
+      "id": "forward_secrecy_app2",
+      "goal": "secrecy_app2_phase0",
+      "scenarios": [
+        "baseline_ltk_leaked_after_session"
+      ],
+      "verdict": "unknown"
+    },
+    {
+      "id": "forward_secrecy_app3",
+      "goal": "secrecy_app3_phase0",
+      "scenarios": [
+        "baseline_ltk_leaked_after_session"
+      ],
+      "verdict": "true"
+    },
+    {
+      "id": "privacy_initiator_phase1",
+      "goal": "privacy_initiator_phase0",
+      "scenarios": [
+        "baseline_ltk_leaked_after_session"
+      ],
+      "verdict": "true"
+    },
+    {
+      "id": "privacy_responder_phase1",
+      "goal": "privacy_responder_phase0",
+      "scenarios": [
+        "baseline_ltk_leaked_after_session"
+      ],
+      "verdict": "unknown"
+    }
+  ],
+  "unexpressed": []
+}

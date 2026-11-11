@@ -1,0 +1,83 @@
+{
+  "main_doc_id": "NSSK",
+  "subprotocol_list": {
+    "NSSK": "the whole protocol (protocol.yaml lists no sub-protocols)"
+  },
+  "documents": {
+    "generic": [
+      {
+        "doc_id": "NSSK",
+        "path": "main/NSSK.md",
+        "fingerprint": "de3bec54c2d174e916068ba103e7a514c9bb0ed905184e11d364f40ea9393dd3",
+        "ids": [
+          "NSSK"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "1": {
+      "subprotocols": [
+        "NSSK"
+      ],
+      "reason": ""
+    },
+    "2": {
+      "subprotocols": [
+        "NSSK"
+      ],
+      "reason": "Identifies the protocol participants and their roles, including the keys and responsibilities that establish their starting knowledge."
+    },
+    "3": {
+      "subprotocols": [
+        "NSSK"
+      ],
+      "reason": ""
+    },
+    "4": {
+      "subprotocols": [
+        "NSSK"
+      ],
+      "reason": "Describes the message sequence, message contents, key generation and nonce use, checks, and protocol state and replay handling; these are central to formal analysis."
+    },
+    "5": {
+      "subprotocols": [
+        "NSSK"
+      ],
+      "reason": "States the attacker admission and key-exposure assumptions that define the scenarios under which the protocol goals are analyzed."
+    },
+    "6": {
+      "subprotocols": [
+        "NSSK"
+      ],
+      "reason": "States the protocol's secrecy and injective-agreement security goals and the scenarios in which they are evaluated."
+    },
+    "7": {
+      "subprotocols": [
+        "NSSK"
+      ],
+      "reason": ""
+    }
+  },
+  "references": {
+    "NSSK": {
+      "generic": {
+        "1": {
+          "id": "work:using-encryption-for-authentication-in-large-networks-of-computers@1978",
+          "file": null,
+          "status": "unknown"
+        },
+        "2": {
+          "id": "work:needham-schroeder-symmetric-key@1978",
+          "file": null,
+          "status": "unknown"
+        },
+        "3": {
+          "id": "work:timestamps-in-key-distribution-protocols@1981",
+          "file": null,
+          "status": "unknown"
+        }
+      }
+    }
+  }
+}

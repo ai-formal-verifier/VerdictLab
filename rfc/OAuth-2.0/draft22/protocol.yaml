@@ -1,0 +1,6 @@
+schema_version: "1.0.1"
+protocol: "OAuth-2.0"
+version: "draft22"
+subprotocols:
+  authorization-code:
+    description: "OAuth 2.0 authorization code grant: a client obtains an access token from the authorization server and uses it at a resource server."

@@ -1,0 +1,2146 @@
+{
+  "vocab_version": "4.0.0",
+  "names": {
+    "ALPN_protocol": "The application protocol the server selects, returned in EncryptedExtensions (§4.2, §4.3.1).",
+    "ALPN_protocols_Client": "The application protocols the client offers in its ALPN extension of the ClientHello (§4.2).",
+    "ALPN_protocols_Server": "The application protocols the server accepts in Application-Layer Protocol Negotiation (application_layer_protocol_negotiation, sent in ClientHello and answered in EncryptedExtensions), from which it selects the connection's ALPN protocol (§4.2, §4.2.9).",
+    "Client": "The client, the endpoint initiating the TLS connection (§1.1).",
+    "PSK_KDF_identifier": "The Hash algorithm associated with a PSK, the KDF hash of the connection that established a ticket or the one set when an external PSK is established, defaulting to SHA-256 (§4.2.10).",
+    "PSK_cipher_suite": "The cipher suite for use with a PSK, which must be provisioned with an external PSK used for early data, which the server must select compatibly with the PSK, and which 0-RTT data must use (§2.3, §4.2.9, §4.2.10).",
+    "certificate_authorities_Client": "The distinguished names of the certificate authorities the client accepts, sent in its certificate_authorities extension (§4.2.4).",
+    "certificate_authorities_Server": "The distinguished names of the certificate authorities the server accepts, sent in the certificate_authorities extension of its CertificateRequest (§4.2.4, §4.3.2).",
+    "certificate_list_Client": "The client's certificate chain, the CertificateEntry list of its Certificate message (§4.4.2, §4.4.2.3).",
+    "certificate_list_Server": "The server's certificate chain, the CertificateEntry list of its Certificate message (§4.4.2, §4.4.2.2).",
+    "cipher_suites_Client": "The cipher suites the client supports, listed in ClientHello.cipher_suites in order of preference (§4.1.2).",
+    "cipher_suites_Server": "The cipher suites the server supports, from which it selects ServerHello.cipher_suite (§4.1.1, §4.1.3).",
+    "client_authentication_policy_Server": "Whether the server requests client authentication, by sending a CertificateRequest in the handshake or after it (§4.3.2, §4.6.2).",
+    "identity": "A PSK identity, the opaque label of a PSK sent in PskIdentity.identity of the pre_shared_key extension, a ticket or an external label (§4.2.10).",
+    "max_early_data_size": "The maximum amount of 0-RTT data the client may send with a ticket, carried in the early_data extension of NewSessionTicket (§4.2.9, §4.6.1).",
+    "oid_filters_Server": "The certificate extension OIDs and values the server's oid_filters extension of a CertificateRequest asks the client certificate to match (§4.3.2.1).",
+    "pk_Client": "The client's public key, carried in the end-entity certificate of its Certificate message and used to verify its CertificateVerify signature (§4.4.2, §4.4.3).",
+    "pk_Server": "The server's public key, carried in the end-entity certificate of its Certificate message and used to verify its CertificateVerify signature (§4.4.2, §4.4.3).",
+    "post_handshake_auth_policy_Client": "Whether the client offers post-handshake authentication by sending the post_handshake_auth extension (§4.2.5, §4.6.2).",
+    "psk_key_exchange_modes_Client": "The PSK key exchange modes (psk_ke, psk_dhe_ke) the client supports, sent in its psk_key_exchange_modes extension (§4.2.8).",
+    "psk_key_exchange_modes_Server": "The PSK key exchange modes the server is willing to use with a PSK, against which it checks the client's psk_key_exchange_modes (§4.2.8, §4.2.10).",
+    "server_name": "The name of the server the client is contacting, sent in the server_name (SNI) extension, used to guide server certificate selection, and required to be the same as in the original connection when a ticket is resumed (§4.2, §4.4.2.2, §4.6.1).",
+    "signature_algorithms_Client": "The signature algorithms the client lists in its signature_algorithms extension (§4.2.3).",
+    "signature_algorithms_Server": "The signature algorithms the server supports for client certificates, sent in the signature_algorithms extension of its CertificateRequest (§4.2.3, §4.3.2).",
+    "supported_groups_Client": "The key-exchange groups the client supports, sent in its supported_groups extension (§4.2.6).",
+    "supported_groups_Server": "The key-exchange groups the server supports, from which it selects the group of its key_share and which it may send in supported_groups (§4.2.6, §4.2.7).",
+    "supported_versions_Client": "The TLS versions the client supports, sent in its supported_versions extension (§4.2.1).",
+    "supported_versions_Server": "The TLS versions the server supports, from which it selects the version of its ServerHello (§4.2.1, §4.1.3).",
+    "ticket_lifetime": "The lifetime of a session ticket in seconds, NewSessionTicket.ticket_lifetime; clients must not use a ticket whose age exceeds it (§4.6.1, §4.2.10.1).",
+    "trust_anchor_Client": "The trust anchors the client uses to validate the server's certificate chain, distributed independently of the protocol (§4.4.2, §4.4.2.2, §C.3).",
+    "trust_anchor_Server": "The trust anchors the server uses to validate the client's certificate chain, distributed independently of the protocol (§4.4.2, §4.4.2.4, §C.3).",
+    "sk_Server": "The server's private signing key, matching the public key in its end-entity certificate, with which it signs CertificateVerify (§4.4.2, §4.4.3).",
+    "PSK": "The pre-shared key in use, either established externally or a resumption_master_secret from a previous connection, input to HKDF-Extract to form the Early Secret (zero if no PSK is used) (§2.2, §7.1).",
+    "sk_Client": "The client's private signing key, matching the public key in its end-entity certificate, with which it signs its CertificateVerify (§4.4.2, §4.4.3).",
+    "resumption_master_secret": "resumption_master_secret, Derive-Secret(Master Secret, \"res master\", ClientHello...client Finished), which a NewSessionTicket binds to a ticket as the PSK for later handshakes (§7.1, §4.6.1).",
+    "client_application_traffic_secret_0": "client_application_traffic_secret_0, Derive-Secret(Master Secret, \"c ap traffic\", ClientHello...server Finished), from which the client's first application traffic keys are derived (§7.1, §7.3).",
+    "server_application_traffic_secret_0": "server_application_traffic_secret_0, Derive-Secret(Master Secret, \"s ap traffic\", ClientHello...server Finished), from which the server's first application traffic keys are derived (§7.1, §7.3).",
+    "client_application_traffic_secret_1": "The client's next application traffic secret after a KeyUpdate, HKDF-Expand-Label(client_application_traffic_secret_0, \"traffic upd\", \"\", Hash.length) (§7.2, §4.6.3).",
+    "server_application_traffic_secret_1": "The server's next application traffic secret after a KeyUpdate, HKDF-Expand-Label(server_application_traffic_secret_0, \"traffic upd\", \"\", Hash.length) (§7.2, §4.6.3).",
+    "protocol_version": "The family of protocol versions the endpoints negotiate through supported_versions, TLS 1.3 and the older versions a downgrade would select (§4.1.3, §4.2.1, §D).",
+    "key_exchange": "The family of key exchange methods: (EC)DHE and PSK in this version, and static RSA from earlier versions, against which the downgrade protection does not work (§4.1.3).",
+    "server_certificates": "The identity scope of the server identities clients authenticate through certificates chaining to their trust anchors; open means the attacker may obtain a valid certificate for a server identity of its own (§4.4.2, §4.4.2.2).",
+    "Server": "The server, the endpoint which did not initiate the TLS connection (§1.1).",
+    "random_Client": "ClientHello.random, the client's 32 bytes from a secure random number generator (§4.1.2).",
+    "random_Server": "ServerHello.random, the server's 32 bytes from a secure random number generator (§4.1.3).",
+    "offer_Client": "The client's offer in its ClientHello for the parameters the server will select: the protocol versions, the cipher suites (AEAD algorithm and hash), the key-exchange groups with key_share, and the PSK and its psk_key_exchange_modes (§4.1.1, §4.1.2).",
+    "selected_parameters_Server": "The parameters the server selects from the offer in its ServerHello: the version, the cipher_suite (AEAD algorithm and hash), the key-exchange group of its key_share, and whether and which PSK is used (§4.1.1, §4.1.3).",
+    "application_write_key_Client": "The client application traffic key, client_write_key derived with HKDF-Expand-Label from client_application_traffic_secret_0 (§7.1, §7.3).",
+    "application_write_key_Server": "The server application traffic key, server_write_key derived with HKDF-Expand-Label from server_application_traffic_secret_0 (§7.1, §7.3).",
+    "exporter_master_secret": "exporter_master_secret, Derive-Secret(Master Secret, \"exp master\", ClientHello...server Finished), the secret behind keying material exporters (§7.1, §7.5).",
+    "handshake_write_key_Client": "The client handshake traffic key, client_write_key derived from client_handshake_traffic_secret, protecting the client's handshake records (§7.1, §7.3).",
+    "handshake_write_key_Server": "The server handshake traffic key, server_write_key derived from server_handshake_traffic_secret, protecting the server's handshake records (§7.1, §7.3).",
+    "per_record_nonce": "The per-record nonce of the AEAD-protected record carrying the data, the padded 64-bit sequence number XORed with the sender's write_iv (§5.3).",
+    "additional_data": "The AEAD additional data input of a protected record, which this draft fixes as empty (zero length) (§5.2).",
+    "application_data_Client": "The client's 1-RTT application data (TLSInnerPlaintext.content of a record of type application_data), sent after its Finished under keys derived from client_application_traffic_secret_N (§2, §5.2, §7.3).",
+    "application_data_Server": "The server's application data (TLSInnerPlaintext.content of a record of type application_data), sent under keys derived from server_application_traffic_secret_N (§2, §5.2, §7.3).",
+    "early_data_Client": "The client's 0-RTT early data, application data sent in its first flight under keys from client_early_traffic_secret, whose security properties the document calls weaker than those of other TLS data (§2.3, §4.2.9, §7.3).",
+    "signature_algorithm_Server": "CertificateVerify.algorithm, the signature algorithm the server signs the handshake with (§4.4.3, §4.2.3).",
+    "exporter_value": "An exporter value, HKDF-Expand-Label(Derive-Secret(exporter_master_secret, label, \"\"), \"exporter\", Hash(context_value), key_length), keying material that TLS exports to the application (§7.5, §E.1).",
+    "early_exporter_master_secret": "early_exporter_master_secret, Derive-Secret(Early Secret, \"e exp master\", ClientHello), the exporter secret defined for settings where an exporter is needed for 0-RTT data (§7.1, §7.5, §2.3)."
+  },
+  "assumptions": [
+    {
+      "id": "data_alpn_protocol_public",
+      "axis": "data",
+      "target": {
+        "of": "ALPN_protocol"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_alpn_protocols_client_public",
+      "axis": "data",
+      "target": {
+        "of": "ALPN_protocols_Client"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_alpn_protocols_server_public",
+      "axis": "data",
+      "target": {
+        "of": "ALPN_protocols_Server"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_client_public",
+      "axis": "data",
+      "target": {
+        "of": "Client"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_psk_kdf_identifier_public",
+      "axis": "data",
+      "target": {
+        "of": "PSK_KDF_identifier"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_psk_cipher_suite_public",
+      "axis": "data",
+      "target": {
+        "of": "PSK_cipher_suite"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_certificate_authorities_client_public",
+      "axis": "data",
+      "target": {
+        "of": "certificate_authorities_Client"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_certificate_authorities_server_public",
+      "axis": "data",
+      "target": {
+        "of": "certificate_authorities_Server"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_certificate_list_client_public",
+      "axis": "data",
+      "target": {
+        "of": "certificate_list_Client"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_certificate_list_server_public",
+      "axis": "data",
+      "target": {
+        "of": "certificate_list_Server"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_cipher_suites_client_public",
+      "axis": "data",
+      "target": {
+        "of": "cipher_suites_Client"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_cipher_suites_server_public",
+      "axis": "data",
+      "target": {
+        "of": "cipher_suites_Server"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_client_authentication_policy_server_public",
+      "axis": "data",
+      "target": {
+        "of": "client_authentication_policy_Server"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_identity_public",
+      "axis": "data",
+      "target": {
+        "of": "identity"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_max_early_data_size_public",
+      "axis": "data",
+      "target": {
+        "of": "max_early_data_size"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_oid_filters_server_public",
+      "axis": "data",
+      "target": {
+        "of": "oid_filters_Server"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_pk_client_public",
+      "axis": "data",
+      "target": {
+        "of": "pk_Client"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_pk_server_public",
+      "axis": "data",
+      "target": {
+        "of": "pk_Server"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_post_handshake_auth_policy_client_public",
+      "axis": "data",
+      "target": {
+        "of": "post_handshake_auth_policy_Client"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_psk_key_exchange_modes_client_public",
+      "axis": "data",
+      "target": {
+        "of": "psk_key_exchange_modes_Client"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_psk_key_exchange_modes_server_public",
+      "axis": "data",
+      "target": {
+        "of": "psk_key_exchange_modes_Server"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_server_name_public",
+      "axis": "data",
+      "target": {
+        "of": "server_name"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_signature_algorithms_client_public",
+      "axis": "data",
+      "target": {
+        "of": "signature_algorithms_Client"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_signature_algorithms_server_public",
+      "axis": "data",
+      "target": {
+        "of": "signature_algorithms_Server"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_supported_groups_client_public",
+      "axis": "data",
+      "target": {
+        "of": "supported_groups_Client"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_supported_groups_server_public",
+      "axis": "data",
+      "target": {
+        "of": "supported_groups_Server"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_supported_versions_client_public",
+      "axis": "data",
+      "target": {
+        "of": "supported_versions_Client"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_supported_versions_server_public",
+      "axis": "data",
+      "target": {
+        "of": "supported_versions_Server"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_ticket_lifetime_public",
+      "axis": "data",
+      "target": {
+        "of": "ticket_lifetime"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_trust_anchor_client_public",
+      "axis": "data",
+      "target": {
+        "of": "trust_anchor_Client"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_trust_anchor_server_public",
+      "axis": "data",
+      "target": {
+        "of": "trust_anchor_Server"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "ltk_reveal_sk_server",
+      "axis": "data",
+      "target": {
+        "of": "sk_Server"
+      },
+      "default": "none",
+      "levels": [
+        "disclosed",
+        "leaked_after_session",
+        "none"
+      ]
+    },
+    {
+      "id": "ltk_reveal_psk",
+      "axis": "data",
+      "target": {
+        "of": "PSK"
+      },
+      "default": "none",
+      "levels": [
+        "disclosed",
+        "leaked_after_session",
+        "none"
+      ]
+    },
+    {
+      "id": "ltk_reveal_sk_client",
+      "axis": "data",
+      "target": {
+        "of": "sk_Client"
+      },
+      "default": "none",
+      "levels": [
+        "disclosed",
+        "none"
+      ]
+    },
+    {
+      "id": "key_reuse_sk_server",
+      "axis": "key_reuse",
+      "target": {
+        "of": "sk_Server"
+      },
+      "default": "separated",
+      "levels": [
+        "oracle",
+        "separated"
+      ]
+    },
+    {
+      "id": "key_reuse_sk_client",
+      "axis": "key_reuse",
+      "target": {
+        "of": "sk_Client"
+      },
+      "default": "separated",
+      "levels": [
+        "oracle",
+        "separated"
+      ]
+    },
+    {
+      "id": "reveal_resumption_master_secret",
+      "axis": "data",
+      "target": {
+        "of": "resumption_master_secret"
+      },
+      "default": "none",
+      "levels": [
+        "leaked_after_session",
+        "none"
+      ]
+    },
+    {
+      "id": "reveal_client_app_traffic_secret_0",
+      "axis": "data",
+      "target": {
+        "of": "client_application_traffic_secret_0"
+      },
+      "default": "none",
+      "levels": [
+        "disclosed",
+        "leaked_after_session",
+        "none"
+      ]
+    },
+    {
+      "id": "reveal_server_app_traffic_secret_0",
+      "axis": "data",
+      "target": {
+        "of": "server_application_traffic_secret_0"
+      },
+      "default": "none",
+      "levels": [
+        "disclosed",
+        "leaked_after_session",
+        "none"
+      ]
+    },
+    {
+      "id": "reveal_client_app_traffic_secret_1",
+      "axis": "data",
+      "target": {
+        "of": "client_application_traffic_secret_1"
+      },
+      "default": "none",
+      "levels": [
+        "leaked_after_session",
+        "none"
+      ]
+    },
+    {
+      "id": "reveal_server_app_traffic_secret_1",
+      "axis": "data",
+      "target": {
+        "of": "server_application_traffic_secret_1"
+      },
+      "default": "none",
+      "levels": [
+        "leaked_after_session",
+        "none"
+      ]
+    },
+    {
+      "id": "weak_version",
+      "axis": "primitive",
+      "target": {
+        "family": "protocol_version"
+      },
+      "default": "ideal",
+      "levels": [
+        "weak_member",
+        "ideal"
+      ]
+    },
+    {
+      "id": "weak_kex_static_rsa",
+      "axis": "primitive",
+      "target": {
+        "family": "key_exchange"
+      },
+      "default": "ideal",
+      "levels": [
+        "weak_member",
+        "ideal"
+      ]
+    },
+    {
+      "id": "admission_server_identity",
+      "axis": "admission",
+      "target": {
+        "scope": "server_certificates"
+      },
+      "default": "closed",
+      "levels": [
+        "open",
+        "closed"
+      ]
+    }
+  ],
+  "properties": [
+    {
+      "id": "secrecy_client_appdata_1rtt",
+      "type": "Secrecy",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "application_data_Client"
+        ],
+        "holders": [
+          "Client",
+          "Server"
+        ]
+      }
+    },
+    {
+      "id": "secrecy_client_traffic_key_1rtt",
+      "type": "Secrecy",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "application_write_key_Client"
+        ],
+        "holders": [
+          "Client",
+          "Server"
+        ]
+      }
+    },
+    {
+      "id": "secrecy_client_earlydata_0rtt",
+      "type": "Secrecy",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "early_data_Client"
+        ],
+        "holders": [
+          "Client",
+          "Server"
+        ]
+      }
+    },
+    {
+      "id": "auth_client_to_server_handshake",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "Client",
+        "subject": "Server",
+        "of": [
+          "random_Client",
+          "random_Server",
+          "PSK",
+          "pk_Server",
+          "offer_Client",
+          "selected_parameters_Server",
+          "application_write_key_Client",
+          "application_write_key_Server",
+          "exporter_master_secret"
+        ]
+      }
+    },
+    {
+      "id": "auth_client_receives_appdata",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "Client",
+        "subject": "Server",
+        "of": [
+          "random_Client",
+          "random_Server",
+          "PSK",
+          "pk_Server",
+          "per_record_nonce",
+          "additional_data",
+          "application_data_Server"
+        ]
+      }
+    },
+    {
+      "id": "auth_server_receives_appdata",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "Server",
+        "subject": "Client",
+        "of": [
+          "random_Client",
+          "random_Server",
+          "PSK",
+          "pk_Server",
+          "per_record_nonce",
+          "additional_data",
+          "application_data_Client"
+        ]
+      }
+    },
+    {
+      "id": "auth_server_receives_earlydata_0rtt",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "Server",
+        "subject": "Client",
+        "of": [
+          "random_Client",
+          "PSK",
+          "per_record_nonce",
+          "additional_data",
+          "early_data_Client"
+        ]
+      }
+    },
+    {
+      "id": "auth_client_to_server_handshake_noninj",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "Client",
+        "subject": "Server",
+        "of": [
+          "random_Client",
+          "random_Server",
+          "offer_Client",
+          "selected_parameters_Server",
+          "PSK",
+          "signature_algorithms_Client",
+          "ALPN_protocols_Client",
+          "signature_algorithm_Server",
+          "ALPN_protocol",
+          "handshake_write_key_Client",
+          "handshake_write_key_Server",
+          "application_write_key_Client",
+          "application_write_key_Server",
+          "resumption_master_secret"
+        ]
+      }
+    },
+    {
+      "id": "auth_client_receives_server_appdata",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "Client",
+        "subject": "Server",
+        "of": [
+          "application_data_Server"
+        ]
+      }
+    },
+    {
+      "id": "auth_server_receives_client_appdata",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "Server",
+        "subject": "Client",
+        "of": [
+          "application_data_Client"
+        ]
+      }
+    },
+    {
+      "id": "auth_client_receives_server_appdata_injective",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "Client",
+        "subject": "Server",
+        "of": [
+          "application_data_Server"
+        ]
+      }
+    },
+    {
+      "id": "auth_server_receives_client_appdata_injective",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "Server",
+        "subject": "Client",
+        "of": [
+          "application_data_Client"
+        ]
+      }
+    },
+    {
+      "id": "auth_server_to_client_peer_identity",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "weak_agreement",
+      "target": {
+        "asserter": "Server",
+        "subject": "Client",
+        "of": [
+          "Client",
+          "Server"
+        ]
+      }
+    },
+    {
+      "id": "secrecy_psk_guessing_resistance",
+      "type": "Secrecy",
+      "axis": "secret",
+      "subtype": "weak",
+      "target": {
+        "of": [
+          "PSK"
+        ],
+        "holders": [
+          "Client",
+          "Server"
+        ]
+      }
+    },
+    {
+      "id": "secrecy_server_appdata_1rtt",
+      "type": "Secrecy",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "application_data_Server"
+        ],
+        "holders": [
+          "Client",
+          "Server"
+        ]
+      }
+    },
+    {
+      "id": "secrecy_server_traffic_key_1rtt",
+      "type": "Secrecy",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "application_write_key_Server"
+        ],
+        "holders": [
+          "Client",
+          "Server"
+        ]
+      }
+    },
+    {
+      "id": "secrecy_resumption_secret",
+      "type": "Secrecy",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "resumption_master_secret"
+        ],
+        "holders": [
+          "Client",
+          "Server"
+        ]
+      }
+    },
+    {
+      "id": "auth_server_to_client_handshake_noninj",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "Server",
+        "subject": "Client",
+        "of": [
+          "random_Client",
+          "random_Server",
+          "offer_Client",
+          "selected_parameters_Server",
+          "PSK",
+          "signature_algorithms_Client",
+          "ALPN_protocols_Client",
+          "signature_algorithm_Server",
+          "ALPN_protocol",
+          "handshake_write_key_Client",
+          "handshake_write_key_Server",
+          "application_write_key_Client",
+          "application_write_key_Server",
+          "resumption_master_secret"
+        ]
+      }
+    },
+    {
+      "id": "auth_server_receives_earlydata_noninj",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "Server",
+        "subject": "Client",
+        "of": [
+          "early_data_Client"
+        ]
+      }
+    },
+    {
+      "id": "auth_server_receives_earlydata_injective",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "Server",
+        "subject": "Client",
+        "of": [
+          "early_data_Client"
+        ]
+      }
+    },
+    {
+      "id": "auth_client_to_server_peer_identity",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "weak_agreement",
+      "target": {
+        "asserter": "Client",
+        "subject": "Server",
+        "of": [
+          "Client",
+          "Server"
+        ]
+      }
+    },
+    {
+      "id": "secrecy_exporter_value",
+      "type": "Secrecy",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "exporter_value"
+        ],
+        "holders": [
+          "Client",
+          "Server"
+        ]
+      }
+    },
+    {
+      "id": "secrecy_early_exporter_secret",
+      "type": "Secrecy",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "early_exporter_master_secret"
+        ],
+        "holders": [
+          "Client",
+          "Server"
+        ]
+      }
+    },
+    {
+      "id": "auth_server_receives_eems_injective",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "Server",
+        "subject": "Client",
+        "of": [
+          "early_exporter_master_secret"
+        ]
+      }
+    },
+    {
+      "id": "auth_client_to_server_on_mode",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "Client",
+        "subject": "Server",
+        "of": [
+          "selected_parameters_Server"
+        ]
+      }
+    }
+  ],
+  "claims": [
+    {
+      "id": "client_appdata_confidential",
+      "property": "secrecy_client_appdata_1rtt",
+      "expect": "holds",
+      "conditions": [],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "1",
+          "quote": "Confidentiality: Data sent over the channel is only visible to the endpoints."
+        },
+        {
+          "document": "main",
+          "section": "E.2",
+          "quote": "Confidentiality.  An attacker should not be able to determine the plaintext contents of a given record."
+        },
+        {
+          "document": "main",
+          "section": "E.2",
+          "quote": "AEAD encryption [RFC5116] provides confidentiality and integrity for the data."
+        }
+      ]
+    },
+    {
+      "id": "client_appdata_forward_secret_server_key_leak",
+      "property": "secrecy_client_appdata_1rtt",
+      "expect": "holds",
+      "conditions": [
+        {
+          "id": "ltk_reveal_sk_server",
+          "level": "leaked_after_session"
+        }
+      ],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "E.1",
+          "quote": "If the long-term keying material (in this case the signature keys in certificate-based authentication modes or the external/resumption PSK in PSK with (EC)DHE modes) is compromised after the handshake is complete, this does not compromise the security of the session key"
+        }
+      ]
+    },
+    {
+      "id": "client_appdata_exposed_server_key_compromised",
+      "property": "secrecy_client_appdata_1rtt",
+      "expect": "fails",
+      "conditions": [
+        {
+          "id": "ltk_reveal_sk_server",
+          "level": "disclosed"
+        }
+      ],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "E.1.4",
+          "quote": "TLS does not provide security for handshakes which take place after the peer's long-term secret (signature key or external PSK) is compromised."
+        }
+      ]
+    },
+    {
+      "id": "client_appdata_exposed_psk_compromised",
+      "property": "secrecy_client_appdata_1rtt",
+      "expect": "fails",
+      "conditions": [
+        {
+          "id": "ltk_reveal_psk",
+          "level": "disclosed"
+        }
+      ],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "E.1.4",
+          "quote": "TLS does not provide security for handshakes which take place after the peer's long-term secret (signature key or external PSK) is compromised."
+        }
+      ]
+    },
+    {
+      "id": "client_traffic_key_secret",
+      "property": "secrecy_client_traffic_key_1rtt",
+      "expect": "holds",
+      "conditions": [],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "E.1",
+          "quote": "Secrecy of the session keys.  The shared session keys should be known only to the communicating parties, not to the attacker"
+        },
+        {
+          "document": "main",
+          "section": "E.1",
+          "quote": "Informally, the signature-based modes of TLS 1.3 provide for the establishment of a unique, secret, shared, key established by an (EC)DHE key exchange and authenticated by the server's signature over the handshake transcript, as well as tied to the server's identity by a MAC."
+        }
+      ]
+    },
+    {
+      "id": "client_traffic_key_forward_secret_server_key_leak",
+      "property": "secrecy_client_traffic_key_1rtt",
+      "expect": "holds",
+      "conditions": [
+        {
+          "id": "ltk_reveal_sk_server",
+          "level": "leaked_after_session"
+        }
+      ],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "E.1",
+          "quote": "If the long-term keying material (in this case the signature keys in certificate-based authentication modes or the external/resumption PSK in PSK with (EC)DHE modes) is compromised after the handshake is complete, this does not compromise the security of the session key"
+        },
+        {
+          "document": "main",
+          "section": "E.1",
+          "quote": "If fresh (EC)DHE keys are used for each connection, then the output keys are forward secret."
+        }
+      ]
+    },
+    {
+      "id": "client_traffic_key_exposed_server_key_compromised",
+      "property": "secrecy_client_traffic_key_1rtt",
+      "expect": "fails",
+      "conditions": [
+        {
+          "id": "ltk_reveal_sk_server",
+          "level": "disclosed"
+        }
+      ],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "E.1.4",
+          "quote": "TLS does not provide security for handshakes which take place after the peer's long-term secret (signature key or external PSK) is compromised."
+        }
+      ]
+    },
+    {
+      "id": "client_traffic_key_exposed_psk_compromised",
+      "property": "secrecy_client_traffic_key_1rtt",
+      "expect": "fails",
+      "conditions": [
+        {
+          "id": "ltk_reveal_psk",
+          "level": "disclosed"
+        }
+      ],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "E.1.4",
+          "quote": "TLS does not provide security for handshakes which take place after the peer's long-term secret (signature key or external PSK) is compromised."
+        }
+      ]
+    },
+    {
+      "id": "early_data_confidential",
+      "property": "secrecy_client_earlydata_0rtt",
+      "expect": "holds",
+      "conditions": [],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "E.1.3",
+          "quote": "The 0-RTT mode of operation generally provides the same security properties as 1-RTT data, with the two exceptions that the 0-RTT encryption keys do not provide full forward secrecy and that the server is not able to guarantee full uniqueness of the handshake (non-replayability) without keeping potentially undue amounts of state."
+        },
+        {
+          "document": "main",
+          "section": "2.3",
+          "quote": "The client uses the PSK to authenticate the server and to encrypt the early data."
+        }
+      ]
+    },
+    {
+      "id": "early_data_exposed_psk_compromised",
+      "property": "secrecy_client_earlydata_0rtt",
+      "expect": "fails",
+      "conditions": [
+        {
+          "id": "ltk_reveal_psk",
+          "level": "disclosed"
+        }
+      ],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "E.1.4",
+          "quote": "TLS does not provide security for handshakes which take place after the peer's long-term secret (signature key or external PSK) is compromised."
+        },
+        {
+          "document": "main",
+          "section": "2.3",
+          "quote": "This data is not forward secret, as it is encrypted solely under keys derived using the offered PSK."
+        }
+      ]
+    },
+    {
+      "id": "server_authenticated_to_client",
+      "property": "auth_client_to_server_handshake_noninj",
+      "expect": "holds",
+      "conditions": [],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "1",
+          "quote": "Authentication: The server side of the channel is always authenticated; the client side is optionally authenticated."
+        },
+        {
+          "document": "main",
+          "section": "1",
+          "quote": "an active attacker should not be able to force the peers to negotiate different parameters than they would if the connection were not under attack."
+        },
+        {
+          "document": "main",
+          "section": "E.1",
+          "quote": "Peer Authentication.  The client's view of the peer identity should reflect the server's identity.  If the client is authenticated, the server's view of the peer identity should match the client's identity."
+        },
+        {
+          "document": "main",
+          "section": "E.1",
+          "quote": "Establishing the same session keys.  The handshake needs to output the same set of session keys on both sides of the handshake, provided that it completes successfully on each endpoint"
+        },
+        {
+          "document": "main",
+          "section": "E.1",
+          "quote": "Downgrade protection.  The cryptographic parameters should be the same on both sides and should be the same as if the peers had been communicating in the absence of an attack"
+        },
+        {
+          "document": "main",
+          "section": "E.1",
+          "quote": "Informally, the signature-based modes of TLS 1.3 provide for the establishment of a unique, secret, shared, key established by an (EC)DHE key exchange and authenticated by the server's signature over the handshake transcript, as well as tied to the server's identity by a MAC."
+        },
+        {
+          "document": "main",
+          "section": "E.1",
+          "quote": "For all handshake modes, the Finished MAC (and where present, the signature), prevents downgrade attacks."
+        },
+        {
+          "document": "main",
+          "section": "2",
+          "quote": "This message provides key confirmation, binds the endpoint's identity to the exchanged keys, and in PSK mode also authenticates the handshake."
+        },
+        {
+          "document": "main",
+          "section": "4.4.3",
+          "quote": "This message is used to provide explicit proof that an endpoint possesses the private key corresponding to its certificate and also provides integrity for the handshake up to this point."
+        },
+        {
+          "document": "main",
+          "section": "4.4.4",
+          "quote": "It is essential for providing authentication of the handshake and of the computed keys."
+        },
+        {
+          "document": "main",
+          "section": "5.2",
+          "quote": "protocol including the ClientHello and ServerHello messages authenticates the protocol version"
+        }
+      ]
+    },
+    {
+      "id": "server_impersonation_server_key_compromised",
+      "property": "auth_client_to_server_handshake_noninj",
+      "expect": "fails",
+      "conditions": [
+        {
+          "id": "ltk_reveal_sk_server",
+          "level": "disclosed"
+        }
+      ],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "E.1.4",
+          "quote": "TLS does not provide security for handshakes which take place after the peer's long-term secret (signature key or external PSK) is compromised."
+        },
+        {
+          "document": "main",
+          "section": "E.1.4",
+          "quote": "It therefore does not provide post-compromise security [CCG16], sometimes also referred to as backwards or future security."
+        }
+      ]
+    },
+    {
+      "id": "server_impersonation_psk_compromised",
+      "property": "auth_client_to_server_handshake_noninj",
+      "expect": "fails",
+      "conditions": [
+        {
+          "id": "ltk_reveal_psk",
+          "level": "disclosed"
+        }
+      ],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "E.1.4",
+          "quote": "TLS does not provide security for handshakes which take place after the peer's long-term secret (signature key or external PSK) is compromised."
+        },
+        {
+          "document": "main",
+          "section": "2.3",
+          "quote": "The client uses the PSK to authenticate the server and to encrypt the early data."
+        }
+      ]
+    },
+    {
+      "id": "client_appdata_auth_fails_server_key_compromised",
+      "property": "auth_client_receives_server_appdata",
+      "expect": "fails",
+      "conditions": [
+        {
+          "id": "ltk_reveal_sk_server",
+          "level": "disclosed"
+        }
+      ],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "E.1.4",
+          "quote": "TLS does not provide security for handshakes which take place after the peer's long-term secret (signature key or external PSK) is compromised."
+        }
+      ]
+    },
+    {
+      "id": "client_appdata_auth_fails_psk_compromised",
+      "property": "auth_client_receives_server_appdata",
+      "expect": "fails",
+      "conditions": [
+        {
+          "id": "ltk_reveal_psk",
+          "level": "disclosed"
+        }
+      ],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "E.1.4",
+          "quote": "TLS does not provide security for handshakes which take place after the peer's long-term secret (signature key or external PSK) is compromised."
+        }
+      ]
+    },
+    {
+      "id": "server_appdata_auth_fails_psk_compromised",
+      "property": "auth_server_receives_client_appdata",
+      "expect": "fails",
+      "conditions": [
+        {
+          "id": "ltk_reveal_psk",
+          "level": "disclosed"
+        }
+      ],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "E.1.4",
+          "quote": "TLS does not provide security for handshakes which take place after the peer's long-term secret (signature key or external PSK) is compromised."
+        }
+      ]
+    },
+    {
+      "id": "client_records_not_replayed",
+      "property": "auth_client_receives_server_appdata_injective",
+      "expect": "holds",
+      "conditions": [],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "E.2",
+          "quote": "Order protection/non-replayability  An attacker should not be able to cause the receiver to accept a record which it has already accepted or cause the receiver to accept record N+1 without having first processed record N."
+        },
+        {
+          "document": "main",
+          "section": "E.2",
+          "quote": "Non-replayability is provided by using a separate nonce for each record, with the nonce being derived from the record sequence number (Section 5.3), with the sequence number being maintained independently at both sides thus records which are delivered out of order result in AEAD deprotection failures."
+        },
+        {
+          "document": "main",
+          "section": "1",
+          "quote": "Integrity: Data sent over the channel cannot be modified by attackers."
+        },
+        {
+          "document": "main",
+          "section": "E.2",
+          "quote": "Integrity.  An attacker should not be able to craft a new record which is different from an existing record which will be accepted by the receiver."
+        },
+        {
+          "document": "main",
+          "section": "E.2",
+          "quote": "AEAD encryption [RFC5116] provides confidentiality and integrity for the data."
+        },
+        {
+          "document": "main",
+          "section": "1",
+          "quote": "Authentication: The server side of the channel is always authenticated; the client side is optionally authenticated."
+        }
+      ]
+    },
+    {
+      "id": "server_records_not_replayed",
+      "property": "auth_server_receives_client_appdata_injective",
+      "expect": "holds",
+      "conditions": [],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "E.2",
+          "quote": "Order protection/non-replayability  An attacker should not be able to cause the receiver to accept a record which it has already accepted or cause the receiver to accept record N+1 without having first processed record N."
+        },
+        {
+          "document": "main",
+          "section": "E.2",
+          "quote": "Non-replayability is provided by using a separate nonce for each record, with the nonce being derived from the record sequence number (Section 5.3), with the sequence number being maintained independently at both sides thus records which are delivered out of order result in AEAD deprotection failures."
+        },
+        {
+          "document": "main",
+          "section": "1",
+          "quote": "Integrity: Data sent over the channel cannot be modified by attackers."
+        },
+        {
+          "document": "main",
+          "section": "E.2",
+          "quote": "Integrity.  An attacker should not be able to craft a new record which is different from an existing record which will be accepted by the receiver."
+        },
+        {
+          "document": "main",
+          "section": "E.1",
+          "quote": "Peer Authentication.  The client's view of the peer identity should reflect the server's identity.  If the client is authenticated, the server's view of the peer identity should match the client's identity."
+        },
+        {
+          "document": "main",
+          "section": "E.1",
+          "quote": "If the client is authenticated by a certificate, it also signs over the handshake transcript and provides a MAC tied to both identities."
+        },
+        {
+          "document": "main",
+          "section": "2.3",
+          "quote": "an attacker will not be able to make 0-RTT data appear to be 1-RTT data (because it is protected with different keys.)"
+        }
+      ]
+    },
+    {
+      "id": "server_peer_authentication",
+      "property": "auth_server_to_client_peer_identity",
+      "expect": "holds",
+      "conditions": [],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "E.1",
+          "quote": "Peer Authentication.  The client's view of the peer identity should reflect the server's identity.  If the client is authenticated, the server's view of the peer identity should match the client's identity."
+        },
+        {
+          "document": "main",
+          "section": "E.1",
+          "quote": "If the client is authenticated by a certificate, it also signs over the handshake transcript and provides a MAC tied to both identities."
+        }
+      ]
+    },
+    {
+      "id": "server_kci_resistance",
+      "property": "auth_server_to_client_peer_identity",
+      "expect": "holds",
+      "conditions": [
+        {
+          "id": "ltk_reveal_sk_server",
+          "level": "disclosed"
+        }
+      ],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "E.1",
+          "quote": "In a mutually-authenticated connection with certificates, peer authentication should hold even if the local long-term secret was compromised before the connection was established"
+        }
+      ]
+    },
+    {
+      "id": "server_peer_authentication_fails_psk_compromised",
+      "property": "auth_server_to_client_peer_identity",
+      "expect": "fails",
+      "conditions": [
+        {
+          "id": "ltk_reveal_psk",
+          "level": "disclosed"
+        }
+      ],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "E.1.4",
+          "quote": "TLS does not provide security for handshakes which take place after the peer's long-term secret (signature key or external PSK) is compromised."
+        }
+      ]
+    },
+    {
+      "id": "psk_dictionary_attack",
+      "property": "secrecy_psk_guessing_resistance",
+      "expect": "fails",
+      "conditions": [],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "2.2",
+          "quote": "A low-entropy secret, or password, is subject to dictionary attacks based on the PSK binder. The specified PSK authentication is not a strong password-based authenticated key exchange even when used with Diffie-Hellman key establishment."
+        }
+      ]
+    },
+    {
+      "id": "server_appdata_confidential",
+      "property": "secrecy_server_appdata_1rtt",
+      "expect": "holds",
+      "conditions": [],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "1",
+          "quote": "Confidentiality: Data sent over the channel is only visible to the endpoints."
+        },
+        {
+          "document": "main",
+          "section": "E.2",
+          "quote": "Confidentiality.  An attacker should not be able to determine the plaintext contents of a given record."
+        },
+        {
+          "document": "main",
+          "section": "E.2",
+          "quote": "AEAD encryption [RFC5116] provides confidentiality and integrity for the data."
+        }
+      ]
+    },
+    {
+      "id": "server_appdata_forward_secret_server_key_leak",
+      "property": "secrecy_server_appdata_1rtt",
+      "expect": "holds",
+      "conditions": [
+        {
+          "id": "ltk_reveal_sk_server",
+          "level": "leaked_after_session"
+        }
+      ],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "E.1",
+          "quote": "If the long-term keying material (in this case the signature keys in certificate-based authentication modes or the external/resumption PSK in PSK with (EC)DHE modes) is compromised after the handshake is complete, this does not compromise the security of the session key"
+        },
+        {
+          "document": "main",
+          "section": "E.1",
+          "quote": "If fresh (EC)DHE keys are used for each connection, then the output keys are forward secret."
+        }
+      ]
+    },
+    {
+      "id": "server_appdata_exposed_psk_compromised",
+      "property": "secrecy_server_appdata_1rtt",
+      "expect": "fails",
+      "conditions": [
+        {
+          "id": "ltk_reveal_psk",
+          "level": "disclosed"
+        }
+      ],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "E.1.4",
+          "quote": "TLS does not provide security for handshakes which take place after the peer's long-term secret (signature key or external PSK) is compromised."
+        }
+      ]
+    },
+    {
+      "id": "server_traffic_key_secret",
+      "property": "secrecy_server_traffic_key_1rtt",
+      "expect": "holds",
+      "conditions": [],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "E.1",
+          "quote": "Secrecy of the session keys.  The shared session keys should be known only to the communicating parties, not to the attacker"
+        },
+        {
+          "document": "main",
+          "section": "E.1",
+          "quote": "A set of \"session keys\" (the various secrets derived from the master secret) from which can be derived a set of working keys."
+        },
+        {
+          "document": "main",
+          "section": "E.1",
+          "quote": "Informally, the signature-based modes of TLS 1.3 provide for the establishment of a unique, secret, shared, key established by an (EC)DHE key exchange and authenticated by the server's signature over the handshake transcript, as well as tied to the server's identity by a MAC."
+        }
+      ]
+    },
+    {
+      "id": "server_traffic_key_forward_secret_server_key_leak",
+      "property": "secrecy_server_traffic_key_1rtt",
+      "expect": "holds",
+      "conditions": [
+        {
+          "id": "ltk_reveal_sk_server",
+          "level": "leaked_after_session"
+        }
+      ],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "E.1",
+          "quote": "If the long-term keying material (in this case the signature keys in certificate-based authentication modes or the external/resumption PSK in PSK with (EC)DHE modes) is compromised after the handshake is complete, this does not compromise the security of the session key"
+        },
+        {
+          "document": "main",
+          "section": "E.1",
+          "quote": "If fresh (EC)DHE keys are used for each connection, then the output keys are forward secret."
+        }
+      ]
+    },
+    {
+      "id": "server_traffic_key_exposed_server_key_compromised",
+      "property": "secrecy_server_traffic_key_1rtt",
+      "expect": "fails",
+      "conditions": [
+        {
+          "id": "ltk_reveal_sk_server",
+          "level": "disclosed"
+        }
+      ],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "E.1.4",
+          "quote": "TLS does not provide security for handshakes which take place after the peer's long-term secret (signature key or external PSK) is compromised."
+        }
+      ]
+    },
+    {
+      "id": "server_traffic_key_exposed_psk_compromised",
+      "property": "secrecy_server_traffic_key_1rtt",
+      "expect": "fails",
+      "conditions": [
+        {
+          "id": "ltk_reveal_psk",
+          "level": "disclosed"
+        }
+      ],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "E.1.4",
+          "quote": "TLS does not provide security for handshakes which take place after the peer's long-term secret (signature key or external PSK) is compromised."
+        }
+      ]
+    },
+    {
+      "id": "resumption_secret_secret",
+      "property": "secrecy_resumption_secret",
+      "expect": "holds",
+      "conditions": [],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "E.1",
+          "quote": "Secrecy of the session keys.  The shared session keys should be known only to the communicating parties, not to the attacker"
+        },
+        {
+          "document": "main",
+          "section": "E.1",
+          "quote": "A set of \"session keys\" (the various secrets derived from the master secret) from which can be derived a set of working keys."
+        },
+        {
+          "document": "main",
+          "section": "E.1",
+          "quote": "Informally, the signature-based modes of TLS 1.3 provide for the establishment of a unique, secret, shared, key established by an (EC)DHE key exchange and authenticated by the server's signature over the handshake transcript, as well as tied to the server's identity by a MAC."
+        }
+      ]
+    },
+    {
+      "id": "resumption_secret_forward_secret_server_key_leak",
+      "property": "secrecy_resumption_secret",
+      "expect": "holds",
+      "conditions": [
+        {
+          "id": "ltk_reveal_sk_server",
+          "level": "leaked_after_session"
+        }
+      ],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "E.1",
+          "quote": "If the long-term keying material (in this case the signature keys in certificate-based authentication modes or the external/resumption PSK in PSK with (EC)DHE modes) is compromised after the handshake is complete, this does not compromise the security of the session key"
+        },
+        {
+          "document": "main",
+          "section": "E.1",
+          "quote": "If fresh (EC)DHE keys are used for each connection, then the output keys are forward secret."
+        }
+      ]
+    },
+    {
+      "id": "resumption_secret_exposed_server_key_compromised",
+      "property": "secrecy_resumption_secret",
+      "expect": "fails",
+      "conditions": [
+        {
+          "id": "ltk_reveal_sk_server",
+          "level": "disclosed"
+        }
+      ],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "E.1.4",
+          "quote": "TLS does not provide security for handshakes which take place after the peer's long-term secret (signature key or external PSK) is compromised."
+        }
+      ]
+    },
+    {
+      "id": "resumption_secret_exposed_psk_compromised",
+      "property": "secrecy_resumption_secret",
+      "expect": "fails",
+      "conditions": [
+        {
+          "id": "ltk_reveal_psk",
+          "level": "disclosed"
+        }
+      ],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "E.1.4",
+          "quote": "TLS does not provide security for handshakes which take place after the peer's long-term secret (signature key or external PSK) is compromised."
+        }
+      ]
+    },
+    {
+      "id": "client_authenticated_to_server",
+      "property": "auth_server_to_client_handshake_noninj",
+      "expect": "holds",
+      "conditions": [],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "E.1",
+          "quote": "If the client is authenticated by a certificate, it also signs over the handshake transcript and provides a MAC tied to both identities."
+        },
+        {
+          "document": "main",
+          "section": "E.1",
+          "quote": "Establishing the same session keys.  The handshake needs to output the same set of session keys on both sides of the handshake, provided that it completes successfully on each endpoint"
+        },
+        {
+          "document": "main",
+          "section": "E.1",
+          "quote": "Downgrade protection.  The cryptographic parameters should be the same on both sides and should be the same as if the peers had been communicating in the absence of an attack"
+        },
+        {
+          "document": "main",
+          "section": "2",
+          "quote": "This message provides key confirmation, binds the endpoint's identity to the exchanged keys, and in PSK mode also authenticates the handshake."
+        },
+        {
+          "document": "main",
+          "section": "4.4.4",
+          "quote": "It is essential for providing authentication of the handshake and of the computed keys."
+        },
+        {
+          "document": "main",
+          "section": "4.4.3",
+          "quote": "This message is used to provide explicit proof that an endpoint possesses the private key corresponding to its certificate and also provides integrity for the handshake up to this point."
+        }
+      ]
+    },
+    {
+      "id": "client_impersonation_psk_compromised",
+      "property": "auth_server_to_client_handshake_noninj",
+      "expect": "fails",
+      "conditions": [
+        {
+          "id": "ltk_reveal_psk",
+          "level": "disclosed"
+        }
+      ],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "E.1.4",
+          "quote": "TLS does not provide security for handshakes which take place after the peer's long-term secret (signature key or external PSK) is compromised."
+        }
+      ]
+    },
+    {
+      "id": "early_data_not_forward_secret",
+      "property": "secrecy_client_earlydata_0rtt",
+      "expect": "fails",
+      "conditions": [
+        {
+          "id": "ltk_reveal_psk",
+          "level": "leaked_after_session"
+        }
+      ],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "2.3",
+          "quote": "This data is not forward secret, as it is encrypted solely under keys derived using the offered PSK."
+        },
+        {
+          "document": "main",
+          "section": "E.1.3",
+          "quote": "The 0-RTT mode of operation generally provides the same security properties as 1-RTT data, with the two exceptions that the 0-RTT encryption keys do not provide full forward secrecy and that the server is not able to guarantee full uniqueness of the handshake (non-replayability) without keeping potentially undue amounts of state."
+        },
+        {
+          "document": "main",
+          "section": "1.3",
+          "quote": "A Zero-RTT mode was added, saving a round-trip at connection setup for some application data, at the cost of certain security properties."
+        }
+      ]
+    },
+    {
+      "id": "early_data_authenticated",
+      "property": "auth_server_receives_earlydata_noninj",
+      "expect": "holds",
+      "conditions": [],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "E.1.3",
+          "quote": "The 0-RTT mode of operation generally provides the same security properties as 1-RTT data, with the two exceptions that the 0-RTT encryption keys do not provide full forward secrecy and that the server is not able to guarantee full uniqueness of the handshake (non-replayability) without keeping potentially undue amounts of state."
+        }
+      ]
+    },
+    {
+      "id": "early_data_auth_fails_psk_compromised",
+      "property": "auth_server_receives_earlydata_noninj",
+      "expect": "fails",
+      "conditions": [
+        {
+          "id": "ltk_reveal_psk",
+          "level": "disclosed"
+        }
+      ],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "E.1.4",
+          "quote": "TLS does not provide security for handshakes which take place after the peer's long-term secret (signature key or external PSK) is compromised."
+        },
+        {
+          "document": "main",
+          "section": "2.3",
+          "quote": "When clients and servers share a PSK (either obtained externally or via a previous handshake), TLS 1.3 allows clients to send data on the first flight (\"early data\")."
+        }
+      ]
+    },
+    {
+      "id": "early_data_replayable",
+      "property": "auth_server_receives_earlydata_injective",
+      "expect": "fails",
+      "conditions": [],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "2.3",
+          "quote": "There are no guarantees of non-replay between connections."
+        },
+        {
+          "document": "main",
+          "section": "2.3",
+          "quote": "Unless the server takes special measures outside those provided by TLS, the server has no guarantee that the same 0-RTT data was not transmitted on multiple 0-RTT connections"
+        },
+        {
+          "document": "main",
+          "section": "C.1",
+          "quote": "0-RTT data has very different security properties from data transmitted after a completed handshake: it can be replayed."
+        },
+        {
+          "document": "main",
+          "section": "E.1.3",
+          "quote": "The 0-RTT mode of operation generally provides the same security properties as 1-RTT data, with the two exceptions that the 0-RTT encryption keys do not provide full forward secrecy and that the server is not able to guarantee full uniqueness of the handshake (non-replayability) without keeping potentially undue amounts of state."
+        }
+      ]
+    },
+    {
+      "id": "client_kci_resistance",
+      "property": "auth_client_to_server_peer_identity",
+      "expect": "holds",
+      "conditions": [
+        {
+          "id": "ltk_reveal_sk_client",
+          "level": "disclosed"
+        }
+      ],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "E.1",
+          "quote": "In a mutually-authenticated connection with certificates, peer authentication should hold even if the local long-term secret was compromised before the connection was established"
+        },
+        {
+          "document": "main",
+          "section": "E.1",
+          "quote": "For example, if a client's signature key is compromised, it should not be possible to impersonate arbitrary servers to that client in subsequent handshakes."
+        }
+      ]
+    },
+    {
+      "id": "server_peer_authentication_fails_client_key_compromised",
+      "property": "auth_server_to_client_peer_identity",
+      "expect": "fails",
+      "conditions": [
+        {
+          "id": "ltk_reveal_sk_client",
+          "level": "disclosed"
+        }
+      ],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "E.1.4",
+          "quote": "TLS does not provide security for handshakes which take place after the peer's long-term secret (signature key or external PSK) is compromised."
+        }
+      ]
+    },
+    {
+      "id": "client_old_traffic_key_secret_after_key_update",
+      "property": "secrecy_client_traffic_key_1rtt",
+      "expect": "holds",
+      "conditions": [
+        {
+          "id": "reveal_client_app_traffic_secret_1",
+          "level": "leaked_after_session"
+        },
+        {
+          "id": "reveal_server_app_traffic_secret_1",
+          "level": "leaked_after_session"
+        }
+      ],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "E.2",
+          "quote": "Forward security after key change.  If the traffic key update mechanism described in Section 4.6.3 has been used and the previous generation key is deleted, an attacker who compromises the endpoint should not be able to decrypt traffic encrypted with the old key."
+        },
+        {
+          "document": "main",
+          "section": "E.2",
+          "quote": "In addition, as long as this function is truly one way, it is not possible to compute traffic keys from prior to a key change (forward secrecy)."
+        }
+      ]
+    },
+    {
+      "id": "server_old_traffic_key_secret_after_key_update",
+      "property": "secrecy_server_traffic_key_1rtt",
+      "expect": "holds",
+      "conditions": [
+        {
+          "id": "reveal_client_app_traffic_secret_1",
+          "level": "leaked_after_session"
+        },
+        {
+          "id": "reveal_server_app_traffic_secret_1",
+          "level": "leaked_after_session"
+        }
+      ],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "E.2",
+          "quote": "Forward security after key change.  If the traffic key update mechanism described in Section 4.6.3 has been used and the previous generation key is deleted, an attacker who compromises the endpoint should not be able to decrypt traffic encrypted with the old key."
+        },
+        {
+          "document": "main",
+          "section": "E.2",
+          "quote": "In addition, as long as this function is truly one way, it is not possible to compute traffic keys from prior to a key change (forward secrecy)."
+        }
+      ]
+    },
+    {
+      "id": "client_traffic_key_secret_sender_updated_receiver_retained",
+      "property": "secrecy_client_traffic_key_1rtt",
+      "expect": "holds",
+      "conditions": [
+        {
+          "id": "reveal_client_app_traffic_secret_1",
+          "level": "leaked_after_session"
+        },
+        {
+          "id": "reveal_server_app_traffic_secret_0",
+          "level": "leaked_after_session"
+        }
+      ],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "4.6.3",
+          "quote": "However, because send and receive keys are derived from independent traffic secrets, retaining the receive traffic secret does not threaten the forward secrecy of data sent before the sender changed keys."
+        }
+      ]
+    },
+    {
+      "id": "server_traffic_key_secret_sender_updated_receiver_retained",
+      "property": "secrecy_server_traffic_key_1rtt",
+      "expect": "holds",
+      "conditions": [
+        {
+          "id": "reveal_server_app_traffic_secret_1",
+          "level": "leaked_after_session"
+        },
+        {
+          "id": "reveal_client_app_traffic_secret_0",
+          "level": "leaked_after_session"
+        }
+      ],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "4.6.3",
+          "quote": "However, because send and receive keys are derived from independent traffic secrets, retaining the receive traffic secret does not threaten the forward secrecy of data sent before the sender changed keys."
+        }
+      ]
+    },
+    {
+      "id": "client_appdata_exposed_traffic_secret_compromised",
+      "property": "secrecy_client_appdata_1rtt",
+      "expect": "fails",
+      "conditions": [
+        {
+          "id": "reveal_client_app_traffic_secret_0",
+          "level": "disclosed"
+        }
+      ],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "E.2",
+          "quote": "TLS does not provide security for data which is communicated on a connection after a traffic secret of that connection is compromised. That is, TLS does not provide post-compromise security/future secrecy/backward secrecy with respect to the traffic secret."
+        },
+        {
+          "document": "main",
+          "section": "E.2",
+          "quote": "Indeed, an attacker who learns a traffic secret can compute all future traffic secrets on that connection."
+        }
+      ]
+    },
+    {
+      "id": "server_appdata_exposed_traffic_secret_compromised",
+      "property": "secrecy_server_appdata_1rtt",
+      "expect": "fails",
+      "conditions": [
+        {
+          "id": "reveal_server_app_traffic_secret_0",
+          "level": "disclosed"
+        }
+      ],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "E.2",
+          "quote": "TLS does not provide security for data which is communicated on a connection after a traffic secret of that connection is compromised. That is, TLS does not provide post-compromise security/future secrecy/backward secrecy with respect to the traffic secret."
+        },
+        {
+          "document": "main",
+          "section": "E.2",
+          "quote": "Indeed, an attacker who learns a traffic secret can compute all future traffic secrets on that connection."
+        }
+      ]
+    },
+    {
+      "id": "client_traffic_key_secret_resumption_secret_leak",
+      "property": "secrecy_client_traffic_key_1rtt",
+      "expect": "holds",
+      "conditions": [
+        {
+          "id": "reveal_resumption_master_secret",
+          "level": "leaked_after_session"
+        }
+      ],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "E.1",
+          "quote": "The resumption PSK has been designed so that the resumption master secret computed by connection N and needed to form connection N+1 is separate from the traffic keys used by connection N, thus providing forward secrecy between the connections."
+        }
+      ]
+    },
+    {
+      "id": "server_traffic_key_secret_resumption_secret_leak",
+      "property": "secrecy_server_traffic_key_1rtt",
+      "expect": "holds",
+      "conditions": [
+        {
+          "id": "reveal_resumption_master_secret",
+          "level": "leaked_after_session"
+        }
+      ],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "E.1",
+          "quote": "The resumption PSK has been designed so that the resumption master secret computed by connection N and needed to form connection N+1 is separate from the traffic keys used by connection N, thus providing forward secrecy between the connections."
+        }
+      ]
+    },
+    {
+      "id": "exporter_values_secret",
+      "property": "secrecy_exporter_value",
+      "expect": "holds",
+      "conditions": [],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "E.1",
+          "quote": "If an exporter is used, then it produces values which are unique and secret (because they are generated from a unique session key)."
+        },
+        {
+          "document": "main",
+          "section": "E.1",
+          "quote": "The exporters provided in TLS 1.3 are derived from the same handshake contexts as the early traffic keys and the application traffic keys respectively, and thus have similar security properties."
+        }
+      ]
+    },
+    {
+      "id": "server_auth_holds_sk_cross_protocol_use",
+      "property": "auth_client_to_server_peer_identity",
+      "expect": "holds",
+      "conditions": [
+        {
+          "id": "key_reuse_sk_server",
+          "level": "oracle"
+        }
+      ],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "4.4.3",
+          "quote": "It is used to provide separation between signatures made in different contexts, helping against potential cross-protocol attacks."
+        },
+        {
+          "document": "main",
+          "section": "4.4.3",
+          "quote": "This structure is intended to prevent an attack on previous versions of TLS in which the ServerKeyExchange format meant that attackers could obtain a signature of a message with a chosen 32-byte prefix (ClientHello.random).  The initial 64-byte pad clears that prefix along with the server-controlled ServerHello.random."
+        }
+      ]
+    },
+    {
+      "id": "client_auth_holds_sk_client_cross_protocol_use",
+      "property": "auth_server_to_client_peer_identity",
+      "expect": "holds",
+      "conditions": [
+        {
+          "id": "key_reuse_sk_client",
+          "level": "oracle"
+        }
+      ],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "4.4.3",
+          "quote": "It is used to provide separation between signatures made in different contexts, helping against potential cross-protocol attacks."
+        }
+      ]
+    },
+    {
+      "id": "early_exporter_not_forward_secret",
+      "property": "secrecy_early_exporter_secret",
+      "expect": "fails",
+      "conditions": [
+        {
+          "id": "ltk_reveal_psk",
+          "level": "leaked_after_session"
+        }
+      ],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "2.3",
+          "quote": "The same warnings apply to any use of the early_exporter_master_secret."
+        },
+        {
+          "document": "main",
+          "section": "2.3",
+          "quote": "This data is not forward secret, as it is encrypted solely under keys derived using the offered PSK."
+        },
+        {
+          "document": "main",
+          "section": "E.1",
+          "quote": "The exporters provided in TLS 1.3 are derived from the same handshake contexts as the early traffic keys and the application traffic keys respectively, and thus have similar security properties."
+        }
+      ]
+    },
+    {
+      "id": "early_exporter_replayable",
+      "property": "auth_server_receives_eems_injective",
+      "expect": "fails",
+      "conditions": [],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "2.3",
+          "quote": "The same warnings apply to any use of the early_exporter_master_secret."
+        },
+        {
+          "document": "main",
+          "section": "2.3",
+          "quote": "There are no guarantees of non-replay between connections."
+        }
+      ]
+    },
+    {
+      "id": "downgrade_to_older_versions_detected",
+      "property": "auth_client_to_server_on_mode",
+      "expect": "holds",
+      "conditions": [
+        {
+          "id": "weak_version",
+          "level": "weak_member"
+        }
+      ],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "E.1",
+          "quote": "In addition, the use of certain bytes in the random nonces as described in Section 4.1.3 allows the detection of downgrade to previous TLS versions."
+        },
+        {
+          "document": "main",
+          "section": "4.1.3",
+          "quote": "This mechanism provides limited protection against downgrade attacks over and above that provided by the Finished exchange: because the ServerKeyExchange, a message present in TLS 1.2 and below, includes a signature over both random values, it is not possible for an active attacker to modify the random values without detection as long as ephemeral ciphers are used."
+        }
+      ]
+    },
+    {
+      "id": "no_downgrade_protection_static_rsa",
+      "property": "auth_client_to_server_on_mode",
+      "expect": "fails",
+      "conditions": [
+        {
+          "id": "weak_kex_static_rsa",
+          "level": "weak_member"
+        }
+      ],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "4.1.3",
+          "quote": "It does not provide downgrade protection when static RSA is used."
+        }
+      ]
+    },
+    {
+      "id": "unvalidated_peer_key_allows_mitm",
+      "property": "auth_client_to_server_peer_identity",
+      "expect": "fails",
+      "conditions": [
+        {
+          "id": "admission_server_identity",
+          "level": "open"
+        }
+      ],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "C.6",
+          "quote": "Either technique used alone is vulnerable to man-in-the-middle attacks and therefore unsafe for general use."
+        },
+        {
+          "document": "main",
+          "section": "C.6",
+          "quote": "If no such mechanism is used, then the connection has no protection against active man-in-the-middle attack; applications MUST NOT use TLS in such a way absent explicit configuration or a specific application profile."
+        }
+      ]
+    }
+  ]
+}

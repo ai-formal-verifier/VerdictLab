@@ -1,0 +1,1318 @@
+{
+  "vocab_version": "4.0.0",
+  "values": [
+    {
+      "name": "msg_type_error",
+      "evidence": [],
+      "description": "The constant msg_type_error of the EDHOC draft-08 symmetric (pre-shared key) handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "msg_type_error"
+      },
+      "holders": {}
+    },
+    {
+      "name": "msg_type_4",
+      "evidence": [],
+      "description": "The constant msg_type_4 of the EDHOC draft-08 symmetric (pre-shared key) handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "msg_type_4"
+      },
+      "holders": {
+        "V": [
+          {
+            "id": "MSG_TYPE_1_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "msg_type_5",
+      "evidence": [],
+      "description": "The constant msg_type_5 of the EDHOC draft-08 symmetric (pre-shared key) handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "msg_type_5"
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "MSG_TYPE_2_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "msg_type_6",
+      "evidence": [],
+      "description": "The constant msg_type_6 of the EDHOC draft-08 symmetric (pre-shared key) handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "msg_type_6"
+      },
+      "holders": {
+        "V": [
+          {
+            "id": "MSG_TYPE_3_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "curve_x25519",
+      "evidence": [],
+      "description": "The constant curve_x25519 of the EDHOC draft-08 symmetric (pre-shared key) handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "curve_x25519"
+      },
+      "holders": {}
+    },
+    {
+      "name": "hkdf_sha_256",
+      "evidence": [],
+      "description": "The constant hkdf_sha_256 of the EDHOC draft-08 symmetric (pre-shared key) handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "hkdf_sha_256"
+      },
+      "holders": {}
+    },
+    {
+      "name": "aead_aes_ccm_64_64_128",
+      "evidence": [],
+      "description": "The constant aead_aes_ccm_64_64_128 of the EDHOC draft-08 symmetric (pre-shared key) handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "aead_aes_ccm_64_64_128"
+      },
+      "holders": {}
+    },
+    {
+      "name": "iv_generation",
+      "evidence": [],
+      "description": "The constant iv_generation of the EDHOC draft-08 symmetric (pre-shared key) handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "iv_generation"
+      },
+      "holders": {}
+    },
+    {
+      "name": "edhoc_oscore_master_secret",
+      "evidence": [],
+      "description": "The constant edhoc_oscore_master_secret of the EDHOC draft-08 symmetric (pre-shared key) handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "edhoc_oscore_master_secret"
+      },
+      "holders": {}
+    },
+    {
+      "name": "edhoc_oscore_master_salt",
+      "evidence": [],
+      "description": "The constant edhoc_oscore_master_salt of the EDHOC draft-08 symmetric (pre-shared key) handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "edhoc_oscore_master_salt"
+      },
+      "holders": {}
+    },
+    {
+      "name": "error_diagnostic",
+      "evidence": [],
+      "description": "The diagnostic text carried in an error message.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "error_diagnostic"
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "ERR_MSG_after_msg_3_recv",
+            "how": "received"
+          },
+          {
+            "id": "ERR_MSG_2_recv",
+            "how": "received"
+          }
+        ],
+        "V": [
+          {
+            "id": "ERR_MSG_3_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "g",
+      "evidence": [],
+      "description": "The generator of the Diffie-Hellman group.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "g"
+      },
+      "holders": {}
+    },
+    {
+      "name": "U",
+      "evidence": [],
+      "description": "The principal U (the initiator) as the identity the setup names.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "U",
+        "replicated": false
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "U",
+            "how": "initial",
+            "from": "U"
+          }
+        ],
+        "V": [
+          {
+            "id": "U",
+            "how": "initial",
+            "from": "U"
+          }
+        ]
+      }
+    },
+    {
+      "name": "V",
+      "evidence": [],
+      "description": "The principal V (the responder) as the identity the setup names.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "V",
+        "replicated": false
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "V",
+            "how": "initial",
+            "from": "V"
+          }
+        ],
+        "V": [
+          {
+            "id": "V",
+            "how": "initial",
+            "from": "V"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PSK",
+      "evidence": [],
+      "description": "The pre-shared key U and V hold before the run.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "PSK",
+        "replicated": false
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "PSK",
+            "how": "initial",
+            "from": "PSK"
+          }
+        ],
+        "V": [
+          {
+            "id": "PSK",
+            "how": "initial",
+            "from": "PSK"
+          }
+        ]
+      }
+    },
+    {
+      "name": "KID",
+      "evidence": [],
+      "description": "The key identifier of the pre-shared key.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "KID",
+        "replicated": false
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "KID",
+            "how": "initial",
+            "from": "KID"
+          }
+        ],
+        "V": [
+          {
+            "id": "KID",
+            "how": "initial",
+            "from": "KID"
+          },
+          {
+            "id": "KID_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "x_U",
+      "evidence": [],
+      "description": "x_U, a fresh value made in the EDHOC draft-08 symmetric (pre-shared key) handshake.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "x_U",
+        "role": "U",
+        "replicated": true
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "x_U",
+            "how": "generated"
+          }
+        ]
+      }
+    },
+    {
+      "name": "N_U",
+      "evidence": [],
+      "description": "U's nonce.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "N_U",
+        "role": "U",
+        "replicated": true
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "N_U",
+            "how": "generated"
+          }
+        ],
+        "V": [
+          {
+            "id": "N_U_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "S_U",
+      "evidence": [],
+      "description": "U's session identifier.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "S_U",
+        "role": "U",
+        "replicated": true
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "S_U",
+            "how": "generated"
+          },
+          {
+            "id": "S_U_recv",
+            "how": "received"
+          }
+        ],
+        "V": [
+          {
+            "id": "S_U_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "APP_1",
+      "evidence": [],
+      "description": "U's application data in message 1.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "APP_1",
+        "role": "U",
+        "replicated": true
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "APP_1",
+            "how": "generated"
+          }
+        ],
+        "V": [
+          {
+            "id": "APP_1_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "APP_3",
+      "evidence": [],
+      "description": "U's application data in message 3.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "APP_3",
+        "role": "U",
+        "replicated": true
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "APP_3",
+            "how": "generated"
+          }
+        ]
+      }
+    },
+    {
+      "name": "error_message_U",
+      "evidence": [],
+      "description": "U's error message.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "(msg_type_error, error_diagnostic)",
+        "role": "U",
+        "replicated": true
+      },
+      "holders": {}
+    },
+    {
+      "name": "x_V",
+      "evidence": [],
+      "description": "x_V, a fresh value made in the EDHOC draft-08 symmetric (pre-shared key) handshake.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "x_V",
+        "role": "V",
+        "replicated": true
+      },
+      "holders": {
+        "V": [
+          {
+            "id": "x_V",
+            "how": "generated"
+          }
+        ]
+      }
+    },
+    {
+      "name": "N_V",
+      "evidence": [],
+      "description": "V's nonce.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "N_V",
+        "role": "V",
+        "replicated": true
+      },
+      "holders": {
+        "V": [
+          {
+            "id": "N_V",
+            "how": "generated"
+          }
+        ],
+        "U": [
+          {
+            "id": "N_V_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "S_V",
+      "evidence": [],
+      "description": "V's session identifier.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "S_V",
+        "role": "V",
+        "replicated": true
+      },
+      "holders": {
+        "V": [
+          {
+            "id": "S_V",
+            "how": "generated"
+          },
+          {
+            "id": "S_V_recv",
+            "how": "received"
+          }
+        ],
+        "U": [
+          {
+            "id": "S_V_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "APP_2",
+      "evidence": [],
+      "description": "V's application data in message 2.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "APP_2",
+        "role": "V",
+        "replicated": true
+      },
+      "holders": {
+        "V": [
+          {
+            "id": "APP_2",
+            "how": "generated"
+          }
+        ]
+      }
+    },
+    {
+      "name": "error_message_V",
+      "evidence": [],
+      "description": "V's error message.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "(msg_type_error, error_diagnostic)",
+        "role": "V",
+        "replicated": true
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "error_after_msg_3_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "E_U",
+      "evidence": [],
+      "description": "U's ephemeral Diffie-Hellman public value.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "E_U",
+        "role": "U",
+        "replicated": true,
+        "derived_from": [
+          "g",
+          "x_U"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "E_U",
+            "how": "computed"
+          }
+        ],
+        "V": [
+          {
+            "id": "E_U_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ECDH_Curves_U",
+      "evidence": [],
+      "description": "U's list of supported ECDH curves.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "ECDH_Curves_U",
+        "role": "U",
+        "replicated": true,
+        "derived_from": [
+          "curve_x25519"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "ECDH_Curves_U",
+            "how": "computed"
+          }
+        ],
+        "V": [
+          {
+            "id": "ECDH_Curves_U_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "HKDFs_U",
+      "evidence": [],
+      "description": "U's list of supported HKDF algorithms.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "HKDFs_U",
+        "role": "U",
+        "replicated": true,
+        "derived_from": [
+          "hkdf_sha_256"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "HKDFs_U",
+            "how": "computed"
+          }
+        ],
+        "V": [
+          {
+            "id": "HKDFs_U_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AEADs_U",
+      "evidence": [],
+      "description": "U's list of supported AEAD algorithms.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "AEADs_U",
+        "role": "U",
+        "replicated": true,
+        "derived_from": [
+          "aead_aes_ccm_64_64_128"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "AEADs_U",
+            "how": "computed"
+          }
+        ],
+        "V": [
+          {
+            "id": "AEADs_U_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "msg_1",
+      "evidence": [],
+      "description": "msg_1, a value U computes in the EDHOC draft-08 symmetric (pre-shared key) handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "msg_1",
+        "role": "U",
+        "replicated": true,
+        "derived_from": [
+          "msg_type_4",
+          "S_U",
+          "N_U",
+          "E_U",
+          "ECDH_Curves_U",
+          "HKDFs_U",
+          "AEADs_U",
+          "KID",
+          "APP_1"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "msg_1",
+            "how": "computed"
+          }
+        ],
+        "V": [
+          {
+            "id": "msg_1_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "msg_2",
+      "evidence": [],
+      "description": "msg_2, a value U receives in the EDHOC draft-08 symmetric (pre-shared key) handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "msg_2",
+        "role": "V",
+        "replicated": true,
+        "derived_from": [
+          "data_2",
+          "COSE_ENC_2"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "msg_2_recv",
+            "how": "received"
+          }
+        ],
+        "V": [
+          {
+            "id": "msg_2",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "COSE_ENC_2",
+      "evidence": [],
+      "description": "COSE_ENC_2, a value U receives in the EDHOC draft-08 symmetric (pre-shared key) handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "COSE_ENC_2",
+        "role": "V",
+        "replicated": true,
+        "derived_from": [
+          "APP_2",
+          "K_2",
+          "aad_2",
+          "IV_2"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "COSE_ENC_2_recv",
+            "how": "received"
+          }
+        ],
+        "V": [
+          {
+            "id": "COSE_ENC_2",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "data_2",
+      "evidence": [],
+      "description": "data_2, a value U receives in the EDHOC draft-08 symmetric (pre-shared key) handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "data_2",
+        "role": "V",
+        "replicated": true,
+        "derived_from": [
+          "msg_type_5",
+          "S_U",
+          "S_V",
+          "N_V",
+          "E_V",
+          "HKDF_V",
+          "AEAD_V"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "data_2_recv",
+            "how": "received"
+          }
+        ],
+        "V": [
+          {
+            "id": "data_2",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AEAD_V",
+      "evidence": [],
+      "description": "The AEAD algorithm V selects.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "AEAD_V",
+        "role": "V",
+        "replicated": true,
+        "derived_from": [
+          "aead_aes_ccm_64_64_128"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "AEAD_V_recv",
+            "how": "received"
+          }
+        ],
+        "V": [
+          {
+            "id": "AEAD_V",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "E_V",
+      "evidence": [],
+      "description": "V's ephemeral Diffie-Hellman public value.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "E_V",
+        "role": "V",
+        "replicated": true,
+        "derived_from": [
+          "g",
+          "x_V"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "E_V_recv",
+            "how": "received"
+          }
+        ],
+        "V": [
+          {
+            "id": "E_V",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "HKDF_V",
+      "evidence": [],
+      "description": "The HKDF algorithm V selects.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "HKDF_V",
+        "role": "V",
+        "replicated": true,
+        "derived_from": [
+          "hkdf_sha_256"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "HKDF_V_recv",
+            "how": "received"
+          }
+        ],
+        "V": [
+          {
+            "id": "HKDF_V",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "shared_secret",
+      "evidence": [],
+      "description": "shared_secret, a value U computes in the EDHOC draft-08 symmetric (pre-shared key) handshake.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "E_V",
+          "x_U",
+          "E_U",
+          "x_V"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "shared_secret_U",
+            "how": "computed"
+          }
+        ],
+        "V": [
+          {
+            "id": "shared_secret_V",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "aad_2",
+      "evidence": [],
+      "description": "aad_2, a value U computes in the EDHOC draft-08 symmetric (pre-shared key) handshake.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "msg_1",
+          "data_2"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "aad_2",
+            "how": "computed"
+          }
+        ],
+        "V": [
+          {
+            "id": "aad_2",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "K_2",
+      "evidence": [],
+      "description": "The key protecting message 2's encrypted part.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "shared_secret",
+          "AEAD_V",
+          "aad_2",
+          "PSK"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "K_2",
+            "how": "computed"
+          }
+        ],
+        "V": [
+          {
+            "id": "K_2",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "IV_2",
+      "evidence": [],
+      "description": "IV_2, a value U computes in the EDHOC draft-08 symmetric (pre-shared key) handshake.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "shared_secret",
+          "iv_generation",
+          "aad_2",
+          "PSK"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "IV_2",
+            "how": "computed"
+          }
+        ],
+        "V": [
+          {
+            "id": "IV_2",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "APP_2_recv",
+      "evidence": [],
+      "description": "APP_2_recv, a value U computes in the EDHOC draft-08 symmetric (pre-shared key) handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "APP_2_recv",
+        "role": "U",
+        "replicated": true,
+        "derived_from": [
+          "COSE_ENC_2",
+          "K_2",
+          "aad_2",
+          "IV_2"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "APP_2_recv",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "data_3",
+      "evidence": [],
+      "description": "data_3, a value U computes in the EDHOC draft-08 symmetric (pre-shared key) handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "data_3",
+        "role": "U",
+        "replicated": true,
+        "derived_from": [
+          "msg_type_6",
+          "S_V"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "data_3",
+            "how": "computed"
+          }
+        ],
+        "V": [
+          {
+            "id": "data_3_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "aad_3",
+      "evidence": [],
+      "description": "aad_3, a value U computes in the EDHOC draft-08 symmetric (pre-shared key) handshake.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "msg_1",
+          "msg_2",
+          "data_3"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "aad_3",
+            "how": "computed"
+          }
+        ],
+        "V": [
+          {
+            "id": "aad_3",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "K_3",
+      "evidence": [],
+      "description": "K_3, a value U computes in the EDHOC draft-08 symmetric (pre-shared key) handshake.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "shared_secret",
+          "AEAD_V",
+          "aad_3",
+          "PSK"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "K_3",
+            "how": "computed"
+          }
+        ],
+        "V": [
+          {
+            "id": "K_3",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "IV_3",
+      "evidence": [],
+      "description": "IV_3, a value U computes in the EDHOC draft-08 symmetric (pre-shared key) handshake.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "shared_secret",
+          "iv_generation",
+          "aad_3",
+          "PSK"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "IV_3",
+            "how": "computed"
+          }
+        ],
+        "V": [
+          {
+            "id": "IV_3",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "COSE_ENC_3",
+      "evidence": [],
+      "description": "COSE_ENC_3, a value U computes in the EDHOC draft-08 symmetric (pre-shared key) handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "COSE_ENC_3",
+        "role": "U",
+        "replicated": true,
+        "derived_from": [
+          "APP_3",
+          "K_3",
+          "aad_3",
+          "IV_3"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "COSE_ENC_3",
+            "how": "computed"
+          }
+        ],
+        "V": [
+          {
+            "id": "COSE_ENC_3_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "msg_3",
+      "evidence": [],
+      "description": "msg_3, a value U computes in the EDHOC draft-08 symmetric (pre-shared key) handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "msg_3",
+        "role": "U",
+        "replicated": true,
+        "derived_from": [
+          "data_3",
+          "COSE_ENC_3"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "msg_3",
+            "how": "computed"
+          }
+        ],
+        "V": [
+          {
+            "id": "msg_3_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "exchange_hash",
+      "evidence": [],
+      "description": "exchange_hash, a value U computes in the EDHOC draft-08 symmetric (pre-shared key) handshake.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "msg_1",
+          "msg_2",
+          "msg_3"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "exchange_hash_U",
+            "how": "computed"
+          }
+        ],
+        "V": [
+          {
+            "id": "exchange_hash_V",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "OSCORE_Master_Secret",
+      "evidence": [],
+      "description": "The OSCORE master secret both parties derive at the end of the handshake.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "shared_secret",
+          "edhoc_oscore_master_secret",
+          "AEAD_V",
+          "exchange_hash",
+          "PSK"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "OSCORE_Master_Secret_U",
+            "how": "computed"
+          }
+        ],
+        "V": [
+          {
+            "id": "OSCORE_Master_Secret_V",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "OSCORE_Master_Salt",
+      "evidence": [],
+      "description": "The OSCORE master salt both parties derive at the end of the handshake.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "shared_secret",
+          "edhoc_oscore_master_salt",
+          "exchange_hash",
+          "PSK"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "OSCORE_Master_Salt_U",
+            "how": "computed"
+          }
+        ],
+        "V": [
+          {
+            "id": "OSCORE_Master_Salt_V",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "APP_3_recv",
+      "evidence": [],
+      "description": "APP_3_recv, a value V computes in the EDHOC draft-08 symmetric (pre-shared key) handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "APP_3_recv",
+        "role": "V",
+        "replicated": true,
+        "derived_from": [
+          "COSE_ENC_3",
+          "K_3",
+          "aad_3",
+          "IV_3"
+        ]
+      },
+      "holders": {
+        "V": [
+          {
+            "id": "APP_3_recv",
+            "how": "computed"
+          }
+        ]
+      }
+    }
+  ]
+}

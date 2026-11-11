@@ -1,0 +1,352 @@
+{
+  "vocab_version": "4.0.0",
+  "names": {
+    "peer_auth": "The identity scope of the peer identities honest principals can select; open means the attacker may register a recognised peer identity (§5).",
+    "A": "The initiator, sharing secret key KA with AS, and its identity A sent in message 1.1 and inside the ticket {CK, A}KB (§2, §3, §4).",
+    "B": "The intended correspondent, sharing secret key KB with AS, and its identity B named in message 1.1 and returned in message 1.2 (§2, §3, §4).",
+    "CK": "The conversation key that AS generates and sends to A in message 1.2, and A forwards to B in message 1.3 (§3, §4).",
+    "AS": "The trusted authentication server, which holds all principals' secret keys and generates the conversation key CK in response to message 1.1 (§2, §4).",
+    "I_A1": "The nonce identifier A generates for its request to AS in message 1.1 and checks in AS's reply 1.2 (§3, §4)."
+  },
+  "assumptions": [
+    {
+      "id": "admission_peer_auth",
+      "axis": "admission",
+      "target": {
+        "scope": "peer_auth"
+      },
+      "default": "open"
+    },
+    {
+      "id": "data_a_public",
+      "axis": "data",
+      "target": {
+        "of": "A"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_b_public",
+      "axis": "data",
+      "target": {
+        "of": "B"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "sk_reveal_session_key",
+      "axis": "data",
+      "target": {
+        "of": "CK"
+      },
+      "default": "none",
+      "levels": [
+        "leaked_in_other_instances",
+        "none"
+      ]
+    },
+    {
+      "id": "seating_A",
+      "axis": "seating",
+      "target": {
+        "principal": "A"
+      },
+      "default": "any_role"
+    },
+    {
+      "id": "seating_B",
+      "axis": "seating",
+      "target": {
+        "principal": "B"
+      },
+      "default": "any_role"
+    }
+  ],
+  "properties": [
+    {
+      "id": "secrecy_CK",
+      "type": "Secrecy",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "CK"
+        ],
+        "holders": [
+          "A",
+          "B"
+        ]
+      }
+    },
+    {
+      "id": "auth_A_B_AB",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "A",
+        "subject": "B",
+        "of": [
+          "A",
+          "B"
+        ]
+      }
+    },
+    {
+      "id": "auth_A_B_CK",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "A",
+        "subject": "B",
+        "of": [
+          "A",
+          "B",
+          "CK"
+        ]
+      }
+    },
+    {
+      "id": "auth_B_A_AB",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "B",
+        "subject": "A",
+        "of": [
+          "A",
+          "B"
+        ]
+      }
+    },
+    {
+      "id": "auth_B_A_CK",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "B",
+        "subject": "A",
+        "of": [
+          "A",
+          "B",
+          "CK"
+        ]
+      }
+    },
+    {
+      "id": "auth_a_as_ab_na_ck",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "A",
+        "subject": "AS",
+        "of": [
+          "A",
+          "B",
+          "I_A1",
+          "CK"
+        ]
+      }
+    },
+    {
+      "id": "auth_b_as_a",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "B",
+        "subject": "AS",
+        "of": [
+          "A"
+        ]
+      }
+    }
+  ],
+  "claims": [
+    {
+      "id": "ck_secret_known_only_to_a_and_b",
+      "property": "secrecy_CK",
+      "expect": "holds",
+      "conditions": [],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "4",
+          "quote": "Because (1.2) is encrypted with A's secret key, only A can decrypt it and discover the conversation key CK."
+        },
+        {
+          "document": "main",
+          "section": "4",
+          "quote": "The real B, but no other, will be able to decrypt message (1.3) and emerge with the conversation key CK, the same as A has."
+        },
+        {
+          "document": "main",
+          "section": "4",
+          "quote": "any communication he emits with CK encryption will be understood only by B. Both are known because the only messages containing CK that have ever been sent are tied to A's and B's secret keys."
+        }
+      ]
+    },
+    {
+      "id": "a_injectively_agrees_with_b_on_identities",
+      "property": "auth_A_B_AB",
+      "expect": "holds",
+      "conditions": [],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "4",
+          "quote": "A now knows that any communication he receives encrypted with CK must have originated with B"
+        },
+        {
+          "document": "main",
+          "section": "4",
+          "quote": "A is aware that he has not used the key CK before and therefore has no reason to fear that material encrypted with it is other than the legitimate responses from B."
+        },
+        {
+          "document": "main",
+          "section": "3",
+          "quote": "**I_B-1**: A challenge-response value derived from I_B by a predefined arithmetic operation, used to confirm mutual confidence and authentication between the parties."
+        }
+      ]
+    },
+    {
+      "id": "a_injectively_agrees_with_b_on_ck",
+      "property": "auth_A_B_CK",
+      "expect": "holds",
+      "conditions": [],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "4",
+          "quote": "A now knows that any communication he receives encrypted with CK must have originated with B"
+        },
+        {
+          "document": "main",
+          "section": "4",
+          "quote": "A is aware that he has not used the key CK before and therefore has no reason to fear that material encrypted with it is other than the legitimate responses from B."
+        },
+        {
+          "document": "main",
+          "section": "4",
+          "quote": "If this reply is satisfactorily received, then the mutual confidence is sufficient to enable substantive communication, encrypted with CK, to begin."
+        }
+      ]
+    },
+    {
+      "id": "b_injectively_agrees_with_a_on_identities",
+      "property": "auth_B_A_AB",
+      "expect": "holds",
+      "conditions": [],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "4",
+          "quote": "B also knows the identity of the intending correspondent, as authenticated by AS."
+        },
+        {
+          "document": "main",
+          "section": "4",
+          "quote": "To guard against this possibility, B generates a nonce identifier for the transaction, I_B, and sends it to A under CK:"
+        },
+        {
+          "document": "main",
+          "section": "4",
+          "quote": "If this reply is satisfactorily received, then the mutual confidence is sufficient to enable substantive communication, encrypted with CK, to begin."
+        },
+        {
+          "document": "main",
+          "section": "3",
+          "quote": "**I_B**: A nonce identifier generated by Principal B, used to verify the freshness of the session initiated by Principal A."
+        },
+        {
+          "document": "main",
+          "section": "3",
+          "quote": "**I_B-1**: A challenge-response value derived from I_B by a predefined arithmetic operation, used to confirm mutual confidence and authentication between the parties."
+        }
+      ]
+    },
+    {
+      "id": "b_injectively_agrees_with_a_on_ck",
+      "property": "auth_B_A_CK",
+      "expect": "holds",
+      "conditions": [],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "4",
+          "quote": "The real B, but no other, will be able to decrypt message (1.3) and emerge with the conversation key CK, the same as A has."
+        },
+        {
+          "document": "main",
+          "section": "4",
+          "quote": "B is in a similar state, mutatis mutandis."
+        },
+        {
+          "document": "main",
+          "section": "4",
+          "quote": "To guard against this possibility, B generates a nonce identifier for the transaction, I_B, and sends it to A under CK:"
+        },
+        {
+          "document": "main",
+          "section": "4",
+          "quote": "If this reply is satisfactorily received, then the mutual confidence is sufficient to enable substantive communication, encrypted with CK, to begin."
+        },
+        {
+          "document": "main",
+          "section": "3",
+          "quote": "**I_B**: A nonce identifier generated by Principal B, used to verify the freshness of the session initiated by Principal A."
+        }
+      ]
+    },
+    {
+      "id": "a_injectively_agrees_with_as_on_reply_1_2",
+      "property": "auth_a_as_ab_na_ck",
+      "expect": "holds",
+      "conditions": [],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "4",
+          "quote": "Following decryption, A checks for the presence of the intended recipient's name, B, and the correct identifier, I_A1, in order to verify that the message really is a reply by AS to the current enquiry."
+        },
+        {
+          "document": "main",
+          "section": "4",
+          "quote": "If the recipient's name is left out, then an intruder could change that name in message (1.1), say to X, before AS receives it, with the subsequent result that A would unknowingly communicate with X instead of B."
+        },
+        {
+          "document": "main",
+          "section": "4",
+          "quote": "If the identifier is left out, then an intruder could substitute a previously recorded message (1.2) (from AS to A about B) and force A to reuse a previous conversation key."
+        },
+        {
+          "document": "main",
+          "section": "3",
+          "quote": "**I_A1**: A nonce identifier generated by Principal A, ensuring the freshness of the transaction request to the Authentication Server."
+        }
+      ]
+    },
+    {
+      "id": "b_injectively_agrees_with_as_on_correspondent",
+      "property": "auth_b_as_a",
+      "expect": "holds",
+      "conditions": [],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "4",
+          "quote": "B also knows the identity of the intending correspondent, as authenticated by AS."
+        },
+        {
+          "document": "main",
+          "section": "4",
+          "quote": "B's position is not so good; unless he remembers indefinitely keys previously used by A in order to check that CK is new, he is unclear that the message (1.3) and the subsequent messages supposedly from A are not being replayed. To guard against this possibility, B generates a nonce identifier for the transaction, I_B, and sends it to A under CK:"
+        }
+      ]
+    }
+  ]
+}

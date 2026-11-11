@@ -1,0 +1,118 @@
+(* ============================================================
+   Wide-Mouthed-Frog — ProVerif standard.
+   Provenance: mechanically exported from the Tamarin model
+   `Wide_Mouthed_Frog.spthy` (Jannik Dreier, SPORE) via
+   `tamarin-prover -m=proverif`. The exported reachability PROCESS
+   (long-term keys via table tLtk + auto-generated field getters) is
+   used as-is. The security QUERIES were rewritten into ProVerif idiom
+   (injective agreement -> inj-event; secrecy -> attacker()) because the
+   export does not translate Tamarin's injective / secrecy / exists-trace
+   lemma shapes. `set preciseActions` is required for ProVerif to resolve
+   the table+getter model (sound: only refines cannot-be-proved).
+   This protocol has A choose Kab (WMF's defining feature). Verdicts in
+   ../../results.json. The injective-agreement = false verdicts are the
+   well-known WMF replay attack (SPORE).
+   ============================================================ *)
+
+set preciseActions = true.
+
+free publicChannel:channel.
+free s1:bitstring.
+free s2:bitstring.
+free sA:bitstring.
+free sB:bitstring.
+fun fst(bitstring):bitstring.
+fun pair(bitstring,bitstring):bitstring.
+fun sdec(bitstring,bitstring):bitstring.
+fun senc(bitstring,bitstring):bitstring.
+fun snd(bitstring):bitstring.
+event eCommit_B(bitstring, bitstring, bitstring).
+event eCommit_S(bitstring, bitstring, bitstring).
+event eKeyGen(bitstring).
+event eReveal(bitstring).
+event eRunning_A(bitstring, bitstring, bitstring).
+event eRunning_S(bitstring, bitstring, bitstring).
+event eSecret(bitstring, bitstring, bitstring).
+table tLtk(bitstring, bitstring).
+equation forall x_1:bitstring, x_2:bitstring;   fst((x_1, x_2)) = x_1.
+equation forall x_1:bitstring, x_2:bitstring;   sdec(senc(x_1, x_2), x_2) = x_1.
+equation forall x_1:bitstring, x_2:bitstring;   snd((x_1, x_2)) = x_2.
+reduc forall var_s1:bitstring, var_a:bitstring, var_b:bitstring, var_kab:bitstring, var_ta:bitstring, var_kas:bitstring; g_var_a_0((var_a, senc((var_s1, (var_ta, (var_b, var_kab))), var_kas))) = var_a[private].
+reduc forall var_s1:bitstring, var_a:bitstring, var_b:bitstring, var_kab:bitstring, var_ta:bitstring, var_kas:bitstring; g_var_b_3((var_a, senc((var_s1, (var_ta, (var_b, var_kab))), var_kas))) = var_b[private].
+reduc forall var_s1:bitstring, var_a:bitstring, var_b:bitstring, var_kab:bitstring, var_ta:bitstring, var_kas:bitstring; g_var_kab_4((var_a, senc((var_s1, (var_ta, (var_b, var_kab))), var_kas))) = var_kab[private].
+reduc forall var_s1:bitstring, var_a:bitstring, var_b:bitstring, var_kab:bitstring, var_ta:bitstring, var_kas:bitstring; g_var_kas_5((var_a, senc((var_s1, (var_ta, (var_b, var_kab))), var_kas))) = var_kas[private].
+reduc forall var_s1:bitstring, var_a:bitstring, var_b:bitstring, var_kab:bitstring, var_ta:bitstring, var_kas:bitstring; g_var_s1_1((var_a, senc((var_s1, (var_ta, (var_b, var_kab))), var_kas))) = var_s1[private].
+reduc forall var_s1:bitstring, var_a:bitstring, var_b:bitstring, var_kab:bitstring, var_ta:bitstring, var_kas:bitstring; g_var_ta_2((var_a, senc((var_s1, (var_ta, (var_b, var_kab))), var_kas))) = var_ta[private].
+reduc forall var_s2:bitstring, var_a:bitstring, var_kab:bitstring, var_ts:bitstring, var_kbs:bitstring; g_var_a_8(senc((var_s2, (var_ts, (var_a, var_kab))), var_kbs)) = var_a[private].
+reduc forall var_s2:bitstring, var_a:bitstring, var_kab:bitstring, var_ts:bitstring, var_kbs:bitstring; g_var_kab_9(senc((var_s2, (var_ts, (var_a, var_kab))), var_kbs)) = var_kab[private].
+reduc forall var_s2:bitstring, var_a:bitstring, var_kab:bitstring, var_ts:bitstring, var_kbs:bitstring; g_var_kbs_10(senc((var_s2, (var_ts, (var_a, var_kab))), var_kbs)) = var_kbs[private].
+reduc forall var_s2:bitstring, var_a:bitstring, var_kab:bitstring, var_ts:bitstring, var_kbs:bitstring; g_var_s2_6(senc((var_s2, (var_ts, (var_a, var_kab))), var_kbs)) = var_s2[private].
+reduc forall var_s2:bitstring, var_a:bitstring, var_kab:bitstring, var_ts:bitstring, var_kbs:bitstring; g_var_ts_7(senc((var_s2, (var_ts, (var_a, var_kab))), var_kbs)) = var_ts[private].
+
+
+(* === Security queries (ProVerif idiom) === *)
+
+(* Secrecy of session key Kab — secret unless a long-term key of A or B is revealed *)
+query a:bitstring, b:bitstring, m:bitstring;
+  (event(eSecret(a,b,m)) && attacker(m)) ==> (event(eReveal(a)) || event(eReveal(b))).
+
+(* Non-injective agreement, B's view (B agrees with A on the key) *)
+query a:bitstring, b:bitstring, t:bitstring;
+  event(eCommit_B(a,b,t)) ==> event(eRunning_A(a,b,t)) || event(eReveal(a)) || event(eReveal(b)).
+
+(* Non-injective agreement, S's view *)
+query a:bitstring, b:bitstring, t:bitstring;
+  event(eCommit_S(a,b,t)) ==> event(eRunning_A(a,b,t)) || event(eReveal(a)) || event(eReveal(b)).
+
+(* Injective agreement, B's view *)
+query a:bitstring, b:bitstring, t:bitstring;
+  inj-event(eCommit_B(a,b,t)) ==> inj-event(eRunning_A(a,b,t)) || event(eReveal(a)) || event(eReveal(b)).
+
+(* Injective agreement, S's view *)
+query a:bitstring, b:bitstring, t:bitstring;
+  inj-event(eCommit_S(a,b,t)) ==> inj-event(eRunning_A(a,b,t)) || event(eReveal(a)) || event(eReveal(b)).
+
+let rInit =
+        new kxs: bitstring;
+        in(publicChannel, X: bitstring);
+        event eKeyGen(X);
+        insert tLtk(kxs, X).
+let rReveal_Longterm_Key =
+        get tLtk(sk, A) in
+        event eReveal(A);
+        out(publicChannel, sk).
+let rA_to_S =
+        get tLtk(kas, A) in
+        new ta: bitstring;
+        new kab: bitstring;
+        in(publicChannel, B: bitstring);
+        event eSecret(A, B, kab);
+        event eRunning_A(A, B, (sA, (sB, kab)));
+        out(publicChannel, (A, senc((s1, (ta, (B, kab))), kas))).
+let rS_to_B =
+        get tLtk(kas, a) in
+        get tLtk(kbs, b) in
+        in(publicChannel, helperVar0: bitstring);
+        let (=a) = g_var_a_0(helperVar0) in
+        let (=s1) = g_var_s1_1(helperVar0) in
+        let ta = g_var_ta_2(helperVar0) in
+        let (=b) = g_var_b_3(helperVar0) in
+        let kab = g_var_kab_4(helperVar0) in
+        let (=kas) = g_var_kas_5(helperVar0) in
+        new ts: bitstring;
+        event eSecret(a, b, kab);
+        event eRunning_S(a, b, (sA, (sB, kab)));
+        event eCommit_S(a, b, (sA, (sB, kab)));
+        out(publicChannel, senc((s2, (ts, (a, kab))), kbs)).
+let rB_from_S =
+        get tLtk(kbs, B) in
+        in(publicChannel, helperVar0: bitstring);
+        let (=s2) = g_var_s2_6(helperVar0) in
+        let ts = g_var_ts_7(helperVar0) in
+        let a = g_var_a_8(helperVar0) in
+        let kab = g_var_kab_9(helperVar0) in
+        let (=kbs) = g_var_kbs_10(helperVar0) in
+        event eSecret(a, B, kab);
+        event eCommit_B(a, B, (sA, (sB, kab))).
+process
+    ( !(rInit) | !(rReveal_Longterm_Key) | !(rA_to_S) | !(rS_to_B) | !(rB_from_S) )

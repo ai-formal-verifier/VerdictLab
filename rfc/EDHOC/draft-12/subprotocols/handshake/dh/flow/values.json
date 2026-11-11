@@ -1,0 +1,1594 @@
+{
+  "vocab_version": "4.0.0",
+  "values": [
+    {
+      "name": "g",
+      "evidence": [],
+      "description": "The Diffie-Hellman generator.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "g"
+      },
+      "holders": {}
+    },
+    {
+      "name": "grpid",
+      "evidence": [],
+      "description": "The group's identity element.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "grpid"
+      },
+      "holders": {}
+    },
+    {
+      "name": "label_IV_3",
+      "evidence": [],
+      "description": "label_IV_3, a value computed in the EDHOC draft-12 handshake.",
+      "source": {
+        "scope": "global",
+        "by": "free",
+        "id": "label_IV_3",
+        "private": false
+      },
+      "holders": {}
+    },
+    {
+      "name": "label_KEYSTREAM_2",
+      "evidence": [],
+      "description": "label_KEYSTREAM_2, a value computed in the EDHOC draft-12 handshake.",
+      "source": {
+        "scope": "global",
+        "by": "free",
+        "id": "label_KEYSTREAM_2",
+        "private": false
+      },
+      "holders": {}
+    },
+    {
+      "name": "label_K_3",
+      "evidence": [],
+      "description": "label_K_3, a value computed in the EDHOC draft-12 handshake.",
+      "source": {
+        "scope": "global",
+        "by": "free",
+        "id": "label_K_3",
+        "private": false
+      },
+      "holders": {}
+    },
+    {
+      "name": "label_MAC_2",
+      "evidence": [],
+      "description": "label_MAC_2, a value computed in the EDHOC draft-12 handshake.",
+      "source": {
+        "scope": "global",
+        "by": "free",
+        "id": "label_MAC_2",
+        "private": false
+      },
+      "holders": {}
+    },
+    {
+      "name": "label_MAC_3",
+      "evidence": [],
+      "description": "label_MAC_3, a value computed in the EDHOC draft-12 handshake.",
+      "source": {
+        "scope": "global",
+        "by": "free",
+        "id": "label_MAC_3",
+        "private": false
+      },
+      "holders": {}
+    },
+    {
+      "name": "Signature1",
+      "evidence": [],
+      "description": "Signature1, a value computed in the EDHOC draft-12 handshake.",
+      "source": {
+        "scope": "global",
+        "by": "free",
+        "id": "Signature1",
+        "private": false
+      },
+      "holders": {}
+    },
+    {
+      "name": "Signature2",
+      "evidence": [],
+      "description": "Signature2, a value computed in the EDHOC draft-12 handshake.",
+      "source": {
+        "scope": "global",
+        "by": "free",
+        "id": "Signature2",
+        "private": false
+      },
+      "holders": {}
+    },
+    {
+      "name": "h",
+      "evidence": [],
+      "description": "h, a value computed in the EDHOC draft-12 handshake.",
+      "source": {
+        "scope": "global",
+        "by": "free",
+        "id": "h",
+        "private": false
+      },
+      "holders": {}
+    },
+    {
+      "name": "null",
+      "evidence": [],
+      "description": "null, a value computed in the EDHOC draft-12 handshake.",
+      "source": {
+        "scope": "global",
+        "by": "free",
+        "id": "null",
+        "private": false
+      },
+      "holders": {}
+    },
+    {
+      "name": "rep",
+      "evidence": [],
+      "description": "rep, a value computed in the EDHOC draft-12 handshake.",
+      "source": {
+        "scope": "global",
+        "by": "free",
+        "id": "rep",
+        "private": false
+      },
+      "holders": {}
+    },
+    {
+      "name": "ciphertext_length",
+      "evidence": [],
+      "description": "The constant ciphertext_length of the EDHOC draft-12 handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "ciphertext_length"
+      },
+      "holders": {}
+    },
+    {
+      "name": "edhoc_mac_length",
+      "evidence": [],
+      "description": "The constant edhoc_mac_length of the EDHOC draft-12 handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "edhoc_mac_length"
+      },
+      "holders": {}
+    },
+    {
+      "name": "error_code_one",
+      "evidence": [],
+      "description": "The constant error_code_one of the EDHOC draft-12 handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "error_code_one"
+      },
+      "holders": {}
+    },
+    {
+      "name": "error_code_two",
+      "evidence": [],
+      "description": "The constant error_code_two of the EDHOC draft-12 handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "error_code_two"
+      },
+      "holders": {}
+    },
+    {
+      "name": "hash_length",
+      "evidence": [],
+      "description": "The constant hash_length of the EDHOC draft-12 handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "hash_length"
+      },
+      "holders": {}
+    },
+    {
+      "name": "iv_length",
+      "evidence": [],
+      "description": "The constant iv_length of the EDHOC draft-12 handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "iv_length"
+      },
+      "holders": {}
+    },
+    {
+      "name": "key_length",
+      "evidence": [],
+      "description": "The constant key_length of the EDHOC draft-12 handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "key_length"
+      },
+      "holders": {}
+    },
+    {
+      "name": "length",
+      "evidence": [],
+      "description": "The constant length of the EDHOC draft-12 handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "length"
+      },
+      "holders": {}
+    },
+    {
+      "name": "method_one",
+      "evidence": [],
+      "description": "The constant method_one of the EDHOC draft-12 handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "method_one"
+      },
+      "holders": {}
+    },
+    {
+      "name": "method_three",
+      "evidence": [],
+      "description": "The constant method_three of the EDHOC draft-12 handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "method_three"
+      },
+      "holders": {}
+    },
+    {
+      "name": "method_two",
+      "evidence": [],
+      "description": "The constant method_two of the EDHOC draft-12 handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "method_two"
+      },
+      "holders": {}
+    },
+    {
+      "name": "method_zero",
+      "evidence": [],
+      "description": "The constant method_zero of the EDHOC draft-12 handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "method_zero"
+      },
+      "holders": {}
+    },
+    {
+      "name": "sigtrue",
+      "evidence": [],
+      "description": "The constant sigtrue of the EDHOC draft-12 handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "sigtrue"
+      },
+      "holders": {}
+    },
+    {
+      "name": "METHOD",
+      "evidence": [],
+      "description": "The authentication method agreed out of band.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "METHOD"
+      },
+      "holders": {
+        "R": [
+          {
+            "id": "METHOD_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SUITES_I",
+      "evidence": [],
+      "description": "The cipher suites the Initiator supports.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "SUITES_I"
+      },
+      "holders": {
+        "R": [
+          {
+            "id": "SUITES_I_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SUITES_R",
+      "evidence": [],
+      "description": "The cipher suites the Responder supports.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "SUITES_R"
+      },
+      "holders": {}
+    },
+    {
+      "name": "I",
+      "evidence": [],
+      "description": "The Initiator's private static Diffie-Hellman key.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "I",
+        "replicated": false
+      },
+      "holders": {
+        "I": [
+          {
+            "id": "I",
+            "how": "initial",
+            "from": "I"
+          }
+        ]
+      }
+    },
+    {
+      "name": "R",
+      "evidence": [],
+      "description": "The Responder's private static Diffie-Hellman key.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "R",
+        "replicated": false
+      },
+      "holders": {
+        "R": [
+          {
+            "id": "R",
+            "how": "initial",
+            "from": "R"
+          }
+        ]
+      }
+    },
+    {
+      "name": "identity_I",
+      "evidence": [],
+      "description": "The Initiator's identity.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "identity_I",
+        "replicated": false
+      },
+      "holders": {
+        "I": [
+          {
+            "id": "identity_I",
+            "how": "initial",
+            "from": "identity_I"
+          }
+        ],
+        "R": [
+          {
+            "id": "identity_I",
+            "how": "initial",
+            "from": "identity_I"
+          }
+        ]
+      }
+    },
+    {
+      "name": "identity_R",
+      "evidence": [],
+      "description": "The Responder's identity.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "identity_R",
+        "replicated": false
+      },
+      "holders": {
+        "I": [
+          {
+            "id": "identity_R",
+            "how": "initial",
+            "from": "identity_R"
+          }
+        ],
+        "R": [
+          {
+            "id": "identity_R",
+            "how": "initial",
+            "from": "identity_R"
+          }
+        ]
+      }
+    },
+    {
+      "name": "CRED_I",
+      "evidence": [],
+      "description": "The Initiator's authentication credential; in the model its public signature-verification part, whose signing key only I has.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "CRED_I",
+        "replicated": false
+      },
+      "holders": {
+        "I": [
+          {
+            "id": "CRED_I",
+            "how": "initial",
+            "from": "CRED_I"
+          }
+        ]
+      }
+    },
+    {
+      "name": "CRED_R",
+      "evidence": [],
+      "description": "The Responder's authentication credential; in the model its public signature-verification part, whose signing key only R has.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "CRED_R",
+        "replicated": false
+      },
+      "holders": {
+        "R": [
+          {
+            "id": "CRED_R",
+            "how": "initial",
+            "from": "CRED_R"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ID_CRED_I",
+      "evidence": [],
+      "description": "The Initiator's credential identifier.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "ID_CRED_I",
+        "replicated": false
+      },
+      "holders": {
+        "I": [
+          {
+            "id": "ID_CRED_I",
+            "how": "initial",
+            "from": "ID_CRED_I"
+          }
+        ],
+        "R": [
+          {
+            "id": "ID_CRED_I",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ID_CRED_R",
+      "evidence": [],
+      "description": "The Responder's credential identifier.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "ID_CRED_R",
+        "replicated": false
+      },
+      "holders": {
+        "R": [
+          {
+            "id": "ID_CRED_R",
+            "how": "initial",
+            "from": "ID_CRED_R"
+          }
+        ],
+        "I": [
+          {
+            "id": "ID_CRED_R",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "G_I",
+      "evidence": [],
+      "description": "The Initiator's public static Diffie-Hellman key, exp(g, I).",
+      "source": {
+        "scope": "main",
+        "by": "let",
+        "id": "G_I",
+        "replicated": false,
+        "derived_from": [
+          "g",
+          "I"
+        ]
+      },
+      "holders": {
+        "I": [
+          {
+            "id": "G_I",
+            "how": "initial",
+            "from": "G_I"
+          }
+        ],
+        "R": [
+          {
+            "id": "G_I",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "G_R",
+      "evidence": [],
+      "description": "The Responder's public static Diffie-Hellman key, exp(g, R).",
+      "source": {
+        "scope": "main",
+        "by": "let",
+        "id": "G_R",
+        "replicated": false,
+        "derived_from": [
+          "g",
+          "R"
+        ]
+      },
+      "holders": {
+        "R": [
+          {
+            "id": "G_R",
+            "how": "initial",
+            "from": "G_R"
+          }
+        ],
+        "I": [
+          {
+            "id": "G_R",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "C_I",
+      "evidence": [],
+      "description": "The Initiator's connection identifier.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "C_I",
+        "role": "I",
+        "replicated": true
+      },
+      "holders": {
+        "I": [
+          {
+            "id": "C_I",
+            "how": "generated"
+          }
+        ],
+        "R": [
+          {
+            "id": "C_I",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "EAD_1",
+      "evidence": [],
+      "description": "External authorization data in message 1.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "EAD_1",
+        "role": "I",
+        "replicated": true
+      },
+      "holders": {
+        "I": [
+          {
+            "id": "EAD_1",
+            "how": "generated"
+          }
+        ],
+        "R": [
+          {
+            "id": "EAD_1",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "X",
+      "evidence": [],
+      "description": "The Initiator's ephemeral private DH key.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "X",
+        "role": "I",
+        "replicated": true
+      },
+      "holders": {
+        "I": [
+          {
+            "id": "X",
+            "how": "generated"
+          }
+        ]
+      }
+    },
+    {
+      "name": "EAD_3",
+      "evidence": [],
+      "description": "External authorization data in message 3.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "EAD_3",
+        "role": "I",
+        "replicated": true
+      },
+      "holders": {
+        "I": [
+          {
+            "id": "EAD_3",
+            "how": "generated"
+          }
+        ],
+        "R": [
+          {
+            "id": "EAD_3",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "C_R",
+      "evidence": [],
+      "description": "The Responder's connection identifier.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "C_R",
+        "role": "R",
+        "replicated": true
+      },
+      "holders": {
+        "R": [
+          {
+            "id": "C_R",
+            "how": "generated"
+          }
+        ],
+        "I": [
+          {
+            "id": "C_R",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "EAD_2",
+      "evidence": [],
+      "description": "External authorization data in message 2.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "EAD_2",
+        "role": "R",
+        "replicated": true
+      },
+      "holders": {
+        "R": [
+          {
+            "id": "EAD_2",
+            "how": "generated"
+          }
+        ],
+        "I": [
+          {
+            "id": "EAD_2",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Y",
+      "evidence": [],
+      "description": "The Responder's ephemeral private DH key.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "Y",
+        "role": "R",
+        "replicated": true
+      },
+      "holders": {
+        "R": [
+          {
+            "id": "Y",
+            "how": "generated"
+          }
+        ]
+      }
+    },
+    {
+      "name": "G_X",
+      "evidence": [],
+      "description": "The Initiator's ephemeral public DH key.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "G_X",
+        "role": "I",
+        "replicated": true,
+        "derived_from": [
+          "g",
+          "X"
+        ]
+      },
+      "holders": {
+        "I": [
+          {
+            "id": "G_X",
+            "how": "computed"
+          }
+        ],
+        "R": [
+          {
+            "id": "G_X",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "m1",
+      "evidence": [],
+      "description": "EDHOC message 1.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "method_three",
+          "SUITES_I",
+          "G_X",
+          "C_I",
+          "EAD_1",
+          "METHOD"
+        ]
+      },
+      "holders": {
+        "I": [
+          {
+            "id": "m1",
+            "how": "computed"
+          }
+        ],
+        "R": [
+          {
+            "id": "m1",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "m2",
+      "evidence": [],
+      "description": "EDHOC message 2.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "m2",
+        "role": "R",
+        "replicated": true,
+        "derived_from": [
+          "G_Y",
+          "CIPHERTEXT_2",
+          "C_R"
+        ]
+      },
+      "holders": {
+        "I": [
+          {
+            "id": "m2",
+            "how": "received"
+          }
+        ],
+        "R": [
+          {
+            "id": "m2",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "CIPHERTEXT_2",
+      "evidence": [],
+      "description": "The encrypted part of message 2.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "CIPHERTEXT_2",
+        "role": "R",
+        "replicated": true,
+        "derived_from": [
+          "plaintext_2",
+          "KEYSTREAM_2"
+        ]
+      },
+      "holders": {
+        "I": [
+          {
+            "id": "CIPHERTEXT_2",
+            "how": "received"
+          }
+        ],
+        "R": [
+          {
+            "id": "CIPHERTEXT_2",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "G_Y",
+      "evidence": [],
+      "description": "The Responder's ephemeral public DH key.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "G_Y",
+        "role": "R",
+        "replicated": true,
+        "derived_from": [
+          "g",
+          "Y"
+        ]
+      },
+      "holders": {
+        "I": [
+          {
+            "id": "G_Y",
+            "how": "received"
+          }
+        ],
+        "R": [
+          {
+            "id": "G_Y",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TH_2",
+      "evidence": [],
+      "description": "Transcript hash 2.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "m1",
+          "G_Y",
+          "C_R"
+        ]
+      },
+      "holders": {
+        "I": [
+          {
+            "id": "TH_2",
+            "how": "computed"
+          }
+        ],
+        "R": [
+          {
+            "id": "TH_2",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "G_YX",
+      "evidence": [],
+      "description": "G_YX, a value I computes in the EDHOC draft-12 handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "G_YX",
+        "role": "I",
+        "replicated": true,
+        "derived_from": [
+          "G_Y",
+          "X"
+        ]
+      },
+      "holders": {
+        "I": [
+          {
+            "id": "G_YX",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PRK_2e",
+      "evidence": [],
+      "description": "The pseudorandom key PRK_2e.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "null",
+          "G_YX",
+          "G_XY"
+        ]
+      },
+      "holders": {
+        "I": [
+          {
+            "id": "PRK_2e",
+            "how": "computed"
+          }
+        ],
+        "R": [
+          {
+            "id": "PRK_2e",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "KEYSTREAM_2",
+      "evidence": [],
+      "description": "The keystream encrypting message 2.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "PRK_2e",
+          "TH_2",
+          "label_KEYSTREAM_2",
+          "h",
+          "ciphertext_length"
+        ]
+      },
+      "holders": {
+        "I": [
+          {
+            "id": "KEYSTREAM_2",
+            "how": "computed"
+          }
+        ],
+        "R": [
+          {
+            "id": "KEYSTREAM_2",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "plaintext_2",
+      "evidence": [],
+      "description": "plaintext_2, a value I computes in the EDHOC draft-12 handshake.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "CIPHERTEXT_2",
+          "KEYSTREAM_2",
+          "ID_CRED_R",
+          "SIGNATURE_or_MAC_2",
+          "EAD_2"
+        ]
+      },
+      "holders": {
+        "I": [
+          {
+            "id": "plaintext_2",
+            "how": "computed"
+          }
+        ],
+        "R": [
+          {
+            "id": "plaintext_2",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SIGNATURE_or_MAC_2",
+      "evidence": [],
+      "description": "SIGNATURE_or_MAC_2, a value I receives in the EDHOC draft-12 handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "SIGNATURE_or_MAC_2",
+        "role": "R",
+        "replicated": true,
+        "derived_from": [
+          "MAC_2"
+        ]
+      },
+      "holders": {
+        "I": [
+          {
+            "id": "SIGNATURE_or_MAC_2",
+            "how": "received"
+          }
+        ],
+        "R": [
+          {
+            "id": "SIGNATURE_or_MAC_2",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "pkR",
+      "evidence": [],
+      "description": "pkR, a value I receives in the EDHOC draft-12 handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "pkR",
+        "role": "R",
+        "replicated": true,
+        "derived_from": [
+          "CRED_R"
+        ]
+      },
+      "holders": {
+        "I": [
+          {
+            "id": "pkR",
+            "how": "received"
+          }
+        ],
+        "R": [
+          {
+            "id": "pkR",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "pkI",
+      "evidence": [],
+      "description": "pkI, a value I computes in the EDHOC draft-12 handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "pkI",
+        "role": "I",
+        "replicated": true,
+        "derived_from": [
+          "CRED_I"
+        ]
+      },
+      "holders": {
+        "I": [
+          {
+            "id": "pkI",
+            "how": "computed"
+          }
+        ],
+        "R": [
+          {
+            "id": "pkI",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PRK_3e2m",
+      "evidence": [],
+      "description": "The pseudorandom key PRK_3e2m.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "PRK_2e",
+          "pkRX",
+          "G_XR"
+        ]
+      },
+      "holders": {
+        "I": [
+          {
+            "id": "PRK_3e2m",
+            "how": "computed"
+          }
+        ],
+        "R": [
+          {
+            "id": "PRK_3e2m",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MAC_2",
+      "evidence": [],
+      "description": "The MAC of message 2.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "PRK_3e2m",
+          "TH_2",
+          "label_MAC_2",
+          "ID_CRED_R",
+          "G_R",
+          "EAD_2",
+          "hash_length"
+        ]
+      },
+      "holders": {
+        "I": [
+          {
+            "id": "MAC_2",
+            "how": "computed"
+          }
+        ],
+        "R": [
+          {
+            "id": "MAC_2",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TH_3",
+      "evidence": [],
+      "description": "Transcript hash 3.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "TH_2",
+          "CIPHERTEXT_2"
+        ]
+      },
+      "holders": {
+        "I": [
+          {
+            "id": "TH_3",
+            "how": "computed"
+          }
+        ],
+        "R": [
+          {
+            "id": "TH_3",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PRK_4x3m",
+      "evidence": [],
+      "description": "The pseudorandom key PRK_4x3m both parties derive.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "PRK_3e2m",
+          "G_YI",
+          "pkIY"
+        ]
+      },
+      "holders": {
+        "I": [
+          {
+            "id": "PRK_4x3m",
+            "how": "computed"
+          }
+        ],
+        "R": [
+          {
+            "id": "PRK_4x3m",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MAC_3",
+      "evidence": [],
+      "description": "The MAC of message 3.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "PRK_4x3m",
+          "TH_3",
+          "label_MAC_3",
+          "ID_CRED_I",
+          "G_I",
+          "EAD_3",
+          "hash_length"
+        ]
+      },
+      "holders": {
+        "I": [
+          {
+            "id": "MAC_3",
+            "how": "computed"
+          }
+        ],
+        "R": [
+          {
+            "id": "MAC_3",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SIGNATURE_or_MAC_3",
+      "evidence": [],
+      "description": "SIGNATURE_or_MAC_3, a value I computes in the EDHOC draft-12 handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "SIGNATURE_or_MAC_3",
+        "role": "I",
+        "replicated": true,
+        "derived_from": [
+          "MAC_3"
+        ]
+      },
+      "holders": {
+        "I": [
+          {
+            "id": "SIGNATURE_or_MAC_3",
+            "how": "computed"
+          }
+        ],
+        "R": [
+          {
+            "id": "SIGNATURE_or_MAC_3",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "K_3",
+      "evidence": [],
+      "description": "The key protecting message 3.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "PRK_3e2m",
+          "TH_3",
+          "label_K_3",
+          "h",
+          "key_length"
+        ]
+      },
+      "holders": {
+        "I": [
+          {
+            "id": "K_3",
+            "how": "computed"
+          }
+        ],
+        "R": [
+          {
+            "id": "K_3",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "IV_3",
+      "evidence": [],
+      "description": "The IV for message 3.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "PRK_3e2m",
+          "TH_3",
+          "label_IV_3",
+          "h",
+          "iv_length"
+        ]
+      },
+      "holders": {
+        "I": [
+          {
+            "id": "IV_3",
+            "how": "computed"
+          }
+        ],
+        "R": [
+          {
+            "id": "IV_3",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "plaintext_3",
+      "evidence": [],
+      "description": "plaintext_3, a value I computes in the EDHOC draft-12 handshake.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "ID_CRED_I",
+          "SIGNATURE_or_MAC_3",
+          "EAD_3",
+          "m3",
+          "K_3",
+          "IV_3",
+          "TH_3"
+        ]
+      },
+      "holders": {
+        "I": [
+          {
+            "id": "plaintext_3",
+            "how": "computed"
+          }
+        ],
+        "R": [
+          {
+            "id": "plaintext_3",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "m3",
+      "evidence": [],
+      "description": "EDHOC message 3.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "m3",
+        "role": "I",
+        "replicated": true,
+        "derived_from": [
+          "plaintext_3",
+          "rep",
+          "K_3",
+          "IV_3",
+          "TH_3"
+        ]
+      },
+      "holders": {
+        "I": [
+          {
+            "id": "m3",
+            "how": "computed"
+          }
+        ],
+        "R": [
+          {
+            "id": "CIPHERTEXT_3",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TH_4",
+      "evidence": [],
+      "description": "Transcript hash 4.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "TH_3",
+          "m3"
+        ]
+      },
+      "holders": {
+        "I": [
+          {
+            "id": "TH_4",
+            "how": "computed"
+          }
+        ],
+        "R": [
+          {
+            "id": "TH_4",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "pkRX",
+      "evidence": [],
+      "description": "pkRX, a value I computes in the EDHOC draft-12 handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "pkRX",
+        "role": "I",
+        "replicated": true,
+        "derived_from": [
+          "G_R",
+          "X"
+        ]
+      },
+      "holders": {
+        "I": [
+          {
+            "id": "pkRX",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "G_YI",
+      "evidence": [],
+      "description": "G_YI, a value I computes in the EDHOC draft-12 handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "G_YI",
+        "role": "I",
+        "replicated": true,
+        "derived_from": [
+          "G_Y",
+          "I"
+        ]
+      },
+      "holders": {
+        "I": [
+          {
+            "id": "G_YI",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "G_XY",
+      "evidence": [],
+      "description": "The ephemeral Diffie-Hellman shared secret.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "G_XY",
+        "role": "R",
+        "replicated": true,
+        "derived_from": [
+          "G_X",
+          "Y"
+        ]
+      },
+      "holders": {
+        "R": [
+          {
+            "id": "G_XY",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "G_XR",
+      "evidence": [],
+      "description": "G_XR, a value R computes in the EDHOC draft-12 handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "G_XR",
+        "role": "R",
+        "replicated": true,
+        "derived_from": [
+          "G_X",
+          "R"
+        ]
+      },
+      "holders": {
+        "R": [
+          {
+            "id": "G_XR",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "pkIY",
+      "evidence": [],
+      "description": "pkIY, a value R computes in the EDHOC draft-12 handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "pkIY",
+        "role": "R",
+        "replicated": true,
+        "derived_from": [
+          "G_I",
+          "Y"
+        ]
+      },
+      "holders": {
+        "R": [
+          {
+            "id": "pkIY",
+            "how": "computed"
+          }
+        ]
+      }
+    }
+  ]
+}

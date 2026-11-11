@@ -1,0 +1,108 @@
+{
+  "principals": [
+    {
+      "name": "Initiator",
+      "description": "IKEv2 initiator. Opens IKE_SA_INIT with its DH share and nonce, derives the SKEYSEED tree, then authenticates in IKE_AUTH by signing the IKE_SA_INIT request transcript with its own signature key, and proposes the Child SA."
+    },
+    {
+      "name": "Responder",
+      "description": "IKEv2 responder. Answers IKE_SA_INIT with its own DH share and nonce, verifies the initiator's AUTH signature against the peer public key, signs the IKE_SA_INIT response transcript in return, and answers with its own Child SA selection."
+    }
+  ],
+  "values": [
+    {
+      "name": "sk_Initiator",
+      "derived_from": [],
+      "description": "The initiator's long-term private signature key.",
+      "holders": [
+        "Initiator"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "pk_Initiator",
+      "derived_from": [
+        "sk_Initiator"
+      ],
+      "description": "The initiator's public signature-verification key, computed from sk_Initiator. The document lets it reach the responder as a certificate in the CERT payload of IKE_AUTH (validated against the responder's trust anchors) or be configured locally as authentication data for the initiator's identity, so the responder is not assumed to store it beforehand.",
+      "holders": [
+        "Initiator"
+      ]
+    },
+    {
+      "name": "sk_Responder",
+      "derived_from": [],
+      "description": "The responder's long-term private signature key.",
+      "holders": [
+        "Responder"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "pk_Responder",
+      "derived_from": [
+        "sk_Responder"
+      ],
+      "description": "The responder's public signature-verification key, computed from sk_Responder. The document lets it reach the initiator as a certificate in the CERT payload of IKE_AUTH (validated against the initiator's trust anchors) or be configured locally as authentication data for the responder's identity, so the initiator is not assumed to store it beforehand.",
+      "holders": [
+        "Responder"
+      ]
+    },
+    {
+      "name": "IDi",
+      "derived_from": [],
+      "description": "The initiator's own identity, asserted in the IDi payload of IKE_AUTH; the responder learns it there and uses it to look up its policy and authentication data.",
+      "holders": [
+        "Initiator",
+        "Responder"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "IDr",
+      "derived_from": [],
+      "description": "The responder's own identity, asserted in the IDr payload of IKE_AUTH; the initiator may name the identity it wants to talk to, but which peer it talks to is a seating choice.",
+      "holders": [
+        "Initiator",
+        "Responder"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "SAi1",
+      "derived_from": [],
+      "description": "The cryptographic suites the initiator supports for the IKE SA, offered in IKE_SA_INIT.",
+      "holders": [
+        "Initiator"
+      ],
+      "source": "specified"
+    },
+    {
+      "name": "SAi2",
+      "derived_from": [],
+      "description": "The Child SA proposals the initiator supports, offered in IKE_AUTH.",
+      "holders": [
+        "Initiator"
+      ],
+      "source": "specified"
+    },
+    {
+      "name": "TSi",
+      "derived_from": [],
+      "description": "The initiator-side traffic selectors the initiator proposes, taken from its own Security Policy Database; the responder receives them in IKE_AUTH and narrows them by its own policy.",
+      "holders": [
+        "Initiator"
+      ],
+      "source": "specified"
+    },
+    {
+      "name": "TSr",
+      "derived_from": [],
+      "description": "The responder-side traffic selectors the initiator proposes, taken from its own Security Policy Database; the responder receives them in IKE_AUTH and narrows them by its own policy.",
+      "holders": [
+        "Initiator"
+      ],
+      "source": "specified"
+    }
+  ]
+}

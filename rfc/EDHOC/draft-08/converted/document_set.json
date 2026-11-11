@@ -1,0 +1,560 @@
+{
+  "main_doc_id": "draft-selander-ace-cose-ecdhe-08",
+  "subprotocol_list": {
+    "handshake": "EDHOC (draft-08) key exchange between an initiator and a responder."
+  },
+  "documents": {
+    "ietf": [
+      {
+        "doc_id": "draft-selander-ace-cose-ecdhe-08",
+        "path": "main/draft-selander-ace-cose-ecdhe-08.md",
+        "fingerprint": "d4f7f74de5ac10ed1ba79adca3f54842e6a40a25f490116effa1694e087b8c14",
+        "ids": [
+          "draft-selander-ace-cose-ecdhe-08"
+        ]
+      },
+      {
+        "doc_id": "rfc8152",
+        "path": "library:public/converted/rfc8152.md",
+        "fingerprint": "9ce3b8a9c3b25d6adc37df67b0d00f05ee8ee6f29f0c5f3536b3d6bc87a2bd73",
+        "ids": [
+          "rfc8152"
+        ]
+      },
+      {
+        "doc_id": "draft-schaad-cose-x509-01",
+        "path": "library:public/converted/draft-schaad-cose-x509-01.md",
+        "fingerprint": "0462592e927cd04234eced70e527e508e20422ace7d8c7dadd04a3fbda969740",
+        "ids": [
+          "draft-schaad-cose-x509-01"
+        ]
+      },
+      {
+        "doc_id": "rfc5869",
+        "path": "library:public/converted/rfc5869.md",
+        "fingerprint": "79dd720fce161c1511258aa6b7f341e8eb089562bb813a45b574fdce647449f4",
+        "ids": [
+          "rfc5869"
+        ]
+      }
+    ],
+    "nist": [
+      {
+        "doc_id": "NIST.SP.800-56Ar2",
+        "path": "refs/NIST.SP.800-56Ar2.md",
+        "fingerprint": "ccd881d4a2d9dc2a52d32305b66ba911b04fb5f761b9813e5478c0eda495ee30",
+        "ids": [
+          "NIST.SP.800-56Ar2",
+          "nist.sp.800-56ar2"
+        ]
+      },
+      {
+        "doc_id": "NIST.FIPS.186-5",
+        "path": "library:public/converted/NIST.FIPS.186-5.md",
+        "fingerprint": "14aaaf3073c9a60849d19726f25e451c9b416a6cf899d1cb2d0b89abbb62ad9c",
+        "ids": [
+          "NIST.FIPS.186-5",
+          "nist.fips.186-5"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "1.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "1.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Describes the parties, message flow, fresh session values, algorithm and curve negotiation, and protocol additions relevant to the handshake analysis."
+    },
+    "3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies the three-message exchange, authentication modes, application-data protection, and the point at which traffic keys become available."
+    },
+    "3.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "3.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines how the protocol derives message and application traffic keys and IVs from the negotiated inputs and exchange transcript."
+    },
+    "4": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "4.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Describes asymmetric authentication roles and how credential identifiers resolve the parties' authentication keys."
+    },
+    "4.1.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "4.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "4.2.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "4.2.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies initiator state and choices, including curve selection, ephemeral-key and nonce generation, session identifier handling, and construction of message 1."
+    },
+    "4.2.3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies responder checks and failure behavior for message 1, including algorithm and curve negotiation and handling of application data."
+    },
+    "4.3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "4.3.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "4.3.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies responder generation of ephemeral and session values, algorithm selection, and construction and protection of message 2."
+    },
+    "4.3.3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies initiator state retrieval, negotiation and freshness checks, message 2 decryption and signature verification, and failure handling."
+    },
+    "4.4": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "4.4.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "4.4.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies initiator creation, signing, and encryption of message 3 using the derived protocol keys."
+    },
+    "4.4.3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies responder state retrieval, decryption and signature verification of message 3, and failure handling."
+    },
+    "5": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "5.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Describes the symmetric-authentication mode and the prior shared-key premise and key identification used by the parties."
+    },
+    "5.1.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "5.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "5.2.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "5.2.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies initiator ephemeral-key and nonce generation, curve choice, session state, and construction of message 1 in the PSK mode."
+    },
+    "5.2.3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies responder checks, error behavior, and application-data handling for message 1 in the PSK mode."
+    },
+    "5.3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "5.3.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "5.3.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies responder generation of ephemeral and session values, algorithm selection, and protected construction of message 2 in the PSK mode."
+    },
+    "5.3.3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies initiator state retrieval, peer ephemeral-key validation, message 2 decryption, and failure handling in the PSK mode."
+    },
+    "5.4": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "5.4.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "5.4.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies initiator construction and encryption of message 3 in the PSK mode."
+    },
+    "5.4.3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies responder state retrieval, message 3 decryption and verification, and failure handling in the PSK mode."
+    },
+    "6": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "6.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines the protocol error message fields used to communicate diagnostic failures during a run."
+    },
+    "8": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "States EDHOC's claimed security properties and protocol-relevant requirements concerning authentication coverage, freshness, key and ephemeral handling, replay, and credential trust."
+    },
+    "10": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "10.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "10.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "A": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "B": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies an optional cross-run state update in which successful PSK sessions replace the old PSK with a transcript-derived key."
+    },
+    "C": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "C.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Describes how the handshake messages and errors are exchanged between initiator and responder through CoAP."
+    },
+    "C.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies how the handshake transcript and session identifiers are used to derive and assign OSCORE context keys and identifiers."
+    }
+  },
+  "references": {
+    "draft-selander-ace-cose-ecdhe-08": {
+      "ietf": {
+        "RFC2119": {
+          "id": "rfc2119",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC6090": {
+          "id": "rfc6090",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC7049": {
+          "id": "rfc7049",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC8152": {
+          "id": "rfc8152",
+          "file": "rfc8152",
+          "status": "same_version"
+        },
+        "I-D.schaad-cose-x509": {
+          "id": "draft-schaad-cose-x509-03",
+          "file": "draft-schaad-cose-x509-01",
+          "status": "other_version"
+        },
+        "I-D.hartke-core-e2e-security-reqs": {
+          "id": "draft-hartke-core-e2e-security-reqs-03",
+          "file": null,
+          "status": "absent"
+        },
+        "I-D.ietf-ace-oauth-authz": {
+          "id": "draft-ietf-ace-oauth-authz-46",
+          "file": null,
+          "status": "absent"
+        },
+        "I-D.ietf-core-object-security": {
+          "id": "draft-ietf-core-object-security-16",
+          "file": null,
+          "status": "absent"
+        },
+        "I-D.ietf-ace-oscore-profile": {
+          "id": "draft-ietf-ace-oscore-profile-19",
+          "file": null,
+          "status": "absent"
+        },
+        "I-D.ietf-cbor-cddl": {
+          "id": "draft-ietf-cbor-cddl-08",
+          "file": null,
+          "status": "absent"
+        },
+        "I-D.ietf-core-resource-directory": {
+          "id": "draft-ietf-core-resource-directory-28",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC7228": {
+          "id": "rfc7228",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC7252": {
+          "id": "rfc7252",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC5869": {
+          "id": "rfc5869",
+          "file": "rfc5869",
+          "status": "same_version"
+        }
+      },
+      "nist": {
+        "SP-800-56a": {
+          "id": "nist.sp.800-56ar2",
+          "file": "NIST.SP.800-56Ar2",
+          "status": "same_version"
+        }
+      },
+      "generic": {
+        "SIGMA": {
+          "id": "work:sigma-the-sign-and-mac-approach-to-authenticated-diffie-hellman-and-its-use-in-t@2003",
+          "file": null,
+          "status": "absent"
+        }
+      }
+    },
+    "NIST.SP.800-56Ar2": {
+      "nist": {
+        "FIPS 140": {
+          "id": "nist.fips.140-2",
+          "file": null,
+          "status": "absent"
+        },
+        "FIPS 140-2 IG": {
+          "id": "nist.fips.140-2",
+          "file": null,
+          "status": "absent"
+        },
+        "FIPS 180": {
+          "id": "nist.fips.180-4",
+          "file": null,
+          "status": "absent"
+        },
+        "FIPS 186": {
+          "id": "nist.fips.186-3",
+          "file": "NIST.FIPS.186-5",
+          "status": "other_version"
+        },
+        "FIPS 197": {
+          "id": "nist.fips.197",
+          "file": null,
+          "status": "absent"
+        },
+        "FIPS 198": {
+          "id": "nist.fips.198-1",
+          "file": null,
+          "status": "absent"
+        },
+        "SP 800-38B": {
+          "id": "nist.sp.800-38b",
+          "file": null,
+          "status": "absent"
+        },
+        "SP 800-57": {
+          "id": "nist.sp.800-57pt1",
+          "file": null,
+          "status": "absent"
+        }
+      },
+      "generic": {
+        "SP 800-38F": {
+          "id": null,
+          "file": null,
+          "status": "unknown"
+        },
+        "SP 800-56C": {
+          "id": null,
+          "file": null,
+          "status": "unknown"
+        },
+        "SP 800-90A": {
+          "id": null,
+          "file": null,
+          "status": "unknown"
+        },
+        "SP 800-108": {
+          "id": null,
+          "file": null,
+          "status": "unknown"
+        },
+        "SP 800-131A": {
+          "id": null,
+          "file": null,
+          "status": "unknown"
+        },
+        "SP 800-135": {
+          "id": null,
+          "file": null,
+          "status": "unknown"
+        },
+        "BM 1998": {
+          "id": "work:menezes-unknown-key-share-attacks-on-the-station-tostation-sts-protocol-technica@1998",
+          "file": null,
+          "status": "unknown"
+        },
+        "CMU 2009": {
+          "id": "work:ustaoglu-reusing-static-keys-in-key-agreement-protocols-indocrypt-2009-lncs-vol@2009",
+          "file": null,
+          "status": "unknown"
+        },
+        "CBH 2005": {
+          "id": "eprint:2005/206",
+          "file": null,
+          "status": "unknown"
+        },
+        "Menezes 2007": {
+          "id": "work:menezes-another-look-at-hmqv@2007",
+          "file": null,
+          "status": "unknown"
+        },
+        "RBB 2001": {
+          "id": "work:boneh-evaluation-of-security-level-of-cryptography-ecmqvs-from-sec-1-jan@2001",
+          "file": null,
+          "status": "unknown"
+        }
+      },
+      "ansi": {
+        "ANS X9.42": {
+          "id": "ansi-x9.42_2003",
+          "file": null,
+          "status": "absent"
+        },
+        "ANS X9.62": {
+          "id": "ansi-x9.62_2005",
+          "file": null,
+          "status": "absent"
+        },
+        "ANS X9.63": {
+          "id": "ansi-x9.63_2011",
+          "file": null,
+          "status": "absent"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+schema_version: "1.0.1"
+protocol: "TLS13"
+version: "8446"
+subprotocols:
+  handshake:
+    description: "The TLS 1.3 handshake between a client and a server, followed by application data in both directions and the NewSessionTicket the server issues."
+    mechanisms:
+      key_exchange:
+        ecdhe: "(EC)DHE alone, with no pre-shared key"
+        psk_ecdhe: "a pre-shared key together with (EC)DHE"
+        psk_only: "a pre-shared key alone, with no (EC)DHE"
+      early_data:
+        none: "no 0-RTT data"
+        zero_rtt: "the client sends 0-RTT early data under the pre-shared key right after ClientHello"
+    selections:
+      reftls: {key_exchange: psk_ecdhe, early_data: zero_rtt}

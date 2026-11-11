@@ -1,0 +1,361 @@
+{
+  "vocab_version": "4.0.0",
+  "names": {
+    "pk_Server": "The server's public key, carried in the end-entity certificate of its Certificate message and used to verify its CertificateVerify signature (§4.4.2, §4.4.3).",
+    "sk_Server": "The server's private signing key, matching the public key in its end-entity certificate, with which it signs CertificateVerify (§4.4.2, §4.4.3).",
+    "PSK": "The pre-shared key in use, either established externally or derived from the resumption_master_secret of a previous connection, input to HKDF-Extract to form the Early Secret (zero if no PSK is used) (§2.2, §4.6.1, §7.1).",
+    "server_certificates": "The identity scope of the server identities clients authenticate through certificates chaining to their trust anchors; open means the attacker may obtain a valid certificate for a server identity of its own (§4.4.2, §4.4.2.2).",
+    "psk_identities": "The identity scope of the PSKs clients and servers share, external or established through NewSessionTicket, which a client names by a PskIdentity in its pre_shared_key extension and a server accepts after validating the binder; open means the attacker shares PSKs of its own with honest endpoints (§2.2, §4.2.11).",
+    "dh_group": "The (EC)DHE group of the key exchange, one of the named groups of the client's supported_groups for which it sends a key_share, answered by the server's key_share in its ServerHello (§4.2.7, §4.2.8).",
+    "hash_algorithm": "The cipher suite hash algorithm, used by Transcript-Hash and HKDF and so for the transcript hash the server signs in CertificateVerify (§7.1, §4.4.1, §4.4.3, §B.4).",
+    "aead_algorithm": "The AEAD algorithm of the negotiated cipher suite, which protects the records; for 0-RTT data, that of the cipher suite associated with the PSK (§5.2, §4.2.10, §B.4).",
+    "Client": "The client, the endpoint initiating the TLS connection (§1.1).",
+    "Server": "The server, the endpoint which did not initiate the TLS connection (§1.1).",
+    "random_Client": "ClientHello.random, the client's 32 bytes from a secure random number generator (§4.1.2).",
+    "random_Server": "ServerHello.random, the server's 32 bytes from a secure random number generator (§4.1.3).",
+    "offer_Client": "The client's offer in its ClientHello for the parameters the server will select: the protocol versions, the cipher suites (AEAD algorithm and hash), the key-exchange groups with key_share, and the PSK and its psk_key_exchange_modes (§4.1.1, §4.1.2).",
+    "selected_parameters_Server": "The parameters the server selects from the offer in its ServerHello: the version, the cipher_suite (AEAD algorithm and hash), the key-exchange group of its key_share, and whether and which PSK is used (§4.1.1, §4.1.3).",
+    "application_write_key_Client": "The client application traffic key, client_write_key derived with HKDF-Expand-Label from client_application_traffic_secret_0 (§7.1, §7.3).",
+    "application_write_key_Server": "The server application traffic key, server_write_key derived with HKDF-Expand-Label from server_application_traffic_secret_0 (§7.1, §7.3).",
+    "exporter_master_secret": "exporter_master_secret, Derive-Secret(Master Secret, \"exp master\", ClientHello...server Finished), the secret behind keying material exporters (§7.1, §7.5).",
+    "per_record_nonce": "The per-record nonce of the AEAD-protected record carrying the data, the padded 64-bit sequence number XORed with the sender's write_iv (§5.3).",
+    "additional_data": "The AEAD additional data input of a protected record, the record header TLSCiphertext.opaque_type || TLSCiphertext.legacy_record_version || TLSCiphertext.length (§5.2).",
+    "application_data_Client": "The client's 1-RTT application data (TLSInnerPlaintext.content of a record of type application_data), sent after its Finished under keys derived from client_application_traffic_secret_N (§2, §5.2, §7.3).",
+    "application_data_Server": "The server's application data (TLSInnerPlaintext.content of a record of type application_data), sent under keys derived from server_application_traffic_secret_N (§2, §5.2, §7.3).",
+    "early_data_Client": "The client's 0-RTT early data, application data sent in its first flight under keys from client_early_traffic_secret, whose security properties the document calls weaker than those of other TLS data (§2.3, §4.2.10, §7.3)."
+  },
+  "assumptions": [
+    {
+      "id": "data_pk_server_public",
+      "axis": "data",
+      "target": {
+        "of": "pk_Server"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "ltk_reveal_sk_server",
+      "axis": "data",
+      "target": {
+        "of": "sk_Server"
+      },
+      "default": "none",
+      "levels": [
+        "disclosed",
+        "none"
+      ]
+    },
+    {
+      "id": "ltk_reveal_psk",
+      "axis": "data",
+      "target": {
+        "of": "PSK"
+      },
+      "default": "none",
+      "levels": [
+        "disclosed",
+        "none"
+      ]
+    },
+    {
+      "id": "admission_server_identity",
+      "axis": "admission",
+      "target": {
+        "scope": "server_certificates"
+      },
+      "default": "closed",
+      "levels": [
+        "open",
+        "closed"
+      ]
+    },
+    {
+      "id": "admission_psk_identities",
+      "axis": "admission",
+      "target": {
+        "scope": "psk_identities"
+      },
+      "default": "closed",
+      "levels": [
+        "open",
+        "closed"
+      ]
+    },
+    {
+      "id": "weak_dh_group",
+      "axis": "primitive",
+      "target": {
+        "family": "dh_group"
+      },
+      "default": "ideal",
+      "levels": [
+        "weak_member",
+        "ideal"
+      ]
+    },
+    {
+      "id": "weak_hash_algorithm",
+      "axis": "primitive",
+      "target": {
+        "family": "hash_algorithm"
+      },
+      "default": "ideal",
+      "levels": [
+        "weak_member",
+        "ideal"
+      ]
+    },
+    {
+      "id": "weak_aead_algorithm",
+      "axis": "primitive",
+      "target": {
+        "family": "aead_algorithm"
+      },
+      "default": "ideal",
+      "levels": [
+        "weak_member",
+        "ideal"
+      ]
+    },
+    {
+      "id": "seating_Client",
+      "axis": "seating",
+      "target": {
+        "principal": "Client"
+      },
+      "default": "any_role"
+    },
+    {
+      "id": "population_Client",
+      "axis": "population",
+      "target": {
+        "principal": "Client"
+      },
+      "default": "unbounded"
+    },
+    {
+      "id": "seating_Server",
+      "axis": "seating",
+      "target": {
+        "principal": "Server"
+      },
+      "default": "any_role"
+    },
+    {
+      "id": "population_Server",
+      "axis": "population",
+      "target": {
+        "principal": "Server"
+      },
+      "default": "unbounded"
+    }
+  ],
+  "properties": [
+    {
+      "id": "tls13-rfc8446-only.auth_client_to_server_handshake",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "Client",
+        "subject": "Server",
+        "of": [
+          "random_Client",
+          "random_Server",
+          "PSK",
+          "pk_Server",
+          "offer_Client",
+          "selected_parameters_Server",
+          "application_write_key_Client",
+          "application_write_key_Server",
+          "exporter_master_secret"
+        ]
+      },
+      "description": "In the reftls model of RFC 8446, where every handshake uses a PSK with (EC)DHE and the server also authenticates with its certificate (a combination the RFC does not specify, §2.2, §E.1), when the client completes a 1-RTT handshake, a distinct server run reached its Finished with the same randoms, PSK, server public key, offered and selected parameters, application traffic keys and exporter_master_secret."
+    },
+    {
+      "id": "tls13-rfc8446-only.auth_client_to_server_handshake_noninj",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "Client",
+        "subject": "Server",
+        "of": [
+          "random_Client",
+          "random_Server",
+          "PSK",
+          "pk_Server",
+          "offer_Client",
+          "selected_parameters_Server",
+          "application_write_key_Client",
+          "application_write_key_Server",
+          "exporter_master_secret"
+        ]
+      },
+      "description": "In the reftls model of RFC 8446, where every handshake uses a PSK with (EC)DHE and the server also authenticates with its certificate (a combination the RFC does not specify, §2.2, §E.1), when the client completes a 1-RTT handshake, a server reached its Finished with the same randoms, PSK, server public key, offered and selected parameters, application traffic keys and exporter_master_secret."
+    },
+    {
+      "id": "tls13-rfc8446-only.secrecy_client_traffic_key_1rtt",
+      "type": "Secrecy",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "application_write_key_Client"
+        ],
+        "holders": [
+          "Client",
+          "Server"
+        ]
+      },
+      "description": "In the reftls model of RFC 8446, where every handshake uses a PSK with (EC)DHE and the server also authenticates with its certificate (a combination the RFC does not specify, §2.2, §E.1), the attacker never learns the client application traffic key of a handshake the client completed."
+    },
+    {
+      "id": "tls13-rfc8446-only.secrecy_client_appdata_1rtt",
+      "type": "Secrecy",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "application_data_Client"
+        ],
+        "holders": [
+          "Client",
+          "Server"
+        ]
+      },
+      "description": "In the reftls model of RFC 8446, where every handshake uses a PSK with (EC)DHE and the server also authenticates with its certificate (a combination the RFC does not specify, §2.2, §E.1), the attacker never learns the client's 1-RTT application data."
+    },
+    {
+      "id": "tls13-rfc8446-only.secrecy_client_earlydata_0rtt",
+      "type": "Secrecy",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "early_data_Client"
+        ],
+        "holders": [
+          "Client",
+          "Server"
+        ]
+      },
+      "description": "In the reftls model of RFC 8446, where every handshake uses a PSK with (EC)DHE and the server also authenticates with its certificate (a combination the RFC does not specify, §2.2, §E.1), the attacker never learns the client's 0-RTT early data."
+    },
+    {
+      "id": "tls13-rfc8446-only.auth_client_receives_appdata",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "Client",
+        "subject": "Server",
+        "of": [
+          "random_Client",
+          "random_Server",
+          "PSK",
+          "pk_Server",
+          "per_record_nonce",
+          "additional_data",
+          "application_data_Server"
+        ]
+      },
+      "description": "In the reftls model of RFC 8446, where every handshake uses a PSK with (EC)DHE and the server also authenticates with its certificate (a combination the RFC does not specify, §2.2, §E.1), when the client accepts a 1-RTT record, the server sent that data in a session with the same randoms, PSK and server public key, under the same per-record nonce and additional data (replay is left to the receiver refusing a repeated nonce)."
+    },
+    {
+      "id": "tls13-rfc8446-only.auth_server_receives_appdata",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "Server",
+        "subject": "Client",
+        "of": [
+          "random_Client",
+          "random_Server",
+          "PSK",
+          "pk_Server",
+          "per_record_nonce",
+          "additional_data",
+          "application_data_Client"
+        ]
+      },
+      "description": "In the reftls model of RFC 8446, where every handshake uses a PSK with (EC)DHE and the server also authenticates with its certificate (a combination the RFC does not specify, §2.2, §E.1), when the server accepts a client 1-RTT record, the client sent that data in a session with the same randoms, PSK and server public key, under the same per-record nonce and additional data (replay is left to the receiver refusing a repeated nonce)."
+    },
+    {
+      "id": "tls13-rfc8446-only.auth_server_receives_earlydata_0rtt",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "Server",
+        "subject": "Client",
+        "of": [
+          "random_Client",
+          "PSK",
+          "per_record_nonce",
+          "additional_data",
+          "early_data_Client"
+        ]
+      },
+      "description": "In the reftls model of RFC 8446, where every handshake uses a PSK with (EC)DHE and the server also authenticates with its certificate (a combination the RFC does not specify, §2.2, §E.1), when the server accepts 0-RTT early data, the client sent it in a session with the same ClientHello.random and PSK, under the same per-record nonce and additional data (non-injective: 0-RTT data can be replayed)."
+    },
+    {
+      "id": "tls13-rfc8446-only.q01",
+      "description": "The library's sanity check that, when a client completes a TLS 1.2 handshake, a server completed one with the same parameters; this TLS 1.3-only model runs no TLS 1.2 process, so the query holds vacuously.",
+      "gap": "sanity: a sanity query of the shared TLS library about TLS 1.2 handshake events, which this TLS 1.3-only model never raises; it holds vacuously and states no goal of RFC 8446"
+    },
+    {
+      "id": "tls13-rfc8446-only.q03",
+      "description": "Reachability check: a server completes a TLS 1.2 handshake (ServerFinished); this TLS 1.3-only model runs no TLS 1.2 process, so the event is unreachable (true).",
+      "gap": "sanity: a reachability check of a protocol event (false means the event is reachable), not a security goal"
+    },
+    {
+      "id": "tls13-rfc8446-only.q04",
+      "description": "Reachability check: a client completes a TLS 1.2 handshake (ClientFinished); this TLS 1.3-only model runs no TLS 1.2 process, so the event is unreachable (true).",
+      "gap": "sanity: a reachability check of a protocol event (false means the event is reachable), not a security goal"
+    },
+    {
+      "id": "tls13-rfc8446-only.q05",
+      "description": "Reachability check: a server can complete a TLS 1.3 handshake (ServerFinished, after the client's Finished); false means the event is reachable.",
+      "gap": "sanity: a reachability check of a protocol event (false means the event is reachable), not a security goal"
+    },
+    {
+      "id": "tls13-rfc8446-only.q06",
+      "description": "Reachability check: a server can reach its TLS 1.3 Finished (PreServerFinished); false means the event is reachable.",
+      "gap": "sanity: a reachability check of a protocol event (false means the event is reachable), not a security goal"
+    },
+    {
+      "id": "tls13-rfc8446-only.q07",
+      "description": "Reachability check: a client can complete a TLS 1.3 handshake (ClientFinished); false means the event is reachable.",
+      "gap": "sanity: a reachability check of a protocol event (false means the event is reachable), not a security goal"
+    },
+    {
+      "id": "tls13-rfc8446-only.q15",
+      "description": "Unique channel binding: no client session and server session that differ in ClientHello.random, ServerHello.random or the server's public key share the channel binding the model records, the exporter_master_secret (§7.5); true.",
+      "gap": "missing subtype: uniqueness of the channel binding (the exporter_master_secret) across sessions, a key-uniqueness goal"
+    },
+    {
+      "id": "tls13-rfc8446-only.q16",
+      "description": "Unique resumption secret: no client session and server session that differ in ClientHello.random, ServerHello.random or the server's public key end with the same resumption_master_secret (§7.1); true, where the model's comment expects TLS 1.2 to fail.",
+      "gap": "missing subtype: uniqueness of the resumption_master_secret across sessions, a key-uniqueness goal"
+    },
+    {
+      "id": "tls13-rfc8446-only.q17",
+      "description": "Unique ticket PSK: no client session and server session that differ in ClientHello.random, ServerHello.random or the server's public key derive the same resumption PSK, HKDF-Expand-Label(resumption_master_secret, \"resumption\", ticket_nonce, Hash.length) (§4.6.1); true.",
+      "gap": "missing subtype: uniqueness of the per-ticket resumption PSK across sessions, a key-uniqueness goal"
+    },
+    {
+      "id": "tls13-rfc8446-only.q18",
+      "description": "Reachability check: a client or server can derive a resumption PSK from a NewSessionTicket's ticket_nonce after the handshake, PSK = HKDF-Expand-Label(resumption_master_secret, \"resumption\", ticket_nonce, Hash.length) (§4.6.1); false means the event is reachable.",
+      "gap": "sanity: a reachability check of a protocol event (false means the event is reachable), not a security goal"
+    },
+    {
+      "id": "tls13-rfc8446-only.q19",
+      "description": "Unique traffic keys: no client session and server session that differ in ClientHello.random, ServerHello.random or the server's public key end with the same client and server application traffic keys (§7.3); true.",
+      "gap": "missing subtype: uniqueness of the application traffic keys across sessions, a key-uniqueness goal"
+    }
+  ],
+  "claims": []
+}

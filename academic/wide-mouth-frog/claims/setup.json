@@ -1,0 +1,164 @@
+{
+  "vocab_version": "4.0.0",
+  "names": {
+    "A": "The initiator, sharing K_as with S, who chooses the session key, and its identity A sent in message 1 and forwarded to B in message 2 (§2, §3, §4).",
+    "B": "The recipient of the session key, sharing K_bs with S, and its identity B inside message 1 (§2, §3, §4).",
+    "K_as": "The key A shares with the server S (§3, §5).",
+    "K_bs": "The key B shares with the server S (§3, §5).",
+    "S": "The trusted authentication server that receives message 1 from A and forwards the key to B in message 2 (§2, §4).",
+    "K_ab": "The session key chosen by A and sent to S in message 1, which S forwards to B in message 2 (§3, §4)."
+  },
+  "assumptions": [
+    {
+      "id": "data_a_public",
+      "axis": "data",
+      "target": {
+        "of": "A"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_b_public",
+      "axis": "data",
+      "target": {
+        "of": "B"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "ltk_reveal_A",
+      "axis": "data",
+      "target": {
+        "of": "K_as"
+      },
+      "default": "none",
+      "levels": [
+        "disclosed",
+        "none"
+      ]
+    },
+    {
+      "id": "ltk_reveal_B",
+      "axis": "data",
+      "target": {
+        "of": "K_bs"
+      },
+      "default": "none",
+      "levels": [
+        "disclosed",
+        "none"
+      ]
+    },
+    {
+      "id": "seating_A",
+      "axis": "seating",
+      "target": {
+        "principal": "A"
+      },
+      "default": "any_role"
+    },
+    {
+      "id": "population_A",
+      "axis": "population",
+      "target": {
+        "principal": "A"
+      },
+      "default": "unbounded"
+    },
+    {
+      "id": "seating_B",
+      "axis": "seating",
+      "target": {
+        "principal": "B"
+      },
+      "default": "any_role"
+    },
+    {
+      "id": "population_B",
+      "axis": "population",
+      "target": {
+        "principal": "B"
+      },
+      "default": "unbounded"
+    }
+  ],
+  "properties": [
+    {
+      "id": "secrecy_Kab",
+      "type": "Secrecy",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "K_ab"
+        ],
+        "holders": [
+          "A",
+          "B",
+          "S"
+        ]
+      }
+    },
+    {
+      "id": "noninjective_agreement_B",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "B",
+        "subject": "A",
+        "of": [
+          "A",
+          "B",
+          "K_ab"
+        ]
+      }
+    },
+    {
+      "id": "noninjective_agreement_S",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "S",
+        "subject": "A",
+        "of": [
+          "A",
+          "B",
+          "K_ab"
+        ]
+      }
+    },
+    {
+      "id": "injective_agreement_B",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "B",
+        "subject": "A",
+        "of": [
+          "A",
+          "B",
+          "K_ab"
+        ]
+      }
+    },
+    {
+      "id": "injective_agreement_S",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "S",
+        "subject": "A",
+        "of": [
+          "A",
+          "B",
+          "K_ab"
+        ]
+      }
+    }
+  ],
+  "claims": []
+}

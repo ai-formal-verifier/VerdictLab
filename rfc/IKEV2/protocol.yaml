@@ -1,0 +1,11 @@
+schema_version: "1.0.1"
+protocol: "IKEV2"
+subprotocols:
+  ike-sa:
+    description: "IKEv2 initial exchanges, IKE_SA_INIT and IKE_AUTH, between an initiator and a responder."
+    mechanisms:
+      authentication:
+        signature: "both peers authenticate with a digital signature in the AUTH payload"
+        shared_key: "both peers authenticate with a MAC under a shared key in the AUTH payload"
+    selections:
+      signature: {authentication: "signature"}

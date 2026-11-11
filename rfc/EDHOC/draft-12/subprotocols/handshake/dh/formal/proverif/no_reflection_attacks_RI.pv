@@ -1,0 +1,540 @@
+const g:bitstring.
+const grpid:bitstring.
+free Comp:bitstring.
+free IV_3:bitstring.
+free KEYSTREAM_2:bitstring.
+free K_3:bitstring.
+free MAC_2:bitstring.
+free MAC_3:bitstring.
+free Signature1:bitstring.
+free Signature2:bitstring.
+free att:channel.
+free h:bitstring.
+free null:bitstring.
+free rep:bitstring.
+fun EXP(bitstring,bitstring):bitstring.
+fun aeadenc(bitstring,bitstring,bitstring,bitstring):bitstring.
+fun ciphertext_length():bitstring.
+fun const_cred():bitstring.
+fun const_grp():bitstring.
+fun edhoc_mac_length():bitstring.
+fun encxor(bitstring,bitstring):bitstring.
+fun error_code_one():bitstring.
+fun error_code_two():bitstring.
+fun hash(bitstring):bitstring.
+fun hash_length():bitstring.
+fun hkdfexpand(bitstring,bitstring):bitstring.
+fun hkdfextract(bitstring,bitstring):bitstring.
+fun id(bitstring,bitstring):bitstring.
+fun iv_length():bitstring.
+fun key_length():bitstring.
+fun length():bitstring.
+fun method_one():bitstring.
+fun method_three():bitstring.
+fun method_two():bitstring.
+fun method_zero():bitstring.
+fun pk(bitstring):bitstring.
+fun sign(bitstring,bitstring,bitstring):bitstring.
+fun sigtrue():bitstring.
+fun suitesIConst():bitstring.
+fun suitesRConst():bitstring.
+fun wrap(bitstring):bitstring.
+event AcceptI(bitstring,bitstring,bitstring,bitstring,bitstring,bitstring,bitstring,bitstring).
+event AcceptIData(bitstring,bitstring,bitstring,bitstring,bitstring,bitstring,bitstring).
+event AcceptR(bitstring,bitstring,bitstring,bitstring,bitstring,bitstring,bitstring).
+event AcceptRData(bitstring,bitstring,bitstring,bitstring,bitstring,bitstring,bitstring).
+event Compromise(bitstring).
+event DerivedIShared(bitstring,bitstring).
+event DerivedIdR(bitstring,bitstring).
+event DerivedR(bitstring,bitstring,bitstring,bitstring,bitstring).
+event DerivedRShared(bitstring,bitstring).
+event Honest(bitstring).
+event Leak(bitstring).
+event LeakSessionKey(bitstring).
+event LeakShare(bitstring).
+event MethodOk(bitstring).
+event SecretsI(bitstring,bitstring,bitstring,bitstring,bitstring,bitstring,bitstring,bitstring,bitstring,bitstring,bitstring,bitstring).
+event SecretsR(bitstring,bitstring,bitstring,bitstring,bitstring,bitstring,bitstring,bitstring,bitstring,bitstring,bitstring,bitstring).
+event SendRData(bitstring,bitstring,bitstring).
+event Share(bitstring).
+event ShareLT(bitstring).
+equation forall a:bitstring,b:bitstring; EXP( EXP(g,a),b) = EXP(EXP(g,b),a).
+fun exp(bitstring,bitstring):bitstring  reduc forall x:bitstring; exp(grpid, x) = grpid otherwise forall a:bitstring,b:bitstring; exp(a,b) = EXP(a,b).
+reduc forall ad:bitstring, k:bitstring, m:bitstring, r:bitstring;   aeaddec(aeadenc(m, r, k, ad), k, ad) = m.
+reduc forall m:bitstring, r:bitstring, sk:bitstring;   revealsign(sign(m, r, sk)) = m.
+reduc forall m:bitstring, r:bitstring, sk:bitstring;   verify(sign(m, r, sk), m, pk(sk)) = sigtrue.
+reduc forall m:bitstring, x:bitstring;   decxor(encxor(m, x), x) = m.
+reduc forall x:bitstring, y:bitstring;   get_DH_cred(id(x, y)) = y.
+reduc forall x:bitstring, y:bitstring;   get_sig_cred(id(x, y)) = x.
+reduc forall x:bitstring;   check_cred(x) = const_cred.
+reduc forall x:bitstring;   check_grp(x) = const_grp.
+reduc forall x_1:bitstring, x_2:bitstring;   fst((x_1, x_2)) = x_1.
+reduc forall x_1:bitstring, x_2:bitstring;   snd((x_1, x_2)) = x_2.
+set preciseActions=true.
+
+not attacker (new X_1 ).
+not attacker (new Y_1 ).
+
+
+(*no_reflection_attacks_RI*)
+query cid:bitstring, cid2:bitstring, gx:bitstring, gy:bitstring,
+      k3:bitstring, k4:bitstring, m:bitstring, pkI:bitstring, pkR:bitstring,
+      x:bitstring, y:bitstring, i:time, k:time, t:time;
+ ((event(AcceptR( cid, m, pkI, pkR, k4, y, gx ))@i) &&
+  (event(Honest( pkI ))@k)) ==>
+ ((((((t < i) &&
+      (event(AcceptI( cid2, m, pkI, pkR, k3, k4, x, gy ))@t)) &&
+     (cid <> cid2)) ||
+    (event(Compromise( pkI ))@t)) ||
+   ((event(LeakShare( y ))@t) &&
+    ((m = method_two) || (m = method_three)))) ||
+  (event(LeakShare( gx ))@t))
+.
+let ContactJudgeFromI(ID_CRED_R_1:bitstring, TH_2J_1:bitstring,
+                      pkR_1:bitstring, EAD_2_1:bitstring, MAC_2J_1:bitstring,
+                      SIGNATURE_or_MAC_2_1:bitstring, X_1:bitstring, G_Y_1:bitstring)=
+    0.
+let ContactJudgeFromR(ID_CRED_I_1:bitstring, TH_3J_1:bitstring,
+                      pkI_1:bitstring, EAD_3_1:bitstring, MAC_3J_1:bitstring,
+                      SIGNATURE_or_MAC_3_1:bitstring, Y_1:bitstring, G_X_1:bitstring)=
+    0.
+let CompromiseShare(s_1:bitstring)=
+    event LeakShare( null ).
+let leakSKey(key_1:bitstring)=
+    event LeakSessionKey( null ).
+let I(cid_1:bitstring, skI_1:bitstring, I_1:bitstring,
+      ID_CRED_R_1:bitstring)=
+    in(att,(method_1:bitstring, (suitesI_1:bitstring, (C_I_1:bitstring, EAD_1_1:bitstring))));
+    event MethodOk( method_1 );
+    new X_1:bitstring;
+    new EAD_3_1:bitstring;
+    event Share( X_1 );
+    ((CompromiseShare(X_1))
+   | (let CRED_I_1:bitstring=pk(skI_1) in
+      let ID_CRED_I_1:bitstring=id(CRED_I_1, exp(g, I_1)) in
+      let G_X_1:bitstring=exp(g, X_1) in
+      let G_I_1:bitstring=exp(g, I_1) in
+      let m1_1:bitstring=(method_1, (suitesI_1, (G_X_1, (C_I_1, EAD_1_1)))) in
+      out(att,m1_1);
+      in(att,m2_1:bitstring);
+      let (G_Y_1:bitstring, (CIPHERTEXT_2_1:bitstring, C_R_1:bitstring))=m2_1 in
+      let TH_2_1:bitstring=hash((wrap(method_1), (wrap(suitesI_1), (wrap(G_X_1), (wrap(C_I_1), (EAD_1_1, (wrap(G_Y_1), C_R_1))))))) in
+      let G_YX_1:bitstring=exp(G_Y_1, X_1) in
+      let PRK_2e_1:bitstring=hkdfextract(null, G_YX_1) in
+      let KEYSTREAM_2_1:bitstring=hkdfexpand(PRK_2e_1,
+                                             (TH_2_1, (KEYSTREAM_2, (h, ciphertext_length)))) in
+      let plaintext_2_1:bitstring=decxor(CIPHERTEXT_2_1, KEYSTREAM_2_1) in
+      let (=ID_CRED_R_1, (SIGNATURE_or_MAC_2_1:bitstring, EAD_2_1:bitstring))=plaintext_2_1 in
+      if check_grp(G_Y_1) = grpid then
+          (0)
+      else
+          (if ID_CRED_I_1 = check_cred(ID_CRED_R_1) then
+               (0)
+           else
+               (if method_1 = method_zero then
+                    (let pkR_1:bitstring=get_sig_cred(ID_CRED_R_1) in
+                     let pkI_1:bitstring=get_sig_cred(ID_CRED_I_1) in
+                     let PRK_3e2m_1:bitstring=PRK_2e_1 in
+                     event DerivedIShared( pkI_1, G_YX_1 );
+                     let MAC_2_1:bitstring=hkdfexpand(PRK_3e2m_1,
+                                                      (TH_2_1, (MAC_2, (ID_CRED_R_1, (pkR_1, (EAD_2_1, hash_length)))))) in
+                     if verify(SIGNATURE_or_MAC_2_1,
+                               (Signature1, (ID_CRED_R_1, (TH_2_1, (pkR_1, (EAD_2_1, MAC_2_1))))),
+                               pkR_1) =
+                        sigtrue then
+                         (let TH_3_1:bitstring=hash((wrap(TH_2_1), CIPHERTEXT_2_1)) in
+                          let PRK_4x3m_1:bitstring=PRK_3e2m_1 in
+                          let MAC_3_1:bitstring=hkdfexpand(PRK_4x3m_1,
+                                                           (TH_3_1, (MAC_3, (ID_CRED_I_1, (pkI_1, (EAD_3_1, hash_length)))))) in
+                          let SIGNATURE_or_MAC_3_1:bitstring=sign((Signature2, (ID_CRED_I_1, (TH_3_1, (pkI_1, (EAD_3_1, MAC_3_1))))),
+                                                                  rep, skI_1) in
+                          let K_3_1:bitstring=hkdfexpand(PRK_3e2m_1,
+                                                         (TH_3_1, (K_3, (h, key_length)))) in
+                          let IV_3_1:bitstring=hkdfexpand(PRK_3e2m_1,
+                                                          (TH_3_1, (IV_3, (h, iv_length)))) in
+                          let plaintext_3_1:bitstring=(ID_CRED_I_1, (SIGNATURE_or_MAC_3_1, EAD_3_1)) in
+                          let m3_1:bitstring=aeadenc(plaintext_3_1, rep, K_3_1, IV_3_1) in
+                          let TH_4_1:bitstring=hash((wrap(TH_3_1), m3_1)) in
+                          event AcceptI( cid_1, method_zero, pkI_1, pkR_1, PRK_3e2m_1, PRK_4x3m_1,
+                                         X_1, G_Y_1
+                                );
+                          event SecretsI( cid_1, method_zero, pkI_1, pkR_1, PRK_2e_1, PRK_3e2m_1,
+                                          PRK_4x3m_1, KEYSTREAM_2_1, K_3_1, IV_3_1, X_1, G_Y_1
+                                );
+                          event AcceptIData( PRK_4x3m_1, method_zero, pkI_1, pkR_1, X_1, G_Y_1,
+                                             (TH_2_1, (TH_3_1, (TH_4_1, (suitesI_1, (EAD_1_1, (EAD_2_1, (EAD_3_1, (m1_1, (m2_1, m3_1)))))))))
+                                );
+                          out(att,m3_1);
+                          ((ContactJudgeFromI(ID_CRED_R_1, TH_2_1, pkR_1, EAD_2_1, MAC_2_1,
+                                              SIGNATURE_or_MAC_2_1, X_1, G_Y_1))
+                         | (leakSKey(PRK_4x3m_1)))))
+                else
+                    (if method_1 = method_one then
+                         (let pkR_2:bitstring=get_DH_cred(ID_CRED_R_1) in
+                          let pkI_2:bitstring=get_sig_cred(ID_CRED_I_1) in
+                          let pkRX_1:bitstring=exp(pkR_2, X_1) in
+                          let PRK_3e2m_2:bitstring=hkdfextract(PRK_2e_1, pkRX_1) in
+                          event DerivedIShared( pkI_2, G_YX_1 );
+                          let MAC_2_2:bitstring=hkdfexpand(PRK_3e2m_2,
+                                                           (TH_2_1, (MAC_2, (ID_CRED_R_1, (pkR_2, (EAD_2_1, hash_length)))))) in
+                          if SIGNATURE_or_MAC_2_1 = MAC_2_2 then
+                              (let TH_3_2:bitstring=hash((wrap(TH_2_1), CIPHERTEXT_2_1)) in
+                               let PRK_4x3m_2:bitstring=PRK_3e2m_2 in
+                               let MAC_3_2:bitstring=hkdfexpand(PRK_4x3m_2,
+                                                                (TH_3_2, (MAC_3, (ID_CRED_I_1, (pkI_2, (EAD_3_1, hash_length)))))) in
+                               let SIGNATURE_or_MAC_3_2:bitstring=sign((Signature2, (ID_CRED_I_1, (TH_3_2, (pkI_2, (EAD_3_1, MAC_3_2))))),
+                                                                       rep, skI_1) in
+                               let K_3_2:bitstring=hkdfexpand(PRK_3e2m_2,
+                                                              (TH_3_2, (K_3, (h, key_length)))) in
+                               let IV_3_2:bitstring=hkdfexpand(PRK_3e2m_2,
+                                                               (TH_3_2, (IV_3, (h, iv_length)))) in
+                               let plaintext_3_2:bitstring=(ID_CRED_I_1, (SIGNATURE_or_MAC_3_2, EAD_3_1)) in
+                               let m3_2:bitstring=aeadenc(plaintext_3_2, rep, K_3_2, IV_3_2) in
+                               let TH_4_2:bitstring=hash((wrap(TH_3_2), m3_2)) in
+                               event AcceptI( cid_1, method_one, pkI_2, pkR_2, PRK_3e2m_2, PRK_4x3m_2,
+                                              X_1, G_Y_1
+                                     );
+                               event SecretsI( cid_1, method_one, pkI_2, pkR_2, PRK_2e_1, PRK_3e2m_2,
+                                               PRK_4x3m_2, KEYSTREAM_2_1, K_3_2, IV_3_2, X_1, G_Y_1
+                                     );
+                               event AcceptIData( PRK_4x3m_2, method_one, pkI_2, pkR_2, X_1, G_Y_1,
+                                                  (TH_2_1, (TH_3_2, (TH_4_2, (suitesI_1, (EAD_1_1, (EAD_2_1, (EAD_3_1, (m1_1, (m2_1, m3_2)))))))))
+                                     );
+                               out(att,m3_2);
+                               ((ContactJudgeFromI(ID_CRED_R_1, TH_2_1, pkR_2, EAD_2_1, MAC_2_2,
+                                                   SIGNATURE_or_MAC_2_1, X_1, G_Y_1))
+                              | (leakSKey(PRK_4x3m_2)))))
+                     else
+                         (if method_1 = method_two then
+                              (let pkR_3:bitstring=get_sig_cred(ID_CRED_R_1) in
+                               let pkI_3:bitstring=get_DH_cred(ID_CRED_I_1) in
+                               let PRK_3e2m_3:bitstring=PRK_2e_1 in
+                               event DerivedIShared( pkI_3, G_YX_1 );
+                               let MAC_2_3:bitstring=hkdfexpand(PRK_3e2m_3,
+                                                                (TH_2_1, (MAC_2, (ID_CRED_R_1, (pkR_3, (EAD_2_1, hash_length)))))) in
+                               if verify(SIGNATURE_or_MAC_2_1,
+                                         (Signature1, (ID_CRED_R_1, (TH_2_1, (pkR_3, (EAD_2_1, MAC_2_3))))),
+                                         pkR_3) =
+                                  sigtrue then
+                                   (let TH_3_3:bitstring=hash((wrap(TH_2_1), CIPHERTEXT_2_1)) in
+                                    let G_YI_1:bitstring=exp(G_Y_1, I_1) in
+                                    let PRK_4x3m_3:bitstring=hkdfextract(PRK_3e2m_3, G_YI_1) in
+                                    let MAC_3_3:bitstring=hkdfexpand(PRK_4x3m_3,
+                                                                     (TH_3_3, (MAC_3, (ID_CRED_I_1, (pkI_3, (EAD_3_1, hash_length)))))) in
+                                    let SIGNATURE_or_MAC_3_3:bitstring=MAC_3_3 in
+                                    let K_3_3:bitstring=hkdfexpand(PRK_3e2m_3,
+                                                                   (TH_3_3, (K_3, (h, key_length)))) in
+                                    let IV_3_3:bitstring=hkdfexpand(PRK_3e2m_3,
+                                                                    (TH_3_3, (IV_3, (h, iv_length)))) in
+                                    let plaintext_3_3:bitstring=(ID_CRED_I_1, (SIGNATURE_or_MAC_3_3, EAD_3_1)) in
+                                    let m3_3:bitstring=aeadenc(plaintext_3_3, rep, K_3_3, IV_3_3) in
+                                    let TH_4_3:bitstring=hash((wrap(TH_3_3), m3_3)) in
+                                    event AcceptI( cid_1, method_two, pkI_3, pkR_3, PRK_3e2m_3, PRK_4x3m_3,
+                                                   X_1, G_Y_1
+                                          );
+                                    event SecretsI( cid_1, method_two, pkI_3, pkR_3, PRK_2e_1, PRK_3e2m_3,
+                                                    PRK_4x3m_3, KEYSTREAM_2_1, K_3_3, IV_3_3, X_1, G_Y_1
+                                          );
+                                    event AcceptIData( PRK_4x3m_3, method_two, pkI_3, pkR_3, X_1, G_Y_1,
+                                                       (TH_2_1, (TH_3_3, (TH_4_3, (suitesI_1, (EAD_1_1, (EAD_2_1, (EAD_3_1, (m1_1, (m2_1, m3_3)))))))))
+                                          );
+                                    out(att,m3_3);
+                                    ((ContactJudgeFromI(ID_CRED_R_1, TH_2_1, pkR_3, EAD_2_1, MAC_2_3,
+                                                        SIGNATURE_or_MAC_2_1, X_1, G_Y_1))
+                                   | (leakSKey(PRK_4x3m_3)))))
+                          else
+                              (if method_1 = method_three then
+                                   (let pkR_4:bitstring=get_DH_cred(ID_CRED_R_1) in
+                                    let pkI_4:bitstring=get_DH_cred(ID_CRED_I_1) in
+                                    let pkRX_2:bitstring=exp(pkR_4, X_1) in
+                                    let PRK_3e2m_4:bitstring=hkdfextract(PRK_2e_1, pkRX_2) in
+                                    event DerivedIShared( pkI_4, G_YX_1 );
+                                    let MAC_2_4:bitstring=hkdfexpand(PRK_3e2m_4,
+                                                                     (TH_2_1, (MAC_2, (ID_CRED_R_1, (pkR_4, (EAD_2_1, hash_length)))))) in
+                                    if SIGNATURE_or_MAC_2_1 = MAC_2_4 then
+                                        (let TH_3_4:bitstring=hash((wrap(TH_2_1), CIPHERTEXT_2_1)) in
+                                         let G_YI_2:bitstring=exp(G_Y_1, I_1) in
+                                         let PRK_4x3m_4:bitstring=hkdfextract(PRK_3e2m_4, G_YI_2) in
+                                         let MAC_3_4:bitstring=hkdfexpand(PRK_4x3m_4,
+                                                                          (TH_3_4, (MAC_3, (ID_CRED_I_1, (pkI_4, (EAD_3_1, hash_length)))))) in
+                                         let SIGNATURE_or_MAC_3_4:bitstring=MAC_3_4 in
+                                         let K_3_4:bitstring=hkdfexpand(PRK_3e2m_4,
+                                                                        (TH_3_4, (K_3, (h, key_length)))) in
+                                         let IV_3_4:bitstring=hkdfexpand(PRK_3e2m_4,
+                                                                         (TH_3_4, (IV_3, (h, iv_length)))) in
+                                         let plaintext_3_4:bitstring=(ID_CRED_I_1, (SIGNATURE_or_MAC_3_4, EAD_3_1)) in
+                                         let m3_4:bitstring=aeadenc(plaintext_3_4, rep, K_3_4, IV_3_4) in
+                                         let TH_4_4:bitstring=hash((wrap(TH_3_4), m3_4)) in
+                                         event AcceptI( cid_1, method_three, pkI_4, pkR_4, PRK_3e2m_4,
+                                                        PRK_4x3m_4, X_1, G_Y_1
+                                               );
+                                         event SecretsI( cid_1, method_three, pkI_4, pkR_4, PRK_2e_1,
+                                                         PRK_3e2m_4, PRK_4x3m_4, KEYSTREAM_2_1, K_3_4, IV_3_4,
+                                                         X_1, G_Y_1
+                                               );
+                                         event AcceptIData( PRK_4x3m_4, method_three, pkI_4, pkR_4, X_1,
+                                                            G_Y_1,
+                                                            (TH_2_1, (TH_3_4, (TH_4_4, (suitesI_1, (EAD_1_1, (EAD_2_1, (EAD_3_1, (m1_1, (m2_1, m3_4)))))))))
+                                               );
+                                         out(att,m3_4);
+                                         ((ContactJudgeFromI(ID_CRED_R_1, TH_2_1, pkR_4, EAD_2_1, MAC_2_4,
+                                                             SIGNATURE_or_MAC_2_1, X_1, G_Y_1))
+                                        | (leakSKey(PRK_4x3m_4)))))))))))).
+let R(cid_1:bitstring, skR_1:bitstring, R_1:bitstring)=
+    in(att,(C_R_1:bitstring, (EAD_2_1:bitstring, suitesR_1:bitstring)));
+    in(att,(method_1:bitstring, (suitesI_1:bitstring, (G_X_1:bitstring, (C_I_1:bitstring, EAD_1_1:bitstring)))));
+    event MethodOk( method_1 );
+    let m1_1:bitstring=(method_1, (suitesI_1, (G_X_1, (C_I_1, EAD_1_1)))) in
+    new Y_1:bitstring;
+    event Share( Y_1 );
+    let G_R_1:bitstring=exp(g, R_1) in
+    let G_Y_1:bitstring=exp(g, Y_1) in
+    let G_XY_1:bitstring=exp(G_X_1, Y_1) in
+    ((CompromiseShare(Y_1))
+   | (let CRED_R_1:bitstring=pk(skR_1) in
+      let ID_CRED_R_1:bitstring=id(CRED_R_1, G_R_1) in
+      let TH_2_1:bitstring=hash((wrap(method_1), (wrap(suitesI_1), (wrap(G_X_1), (wrap(C_I_1), (EAD_1_1, (wrap(G_Y_1), C_R_1))))))) in
+      let PRK_2e_1:bitstring=hkdfextract(null, G_XY_1) in
+      if check_grp(G_X_1) = grpid then
+          (0)
+      else
+          (if method_1 = method_zero then
+               (let pkR_1:bitstring=get_sig_cred(ID_CRED_R_1) in
+                let PRK_3e2m_1:bitstring=PRK_2e_1 in
+                let MAC_2_1:bitstring=hkdfexpand(PRK_3e2m_1,
+                                                 (TH_2_1, (MAC_2, (ID_CRED_R_1, (pkR_1, (EAD_2_1, hash_length)))))) in
+                let SIGNATURE_or_MAC_2_1:bitstring=sign((Signature1, (ID_CRED_R_1, (TH_2_1, (pkR_1, (EAD_2_1, MAC_2_1))))),
+                                                        rep, skR_1) in
+                let plaintext_2_1:bitstring=(ID_CRED_R_1, (SIGNATURE_or_MAC_2_1, EAD_2_1)) in
+                let KEYSTREAM_2_1:bitstring=hkdfexpand(PRK_2e_1,
+                                                       (TH_2_1, (KEYSTREAM_2, (h, ciphertext_length)))) in
+                event DerivedR( cid_1, pkR_1, PRK_3e2m_1, Y_1, G_X_1 );
+                event DerivedRShared( pkR_1, G_XY_1 );
+                event DerivedIdR( ID_CRED_R_1, PRK_3e2m_1 );
+                let m2_1:bitstring=(G_Y_1, (encxor(plaintext_2_1,
+                                                   KEYSTREAM_2_1), C_R_1)) in
+                event SendRData( method_zero, pkR_1,
+                                 (TH_2_1, (suitesI_1, (EAD_1_1, (EAD_2_1, (m1_1, m2_1)))))
+                      );
+                out(att,m2_1);
+                in(att,CIPHERTEXT_3_1:bitstring);
+                let TH_3_1:bitstring=hash((wrap(TH_2_1), encxor(plaintext_2_1,
+                                                                KEYSTREAM_2_1))) in
+                let TH_4_1:bitstring=hash((wrap(TH_3_1), CIPHERTEXT_3_1)) in
+                let K_3_1:bitstring=hkdfexpand(PRK_3e2m_1,
+                                               (TH_3_1, (K_3, (h, key_length)))) in
+                let IV_3_1:bitstring=hkdfexpand(PRK_3e2m_1,
+                                                (TH_3_1, (IV_3, (h, iv_length)))) in
+                let plaintext_3_1:bitstring=aeaddec(CIPHERTEXT_3_1, K_3_1, IV_3_1) in
+                let (ID_CRED_I_1:bitstring, (SIGNATURE_or_MAC_3_1:bitstring, EAD_3_1:bitstring))=plaintext_3_1 in
+                let pkI_1:bitstring=get_sig_cred(ID_CRED_I_1) in
+                let PRK_4x3m_1:bitstring=PRK_3e2m_1 in
+                let MAC_3_1:bitstring=hkdfexpand(PRK_4x3m_1,
+                                                 (TH_3_1, (MAC_3, (ID_CRED_I_1, (pkI_1, (EAD_3_1, hash_length)))))) in
+                if verify(SIGNATURE_or_MAC_3_1,
+                          (Signature2, (ID_CRED_I_1, (TH_3_1, (pkI_1, (EAD_3_1, MAC_3_1))))),
+                          pkI_1) =
+                   sigtrue then
+                    (if ID_CRED_R_1 = check_cred(ID_CRED_I_1) then
+                         (0)
+                     else
+                         (event AcceptR( cid_1, method_zero, pkI_1, pkR_1, PRK_4x3m_1, Y_1, G_X_1
+                                );
+                          event SecretsR( cid_1, method_zero, pkI_1, pkR_1, PRK_2e_1, PRK_3e2m_1,
+                                          PRK_4x3m_1, KEYSTREAM_2_1, K_3_1, IV_3_1, Y_1, G_X_1
+                                );
+                          event AcceptRData( PRK_4x3m_1, method_zero, pkI_1, pkR_1, Y_1, G_X_1,
+                                             (TH_2_1, (TH_3_1, (TH_4_1, (suitesI_1, (EAD_1_1, (EAD_2_1, (EAD_3_1, (m1_1, (m2_1, CIPHERTEXT_3_1)))))))))
+                                );
+                          ((ContactJudgeFromR(ID_CRED_I_1, TH_3_1, pkI_1, EAD_3_1, MAC_3_1,
+                                              SIGNATURE_or_MAC_3_1, Y_1, G_X_1))
+                         | (leakSKey(PRK_4x3m_1))))))
+           else
+               (if method_1 = method_one then
+                    (let pkR_2:bitstring=get_DH_cred(ID_CRED_R_1) in
+                     let G_XR_1:bitstring=exp(G_X_1, R_1) in
+                     let PRK_3e2m_2:bitstring=hkdfextract(PRK_2e_1, G_XR_1) in
+                     let MAC_2_2:bitstring=hkdfexpand(PRK_3e2m_2,
+                                                      (TH_2_1, (MAC_2, (ID_CRED_R_1, (pkR_2, (EAD_2_1, hash_length)))))) in
+                     let SIGNATURE_or_MAC_2_2:bitstring=MAC_2_2 in
+                     let plaintext_2_2:bitstring=(ID_CRED_R_1, (SIGNATURE_or_MAC_2_2, EAD_2_1)) in
+                     let KEYSTREAM_2_2:bitstring=hkdfexpand(PRK_2e_1,
+                                                            (TH_2_1, (KEYSTREAM_2, (h, ciphertext_length)))) in
+                     event DerivedR( cid_1, pkR_2, PRK_3e2m_2, Y_1, G_X_1 );
+                     event DerivedRShared( pkR_2, G_XY_1 );
+                     event DerivedIdR( ID_CRED_R_1, PRK_3e2m_2 );
+                     let m2_2:bitstring=(G_Y_1, (encxor(plaintext_2_2,
+                                                        KEYSTREAM_2_2), C_R_1)) in
+                     event SendRData( method_one, pkR_2,
+                                      (TH_2_1, (suitesI_1, (EAD_1_1, (EAD_2_1, (m1_1, m2_2)))))
+                           );
+                     out(att,m2_2);
+                     in(att,CIPHERTEXT_3_2:bitstring);
+                     let TH_3_2:bitstring=hash((wrap(TH_2_1), encxor(plaintext_2_2,
+                                                                     KEYSTREAM_2_2))) in
+                     let TH_4_2:bitstring=hash((wrap(TH_3_2), CIPHERTEXT_3_2)) in
+                     let K_3_2:bitstring=hkdfexpand(PRK_3e2m_2,
+                                                    (TH_3_2, (K_3, (h, key_length)))) in
+                     let IV_3_2:bitstring=hkdfexpand(PRK_3e2m_2,
+                                                     (TH_3_2, (IV_3, (h, iv_length)))) in
+                     let plaintext_3_2:bitstring=aeaddec(CIPHERTEXT_3_2, K_3_2, IV_3_2) in
+                     let (ID_CRED_I_2:bitstring, (SIGNATURE_or_MAC_3_2:bitstring, EAD_3_2:bitstring))=plaintext_3_2 in
+                     let pkI_2:bitstring=get_sig_cred(ID_CRED_I_2) in
+                     let PRK_4x3m_2:bitstring=PRK_3e2m_2 in
+                     let MAC_3_2:bitstring=hkdfexpand(PRK_4x3m_2,
+                                                      (TH_3_2, (MAC_3, (ID_CRED_I_2, (pkI_2, (EAD_3_2, hash_length)))))) in
+                     if verify(SIGNATURE_or_MAC_3_2,
+                               (Signature2, (ID_CRED_I_2, (TH_3_2, (pkI_2, (EAD_3_2, MAC_3_2))))),
+                               pkI_2) =
+                        sigtrue then
+                         (if ID_CRED_R_1 = check_cred(ID_CRED_I_2) then
+                              (0)
+                          else
+                              (event AcceptR( cid_1, method_one, pkI_2, pkR_2, PRK_4x3m_2, Y_1, G_X_1
+                                     );
+                               event SecretsR( cid_1, method_one, pkI_2, pkR_2, PRK_2e_1, PRK_3e2m_2,
+                                               PRK_4x3m_2, KEYSTREAM_2_2, K_3_2, IV_3_2, Y_1, G_X_1
+                                     );
+                               event AcceptRData( PRK_4x3m_2, method_one, pkI_2, pkR_2, Y_1, G_X_1,
+                                                  (TH_2_1, (TH_3_2, (TH_4_2, (suitesI_1, (EAD_1_1, (EAD_2_1, (EAD_3_2, (m1_1, (m2_2, CIPHERTEXT_3_2)))))))))
+                                     );
+                               ((ContactJudgeFromR(ID_CRED_I_2, TH_3_2, pkI_2, EAD_3_2, MAC_3_2,
+                                                   SIGNATURE_or_MAC_3_2, Y_1, G_X_1))
+                              | (leakSKey(PRK_4x3m_2))))))
+                else
+                    (if method_1 = method_two then
+                         (let pkR_3:bitstring=get_sig_cred(ID_CRED_R_1) in
+                          let PRK_3e2m_3:bitstring=PRK_2e_1 in
+                          let MAC_2_3:bitstring=hkdfexpand(PRK_3e2m_3,
+                                                           (TH_2_1, (MAC_2, (ID_CRED_R_1, (pkR_3, (EAD_2_1, hash_length)))))) in
+                          let SIGNATURE_or_MAC_2_3:bitstring=sign((Signature1, (ID_CRED_R_1, (TH_2_1, (pkR_3, (EAD_2_1, MAC_2_3))))),
+                                                                  rep, skR_1) in
+                          let plaintext_2_3:bitstring=(ID_CRED_R_1, (SIGNATURE_or_MAC_2_3, EAD_2_1)) in
+                          let KEYSTREAM_2_3:bitstring=hkdfexpand(PRK_2e_1,
+                                                                 (TH_2_1, (KEYSTREAM_2, (h, ciphertext_length)))) in
+                          event DerivedR( cid_1, pkR_3, PRK_3e2m_3, Y_1, G_X_1 );
+                          event DerivedRShared( pkR_3, G_XY_1 );
+                          event DerivedIdR( ID_CRED_R_1, PRK_3e2m_3 );
+                          let m2_3:bitstring=(G_Y_1, (encxor(plaintext_2_3,
+                                                             KEYSTREAM_2_3), C_R_1)) in
+                          event SendRData( method_two, pkR_3,
+                                           (TH_2_1, (suitesI_1, (EAD_1_1, (EAD_2_1, (m1_1, m2_3)))))
+                                );
+                          out(att,m2_3);
+                          in(att,CIPHERTEXT_3_3:bitstring);
+                          let TH_3_3:bitstring=hash((wrap(TH_2_1), encxor(plaintext_2_3,
+                                                                          KEYSTREAM_2_3))) in
+                          let TH_4_3:bitstring=hash((wrap(TH_3_3), CIPHERTEXT_3_3)) in
+                          let K_3_3:bitstring=hkdfexpand(PRK_3e2m_3,
+                                                         (TH_3_3, (K_3, (h, key_length)))) in
+                          let IV_3_3:bitstring=hkdfexpand(PRK_3e2m_3,
+                                                          (TH_3_3, (IV_3, (h, iv_length)))) in
+                          let plaintext_3_3:bitstring=aeaddec(CIPHERTEXT_3_3, K_3_3, IV_3_3) in
+                          let (ID_CRED_I_3:bitstring, (SIGNATURE_or_MAC_3_3:bitstring, EAD_3_3:bitstring))=plaintext_3_3 in
+                          let pkI_3:bitstring=get_DH_cred(ID_CRED_I_3) in
+                          let pkIY_1:bitstring=exp(pkI_3, Y_1) in
+                          let PRK_4x3m_3:bitstring=hkdfextract(PRK_3e2m_3, pkIY_1) in
+                          let MAC_3_3:bitstring=hkdfexpand(PRK_4x3m_3,
+                                                           (TH_3_3, (MAC_3, (ID_CRED_I_3, (pkI_3, (EAD_3_3, hash_length)))))) in
+                          if SIGNATURE_or_MAC_3_3 = MAC_3_3 then
+                              (if ID_CRED_R_1 = check_cred(ID_CRED_I_3) then
+                                   (0)
+                               else
+                                   (event AcceptR( cid_1, method_two, pkI_3, pkR_3, PRK_4x3m_3, Y_1, G_X_1
+                                          );
+                                    event SecretsR( cid_1, method_two, pkI_3, pkR_3, PRK_2e_1, PRK_3e2m_3,
+                                                    PRK_4x3m_3, KEYSTREAM_2_3, K_3_3, IV_3_3, Y_1, G_X_1
+                                          );
+                                    event AcceptRData( PRK_4x3m_3, method_two, pkI_3, pkR_3, Y_1, G_X_1,
+                                                       (TH_2_1, (TH_3_3, (TH_4_3, (suitesI_1, (EAD_1_1, (EAD_2_1, (EAD_3_3, (m1_1, (m2_3, CIPHERTEXT_3_3)))))))))
+                                          );
+                                    ((ContactJudgeFromR(ID_CRED_I_3, TH_3_3, pkI_3, EAD_3_3, MAC_3_3,
+                                                        SIGNATURE_or_MAC_3_3, Y_1, G_X_1))
+                                   | (leakSKey(PRK_4x3m_3))))))
+                     else
+                         (if method_1 = method_three then
+                              (let pkR_4:bitstring=get_DH_cred(ID_CRED_R_1) in
+                               let G_XR_2:bitstring=exp(G_X_1, R_1) in
+                               let PRK_3e2m_4:bitstring=hkdfextract(PRK_2e_1, G_XR_2) in
+                               let MAC_2_4:bitstring=hkdfexpand(PRK_3e2m_4,
+                                                                (TH_2_1, (MAC_2, (ID_CRED_R_1, (pkR_4, (EAD_2_1, hash_length)))))) in
+                               let SIGNATURE_or_MAC_2_4:bitstring=MAC_2_4 in
+                               let plaintext_2_4:bitstring=(ID_CRED_R_1, (SIGNATURE_or_MAC_2_4, EAD_2_1)) in
+                               let KEYSTREAM_2_4:bitstring=hkdfexpand(PRK_2e_1,
+                                                                      (TH_2_1, (KEYSTREAM_2, (h, ciphertext_length)))) in
+                               event DerivedR( cid_1, pkR_4, PRK_3e2m_4, Y_1, G_X_1 );
+                               event DerivedRShared( pkR_4, G_XY_1 );
+                               event DerivedIdR( ID_CRED_R_1, PRK_3e2m_4 );
+                               let m2_4:bitstring=(G_Y_1, (encxor(plaintext_2_4,
+                                                                  KEYSTREAM_2_4), C_R_1)) in
+                               event SendRData( method_three, pkR_4,
+                                                (TH_2_1, (suitesI_1, (EAD_1_1, (EAD_2_1, (m1_1, m2_4)))))
+                                     );
+                               out(att,m2_4);
+                               in(att,CIPHERTEXT_3_4:bitstring);
+                               let TH_3_4:bitstring=hash((wrap(TH_2_1), encxor(plaintext_2_4,
+                                                                               KEYSTREAM_2_4))) in
+                               let TH_4_4:bitstring=hash((wrap(TH_3_4), CIPHERTEXT_3_4)) in
+                               let K_3_4:bitstring=hkdfexpand(PRK_3e2m_4,
+                                                              (TH_3_4, (K_3, (h, key_length)))) in
+                               let IV_3_4:bitstring=hkdfexpand(PRK_3e2m_4,
+                                                               (TH_3_4, (IV_3, (h, iv_length)))) in
+                               let plaintext_3_4:bitstring=aeaddec(CIPHERTEXT_3_4, K_3_4, IV_3_4) in
+                               let (ID_CRED_I_4:bitstring, (SIGNATURE_or_MAC_3_4:bitstring, EAD_3_4:bitstring))=plaintext_3_4 in
+                               let pkI_4:bitstring=get_DH_cred(ID_CRED_I_4) in
+                               let pkIY_2:bitstring=exp(pkI_4, Y_1) in
+                               let PRK_4x3m_4:bitstring=hkdfextract(PRK_3e2m_4, pkIY_2) in
+                               let MAC_3_4:bitstring=hkdfexpand(PRK_4x3m_4,
+                                                                (TH_3_4, (MAC_3, (ID_CRED_I_4, (pkI_4, (EAD_3_4, hash_length)))))) in
+                               if SIGNATURE_or_MAC_3_4 = MAC_3_4 then
+                                   (if ID_CRED_R_1 = check_cred(ID_CRED_I_4) then
+                                        (0)
+                                    else
+                                        (event AcceptR( cid_1, method_three, pkI_4, pkR_4, PRK_4x3m_4, Y_1,
+                                                        G_X_1
+                                               );
+                                         event SecretsR( cid_1, method_three, pkI_4, pkR_4, PRK_2e_1,
+                                                         PRK_3e2m_4, PRK_4x3m_4, KEYSTREAM_2_4, K_3_4, IV_3_4,
+                                                         Y_1, G_X_1
+                                               );
+                                         event AcceptRData( PRK_4x3m_4, method_three, pkI_4, pkR_4, Y_1,
+                                                            G_X_1,
+                                                            (TH_2_1, (TH_3_4, (TH_4_4, (suitesI_1, (EAD_1_1, (EAD_2_1, (EAD_3_4, (m1_1, (m2_4, CIPHERTEXT_3_4)))))))))
+                                               );
+                                         ((ContactJudgeFromR(ID_CRED_I_4, TH_3_4, pkI_4, EAD_3_4, MAC_3_4,
+                                                             SIGNATURE_or_MAC_3_4, Y_1, G_X_1))
+                                        | (leakSKey(PRK_4x3m_4)))))))))))).
+let compromise(sk_1:bitstring)=
+    in(att,=Comp);
+    event Compromise( pk(sk_1) );
+    out(att,sk_1).
+let compromiseDH(k_1:bitstring)=
+    in(att,=Comp);
+    event Compromise( exp(g, k_1) );
+    event Leak( k_1 );
+    out(att,k_1).
+
+process
+    ((((((!
+          (0))
+       | (!
+          (0))))
+     | (!
+        (0))))
+   | (!
+      (new sk_1:bitstring;
+       new ltdh_1:bitstring;
+       new computerId_1:bitstring;
+       let idd_1:bitstring=id(pk(sk_1), exp(g, ltdh_1)) in
+       out(att,(idd_1, (pk(sk_1), exp(g, ltdh_1))));
+       event ShareLT( ltdh_1 );
+       event Honest( pk(sk_1) );
+       event Honest( exp(g, ltdh_1) );
+       ((((((!
+             (in(att,cred_1:bitstring);
+              I(computerId_1, sk_1, ltdh_1, cred_1)))
+          | (!
+             (R(computerId_1, sk_1, ltdh_1)))))
+        | (compromise(sk_1))))
+      | (compromiseDH(ltdh_1))))))
+

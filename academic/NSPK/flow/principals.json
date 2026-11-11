@@ -1,0 +1,112 @@
+{
+  "principals": [
+    {
+      "name": "A",
+      "description": "the initiator: holds its own public-key encryption pair, verifies the authentication server's signed key binding, decrypts the responder's message, and encrypts the final confirmation for the responder."
+    },
+    {
+      "name": "B",
+      "description": "the responder: holds its own public-key encryption pair, decrypts the initiator's request, verifies the authentication server's signed key binding, encrypts the nonce response, and checks the final confirmation."
+    },
+    {
+      "name": "S",
+      "description": "the authentication server: holds its signing key pair and the registered public keys of the principals it serves, and signs public-key-to-identity bindings without generating fresh material or keeping request state."
+    }
+  ],
+  "values": [
+    {
+      "name": "SKas",
+      "derived_from": [],
+      "description": "SKas is the long-term private signing key assigned to S before the run.",
+      "holders": [
+        "S"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "PKas",
+      "derived_from": [
+        "SKas"
+      ],
+      "description": "PKas is the signature-verification key deterministically corresponding to SKas for S.",
+      "holders": [
+        "S",
+        "A",
+        "B"
+      ]
+    },
+    {
+      "name": "SKA",
+      "derived_from": [],
+      "description": "SKA is the long-term private decryption key assigned to A before the run.",
+      "holders": [
+        "A"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "PKA",
+      "derived_from": [
+        "SKA"
+      ],
+      "description": "PKA is the encryption key deterministically corresponding to SKA for A.",
+      "holders": [
+        "A",
+        "S"
+      ]
+    },
+    {
+      "name": "SKB",
+      "derived_from": [],
+      "description": "SKB is the long-term private decryption key assigned to B before the run.",
+      "holders": [
+        "B"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "PKB",
+      "derived_from": [
+        "SKB"
+      ],
+      "description": "PKB is the encryption key deterministically corresponding to SKB for B.",
+      "holders": [
+        "B",
+        "S"
+      ]
+    },
+    {
+      "name": "A",
+      "derived_from": [],
+      "description": "A is a protocol identity.",
+      "holders": [
+        "A",
+        "B",
+        "S"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "B",
+      "derived_from": [],
+      "description": "B is a protocol identity.",
+      "holders": [
+        "A",
+        "B",
+        "S"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "S",
+      "derived_from": [],
+      "description": "The authentication server S's identity.",
+      "holders": [
+        "A",
+        "B",
+        "S"
+      ],
+      "source": "generated"
+    }
+  ]
+}

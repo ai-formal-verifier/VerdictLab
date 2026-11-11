@@ -1,0 +1,54 @@
+{
+  "principals": [
+    {
+      "name": "U",
+      "description": "EDHOC initiator in the pre-shared-key mode. Holds the PSK shared with V, sends message_1 with its ephemeral DH share and the PSK identifier, and derives the OSCORE master secret."
+    },
+    {
+      "name": "V",
+      "description": "EDHOC responder in the pre-shared-key mode. Holds the same PSK, answers with its own ephemeral share in message_2, and derives the same OSCORE master secret. No signature key is used in this mode."
+    }
+  ],
+  "values": [
+    {
+      "name": "U",
+      "derived_from": [],
+      "description": "U's identity, the initiator.",
+      "holders": [
+        "U",
+        "V"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "V",
+      "derived_from": [],
+      "description": "V's identity, the responder.",
+      "holders": [
+        "U",
+        "V"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "PSK",
+      "derived_from": [],
+      "description": "The uniformly random pre-shared key U and V are assumed to share before the run.",
+      "holders": [
+        "U",
+        "V"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "KID",
+      "derived_from": [],
+      "description": "The identifier of the pre-shared key, sent in message_1; V must be able to identify the PSK from it, so it is provisioned together with the PSK.",
+      "holders": [
+        "U",
+        "V"
+      ],
+      "source": "generated"
+    }
+  ]
+}

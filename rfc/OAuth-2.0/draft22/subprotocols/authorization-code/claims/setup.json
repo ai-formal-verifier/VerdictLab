@@ -1,0 +1,251 @@
+{
+  "vocab_version": "4.0.0",
+  "names": {
+    "client_secret": "client_secret, the client secret (client password) with which the client authenticates to the authorization server at the token endpoint (§2.3, §2.3.1, §3.2.1).",
+    "resource_owner": "The resource owner (e.g. the end-user), who grants the client access and interacts with the authorization server through its user-agent, which carries the authorization request to the authorization endpoint and is redirected back to the client with the authorization code (§1.1, §1.3.1, §4.1).",
+    "authorization_server": "The authorization server, which authenticates the resource owner and the client, issues authorization codes at its authorization endpoint, and issues access tokens (here of the MAC type, with a MAC key) and refresh tokens at its token endpoint (§1.1, §3.1, §3.2, §4.1).",
+    "client": "The client, the registered application making protected resource requests on behalf of the resource owner, which redeems the authorization code and the refresh token at the token endpoint, authenticating with its client credentials (§1.1, §2, §4.1.3, §6).",
+    "resource_server": "The resource server, the server hosting the protected resources, which accepts protected resource requests carrying a MAC-type access token after verifying their request MAC; its identity is known to all (§1.1, §7; draft-ietf-oauth-v2-http-mac-00 §4).",
+    "client_id": "client_id, the client identifier that the authorization server issues to the registered client, sent in the authorization request and with the client credentials; it is not a secret (§2.2, §2.3.1, §4.1.1).",
+    "hostname": "The hostname included in the Host header field of the protected resource request, an element of the normalized request string covered by the request MAC (draft-ietf-oauth-v2-http-mac-00 §3.3.1).",
+    "port": "The port of the protected resource request, from its Host header field or the scheme's default, an element of the normalized request string covered by the request MAC (draft-ietf-oauth-v2-http-mac-00 §3.3.1).",
+    "redirect_uri": "redirect_uri, the client's redirection URI to which the authorization server sends the user-agent back with the authorization code, registered by the client and repeated in the access token request (§3.1.2, §4.1.1, §4.1.3).",
+    "authorization_code": "The authorization code (the code parameter) that the authorization server generates when the resource owner grants access, delivers to the client through the user-agent redirection, and binds to the client identifier and redirection URI (§1.3.1, §4.1.2, §4.1.3).",
+    "refresh_token": "refresh_token, the refresh token that the authorization server issues together with the access token and the client presents at the token endpoint to obtain a new access token; it is bound to the client it was issued to (§1.5, §5.1, §6).",
+    "access_token": "access_token, the access token that the authorization server issues to the client; for the MAC token type it is the MAC key identifier, sent in the id attribute of the protected resource request (§1.4, §5.1, §7.1; draft-ietf-oauth-v2-http-mac-00 §3.1, §5.1).",
+    "request_mac": "The request MAC, which the client calculates with the MAC algorithm and the MAC key over the normalized request string (nonce, method, request-URI, host, port, ...) and sends in the mac attribute of the Authorization header (§7.1; draft-ietf-oauth-v2-http-mac-00 §3.1, §3.3).",
+    "mac_key": "mac_key, the MAC key, a shared symmetric secret that the authorization server issues with a MAC-type access token in the token response and the client uses to calculate the request MAC (§7.1; draft-ietf-oauth-v2-http-mac-00 §2, §5.1)."
+  },
+  "assumptions": [
+    {
+      "id": "ltk_reveal_client_password",
+      "axis": "data",
+      "target": {
+        "of": "client_secret"
+      },
+      "default": "none"
+    },
+    {
+      "id": "link_useragent_to_authserver",
+      "axis": "channel",
+      "target": {
+        "link": [
+          "resource_owner",
+          "authorization_server"
+        ]
+      },
+      "default": "secure"
+    },
+    {
+      "id": "link_client_authserver",
+      "axis": "channel",
+      "target": {
+        "link": [
+          "client",
+          "authorization_server"
+        ]
+      },
+      "default": "secure"
+    },
+    {
+      "id": "link_authserver_to_resourceserver",
+      "axis": "channel",
+      "target": {
+        "link": [
+          "authorization_server",
+          "resource_server"
+        ]
+      },
+      "default": "secure"
+    },
+    {
+      "id": "data_client_id_public",
+      "axis": "data",
+      "target": {
+        "of": "client_id"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_hostname_public",
+      "axis": "data",
+      "target": {
+        "of": "hostname"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_port_public",
+      "axis": "data",
+      "target": {
+        "of": "port"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_redirect_uri_public",
+      "axis": "data",
+      "target": {
+        "of": "redirect_uri"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_resource_server_public",
+      "axis": "data",
+      "target": {
+        "of": "resource_server"
+      },
+      "default": "disclosed"
+    }
+  ],
+  "properties": [
+    {
+      "id": "authserver_injective_agreement_with_useragent",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "authorization_server",
+        "subject": "resource_owner",
+        "of": [
+          "client_id"
+        ]
+      }
+    },
+    {
+      "id": "authserver_agreement_with_client_on_token_request",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "authorization_server",
+        "subject": "client",
+        "of": [
+          "client_id",
+          "authorization_code",
+          "refresh_token"
+        ]
+      }
+    },
+    {
+      "id": "resourceserver_agreement_with_client_on_resource_request",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "resource_server",
+        "subject": "client",
+        "of": [
+          "access_token",
+          "request_mac"
+        ]
+      }
+    },
+    {
+      "id": "authserver_agreement_with_client_on_refresh_request",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "authorization_server",
+        "subject": "client",
+        "of": [
+          "client_id",
+          "refresh_token"
+        ]
+      }
+    },
+    {
+      "id": "token_grant_bound_to_issued_auth_code",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "authorization_server",
+        "subject": "authorization_server",
+        "of": [
+          "client_id",
+          "authorization_code"
+        ]
+      }
+    },
+    {
+      "id": "resource_access_bound_to_issued_auth_code",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "resource_server",
+        "subject": "authorization_server",
+        "of": [
+          "access_token",
+          "request_mac",
+          "client_id",
+          "authorization_code"
+        ]
+      }
+    },
+    {
+      "id": "refresh_bound_to_granted_token",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "authorization_server",
+        "subject": "authorization_server",
+        "of": [
+          "client_id",
+          "refresh_token"
+        ]
+      }
+    },
+    {
+      "id": "secrecy_client_password",
+      "type": "Secrecy",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "client_secret"
+        ],
+        "holders": [
+          "client",
+          "authorization_server"
+        ]
+      }
+    },
+    {
+      "id": "secrecy_mac_key",
+      "type": "Secrecy",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "mac_key"
+        ],
+        "holders": [
+          "client",
+          "authorization_server",
+          "resource_server"
+        ]
+      }
+    },
+    {
+      "id": "secrecy_refresh_token",
+      "type": "Secrecy",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "refresh_token"
+        ],
+        "holders": [
+          "client",
+          "authorization_server"
+        ]
+      }
+    }
+  ],
+  "claims": []
+}

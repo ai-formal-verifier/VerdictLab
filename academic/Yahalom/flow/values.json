@@ -1,0 +1,549 @@
+{
+  "vocab_version": "4.0.0",
+  "values": [
+    {
+      "name": "A",
+      "evidence": [],
+      "description": "A's identity, the initiator.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "A",
+        "replicated": false
+      },
+      "holders": {
+        "A": [
+          {
+            "id": "A",
+            "how": "initial",
+            "from": "A"
+          }
+        ],
+        "B": [
+          {
+            "id": "A",
+            "how": "initial",
+            "from": "A"
+          },
+          {
+            "id": "A_recv",
+            "how": "received"
+          }
+        ],
+        "S": [
+          {
+            "id": "A",
+            "how": "initial",
+            "from": "A"
+          }
+        ]
+      }
+    },
+    {
+      "name": "B",
+      "evidence": [],
+      "description": "B's identity, the responder.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "B",
+        "replicated": false
+      },
+      "holders": {
+        "A": [
+          {
+            "id": "B",
+            "how": "initial",
+            "from": "B"
+          }
+        ],
+        "B": [
+          {
+            "id": "B",
+            "how": "initial",
+            "from": "B"
+          }
+        ],
+        "S": [
+          {
+            "id": "B",
+            "how": "initial",
+            "from": "B"
+          }
+        ]
+      }
+    },
+    {
+      "name": "S",
+      "evidence": [],
+      "description": "The server S's identity.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "S",
+        "replicated": false
+      },
+      "holders": {
+        "A": [
+          {
+            "id": "S",
+            "how": "initial",
+            "from": "S"
+          }
+        ],
+        "B": [
+          {
+            "id": "S",
+            "how": "initial",
+            "from": "S"
+          }
+        ],
+        "S": [
+          {
+            "id": "S",
+            "how": "initial",
+            "from": "S"
+          }
+        ]
+      }
+    },
+    {
+      "name": "K_as",
+      "evidence": [],
+      "description": "Long-term key shared by A and S.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "K_as",
+        "replicated": false
+      },
+      "holders": {
+        "A": [
+          {
+            "id": "K_as",
+            "how": "initial",
+            "from": "K_as"
+          }
+        ],
+        "S": [
+          {
+            "id": "K_as",
+            "how": "initial",
+            "from": "K_as"
+          }
+        ]
+      }
+    },
+    {
+      "name": "K_bs",
+      "evidence": [],
+      "description": "Long-term key shared by B and S.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "K_bs",
+        "replicated": false
+      },
+      "holders": {
+        "B": [
+          {
+            "id": "K_bs",
+            "how": "initial",
+            "from": "K_bs"
+          }
+        ],
+        "S": [
+          {
+            "id": "K_bs",
+            "how": "initial",
+            "from": "K_bs"
+          }
+        ]
+      }
+    },
+    {
+      "name": "N_a",
+      "evidence": [],
+      "description": "A's nonce.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "N_a",
+        "role": "A",
+        "replicated": true
+      },
+      "holders": {
+        "A": [
+          {
+            "id": "N_a",
+            "how": "generated"
+          }
+        ],
+        "B": [
+          {
+            "id": "Na_recv",
+            "how": "received"
+          }
+        ],
+        "S": [
+          {
+            "id": "Na_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "msg1",
+      "evidence": [],
+      "description": "Message 1: A sends its identity and N_a to B.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "(A, N_a)",
+        "role": "A",
+        "replicated": true
+      },
+      "holders": {
+        "B": [
+          {
+            "id": "msg_a_b_1",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "msg4",
+      "evidence": [],
+      "description": "Message 4: A forwards B's certificate with N_b under K_ab.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "(cert_B, ct_nb)",
+        "role": "A",
+        "replicated": true
+      },
+      "holders": {
+        "B": [
+          {
+            "id": "msg_a_b_2",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "N_b",
+      "evidence": [],
+      "description": "B's nonce.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "N_b",
+        "role": "B",
+        "replicated": true
+      },
+      "holders": {
+        "B": [
+          {
+            "id": "N_b",
+            "how": "generated"
+          },
+          {
+            "id": "Nb_back",
+            "how": "received"
+          }
+        ],
+        "A": [
+          {
+            "id": "Nb_recv",
+            "how": "received"
+          }
+        ],
+        "S": [
+          {
+            "id": "Nb_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "msg2",
+      "evidence": [],
+      "description": "Message 2: B sends its identity and a block with A, N_a and N_b under K_bs to S.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "(B, ct_b)",
+        "role": "B",
+        "replicated": true
+      },
+      "holders": {
+        "S": [
+          {
+            "id": "msg_b_s_1",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "K_ab",
+      "evidence": [],
+      "description": "Session key generated by S.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "K_ab",
+        "role": "S",
+        "replicated": true
+      },
+      "holders": {
+        "S": [
+          {
+            "id": "K_ab",
+            "how": "generated"
+          }
+        ],
+        "A": [
+          {
+            "id": "K_ab",
+            "how": "received"
+          }
+        ],
+        "B": [
+          {
+            "id": "K_ab",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "msg3",
+      "evidence": [],
+      "description": "Message 3: S sends the two certificates to A.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "(cert_A, cert_B)",
+        "role": "S",
+        "replicated": true
+      },
+      "holders": {
+        "A": [
+          {
+            "id": "msg_s_a_1",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "cert_A",
+      "evidence": [],
+      "description": "A's certificate: B, K_ab, N_a and N_b under K_as.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "cert_A",
+        "role": "S",
+        "replicated": true,
+        "derived_from": [
+          "B",
+          "K_ab",
+          "N_a",
+          "N_b",
+          "K_as"
+        ]
+      },
+      "holders": {
+        "A": [
+          {
+            "id": "cert_A",
+            "how": "received"
+          }
+        ],
+        "S": [
+          {
+            "id": "cert_A",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "cert_B",
+      "evidence": [],
+      "description": "B's certificate: A and K_ab under K_bs.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "cert_B",
+        "role": "S",
+        "replicated": true,
+        "derived_from": [
+          "A",
+          "K_ab",
+          "K_bs"
+        ]
+      },
+      "holders": {
+        "A": [
+          {
+            "id": "cert_B",
+            "how": "received"
+          }
+        ],
+        "B": [
+          {
+            "id": "cert_B",
+            "how": "received"
+          }
+        ],
+        "S": [
+          {
+            "id": "cert_B",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "plain_cert_A",
+      "evidence": [],
+      "description": "A's certificate decrypted by A with K_as.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "plain_cert_A",
+        "role": "A",
+        "replicated": true,
+        "derived_from": [
+          "cert_A",
+          "K_as"
+        ]
+      },
+      "holders": {
+        "A": [
+          {
+            "id": "plain_cert_A",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ct_nb",
+      "evidence": [],
+      "description": "N_b under K_ab, A's proof of the key to B.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "ct_nb",
+        "role": "A",
+        "replicated": true,
+        "derived_from": [
+          "N_b",
+          "K_ab"
+        ]
+      },
+      "holders": {
+        "A": [
+          {
+            "id": "ct_nb",
+            "how": "computed"
+          }
+        ],
+        "B": [
+          {
+            "id": "ct_nb",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ct_b",
+      "evidence": [],
+      "description": "B's block: A, N_a and N_b under K_bs.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "ct_b",
+        "role": "B",
+        "replicated": true,
+        "derived_from": [
+          "A",
+          "N_a",
+          "N_b",
+          "K_bs"
+        ]
+      },
+      "holders": {
+        "B": [
+          {
+            "id": "ct_b",
+            "how": "computed"
+          }
+        ],
+        "S": [
+          {
+            "id": "ct_b",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "plain_cert_B",
+      "evidence": [],
+      "description": "B's certificate decrypted by B with K_bs.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "plain_cert_B",
+        "role": "B",
+        "replicated": true,
+        "derived_from": [
+          "cert_B",
+          "K_bs"
+        ]
+      },
+      "holders": {
+        "B": [
+          {
+            "id": "plain_cert_B",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "plain_ct_b",
+      "evidence": [],
+      "description": "B's block decrypted by S with K_bs.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "plain_b",
+        "role": "S",
+        "replicated": true,
+        "derived_from": [
+          "ct_b",
+          "K_bs"
+        ]
+      },
+      "holders": {
+        "S": [
+          {
+            "id": "plain_b",
+            "how": "computed"
+          }
+        ]
+      }
+    }
+  ]
+}

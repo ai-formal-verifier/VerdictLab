@@ -1,0 +1,71 @@
+{
+  "principals": [
+    {
+      "name": "A",
+      "description": "The initiator: requests a session key from S, decrypts S's response using Ksa, and forwards B's encrypted ticket."
+    },
+    {
+      "name": "B",
+      "description": "The responder: receives A's ticket and decrypts it using Ksb to obtain and accept the session key."
+    },
+    {
+      "name": "S",
+      "description": "The trusted authentication server: generates session keys and timestamps, and encrypts the response for A under Ksa and the ticket for B under Ksb."
+    }
+  ],
+  "values": [
+    {
+      "name": "A",
+      "derived_from": [],
+      "description": "A is a protocol identity.",
+      "holders": [
+        "A",
+        "B",
+        "S"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "B",
+      "derived_from": [],
+      "description": "B is a protocol identity.",
+      "holders": [
+        "A",
+        "B",
+        "S"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "S",
+      "derived_from": [],
+      "description": "S is a protocol identity.",
+      "holders": [
+        "A",
+        "B",
+        "S"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "Ksa",
+      "derived_from": [],
+      "description": "Ksa is a pre-run symmetric key or keying value.",
+      "holders": [
+        "A",
+        "S"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "Ksb",
+      "derived_from": [],
+      "description": "Ksb is a pre-run symmetric key or keying value.",
+      "holders": [
+        "B",
+        "S"
+      ],
+      "source": "generated"
+    }
+  ]
+}

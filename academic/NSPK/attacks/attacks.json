@@ -1,0 +1,26 @@
+{
+  "vocab_version": "4.0.0",
+  "attacks": [
+    {
+      "name": "Lowe's man-in-the-middle attack",
+      "short": "Lowe MITM",
+      "summary": "The attacker registers under its own identity, is legitimately chosen as A's peer, and relays the handshake to B; B completes believing its peer is A, and both nonces end up known to the attacker.",
+      "refutes": [
+        {
+          "property": "secrecy_i_a",
+          "scenario": "admission_open"
+        },
+        {
+          "property": "secrecy_i_b",
+          "scenario": "admission_open"
+        },
+        {
+          "property": "auth_b_to_a",
+          "scenario": "admission_open"
+        }
+      ],
+      "reference": "G. Lowe, An attack on the Needham-Schroeder public-key authentication protocol, IPL, 1995",
+      "cite_key": "nspk-attack"
+    }
+  ]
+}

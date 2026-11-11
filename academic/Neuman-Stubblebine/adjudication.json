@@ -1,0 +1,110 @@
+{
+  "protocol_id": "Neuman-Stubblebine",
+  "adjudication_version": "2",
+  "audited": "2026-10-03",
+  "scope": "Where the expert formal model (formal/) departs from the source documents. Only the formal model and the documents are compared; results/, claims/ and flow/ are not part of this file. Entries marked material=false were found in passing; the minor list is not exhaustive.",
+  "categories": {
+    "contradiction": "The formal model does something the documents rule out.",
+    "convention": "The formal model fixes a choice the documents leave open or do not state.",
+    "scope": "The formal model contains content that is not in the documents."
+  },
+  "doc_check": {
+    "confirmed": "The quoted text was checked in the document, or the document was searched and is silent on the point.",
+    "pending": "Not yet confirmed against the whole document set."
+  },
+  "formal_files": [
+    "main.pv",
+    "reference_autosm.pv"
+  ],
+  "source_documents": "academic/Neuman-Stubblebine/source",
+  "entries": [
+    {
+      "id": "F1",
+      "category": "convention",
+      "material": false,
+      "formal": {
+        "file": "formal/proverif/main.pv",
+        "lines": "l.150-151, l.161, l.169, l.172, l.178",
+        "excerpt": "out(att,(idB_2, (Nb_2, senc(((idA_2, (Na_2, Tb_2))), Kbs_2)))); ... out(att,(cypher2_2, Ma_2)); ... out(att,(cypher6_2, Mb_2));"
+      },
+      "document": {
+        "status": "contradicts",
+        "file": "academic/Neuman-Stubblebine/converted/main/Neuman-Stubblebine.md",
+        "lines": "l.48, l.92-93",
+        "quote": "B, {A, N_a, T_b}K_kb, N_b"
+      },
+      "description": "The cleartext components of messages (2), (1') and (2') are in a different order from the message notation, which follows the original publication and SPORE: (2) carries N_b before the encrypted instructions, (1') the ticket before N_a', (2') {N_a'}K_ab before N_b'. The order of (2) and (1') matches the Wikipedia description the upstream AutoSM model was written from; the order of (2') has no source. The ciphertext contents, on which the Hwang type-flaw attack depends, are the same.",
+      "verification": "Re-running the model with the three messages in the notation's order gives the same result on all six queries.",
+      "related_properties": [],
+      "doc_check": "confirmed"
+    },
+    {
+      "id": "F2",
+      "category": "convention",
+      "material": false,
+      "formal": {
+        "file": "formal/proverif/main.pv",
+        "lines": "l.194-205",
+        "excerpt": "(new Kas_2:bitstring; ... (Alice(Kas_2, id(Kas_2), id(Kbs_2)))) ... (Server(Kas_2, Kbs_2, id(Kas_2), id(Kbs_2))))))))"
+      },
+      "document": {
+        "status": "partial",
+        "file": "academic/Neuman-Stubblebine/converted/main/Neuman-Stubblebine.md",
+        "lines": "l.55-56",
+        "quote": "the key registered for principal B with the KDC"
+      },
+      "description": "The KDC does not look up keys by identity: each replicated instance creates one pair of long-term keys and runs A, B and the KDC for that pair, with the keys passed as parameters. The document has the KDC use the key registered for the requesting principal.",
+      "verification": "Not material: a lookup by identity admits every session the per-pair instances admit and more, so the false verdicts remain; and the document requires no check that the model omits.",
+      "related_properties": [
+        "auth_B_authenticates_A",
+        "auth_B_authenticates_A_noninj",
+        "auth_A_authenticates_B",
+        "auth_A_authenticates_B_noninj"
+      ],
+      "doc_check": "confirmed"
+    },
+    {
+      "id": "F3",
+      "category": "convention",
+      "material": false,
+      "formal": {
+        "file": "formal/proverif/main.pv",
+        "lines": "l.142, l.156, l.178, l.180",
+        "excerpt": "let ((=idB_2, (=Na_2, (Kab_2:bitstring, Tb_2:bitstring))))=mess1_2 in ... in(att,(=idA_2, Na_2:bitstring)); ... let ((=idA_2, (Na_2:bitstring, Tb_2:bitstring)))=mess3_2 in"
+      },
+      "document": {
+        "status": "partial",
+        "file": "academic/Neuman-Stubblebine/converted/main/Neuman-Stubblebine.md",
+        "lines": "l.62-63",
+        "quote": "verifies that the nonce N_a is the same as that included in message (1)"
+      },
+      "description": "The model adds identity checks the document does not state: A checks B inside message (3), B checks the claimed A in message (1), and the KDC checks both names. The document only has A check N_a in message (3).",
+      "verification": "Re-running the model without A's check of B in message (3) gives the same result on all six queries. Removing checks only admits more runs, so the other added checks cannot carry a false verdict either.",
+      "related_properties": [
+        "auth_A_authenticates_B",
+        "auth_A_authenticates_B_noninj"
+      ],
+      "doc_check": "confirmed"
+    },
+    {
+      "id": "F4",
+      "category": "convention",
+      "material": false,
+      "formal": {
+        "file": "formal/proverif/main.pv",
+        "lines": "l.150, l.169",
+        "excerpt": "out(att,(cypher2_2, Ma_2)); ... in(att,(=cypher3_2, Ma_2:bitstring));"
+      },
+      "document": {
+        "status": "partial",
+        "file": "academic/Neuman-Stubblebine/converted/main/Neuman-Stubblebine.md",
+        "lines": "l.42, l.84-90",
+        "quote": "for repeated mutual authentication requiring only four messages initially and three messages for subsequent"
+      },
+      "description": "Subsequent authentication runs once, directly after the initial exchange in the same session, and B accepts only the same ticket ciphertext it received there. The document lets A use the ticket for later, repeated authentications, with B checking that the ticket has not expired.",
+      "verification": "Not material: repeated use of any valid ticket admits every run the model admits and more, so the false verdicts stand; the model's same-ticket requirement is stricter than the document, not looser.",
+      "related_properties": [],
+      "doc_check": "confirmed"
+    }
+  ]
+}

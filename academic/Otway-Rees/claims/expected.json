@@ -1,0 +1,196 @@
+{
+  "vocab_version": "4.0.0",
+  "protocol_id": "Otway-Rees",
+  "names": {
+    "peer_auth": "The identity scope of the peer identities honest principals can select; open means the attacker may register a recognised peer identity (§5).",
+    "A": "The initiator, sharing K_as with S, and its identity A carried in messages 1 and 2 (§2, §3, §4).",
+    "B": "The responder, sharing K_bs with S, and its identity B carried in messages 1 and 2 (§2, §3, §4).",
+    "K_as": "The symmetric key shared between A and S (§3, §5).",
+    "K_bs": "The symmetric key shared between B and S (§3, §5).",
+    "K_ab": "The session key the server S generates and sends to B in message 3, which B forwards to A in message 4 (§3, §4)."
+  },
+  "scenarios": [
+    {
+      "name": "baseline",
+      "world": [
+        {
+          "axis": "admission",
+          "target": {
+            "scope": "peer_auth"
+          },
+          "level": "open"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "A"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "B"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "K_as"
+          },
+          "level": "none"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "K_bs"
+          },
+          "level": "none"
+        },
+        {
+          "axis": "seating",
+          "target": {
+            "principal": "A"
+          },
+          "level": "any_role"
+        },
+        {
+          "axis": "seating",
+          "target": {
+            "principal": "B"
+          },
+          "level": "any_role"
+        }
+      ]
+    }
+  ],
+  "goals": [
+    {
+      "name": "secrecy_kab",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "K_ab"
+        ],
+        "holders": [
+          "A",
+          "B"
+        ]
+      }
+    },
+    {
+      "name": "auth_A_B_AB",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "A",
+        "subject": "B",
+        "of": [
+          "A",
+          "B"
+        ]
+      }
+    },
+    {
+      "name": "auth_A_B_Kab",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "A",
+        "subject": "B",
+        "of": [
+          "A",
+          "B",
+          "K_ab"
+        ]
+      }
+    },
+    {
+      "name": "auth_B_A_AB",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "B",
+        "subject": "A",
+        "of": [
+          "A",
+          "B"
+        ]
+      }
+    },
+    {
+      "name": "auth_B_A_Kab",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "B",
+        "subject": "A",
+        "of": [
+          "A",
+          "B",
+          "K_ab"
+        ]
+      }
+    }
+  ],
+  "questions": [
+    {
+      "id": "secrecy_kab",
+      "goal": "secrecy_kab",
+      "scenarios": [
+        "baseline"
+      ],
+      "verdict": "true",
+      "evidence": {
+        "file": "formal/proverif/main.pv"
+      }
+    },
+    {
+      "id": "auth_A_B_AB",
+      "goal": "auth_A_B_AB",
+      "scenarios": [
+        "baseline"
+      ],
+      "verdict": "false",
+      "evidence": {
+        "file": "formal/proverif/main.pv"
+      }
+    },
+    {
+      "id": "auth_A_B_Kab",
+      "goal": "auth_A_B_Kab",
+      "scenarios": [
+        "baseline"
+      ],
+      "verdict": "false",
+      "evidence": {
+        "file": "formal/proverif/main.pv"
+      }
+    },
+    {
+      "id": "auth_B_A_AB",
+      "goal": "auth_B_A_AB",
+      "scenarios": [
+        "baseline"
+      ],
+      "verdict": "false",
+      "evidence": {
+        "file": "formal/proverif/main.pv"
+      }
+    },
+    {
+      "id": "auth_B_A_Kab",
+      "goal": "auth_B_A_Kab",
+      "scenarios": [
+        "baseline"
+      ],
+      "verdict": "false",
+      "evidence": {
+        "file": "formal/proverif/main.pv"
+      }
+    }
+  ],
+  "unexpressed": []
+}

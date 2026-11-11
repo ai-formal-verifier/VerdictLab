@@ -1,0 +1,71 @@
+{
+  "principals": [
+    {
+      "name": "A",
+      "description": "the initiator: chooses the session key, generates the timestamp T_a, and encrypts the first message with the long-term shared key K_as."
+    },
+    {
+      "name": "B",
+      "description": "the recipient: decrypts the server's message with the long-term shared key K_bs and checks the freshness of S's timestamp T_s."
+    },
+    {
+      "name": "S",
+      "description": "the trusted authentication server: decrypts and checks A's message with K_as, generates T_s, and encrypts the forwarded session-key message with K_bs."
+    }
+  ],
+  "values": [
+    {
+      "name": "A",
+      "derived_from": [],
+      "description": "A is a protocol identity.",
+      "holders": [
+        "A",
+        "B",
+        "S"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "B",
+      "derived_from": [],
+      "description": "B is a protocol identity.",
+      "holders": [
+        "A",
+        "B",
+        "S"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "S",
+      "derived_from": [],
+      "description": "S is a protocol identity.",
+      "holders": [
+        "A",
+        "B",
+        "S"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "K_as",
+      "derived_from": [],
+      "description": "K_as is a pre-run symmetric key or keying value.",
+      "holders": [
+        "A",
+        "S"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "K_bs",
+      "derived_from": [],
+      "description": "K_bs is a pre-run symmetric key or keying value.",
+      "holders": [
+        "B",
+        "S"
+      ],
+      "source": "generated"
+    }
+  ]
+}

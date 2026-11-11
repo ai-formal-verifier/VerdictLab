@@ -1,0 +1,135 @@
+{
+  "protocol_id": "EDHOC-draft-12-handshake-dh",
+  "adjudication_version": "2",
+  "audited": "2026-10-03",
+  "scope": "Where the expert formal model (formal/) departs from the source documents. Only the formal model and the documents are compared; results/, claims/ and flow/ are not part of this file. Entries marked material=false were found in passing; the minor list is not exhaustive.",
+  "categories": {
+    "contradiction": "The formal model does something the documents rule out.",
+    "convention": "The formal model fixes a choice the documents leave open or do not state.",
+    "scope": "The formal model contains content that is not in the documents."
+  },
+  "doc_check": {
+    "confirmed": "The quoted text was checked in the document, or the document was searched and is silent on the point.",
+    "pending": "Not yet confirmed against the whole document set."
+  },
+  "formal_files": [
+    "PROVENANCE.md",
+    "authIR_unique.pv",
+    "authRI_unique.pv",
+    "data_authentication_I_to_R.pv",
+    "data_authentication_R_to_I.pv",
+    "honestauthRI_non_inj.pv",
+    "no_reflection_attacks_RI.pv",
+    "secretI.pv",
+    "secretR.pv"
+  ],
+  "source_documents": "rfc/EDHOC/draft-12/source",
+  "entries": [
+    {
+      "id": "F1",
+      "category": "convention",
+      "material": true,
+      "formal": {
+        "file": "formal/proverif/authIR_unique.pv",
+        "lines": "l.62, l.70, l.122, l.292 (same header in every .pv)",
+        "excerpt": "exp(grpid, x) = grpid ... check_grp(x) = const_grp. ... if check_grp(G_Y_1) = grpid then"
+      },
+      "document": {
+        "status": "partial",
+        "file": "rfc/EDHOC/draft-12/converted/main/draft-ietf-lake-edhoc-12.txt",
+        "lines": "l.2496-2497 (also l.3722)",
+        "quote": "For secp256r1, secp384r1, and secp521r1, at least partial public-key validation MUST be done."
+      },
+      "description": "The DH theory has a neutral element (exp(grpid, x) = grpid), and the receiver's group check is dead code: check_grp always reduces to const_grp, so the comparison with grpid never succeeds. The attacker can therefore send the identity element as a DH share. The document requires public-key validation for the secp curves and defers X25519 to RFC 7748.",
+      "related_properties": [
+        "unique_accept_I",
+        "unique_accept_R"
+      ],
+      "doc_check": "confirmed"
+    },
+    {
+      "id": "F2",
+      "category": "convention",
+      "material": true,
+      "formal": {
+        "file": "formal/proverif/honestauthRI_non_inj.pv",
+        "lines": "l.75-76 (same stubs in every .pv)",
+        "excerpt": "event LeakShare( null )."
+      },
+      "document": {
+        "status": "contradicts",
+        "file": "rfc/EDHOC/draft-12/converted/main/draft-ietf-lake-edhoc-12.txt",
+        "lines": "l.2429-2431 (also l.2379-2380)",
+        "quote": "EDHOC provides KCI protection against an attacker having access to the long-term key or the ephemeral secret key."
+      },
+      "description": "The exported baseline disables ephemeral-share leakage and session-key reveal: the leak processes only emit an event over the constant null and output nothing. The document explicitly considers attackers holding the ephemeral secret key and the compromise of other sessions' keys.",
+      "related_properties": [
+        "data_auth_R_asserts_I",
+        "data_auth_I_asserts_R"
+      ],
+      "doc_check": "confirmed"
+    },
+    {
+      "id": "F3",
+      "category": "scope",
+      "material": true,
+      "formal": {
+        "file": "formal/proverif/authIR_unique.pv",
+        "lines": "l.83-85 (authRI_unique.pv l.83-85)",
+        "excerpt": "(event(AcceptI( cid, m, pkI, pkR, k3, k4, x, gy ))@i) && (event(AcceptI( cid, m, pkI, pkR, k3, k4, x2, gy2 ))@j)) ==> (i = j)"
+      },
+      "document": {
+        "status": "absent",
+        "file": "rfc/EDHOC/draft-12/converted/main/draft-ietf-lake-edhoc-12.txt",
+        "lines": "",
+        "quote": ""
+      },
+      "description": "The uniqueness lemmas check that one agent never accepts the same (cid, method, keys, PRK) twice, with no partner event and no honesty guard. The upstream authors note (formal/sapic/LakeProperties.splib l.181) that this lemma does not correspond to a security property stated in the draft. Searched draft-ietf-lake-edhoc-12.txt: it states no session-acceptance uniqueness property.",
+      "related_properties": [
+        "unique_accept_I",
+        "unique_accept_R"
+      ],
+      "doc_check": "confirmed"
+    },
+    {
+      "id": "F4",
+      "category": "convention",
+      "material": true,
+      "formal": {
+        "file": "formal/proverif/data_authentication_I_to_R.pv",
+        "lines": "l.85-95, l.320",
+        "excerpt": "(event(SendRData( method, pkR,"
+      },
+      "document": {
+        "status": "partial",
+        "file": "rfc/EDHOC/draft-12/converted/main/draft-ietf-lake-edhoc-12.txt",
+        "lines": "l.1871-1872 (message_4: l.479, l.1938)",
+        "quote": "However, the Initiator does not know that the Responder has actually computed the key PRK_4x3m"
+      },
+      "description": "message_4 is not modeled, so the Initiator never receives key confirmation; the I-to-R data-authentication lemma agrees on transcript data that R emits before it can compute PRK_4x3m. The document makes message_4 optional in general but mandatory when no protected application message flows from Responder to Initiator.",
+      "related_properties": [
+        "data_auth_I_asserts_R"
+      ],
+      "doc_check": "confirmed"
+    },
+    {
+      "id": "F5",
+      "category": "convention",
+      "material": false,
+      "formal": {
+        "file": "formal/proverif/secretI.pv",
+        "lines": "l.73 (every .pv)",
+        "excerpt": "set preciseActions=true."
+      },
+      "document": {
+        "status": "absent",
+        "file": "rfc/EDHOC/draft-12/converted/main/draft-ietf-lake-edhoc-12.txt",
+        "lines": "",
+        "quote": ""
+      },
+      "description": "Every exported file sets preciseActions. This is a solver setting, not protocol content; noted because it is not recorded alongside the model's other settings.",
+      "related_properties": [],
+      "doc_check": "confirmed"
+    }
+  ]
+}

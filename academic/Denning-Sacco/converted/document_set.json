@@ -1,0 +1,83 @@
+{
+  "main_doc_id": "Denning-Sacco",
+  "subprotocol_list": {
+    "Denning-Sacco": "the whole protocol (protocol.yaml lists no sub-protocols)"
+  },
+  "documents": {
+    "generic": [
+      {
+        "doc_id": "Denning-Sacco",
+        "path": "main/Denning-Sacco.md",
+        "fingerprint": "2ecf00b27e51cc0c7e91ed185fe48fdb84da7b7a3a45b83eeafb6b1487a83bea",
+        "ids": [
+          "Denning-Sacco"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "1": {
+      "subprotocols": [
+        "Denning-Sacco"
+      ],
+      "reason": ""
+    },
+    "2": {
+      "subprotocols": [
+        "Denning-Sacco"
+      ],
+      "reason": "Identifies A, B, and S and their roles in the protocol, which are core participant information for formal analysis."
+    },
+    "3": {
+      "subprotocols": [
+        "Denning-Sacco"
+      ],
+      "reason": ""
+    },
+    "4": {
+      "subprotocols": [
+        "Denning-Sacco"
+      ],
+      "reason": "Specifies the three message exchanges, their contents and encryption, and the server's session-key and timestamp generation."
+    },
+    "5": {
+      "subprotocols": [
+        "Denning-Sacco"
+      ],
+      "reason": "Defines the independent long-term-key disclosure scenarios used in the analysis, specifying initial attacker knowledge."
+    },
+    "6": {
+      "subprotocols": [
+        "Denning-Sacco"
+      ],
+      "reason": "States the session-key secrecy and B-to-A agreement goals and the disclosure scenarios in which they are evaluated."
+    },
+    "7": {
+      "subprotocols": [
+        "Denning-Sacco"
+      ],
+      "reason": ""
+    }
+  },
+  "references": {
+    "Denning-Sacco": {
+      "generic": {
+        "1": {
+          "id": "work:timestamps-in-key-distribution-protocols@1981",
+          "file": null,
+          "status": "unknown"
+        },
+        "2": {
+          "id": "work:denning-sacco-shared-key@1981",
+          "file": null,
+          "status": "unknown"
+        },
+        "3": {
+          "id": "work:a-family-of-attacks-upon-authentication-protocols@1997",
+          "file": null,
+          "status": "unknown"
+        }
+      }
+    }
+  }
+}

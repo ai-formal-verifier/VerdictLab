@@ -1,0 +1,88 @@
+{
+  "main_doc_id": "Otway-Rees",
+  "subprotocol_list": {
+    "Otway-Rees": "the whole protocol (protocol.yaml lists no sub-protocols)"
+  },
+  "documents": {
+    "generic": [
+      {
+        "doc_id": "Otway-Rees",
+        "path": "main/Otway-Rees.md",
+        "fingerprint": "5da640e19fe02a9f32ff9f630977d4f0c98eb0bbc09951c0b9ad93dffc307d52",
+        "ids": [
+          "Otway-Rees"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "1": {
+      "subprotocols": [
+        "Otway-Rees"
+      ],
+      "reason": ""
+    },
+    "2": {
+      "subprotocols": [
+        "Otway-Rees"
+      ],
+      "reason": "Identifies the protocol participants and their roles and shared-key relationship, which define who takes part in the formal model."
+    },
+    "3": {
+      "subprotocols": [
+        "Otway-Rees"
+      ],
+      "reason": ""
+    },
+    "4": {
+      "subprotocols": [
+        "Otway-Rees"
+      ],
+      "reason": "Specifies the protocol’s generated values, message sequence and contents, server processing and checks, and participant acceptance behavior for formal analysis."
+    },
+    "5": {
+      "subprotocols": [
+        "Otway-Rees"
+      ],
+      "reason": "Defines the attacker’s peer-admission and long-term-key disclosure assumptions and the scenarios against which the protocol is analyzed."
+    },
+    "6": {
+      "subprotocols": [
+        "Otway-Rees"
+      ],
+      "reason": "States the secrecy and injective-agreement goals and the scenarios in which each is evaluated."
+    },
+    "7": {
+      "subprotocols": [
+        "Otway-Rees"
+      ],
+      "reason": ""
+    }
+  },
+  "references": {
+    "Otway-Rees": {
+      "generic": {
+        "1": {
+          "id": "work:efficient-and-timely-mutual-authentication@1987",
+          "file": null,
+          "status": "unknown"
+        },
+        "2": {
+          "id": null,
+          "file": null,
+          "status": "unknown"
+        },
+        "3": {
+          "id": null,
+          "file": null,
+          "status": "unknown"
+        },
+        "4": {
+          "id": null,
+          "file": null,
+          "status": "unknown"
+        }
+      }
+    }
+  }
+}

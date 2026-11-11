@@ -1,0 +1,101 @@
+{
+  "main_doc_id": "Neuman-Stubblebine",
+  "subprotocol_list": {
+    "Neuman-Stubblebine": "the whole protocol (protocol.yaml lists no sub-protocols)"
+  },
+  "documents": {
+    "generic": [
+      {
+        "doc_id": "Neuman-Stubblebine",
+        "path": "main/Neuman-Stubblebine.md",
+        "fingerprint": "42d6b3642faaea1821774429c2f29875cb7ef46ebe0f0b5a5dc7bed3c7b9ac14",
+        "ids": [
+          "Neuman-Stubblebine"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "1": {
+      "subprotocols": [
+        "Neuman-Stubblebine"
+      ],
+      "reason": ""
+    },
+    "2": {
+      "subprotocols": [
+        "Neuman-Stubblebine"
+      ],
+      "reason": "Identifies A, B, and the KDC and their roles in the protocol."
+    },
+    "3": {
+      "subprotocols": [
+        "Neuman-Stubblebine"
+      ],
+      "reason": ""
+    },
+    "4": {
+      "subprotocols": [
+        "Neuman-Stubblebine"
+      ],
+      "reason": "Introduces the protocol’s repeated authentication modes and execution structure."
+    },
+    "4.1": {
+      "subprotocols": [
+        "Neuman-Stubblebine"
+      ],
+      "reason": "Specifies the initial four-message exchange, its encrypted fields, nonce checks, and how the ticket and session key are issued and used."
+    },
+    "4.2": {
+      "subprotocols": [
+        "Neuman-Stubblebine"
+      ],
+      "reason": "Describes the ticket’s contents and validity state, including how time and epoch affect its acceptance."
+    },
+    "4.3": {
+      "subprotocols": [
+        "Neuman-Stubblebine"
+      ],
+      "reason": "Specifies the subsequent three-message exchange, including fresh nonces, ticket validation, encrypted responses, and identity checks."
+    },
+    "5": {
+      "subprotocols": [
+        "Neuman-Stubblebine"
+      ],
+      "reason": ""
+    },
+    "6": {
+      "subprotocols": [
+        "Neuman-Stubblebine"
+      ],
+      "reason": "States the authentication agreement goals, their participants and agreed values, and the excluded session-key secrecy goal."
+    },
+    "7": {
+      "subprotocols": [
+        "Neuman-Stubblebine"
+      ],
+      "reason": ""
+    }
+  },
+  "references": {
+    "Neuman-Stubblebine": {
+      "generic": {
+        "1": {
+          "id": "work:clifford-neuman-and-stuart-g@1993",
+          "file": null,
+          "status": "unknown"
+        },
+        "2": {
+          "id": "work:protocol-entry-citing-neuman-stubblebine-1993-hwang-et-al@1995",
+          "file": null,
+          "status": "unknown"
+        },
+        "3": {
+          "id": null,
+          "file": null,
+          "status": "unknown"
+        }
+      }
+    }
+  }
+}

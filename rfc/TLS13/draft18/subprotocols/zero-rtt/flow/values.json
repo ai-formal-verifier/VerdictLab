@@ -1,0 +1,2547 @@
+{
+  "vocab_version": "4.0.0",
+  "values": [
+    {
+      "name": "g",
+      "evidence": [],
+      "description": "The constant g of the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "g"
+      },
+      "holders": {}
+    },
+    {
+      "name": "no_dhe",
+      "evidence": [],
+      "description": "The constant no_dhe of the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "no_dhe"
+      },
+      "holders": {}
+    },
+    {
+      "name": "additional_data",
+      "evidence": [],
+      "description": "The AEAD additional data of a protected record, empty in this draft.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "empty_aad"
+      },
+      "holders": {}
+    },
+    {
+      "name": "PSK_TLS_version",
+      "evidence": [],
+      "description": "The constant PSK_TLS_version of the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "PSK_TLS_version"
+      },
+      "holders": {}
+    },
+    {
+      "name": "per_record_nonce",
+      "evidence": [],
+      "description": "The per-record nonce of an AEAD-protected record.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "per_record_nonce"
+      },
+      "holders": {}
+    },
+    {
+      "name": "legacy_version_tls12",
+      "evidence": [],
+      "description": "The constant legacy_version_tls12 of the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "legacy_version_tls12"
+      },
+      "holders": {}
+    },
+    {
+      "name": "empty_legacy_session_id",
+      "evidence": [],
+      "description": "The constant empty_legacy_session_id of the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "empty_legacy_session_id"
+      },
+      "holders": {}
+    },
+    {
+      "name": "null_compression",
+      "evidence": [],
+      "description": "The constant null_compression of the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "null_compression"
+      },
+      "holders": {}
+    },
+    {
+      "name": "client_hello_msg_type",
+      "evidence": [],
+      "description": "The constant client_hello_msg_type of the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "client_hello_msg_type"
+      },
+      "holders": {}
+    },
+    {
+      "name": "server_hello_msg_type",
+      "evidence": [],
+      "description": "The constant server_hello_msg_type of the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "server_hello_msg_type"
+      },
+      "holders": {}
+    },
+    {
+      "name": "encrypted_extensions_msg_type",
+      "evidence": [],
+      "description": "The constant encrypted_extensions_msg_type of the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "encrypted_extensions_msg_type"
+      },
+      "holders": {}
+    },
+    {
+      "name": "finished_msg_type",
+      "evidence": [],
+      "description": "The constant finished_msg_type of the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "finished_msg_type"
+      },
+      "holders": {}
+    },
+    {
+      "name": "handshake_content_type",
+      "evidence": [],
+      "description": "The constant handshake_content_type of the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "handshake_content_type"
+      },
+      "holders": {}
+    },
+    {
+      "name": "application_data_content_type",
+      "evidence": [],
+      "description": "The constant application_data_content_type of the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "application_data_content_type"
+      },
+      "holders": {}
+    },
+    {
+      "name": "alert_content_type",
+      "evidence": [],
+      "description": "The constant alert_content_type of the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "alert_content_type"
+      },
+      "holders": {}
+    },
+    {
+      "name": "early_data_indication",
+      "evidence": [],
+      "description": "The constant early_data_indication of the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "early_data_indication"
+      },
+      "holders": {}
+    },
+    {
+      "name": "early_data_accepted",
+      "evidence": [],
+      "description": "The constant early_data_accepted of the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "early_data_accepted"
+      },
+      "holders": {}
+    },
+    {
+      "name": "warning_level",
+      "evidence": [],
+      "description": "The constant warning_level of the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "warning_level"
+      },
+      "holders": {}
+    },
+    {
+      "name": "end_of_early_data_description",
+      "evidence": [],
+      "description": "The constant end_of_early_data_description of the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "end_of_early_data_description"
+      },
+      "holders": {}
+    },
+    {
+      "name": "first_identity_index",
+      "evidence": [],
+      "description": "The constant first_identity_index of the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "first_identity_index"
+      },
+      "holders": {}
+    },
+    {
+      "name": "psk_dhe_ke_value",
+      "evidence": [],
+      "description": "The constant psk_dhe_ke_value of the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "psk_dhe_ke_value"
+      },
+      "holders": {}
+    },
+    {
+      "name": "label_early_secret",
+      "evidence": [],
+      "description": "The constant label_early_secret of the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "label_early_secret"
+      },
+      "holders": {}
+    },
+    {
+      "name": "label_external_psk_binder",
+      "evidence": [],
+      "description": "The constant label_external_psk_binder of the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "label_external_psk_binder"
+      },
+      "holders": {}
+    },
+    {
+      "name": "label_client_early_traffic",
+      "evidence": [],
+      "description": "The constant label_client_early_traffic of the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "label_client_early_traffic"
+      },
+      "holders": {}
+    },
+    {
+      "name": "label_handshake_secret",
+      "evidence": [],
+      "description": "The constant label_handshake_secret of the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "label_handshake_secret"
+      },
+      "holders": {}
+    },
+    {
+      "name": "label_client_handshake_traffic",
+      "evidence": [],
+      "description": "The constant label_client_handshake_traffic of the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "label_client_handshake_traffic"
+      },
+      "holders": {}
+    },
+    {
+      "name": "label_server_handshake_traffic",
+      "evidence": [],
+      "description": "The constant label_server_handshake_traffic of the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "label_server_handshake_traffic"
+      },
+      "holders": {}
+    },
+    {
+      "name": "label_finished",
+      "evidence": [],
+      "description": "The constant label_finished of the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "label_finished"
+      },
+      "holders": {}
+    },
+    {
+      "name": "label_write_key",
+      "evidence": [],
+      "description": "The constant label_write_key of the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "label_write_key"
+      },
+      "holders": {}
+    },
+    {
+      "name": "PSK_cipher_suite",
+      "evidence": [],
+      "description": "The constant PSK_cipher_suite of the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "PSK_cipher_suite"
+      },
+      "holders": {}
+    },
+    {
+      "name": "PSK_ALPN",
+      "evidence": [],
+      "description": "The constant PSK_ALPN of the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "PSK_ALPN"
+      },
+      "holders": {}
+    },
+    {
+      "name": "versions",
+      "evidence": [],
+      "description": "The constant versions of the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "versions"
+      },
+      "holders": {
+        "Server": [
+          {
+            "id": "versions_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "cipher_suites",
+      "evidence": [],
+      "description": "The constant cipher_suites of the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "cipher_suites"
+      },
+      "holders": {
+        "Server": [
+          {
+            "id": "cipher_suites_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ke_modes",
+      "evidence": [],
+      "description": "The constant ke_modes of the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "ke_modes"
+      },
+      "holders": {
+        "Server": [
+          {
+            "id": "ke_modes_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "named_group_list",
+      "evidence": [],
+      "description": "The constant named_group_list of the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "named_group_list"
+      },
+      "holders": {
+        "Server": [
+          {
+            "id": "named_group_list_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "client_ALPN_protocols",
+      "evidence": [],
+      "description": "The constant client_ALPN_protocols of the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "client_ALPN_protocols"
+      },
+      "holders": {
+        "Server": [
+          {
+            "id": "client_ALPN_protocols_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "early_data_policy_Server",
+      "evidence": [],
+      "description": "The constant early_data_policy_Server of the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "early_data_policy_Server"
+      },
+      "holders": {}
+    },
+    {
+      "name": "Client",
+      "evidence": [],
+      "description": "The client.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "Client",
+        "replicated": false
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "Client",
+            "how": "initial",
+            "from": "Client"
+          }
+        ],
+        "Server": [
+          {
+            "id": "Client",
+            "how": "initial",
+            "from": "Client"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Server",
+      "evidence": [],
+      "description": "The server.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "Server",
+        "replicated": false
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "Server",
+            "how": "initial",
+            "from": "Server"
+          }
+        ],
+        "Server": [
+          {
+            "id": "Server",
+            "how": "initial",
+            "from": "Server"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PSK",
+      "evidence": [],
+      "description": "The pre-shared key.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "PSK",
+        "replicated": false
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "PSK",
+            "how": "initial",
+            "from": "PSK"
+          }
+        ],
+        "Server": [
+          {
+            "id": "PSK",
+            "how": "initial",
+            "from": "PSK"
+          },
+          {
+            "id": "PSK_selected",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "identity",
+      "evidence": [],
+      "description": "The PSK identity.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "identity",
+        "replicated": false
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "identity",
+            "how": "initial",
+            "from": "identity"
+          }
+        ],
+        "Server": [
+          {
+            "id": "identity",
+            "how": "initial",
+            "from": "identity"
+          },
+          {
+            "id": "identity_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SNI",
+      "evidence": [],
+      "description": "The server name the client indicates.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "SNI",
+        "replicated": false
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "SNI",
+            "how": "initial",
+            "from": "SNI"
+          }
+        ],
+        "Server": [
+          {
+            "id": "SNI",
+            "how": "initial",
+            "from": "SNI"
+          },
+          {
+            "id": "SNI_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "early_data_Client",
+      "evidence": [],
+      "description": "The client's 0-RTT early data.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "early_data_Client",
+        "role": "Client",
+        "replicated": true
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "early_data_Client",
+            "how": "generated"
+          }
+        ],
+        "Server": [
+          {
+            "id": "application_data_Client_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "random_Client",
+      "evidence": [],
+      "description": "The client's ClientHello.random.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "client_random",
+        "role": "Client",
+        "replicated": true
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "client_random",
+            "how": "generated"
+          }
+        ],
+        "Server": [
+          {
+            "id": "client_random_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "obfuscated_ticket_age",
+      "evidence": [],
+      "description": "obfuscated_ticket_age, a fresh value made in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "obfuscated_ticket_age",
+        "role": "Client",
+        "replicated": true
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "obfuscated_ticket_age",
+            "how": "generated"
+          }
+        ],
+        "Server": [
+          {
+            "id": "obfuscated_ticket_age_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "client_exponent",
+      "evidence": [],
+      "description": "client_exponent, a fresh value made in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "client_exponent",
+        "role": "Client",
+        "replicated": true
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "client_exponent",
+            "how": "generated"
+          }
+        ]
+      }
+    },
+    {
+      "name": "msg_Client_Server_1",
+      "evidence": [],
+      "description": "The message term (client_hello_message, handshake_content_type) sent in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "(client_hello_message, handshake_content_type)",
+        "role": "Client",
+        "replicated": true
+      },
+      "holders": {
+        "Server": [
+          {
+            "id": "msg_client_hello_record",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "msg_Client_Server_2",
+      "evidence": [],
+      "description": "The message term aeadEncrypt((early_data_Client, application_data_content_type), client_early_write_key, empty_aad) sent in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "aeadEncrypt((early_data_Client, application_data_content_type), client_early_write_key, empty_aad)",
+        "role": "Client",
+        "replicated": true
+      },
+      "holders": {
+        "Server": [
+          {
+            "id": "msg_early_application_record",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "msg_Client_Server_3",
+      "evidence": [],
+      "description": "The message term aeadEncrypt((end_of_early_data_alert, alert_content_type), client_early_write_key, empty_aad) sent in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "aeadEncrypt((end_of_early_data_alert, alert_content_type), client_early_write_key, empty_aad)",
+        "role": "Client",
+        "replicated": true
+      },
+      "holders": {
+        "Server": [
+          {
+            "id": "msg_end_of_early_data_record",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "msg_Client_Server_4",
+      "evidence": [],
+      "description": "The message term aeadEncrypt((client_finished_message, handshake_content_type), client_handshake_write_key, empty_aad) sent in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "aeadEncrypt((client_finished_message, handshake_content_type), client_handshake_write_key, empty_aad)",
+        "role": "Client",
+        "replicated": true
+      },
+      "holders": {
+        "Server": [
+          {
+            "id": "msg_client_finished_record",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "version",
+      "evidence": [],
+      "description": "version, a fresh value made in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "version",
+        "role": "Server",
+        "replicated": true
+      },
+      "holders": {
+        "Server": [
+          {
+            "id": "version",
+            "how": "generated"
+          }
+        ]
+      }
+    },
+    {
+      "name": "cipher_suite",
+      "evidence": [],
+      "description": "cipher_suite, a fresh value made in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "cipher_suite",
+        "role": "Server",
+        "replicated": true
+      },
+      "holders": {
+        "Server": [
+          {
+            "id": "cipher_suite",
+            "how": "generated"
+          }
+        ]
+      }
+    },
+    {
+      "name": "selected_identity",
+      "evidence": [],
+      "description": "selected_identity, a fresh value made in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "selected_identity",
+        "role": "Server",
+        "replicated": true
+      },
+      "holders": {
+        "Server": [
+          {
+            "id": "selected_identity",
+            "how": "generated"
+          }
+        ]
+      }
+    },
+    {
+      "name": "psk_key_exchange_mode_Server",
+      "evidence": [],
+      "description": "psk_key_exchange_mode_Server, a fresh value made in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "psk_key_exchange_mode_Server",
+        "role": "Server",
+        "replicated": true
+      },
+      "holders": {
+        "Server": [
+          {
+            "id": "psk_key_exchange_mode_Server",
+            "how": "generated"
+          }
+        ]
+      }
+    },
+    {
+      "name": "group",
+      "evidence": [],
+      "description": "group, a fresh value made in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "group",
+        "role": "Server",
+        "replicated": true
+      },
+      "holders": {
+        "Server": [
+          {
+            "id": "group",
+            "how": "generated"
+          }
+        ]
+      }
+    },
+    {
+      "name": "server_ALPN_protocol",
+      "evidence": [],
+      "description": "server_ALPN_protocol, a fresh value made in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "server_ALPN_protocol",
+        "role": "Server",
+        "replicated": true
+      },
+      "holders": {
+        "Server": [
+          {
+            "id": "server_ALPN_protocol",
+            "how": "generated"
+          }
+        ]
+      }
+    },
+    {
+      "name": "server_random",
+      "evidence": [],
+      "description": "server_random, a fresh value made in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "server_random",
+        "role": "Server",
+        "replicated": true
+      },
+      "holders": {
+        "Server": [
+          {
+            "id": "server_random",
+            "how": "generated"
+          }
+        ],
+        "Client": [
+          {
+            "id": "server_random_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "server_exponent",
+      "evidence": [],
+      "description": "server_exponent, a fresh value made in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "server_exponent",
+        "role": "Server",
+        "replicated": true
+      },
+      "holders": {
+        "Server": [
+          {
+            "id": "server_exponent",
+            "how": "generated"
+          }
+        ]
+      }
+    },
+    {
+      "name": "msg_Server_Client_1",
+      "evidence": [],
+      "description": "The message term (server_hello_message, handshake_content_type) sent in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "(server_hello_message, handshake_content_type)",
+        "role": "Server",
+        "replicated": true
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "msg_server_hello_record",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "msg_Server_Client_2",
+      "evidence": [],
+      "description": "The message term aeadEncrypt((encrypted_extensions_message, handshake_content_type), server_handshake_write_key, empty_aad) sent in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "aeadEncrypt((encrypted_extensions_message, handshake_content_type), server_handshake_write_key, empty_aad)",
+        "role": "Server",
+        "replicated": true
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "msg_encrypted_extensions_record",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "msg_Server_Client_3",
+      "evidence": [],
+      "description": "The message term aeadEncrypt((server_finished_message, handshake_content_type), server_handshake_write_key, empty_aad) sent in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "aeadEncrypt((server_finished_message, handshake_content_type), server_handshake_write_key, empty_aad)",
+        "role": "Server",
+        "replicated": true
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "msg_server_finished_record",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "client_share",
+      "evidence": [],
+      "description": "client_share, a value Client computes in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "client_share",
+        "role": "Client",
+        "replicated": true,
+        "derived_from": [
+          "g",
+          "client_exponent"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "client_share",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "client_share_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "client_group_offer",
+      "evidence": [],
+      "description": "client_group_offer, a value Client computes in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "client_group_offer",
+        "role": "Client",
+        "replicated": true,
+        "derived_from": [
+          "named_group_list"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "client_group_offer",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "client_group_offer_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "psk_identity_entry",
+      "evidence": [],
+      "description": "psk_identity_entry, a value Client computes in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "psk_identity_entry",
+        "role": "Client",
+        "replicated": true,
+        "derived_from": [
+          "identity",
+          "obfuscated_ticket_age"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "psk_identity_entry",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "psk_identity_entry_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "client_hello_truncated_body",
+      "evidence": [],
+      "description": "client_hello_truncated_body, a value Client computes in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "client_hello_truncated_body",
+        "role": "Client",
+        "replicated": true,
+        "derived_from": [
+          "legacy_version_tls12",
+          "random_Client",
+          "empty_legacy_session_id",
+          "cipher_suites",
+          "null_compression",
+          "versions",
+          "SNI",
+          "client_ALPN_protocols",
+          "named_group_list",
+          "client_group_offer",
+          "client_share",
+          "ke_modes",
+          "early_data_indication",
+          "psk_identity_entry"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "client_hello_truncated_body",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "client_hello_truncated_body_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "client_hello_truncated_message",
+      "evidence": [],
+      "description": "client_hello_truncated_message, a value Client computes in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "client_hello_truncated_message",
+        "role": "Client",
+        "replicated": true,
+        "derived_from": [
+          "client_hello_msg_type",
+          "client_hello_truncated_body"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "client_hello_truncated_message",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "early_secret",
+      "evidence": [],
+      "description": "early_secret, a value Client computes in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "no_dhe",
+          "label_early_secret",
+          "PSK"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "early_secret",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "early_secret",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "binder_key",
+      "evidence": [],
+      "description": "binder_key, a value Client computes in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "no_dhe",
+          "label_external_psk_binder",
+          "early_secret"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "binder_key",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "binder_key",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "binder",
+      "evidence": [],
+      "description": "binder, a value Client computes in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "binder",
+        "role": "Client",
+        "replicated": true,
+        "derived_from": [
+          "client_hello_truncated_message",
+          "binder_key"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "binder",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "binder_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "client_hello_body",
+      "evidence": [],
+      "description": "client_hello_body, a value Client computes in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "client_hello_body",
+        "role": "Client",
+        "replicated": true,
+        "derived_from": [
+          "client_hello_truncated_body",
+          "binder"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "client_hello_body",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "client_hello_body_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "client_hello_message",
+      "evidence": [],
+      "description": "client_hello_message, a value Client computes in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "client_hello_message",
+        "role": "Client",
+        "replicated": true,
+        "derived_from": [
+          "client_hello_msg_type",
+          "client_hello_body"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "client_hello_message",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "client_hello_message_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "client_early_traffic_secret",
+      "evidence": [],
+      "description": "client_early_traffic_secret, a value Client computes in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "no_dhe",
+          "label_client_early_traffic",
+          "client_hello_message",
+          "early_secret"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "client_early_traffic_secret",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "client_early_traffic_secret",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "client_early_write_key",
+      "evidence": [],
+      "description": "client_early_write_key, a value Client computes in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "no_dhe",
+          "label_write_key",
+          "client_early_traffic_secret"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "client_early_write_key",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "client_early_write_key",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "end_of_early_data_alert",
+      "evidence": [],
+      "description": "end_of_early_data_alert, a value Client computes in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "end_of_early_data_alert",
+        "role": "Client",
+        "replicated": true,
+        "derived_from": [
+          "warning_level",
+          "end_of_early_data_description"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "end_of_early_data_alert",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "end_of_early_data_alert_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "server_hello_message",
+      "evidence": [],
+      "description": "server_hello_message, a value Client receives in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "server_hello_message",
+        "role": "Server",
+        "replicated": true,
+        "derived_from": [
+          "server_hello_msg_type",
+          "server_hello_body"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "server_hello_message_recv",
+            "how": "received"
+          }
+        ],
+        "Server": [
+          {
+            "id": "server_hello_message",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "server_hello_body",
+      "evidence": [],
+      "description": "server_hello_body, a value Client receives in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "server_hello_body",
+        "role": "Server",
+        "replicated": true,
+        "derived_from": [
+          "server_random",
+          "version_selection",
+          "cipher_suite_selection",
+          "selected_identity_selection",
+          "group_selection",
+          "server_share"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "server_hello_body_recv",
+            "how": "received"
+          }
+        ],
+        "Server": [
+          {
+            "id": "server_hello_body",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "cipher_suite_selection",
+      "evidence": [],
+      "description": "cipher_suite_selection, a value Client receives in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "cipher_suite_selection",
+        "role": "Server",
+        "replicated": true,
+        "derived_from": [
+          "cipher_suites",
+          "cipher_suite",
+          "PSK_cipher_suite"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "cipher_suite_selection_recv",
+            "how": "received"
+          }
+        ],
+        "Server": [
+          {
+            "id": "cipher_suite_selection",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "group_selection",
+      "evidence": [],
+      "description": "group_selection, a value Client receives in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "group_selection",
+        "role": "Server",
+        "replicated": true,
+        "derived_from": [
+          "named_group_list",
+          "group",
+          "client_group_value_recv"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "group_selection_recv",
+            "how": "received"
+          }
+        ],
+        "Server": [
+          {
+            "id": "group_selection",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "selected_identity_selection",
+      "evidence": [],
+      "description": "selected_identity_selection, a value Client receives in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "selected_identity_selection",
+        "role": "Server",
+        "replicated": true,
+        "derived_from": [
+          "identity",
+          "selected_identity",
+          "first_identity_index"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "selected_identity_selection_recv",
+            "how": "received"
+          }
+        ],
+        "Server": [
+          {
+            "id": "selected_identity_selection",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "server_share",
+      "evidence": [],
+      "description": "server_share, a value Client receives in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "server_share",
+        "role": "Server",
+        "replicated": true,
+        "derived_from": [
+          "g",
+          "server_exponent"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "server_share_recv",
+            "how": "received"
+          }
+        ],
+        "Server": [
+          {
+            "id": "server_share",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "version_selection",
+      "evidence": [],
+      "description": "version_selection, a value Client receives in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "version_selection",
+        "role": "Server",
+        "replicated": true,
+        "derived_from": [
+          "versions",
+          "version",
+          "PSK_TLS_version"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "version_selection_recv",
+            "how": "received"
+          }
+        ],
+        "Server": [
+          {
+            "id": "version_selection",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "version_recv",
+      "evidence": [],
+      "description": "version_recv, a value Client computes in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "version_recv",
+        "role": "Client",
+        "replicated": true,
+        "derived_from": [
+          "version_selection",
+          "versions"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "version_recv",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "cipher_suite_recv",
+      "evidence": [],
+      "description": "cipher_suite_recv, a value Client computes in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "cipher_suite_recv",
+        "role": "Client",
+        "replicated": true,
+        "derived_from": [
+          "cipher_suite_selection",
+          "cipher_suites"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "cipher_suite_recv",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "selected_identity_recv",
+      "evidence": [],
+      "description": "selected_identity_recv, a value Client computes in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "selected_identity_recv",
+        "role": "Client",
+        "replicated": true,
+        "derived_from": [
+          "selected_identity_selection",
+          "identity"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "selected_identity_recv",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "client_group_value",
+      "evidence": [],
+      "description": "client_group_value, a value Client computes in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "client_group_value",
+        "role": "Client",
+        "replicated": true,
+        "derived_from": [
+          "client_group_offer",
+          "named_group_list"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "client_group_value",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "server_group_value_recv",
+      "evidence": [],
+      "description": "server_group_value_recv, a value Client computes in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "server_group_value_recv",
+        "role": "Client",
+        "replicated": true,
+        "derived_from": [
+          "group_selection",
+          "named_group_list"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "server_group_value_recv",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "shared_secret",
+      "evidence": [],
+      "description": "shared_secret, a value Client computes in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "server_share",
+          "client_exponent",
+          "client_share",
+          "server_exponent"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "shared_secret",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "shared_secret",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "handshake_secret",
+      "evidence": [],
+      "description": "handshake_secret, a value Client computes in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "shared_secret",
+          "label_handshake_secret",
+          "early_secret"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "handshake_secret",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "handshake_secret",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "client_handshake_traffic_secret",
+      "evidence": [],
+      "description": "client_handshake_traffic_secret, a value Client computes in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "shared_secret",
+          "label_client_handshake_traffic",
+          "client_hello_message",
+          "server_hello_message",
+          "handshake_secret"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "client_handshake_traffic_secret",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "client_handshake_traffic_secret",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "server_handshake_traffic_secret",
+      "evidence": [],
+      "description": "server_handshake_traffic_secret, a value Client computes in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "shared_secret",
+          "label_server_handshake_traffic",
+          "client_hello_message",
+          "server_hello_message",
+          "handshake_secret"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "server_handshake_traffic_secret",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "server_handshake_traffic_secret",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "client_handshake_write_key",
+      "evidence": [],
+      "description": "client_handshake_write_key, a value Client computes in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "shared_secret",
+          "label_write_key",
+          "client_handshake_traffic_secret"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "client_handshake_write_key",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "client_handshake_write_key",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "server_handshake_write_key",
+      "evidence": [],
+      "description": "server_handshake_write_key, a value Client computes in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "shared_secret",
+          "label_write_key",
+          "server_handshake_traffic_secret"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "server_handshake_write_key",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "server_handshake_write_key",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "client_finished_key",
+      "evidence": [],
+      "description": "client_finished_key, a value Client computes in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "shared_secret",
+          "label_finished",
+          "client_handshake_traffic_secret"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "client_finished_key",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "client_finished_key",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "server_finished_key",
+      "evidence": [],
+      "description": "server_finished_key, a value Client computes in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "shared_secret",
+          "label_finished",
+          "server_handshake_traffic_secret"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "server_finished_key",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "server_finished_key",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "encrypted_extensions_inner_recv",
+      "evidence": [],
+      "description": "encrypted_extensions_inner_recv, a value Client computes in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "encrypted_extensions_inner_recv",
+        "role": "Client",
+        "replicated": true,
+        "derived_from": [
+          "msg_Server_Client_2",
+          "server_handshake_write_key",
+          "additional_data"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "encrypted_extensions_inner_recv",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "encrypted_extensions_message",
+      "evidence": [],
+      "description": "encrypted_extensions_message, a value Client receives in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "encrypted_extensions_message",
+        "role": "Server",
+        "replicated": true,
+        "derived_from": [
+          "encrypted_extensions_msg_type",
+          "encrypted_extensions_body"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "encrypted_extensions_message_recv",
+            "how": "received"
+          }
+        ],
+        "Server": [
+          {
+            "id": "encrypted_extensions_message",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "encrypted_extensions_body",
+      "evidence": [],
+      "description": "encrypted_extensions_body, a value Client receives in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "encrypted_extensions_body",
+        "role": "Server",
+        "replicated": true,
+        "derived_from": [
+          "server_ALPN_selection",
+          "early_data_accepted"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "encrypted_extensions_body_recv",
+            "how": "received"
+          }
+        ],
+        "Server": [
+          {
+            "id": "encrypted_extensions_body",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "server_ALPN_selection",
+      "evidence": [],
+      "description": "server_ALPN_selection, a value Client receives in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "server_ALPN_selection",
+        "role": "Server",
+        "replicated": true,
+        "derived_from": [
+          "client_ALPN_protocols",
+          "server_ALPN_protocol",
+          "PSK_ALPN"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "server_ALPN_selection_recv",
+            "how": "received"
+          }
+        ],
+        "Server": [
+          {
+            "id": "server_ALPN_selection",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "server_ALPN_protocol_recv",
+      "evidence": [],
+      "description": "server_ALPN_protocol_recv, a value Client computes in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "server_ALPN_protocol_recv",
+        "role": "Client",
+        "replicated": true,
+        "derived_from": [
+          "server_ALPN_selection",
+          "client_ALPN_protocols"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "server_ALPN_protocol_recv",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "server_finished_inner_recv",
+      "evidence": [],
+      "description": "server_finished_inner_recv, a value Client computes in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "server_finished_inner_recv",
+        "role": "Client",
+        "replicated": true,
+        "derived_from": [
+          "msg_Server_Client_3",
+          "server_handshake_write_key",
+          "additional_data"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "server_finished_inner_recv",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "server_finished_message",
+      "evidence": [],
+      "description": "server_finished_message, a value Client receives in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "server_finished_message",
+        "role": "Server",
+        "replicated": true,
+        "derived_from": [
+          "finished_msg_type",
+          "server_finished_tag"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "server_finished_message_recv",
+            "how": "received"
+          }
+        ],
+        "Server": [
+          {
+            "id": "server_finished_message",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "server_finished_tag",
+      "evidence": [],
+      "description": "server_finished_tag, a value Client receives in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "server_finished_tag",
+        "role": "Server",
+        "replicated": true,
+        "derived_from": [
+          "client_hello_message",
+          "server_hello_message",
+          "encrypted_extensions_message",
+          "server_finished_key"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "server_finished_tag_recv",
+            "how": "received"
+          }
+        ],
+        "Server": [
+          {
+            "id": "server_finished_tag",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "client_finished_tag",
+      "evidence": [],
+      "description": "client_finished_tag, a value Client computes in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "client_finished_tag",
+        "role": "Client",
+        "replicated": true,
+        "derived_from": [
+          "client_hello_message",
+          "server_hello_message",
+          "encrypted_extensions_message",
+          "server_finished_message",
+          "client_finished_key"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "client_finished_tag",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "client_finished_tag_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "client_finished_message",
+      "evidence": [],
+      "description": "client_finished_message, a value Client computes in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "client_finished_message",
+        "role": "Client",
+        "replicated": true,
+        "derived_from": [
+          "finished_msg_type",
+          "client_finished_tag"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "client_finished_message",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "client_finished_message_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "client_hello_truncated_message_recv",
+      "evidence": [],
+      "description": "client_hello_truncated_message_recv, a value Server computes in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "client_hello_truncated_message_recv",
+        "role": "Server",
+        "replicated": true,
+        "derived_from": [
+          "client_hello_msg_type",
+          "client_hello_truncated_body"
+        ]
+      },
+      "holders": {
+        "Server": [
+          {
+            "id": "client_hello_truncated_message_recv",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "client_group_value_recv",
+      "evidence": [],
+      "description": "client_group_value_recv, a value Server computes in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "client_group_value_recv",
+        "role": "Server",
+        "replicated": true,
+        "derived_from": [
+          "client_group_offer",
+          "named_group_list"
+        ]
+      },
+      "holders": {
+        "Server": [
+          {
+            "id": "client_group_value_recv",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "mode_selection",
+      "evidence": [],
+      "description": "mode_selection, a value Server computes in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "mode_selection",
+        "role": "Server",
+        "replicated": true,
+        "derived_from": [
+          "ke_modes",
+          "psk_key_exchange_mode_Server",
+          "psk_dhe_ke_value"
+        ]
+      },
+      "holders": {
+        "Server": [
+          {
+            "id": "mode_selection",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "negotiated_mode",
+      "evidence": [],
+      "description": "negotiated_mode, a value Server computes in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "negotiated_mode",
+        "role": "Server",
+        "replicated": true,
+        "derived_from": [
+          "mode_selection",
+          "ke_modes"
+        ]
+      },
+      "holders": {
+        "Server": [
+          {
+            "id": "negotiated_mode",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "negotiated_version",
+      "evidence": [],
+      "description": "negotiated_version, a value Server computes in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "negotiated_version",
+        "role": "Server",
+        "replicated": true,
+        "derived_from": [
+          "version_selection",
+          "versions"
+        ]
+      },
+      "holders": {
+        "Server": [
+          {
+            "id": "negotiated_version",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "negotiated_cipher_suite",
+      "evidence": [],
+      "description": "negotiated_cipher_suite, a value Server computes in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "negotiated_cipher_suite",
+        "role": "Server",
+        "replicated": true,
+        "derived_from": [
+          "cipher_suite_selection",
+          "cipher_suites"
+        ]
+      },
+      "holders": {
+        "Server": [
+          {
+            "id": "negotiated_cipher_suite",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "negotiated_identity_index",
+      "evidence": [],
+      "description": "negotiated_identity_index, a value Server computes in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "negotiated_identity_index",
+        "role": "Server",
+        "replicated": true,
+        "derived_from": [
+          "selected_identity_selection",
+          "identity"
+        ]
+      },
+      "holders": {
+        "Server": [
+          {
+            "id": "negotiated_identity_index",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "negotiated_group",
+      "evidence": [],
+      "description": "negotiated_group, a value Server computes in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "negotiated_group",
+        "role": "Server",
+        "replicated": true,
+        "derived_from": [
+          "group_selection",
+          "named_group_list"
+        ]
+      },
+      "holders": {
+        "Server": [
+          {
+            "id": "negotiated_group",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "negotiated_ALPN",
+      "evidence": [],
+      "description": "negotiated_ALPN, a value Server computes in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "negotiated_ALPN",
+        "role": "Server",
+        "replicated": true,
+        "derived_from": [
+          "server_ALPN_selection",
+          "client_ALPN_protocols"
+        ]
+      },
+      "holders": {
+        "Server": [
+          {
+            "id": "negotiated_ALPN",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "early_application_inner_recv",
+      "evidence": [],
+      "description": "early_application_inner_recv, a value Server computes in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "early_application_inner_recv",
+        "role": "Server",
+        "replicated": true,
+        "derived_from": [
+          "msg_Client_Server_2",
+          "client_early_write_key",
+          "additional_data"
+        ]
+      },
+      "holders": {
+        "Server": [
+          {
+            "id": "early_application_inner_recv",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "end_of_early_data_inner_recv",
+      "evidence": [],
+      "description": "end_of_early_data_inner_recv, a value Server computes in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "end_of_early_data_inner_recv",
+        "role": "Server",
+        "replicated": true,
+        "derived_from": [
+          "msg_Client_Server_3",
+          "client_early_write_key",
+          "additional_data"
+        ]
+      },
+      "holders": {
+        "Server": [
+          {
+            "id": "end_of_early_data_inner_recv",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "client_finished_inner_recv",
+      "evidence": [],
+      "description": "client_finished_inner_recv, a value Server computes in the TLS 1.3 draft-18 PSK 0-RTT handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "client_finished_inner_recv",
+        "role": "Server",
+        "replicated": true,
+        "derived_from": [
+          "msg_Client_Server_4",
+          "client_handshake_write_key",
+          "additional_data"
+        ]
+      },
+      "holders": {
+        "Server": [
+          {
+            "id": "client_finished_inner_recv",
+            "how": "computed"
+          }
+        ]
+      }
+    }
+  ]
+}

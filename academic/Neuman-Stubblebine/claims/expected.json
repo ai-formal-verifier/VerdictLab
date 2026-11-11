@@ -1,0 +1,168 @@
+{
+  "vocab_version": "4.0.0",
+  "protocol_id": "Neuman-Stubblebine",
+  "names": {
+    "A": "The initiator (client), sharing K_ka with the KDC, and its identity A sent in message (1) (§2, §3, §4.1).",
+    "B": "The responder (end-server), sharing K_kb with the KDC, and its identity B sent in message (2) (§2, §3, §4.1).",
+    "KDC": "The principal KDC: the trusted key distribution center: decrypts B's instruction with B's long-term key, generates the session key, encrypts A's response with A's long-term key, and issues the ticket encrypted for B.",
+    "K_ab": "The session key the KDC generates and sends to A in message (3), inside both A's part and the ticket for B (§3, §4.1).",
+    "N_a": "The nonce A generates and sends to B in message (1) of the initial authentication, which B forwards to the KDC and the KDC returns to A in message (3) (§3, §4.1).",
+    "N_b": "The nonce B generates and sends to the KDC in message (2), which the KDC passes to A in message (3) and A returns encrypted under K_ab in message (4) (§3, §4.1).",
+    "T_b": "The expiration time for the credentials, relative to B's clock, that B suggests in message (2) and that appears in A's part and the ticket in message (3) (§3, §4.1, §4.2)."
+  },
+  "scenarios": [
+    {
+      "name": "baseline",
+      "world": [
+        {
+          "axis": "data",
+          "target": {
+            "of": "A"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "B"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "population",
+          "target": {
+            "principal": "A"
+          },
+          "level": "unbounded"
+        },
+        {
+          "axis": "population",
+          "target": {
+            "principal": "B"
+          },
+          "level": "unbounded"
+        },
+        {
+          "axis": "population",
+          "target": {
+            "principal": "KDC"
+          },
+          "level": "unbounded"
+        }
+      ]
+    }
+  ],
+  "goals": [
+    {
+      "name": "auth_B_authenticates_A",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "B",
+        "subject": "A",
+        "of": [
+          "A",
+          "B",
+          "K_ab",
+          "N_a",
+          "N_b"
+        ]
+      }
+    },
+    {
+      "name": "auth_B_authenticates_A_noninj",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "B",
+        "subject": "A",
+        "of": [
+          "A",
+          "B",
+          "K_ab",
+          "N_a",
+          "N_b"
+        ]
+      }
+    },
+    {
+      "name": "auth_A_authenticates_B",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "A",
+        "subject": "B",
+        "of": [
+          "A",
+          "B",
+          "N_a",
+          "N_b",
+          "T_b"
+        ]
+      }
+    },
+    {
+      "name": "auth_A_authenticates_B_noninj",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "A",
+        "subject": "B",
+        "of": [
+          "A",
+          "B",
+          "N_a",
+          "N_b",
+          "T_b"
+        ]
+      }
+    }
+  ],
+  "questions": [
+    {
+      "id": "auth_B_authenticates_A",
+      "goal": "auth_B_authenticates_A",
+      "scenarios": [
+        "baseline"
+      ],
+      "verdict": "false",
+      "evidence": {
+        "file": "formal/proverif/main.pv"
+      }
+    },
+    {
+      "id": "auth_B_authenticates_A_noninj",
+      "goal": "auth_B_authenticates_A_noninj",
+      "scenarios": [
+        "baseline"
+      ],
+      "verdict": "false",
+      "evidence": {
+        "file": "formal/proverif/main.pv"
+      }
+    },
+    {
+      "id": "auth_A_authenticates_B",
+      "goal": "auth_A_authenticates_B",
+      "scenarios": [
+        "baseline"
+      ],
+      "verdict": "false",
+      "evidence": {
+        "file": "formal/proverif/main.pv"
+      }
+    },
+    {
+      "id": "auth_A_authenticates_B_noninj",
+      "goal": "auth_A_authenticates_B_noninj",
+      "scenarios": [
+        "baseline"
+      ],
+      "verdict": "false",
+      "evidence": {
+        "file": "formal/proverif/main.pv"
+      }
+    }
+  ],
+  "unexpressed": []
+}

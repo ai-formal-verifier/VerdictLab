@@ -1,0 +1,333 @@
+{
+  "vocab_version": "4.0.0",
+  "names": {
+    "A": "The initiator (client), sharing K_ka with the KDC, and its identity A sent in message (1) (§2, §3, §4.1).",
+    "B": "The responder (end-server), sharing K_kb with the KDC, and its identity B sent in message (2) (§2, §3, §4.1).",
+    "KDC": "The principal KDC: the trusted key distribution center: decrypts B's instruction with B's long-term key, generates the session key, encrypts A's response with A's long-term key, and issues the ticket encrypted for B.",
+    "K_ab": "The session key the KDC generates and sends to A in message (3), inside both A's part and the ticket for B (§3, §4.1).",
+    "N_a": "The nonce A generates and sends to B in message (1) of the initial authentication, which B forwards to the KDC and the KDC returns to A in message (3) (§3, §4.1).",
+    "N_b": "The nonce B generates and sends to the KDC in message (2), which the KDC passes to A in message (3) and A returns encrypted under K_ab in message (4) (§3, §4.1).",
+    "T_b": "The expiration time for the credentials, relative to B's clock, that B suggests in message (2) and that appears in A's part and the ticket in message (3) (§3, §4.1, §4.2)."
+  },
+  "assumptions": [
+    {
+      "id": "data_a_public",
+      "axis": "data",
+      "target": {
+        "of": "A"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_b_public",
+      "axis": "data",
+      "target": {
+        "of": "B"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "population_A",
+      "axis": "population",
+      "target": {
+        "principal": "A"
+      },
+      "default": "unbounded"
+    },
+    {
+      "id": "population_B",
+      "axis": "population",
+      "target": {
+        "principal": "B"
+      },
+      "default": "unbounded"
+    },
+    {
+      "id": "population_KDC",
+      "axis": "population",
+      "target": {
+        "principal": "KDC"
+      },
+      "default": "unbounded"
+    }
+  ],
+  "properties": [
+    {
+      "id": "auth_B_authenticates_A",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "B",
+        "subject": "A",
+        "of": [
+          "A",
+          "B",
+          "K_ab",
+          "N_a",
+          "N_b"
+        ]
+      }
+    },
+    {
+      "id": "auth_B_authenticates_A_noninj",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "B",
+        "subject": "A",
+        "of": [
+          "A",
+          "B",
+          "K_ab",
+          "N_a",
+          "N_b"
+        ]
+      }
+    },
+    {
+      "id": "auth_A_authenticates_B",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "A",
+        "subject": "B",
+        "of": [
+          "A",
+          "B",
+          "N_a",
+          "N_b",
+          "T_b"
+        ]
+      }
+    },
+    {
+      "id": "auth_A_authenticates_B_noninj",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "A",
+        "subject": "B",
+        "of": [
+          "A",
+          "B",
+          "N_a",
+          "N_b",
+          "T_b"
+        ]
+      }
+    },
+    {
+      "id": "auth_a_b_noninj_na",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "A",
+        "subject": "B",
+        "of": [
+          "A",
+          "B",
+          "N_a"
+        ]
+      }
+    },
+    {
+      "id": "auth_kdc_b_noninj_request",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "KDC",
+        "subject": "B",
+        "of": [
+          "A",
+          "B",
+          "N_a",
+          "T_b"
+        ]
+      }
+    },
+    {
+      "id": "auth_kdc_b_inj_request",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "KDC",
+        "subject": "B",
+        "of": [
+          "A",
+          "B",
+          "N_a",
+          "T_b"
+        ]
+      }
+    },
+    {
+      "id": "auth_a_kdc_noninj_na",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "A",
+        "subject": "KDC",
+        "of": [
+          "B",
+          "N_a"
+        ]
+      }
+    },
+    {
+      "id": "auth_a_b_inj_ids",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "A",
+        "subject": "B",
+        "of": [
+          "A",
+          "B"
+        ]
+      }
+    },
+    {
+      "id": "auth_b_a_inj_ids",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "B",
+        "subject": "A",
+        "of": [
+          "A",
+          "B"
+        ]
+      }
+    }
+  ],
+  "claims": [
+    {
+      "id": "a_agrees_with_b_on_na",
+      "property": "auth_a_b_noninj_na",
+      "expect": "holds",
+      "conditions": [],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "4.1",
+          "quote": "Upon receiving message (3), A decrypts that part encrypted in K_ka and verifies that the nonce N_a is the same as that included in message (1). If it matches A is assured that K received the nonce from B encrypted in K_kb."
+        }
+      ]
+    },
+    {
+      "id": "kdc_agrees_with_b_on_request",
+      "property": "auth_kdc_b_noninj_request",
+      "expect": "holds",
+      "conditions": [],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "4.1",
+          "quote": "Upon receiving instructions from B, K decrypts the instructions with K_kb, thus verifying that they were issued by B at some point in the past (K does not care about replays)."
+        },
+        {
+          "document": "main",
+          "section": "4.1",
+          "quote": "These instructions specify A as the intended recipient of the credentials, a suggested expiration time for the credentials, and the nonce received from A."
+        }
+      ]
+    },
+    {
+      "id": "kdc_does_not_detect_replayed_requests",
+      "property": "auth_kdc_b_inj_request",
+      "expect": "fails",
+      "conditions": [],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "4.1",
+          "quote": "Upon receiving instructions from B, K decrypts the instructions with K_kb, thus verifying that they were issued by B at some point in the past (K does not care about replays)."
+        }
+      ]
+    },
+    {
+      "id": "a_agrees_with_kdc_on_na_from_b",
+      "property": "auth_a_kdc_noninj_na",
+      "expect": "holds",
+      "conditions": [],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "4.1",
+          "quote": "Upon receiving message (3), A decrypts that part encrypted in K_ka and verifies that the nonce N_a is the same as that included in message (1). If it matches A is assured that K received the nonce from B encrypted in K_kb."
+        }
+      ]
+    },
+    {
+      "id": "nonces_mitigate_replay_a_about_b",
+      "property": "auth_a_b_inj_ids",
+      "expect": "holds",
+      "conditions": [],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "1",
+          "quote": "It utilizes a nonce-based design to effectively mitigate the risks associated with replay attacks and reduces the heavy reliance on globally synchronized clocks typically found in traditional protocols."
+        },
+        {
+          "document": "main",
+          "section": "3",
+          "quote": "**N_a, N_b**: Nonces (unique identifiers used only once) generated by A and B, respectively, to ensure message freshness."
+        },
+        {
+          "document": "main",
+          "section": "1",
+          "quote": "This protocol defines a methodology for mutual authentication and key distribution within distributed systems."
+        },
+        {
+          "document": "main",
+          "section": "4",
+          "quote": "This protocol is a nonce-based protocol for repeated mutual authentication requiring only four messages initially and three messages for subsequent authentication to a single server."
+        }
+      ]
+    },
+    {
+      "id": "nonces_mitigate_replay_b_about_a",
+      "property": "auth_b_a_inj_ids",
+      "expect": "holds",
+      "conditions": [],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "1",
+          "quote": "It utilizes a nonce-based design to effectively mitigate the risks associated with replay attacks and reduces the heavy reliance on globally synchronized clocks typically found in traditional protocols."
+        },
+        {
+          "document": "main",
+          "section": "3",
+          "quote": "**N_a, N_b**: Nonces (unique identifiers used only once) generated by A and B, respectively, to ensure message freshness."
+        },
+        {
+          "document": "main",
+          "section": "1",
+          "quote": "This protocol defines a methodology for mutual authentication and key distribution within distributed systems."
+        },
+        {
+          "document": "main",
+          "section": "4",
+          "quote": "This protocol is a nonce-based protocol for repeated mutual authentication requiring only four messages initially and three messages for subsequent authentication to a single server."
+        },
+        {
+          "document": "main",
+          "section": "4.1",
+          "quote": "Further, A knows B's nonce (N_b) and can use it to prove its identity to B. Finally, in message (4), A forwards the ticket to B together with B's nonce (N_b) encrypted under the session key from the ticket, thus proving to B the identity of A."
+        }
+      ]
+    }
+  ]
+}

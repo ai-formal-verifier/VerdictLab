@@ -1,0 +1,669 @@
+{
+  "vocab_version": "4.0.0",
+  "protocol_id": "TLS13-8446-handshake-reftls",
+  "names": {
+    "pk_Server": "The server's public key, carried in the end-entity certificate of its Certificate message and used to verify its CertificateVerify signature (§4.4.2, §4.4.3).",
+    "sk_Server": "The server's private signing key, matching the public key in its end-entity certificate, with which it signs CertificateVerify (§4.4.2, §4.4.3).",
+    "PSK": "The pre-shared key in use, either established externally or derived from the resumption_master_secret of a previous connection, input to HKDF-Extract to form the Early Secret (zero if no PSK is used) (§2.2, §4.6.1, §7.1).",
+    "server_certificates": "The identity scope of the server identities clients authenticate through certificates chaining to their trust anchors; open means the attacker may obtain a valid certificate for a server identity of its own (§4.4.2, §4.4.2.2).",
+    "psk_identities": "The identity scope of the PSKs clients and servers share, external or established through NewSessionTicket, which a client names by a PskIdentity in its pre_shared_key extension and a server accepts after validating the binder; open means the attacker shares PSKs of its own with honest endpoints (§2.2, §4.2.11).",
+    "dh_group": "The (EC)DHE group of the key exchange, one of the named groups of the client's supported_groups for which it sends a key_share, answered by the server's key_share in its ServerHello (§4.2.7, §4.2.8).",
+    "hash_algorithm": "The cipher suite hash algorithm, used by Transcript-Hash and HKDF and so for the transcript hash the server signs in CertificateVerify (§7.1, §4.4.1, §4.4.3, §B.4).",
+    "aead_algorithm": "The AEAD algorithm of the negotiated cipher suite, which protects the records; for 0-RTT data, that of the cipher suite associated with the PSK (§5.2, §4.2.10, §B.4).",
+    "Client": "The client, the endpoint initiating the TLS connection (§1.1).",
+    "Server": "The server, the endpoint which did not initiate the TLS connection (§1.1).",
+    "random_Client": "ClientHello.random, the client's 32 bytes from a secure random number generator (§4.1.2).",
+    "random_Server": "ServerHello.random, the server's 32 bytes from a secure random number generator (§4.1.3).",
+    "offer_Client": "The client's offer in its ClientHello for the parameters the server will select: the protocol versions, the cipher suites (AEAD algorithm and hash), the key-exchange groups with key_share, and the PSK and its psk_key_exchange_modes (§4.1.1, §4.1.2).",
+    "selected_parameters_Server": "The parameters the server selects from the offer in its ServerHello: the version, the cipher_suite (AEAD algorithm and hash), the key-exchange group of its key_share, and whether and which PSK is used (§4.1.1, §4.1.3).",
+    "application_write_key_Client": "The client application traffic key, client_write_key derived with HKDF-Expand-Label from client_application_traffic_secret_0 (§7.1, §7.3).",
+    "application_write_key_Server": "The server application traffic key, server_write_key derived with HKDF-Expand-Label from server_application_traffic_secret_0 (§7.1, §7.3).",
+    "exporter_master_secret": "exporter_master_secret, Derive-Secret(Master Secret, \"exp master\", ClientHello...server Finished), the secret behind keying material exporters (§7.1, §7.5).",
+    "per_record_nonce": "The per-record nonce of the AEAD-protected record carrying the data, the padded 64-bit sequence number XORed with the sender's write_iv (§5.3).",
+    "additional_data": "The AEAD additional data input of a protected record, the record header TLSCiphertext.opaque_type || TLSCiphertext.legacy_record_version || TLSCiphertext.length (§5.2).",
+    "application_data_Client": "The client's 1-RTT application data (TLSInnerPlaintext.content of a record of type application_data), sent after its Finished under keys derived from client_application_traffic_secret_N (§2, §5.2, §7.3).",
+    "early_data_Client": "The client's 0-RTT early data, application data sent in its first flight under keys from client_early_traffic_secret, whose security properties the document calls weaker than those of other TLS data (§2.3, §4.2.10, §7.3)."
+  },
+  "scenarios": [
+    {
+      "name": "server_key_and_psk_disclosed__weak_dh_hash_aead",
+      "world": [
+        {
+          "axis": "data",
+          "target": {
+            "of": "pk_Server"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "sk_Server"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "PSK"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "admission",
+          "target": {
+            "scope": "server_certificates"
+          },
+          "level": "open"
+        },
+        {
+          "axis": "admission",
+          "target": {
+            "scope": "psk_identities"
+          },
+          "level": "open"
+        },
+        {
+          "axis": "primitive",
+          "target": {
+            "family": "dh_group"
+          },
+          "level": "weak_member"
+        },
+        {
+          "axis": "primitive",
+          "target": {
+            "family": "hash_algorithm"
+          },
+          "level": "weak_member"
+        },
+        {
+          "axis": "primitive",
+          "target": {
+            "family": "aead_algorithm"
+          },
+          "level": "weak_member"
+        },
+        {
+          "axis": "seating",
+          "target": {
+            "principal": "Client"
+          },
+          "level": "any_role"
+        },
+        {
+          "axis": "population",
+          "target": {
+            "principal": "Client"
+          },
+          "level": "unbounded"
+        },
+        {
+          "axis": "seating",
+          "target": {
+            "principal": "Server"
+          },
+          "level": "any_role"
+        },
+        {
+          "axis": "population",
+          "target": {
+            "principal": "Server"
+          },
+          "level": "unbounded"
+        }
+      ]
+    },
+    {
+      "name": "server_key_and_psk_disclosed__weak_aead",
+      "world": [
+        {
+          "axis": "data",
+          "target": {
+            "of": "pk_Server"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "sk_Server"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "PSK"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "admission",
+          "target": {
+            "scope": "server_certificates"
+          },
+          "level": "open"
+        },
+        {
+          "axis": "admission",
+          "target": {
+            "scope": "psk_identities"
+          },
+          "level": "open"
+        },
+        {
+          "axis": "primitive",
+          "target": {
+            "family": "dh_group"
+          },
+          "level": "ideal"
+        },
+        {
+          "axis": "primitive",
+          "target": {
+            "family": "hash_algorithm"
+          },
+          "level": "ideal"
+        },
+        {
+          "axis": "primitive",
+          "target": {
+            "family": "aead_algorithm"
+          },
+          "level": "weak_member"
+        },
+        {
+          "axis": "seating",
+          "target": {
+            "principal": "Client"
+          },
+          "level": "any_role"
+        },
+        {
+          "axis": "population",
+          "target": {
+            "principal": "Client"
+          },
+          "level": "unbounded"
+        },
+        {
+          "axis": "seating",
+          "target": {
+            "principal": "Server"
+          },
+          "level": "any_role"
+        },
+        {
+          "axis": "population",
+          "target": {
+            "principal": "Server"
+          },
+          "level": "unbounded"
+        }
+      ]
+    },
+    {
+      "name": "psk_safe_server_key_disclosed__weak_dh_hash",
+      "world": [
+        {
+          "axis": "data",
+          "target": {
+            "of": "pk_Server"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "sk_Server"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "PSK"
+          },
+          "level": "none"
+        },
+        {
+          "axis": "admission",
+          "target": {
+            "scope": "server_certificates"
+          },
+          "level": "open"
+        },
+        {
+          "axis": "admission",
+          "target": {
+            "scope": "psk_identities"
+          },
+          "level": "open"
+        },
+        {
+          "axis": "primitive",
+          "target": {
+            "family": "dh_group"
+          },
+          "level": "weak_member"
+        },
+        {
+          "axis": "primitive",
+          "target": {
+            "family": "hash_algorithm"
+          },
+          "level": "weak_member"
+        },
+        {
+          "axis": "primitive",
+          "target": {
+            "family": "aead_algorithm"
+          },
+          "level": "ideal"
+        },
+        {
+          "axis": "seating",
+          "target": {
+            "principal": "Client"
+          },
+          "level": "any_role"
+        },
+        {
+          "axis": "population",
+          "target": {
+            "principal": "Client"
+          },
+          "level": "unbounded"
+        },
+        {
+          "axis": "seating",
+          "target": {
+            "principal": "Server"
+          },
+          "level": "any_role"
+        },
+        {
+          "axis": "population",
+          "target": {
+            "principal": "Server"
+          },
+          "level": "unbounded"
+        }
+      ]
+    },
+    {
+      "name": "psk_safe_server_key_disclosed__strong_algorithms",
+      "world": [
+        {
+          "axis": "data",
+          "target": {
+            "of": "pk_Server"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "sk_Server"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "PSK"
+          },
+          "level": "none"
+        },
+        {
+          "axis": "admission",
+          "target": {
+            "scope": "server_certificates"
+          },
+          "level": "open"
+        },
+        {
+          "axis": "admission",
+          "target": {
+            "scope": "psk_identities"
+          },
+          "level": "open"
+        },
+        {
+          "axis": "primitive",
+          "target": {
+            "family": "dh_group"
+          },
+          "level": "ideal"
+        },
+        {
+          "axis": "primitive",
+          "target": {
+            "family": "hash_algorithm"
+          },
+          "level": "ideal"
+        },
+        {
+          "axis": "primitive",
+          "target": {
+            "family": "aead_algorithm"
+          },
+          "level": "ideal"
+        },
+        {
+          "axis": "seating",
+          "target": {
+            "principal": "Client"
+          },
+          "level": "any_role"
+        },
+        {
+          "axis": "population",
+          "target": {
+            "principal": "Client"
+          },
+          "level": "unbounded"
+        },
+        {
+          "axis": "seating",
+          "target": {
+            "principal": "Server"
+          },
+          "level": "any_role"
+        },
+        {
+          "axis": "population",
+          "target": {
+            "principal": "Server"
+          },
+          "level": "unbounded"
+        }
+      ]
+    }
+  ],
+  "goals": [
+    {
+      "name": "tls13-rfc8446-only.auth_client_to_server_handshake_noninj",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "Client",
+        "subject": "Server",
+        "of": [
+          "random_Client",
+          "random_Server",
+          "PSK",
+          "pk_Server",
+          "offer_Client",
+          "selected_parameters_Server",
+          "application_write_key_Client",
+          "application_write_key_Server",
+          "exporter_master_secret"
+        ]
+      },
+      "description": "In the reftls model of RFC 8446, where every handshake uses a PSK with (EC)DHE and the server also authenticates with its certificate (a combination the RFC does not specify, §2.2, §E.1), when the client completes a 1-RTT handshake, a server reached its Finished with the same randoms, PSK, server public key, offered and selected parameters, application traffic keys and exporter_master_secret."
+    },
+    {
+      "name": "tls13-rfc8446-only.secrecy_client_traffic_key_1rtt",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "application_write_key_Client"
+        ],
+        "holders": [
+          "Client",
+          "Server"
+        ]
+      },
+      "description": "In the reftls model of RFC 8446, where every handshake uses a PSK with (EC)DHE and the server also authenticates with its certificate (a combination the RFC does not specify, §2.2, §E.1), the attacker never learns the client application traffic key of a handshake the client completed."
+    },
+    {
+      "name": "tls13-rfc8446-only.auth_client_to_server_handshake",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "Client",
+        "subject": "Server",
+        "of": [
+          "random_Client",
+          "random_Server",
+          "PSK",
+          "pk_Server",
+          "offer_Client",
+          "selected_parameters_Server",
+          "application_write_key_Client",
+          "application_write_key_Server",
+          "exporter_master_secret"
+        ]
+      },
+      "description": "In the reftls model of RFC 8446, where every handshake uses a PSK with (EC)DHE and the server also authenticates with its certificate (a combination the RFC does not specify, §2.2, §E.1), when the client completes a 1-RTT handshake, a distinct server run reached its Finished with the same randoms, PSK, server public key, offered and selected parameters, application traffic keys and exporter_master_secret."
+    },
+    {
+      "name": "tls13-rfc8446-only.secrecy_client_earlydata_0rtt",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "early_data_Client"
+        ],
+        "holders": [
+          "Client",
+          "Server"
+        ]
+      },
+      "description": "In the reftls model of RFC 8446, where every handshake uses a PSK with (EC)DHE and the server also authenticates with its certificate (a combination the RFC does not specify, §2.2, §E.1), the attacker never learns the client's 0-RTT early data."
+    },
+    {
+      "name": "tls13-rfc8446-only.auth_server_receives_appdata",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "Server",
+        "subject": "Client",
+        "of": [
+          "random_Client",
+          "random_Server",
+          "PSK",
+          "pk_Server",
+          "per_record_nonce",
+          "additional_data",
+          "application_data_Client"
+        ]
+      },
+      "description": "In the reftls model of RFC 8446, where every handshake uses a PSK with (EC)DHE and the server also authenticates with its certificate (a combination the RFC does not specify, §2.2, §E.1), when the server accepts a client 1-RTT record, the client sent that data in a session with the same randoms, PSK and server public key, under the same per-record nonce and additional data (replay is left to the receiver refusing a repeated nonce)."
+    },
+    {
+      "name": "tls13-rfc8446-only.auth_server_receives_earlydata_0rtt",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "Server",
+        "subject": "Client",
+        "of": [
+          "random_Client",
+          "PSK",
+          "per_record_nonce",
+          "additional_data",
+          "early_data_Client"
+        ]
+      },
+      "description": "In the reftls model of RFC 8446, where every handshake uses a PSK with (EC)DHE and the server also authenticates with its certificate (a combination the RFC does not specify, §2.2, §E.1), when the server accepts 0-RTT early data, the client sent it in a session with the same ClientHello.random and PSK, under the same per-record nonce and additional data (non-injective: 0-RTT data can be replayed)."
+    }
+  ],
+  "questions": [
+    {
+      "id": "tls13-rfc8446-only.q02",
+      "goal": "tls13-rfc8446-only.auth_client_to_server_handshake_noninj",
+      "scenarios": [
+        "server_key_and_psk_disclosed__weak_dh_hash_aead"
+      ],
+      "verdict": "false"
+    },
+    {
+      "id": "tls13-rfc8446-only.q10",
+      "goal": "tls13-rfc8446-only.secrecy_client_traffic_key_1rtt",
+      "scenarios": [
+        "server_key_and_psk_disclosed__weak_aead"
+      ],
+      "verdict": "false"
+    },
+    {
+      "id": "tls13-rfc8446-only.q13",
+      "goal": "tls13-rfc8446-only.auth_client_to_server_handshake",
+      "scenarios": [
+        "server_key_and_psk_disclosed__weak_aead"
+      ],
+      "verdict": "false"
+    },
+    {
+      "id": "tls13-rfc8446-only.q14",
+      "goal": "tls13-rfc8446-only.auth_client_to_server_handshake",
+      "scenarios": [
+        "server_key_and_psk_disclosed__weak_dh_hash_aead"
+      ],
+      "verdict": "false"
+    },
+    {
+      "id": "tls13-rfc8446-only.q23",
+      "goal": "tls13-rfc8446-only.secrecy_client_earlydata_0rtt",
+      "scenarios": [
+        "psk_safe_server_key_disclosed__weak_dh_hash"
+      ],
+      "verdict": "true"
+    },
+    {
+      "id": "tls13-rfc8446-only.q25",
+      "goal": "tls13-rfc8446-only.auth_server_receives_appdata",
+      "scenarios": [
+        "psk_safe_server_key_disclosed__strong_algorithms"
+      ],
+      "verdict": "true"
+    },
+    {
+      "id": "tls13-rfc8446-only.q26",
+      "goal": "tls13-rfc8446-only.auth_server_receives_earlydata_0rtt",
+      "scenarios": [
+        "psk_safe_server_key_disclosed__weak_dh_hash"
+      ],
+      "verdict": "true"
+    }
+  ],
+  "unexpressed": [
+    {
+      "id": "tls13-rfc8446-only.q01",
+      "verdict": "true",
+      "description": "event(ClientFinished(TLS12,cr_19,sr_13,psk_18,p_8,m_17,o_16,ck_10,sk_6,cb_5,ms_7)) ==> event(ServerFinished(TLS12,cr_19,sr_13,psk_18,p_8,m_17,o_16,ck_10,sk_6,cb_5,ms_7)) — model tls13-rfc8446-only.pv; ProVerif 2.05 run, fserver, 2026-10-20.",
+      "why": "unexpressed goal: see the property's gap"
+    },
+    {
+      "id": "tls13-rfc8446-only.q03",
+      "verdict": "true",
+      "description": "[reachability] not event(ServerFinished(TLS12,cr_19,sr_13,psk_18,p_8,m_17,o_16,ck_10,sk_6,cb_5,ms_7)) — model tls13-rfc8446-only.pv; ProVerif 2.05 run, fserver, 2026-10-20.",
+      "why": "unexpressed goal: see the property's gap"
+    },
+    {
+      "id": "tls13-rfc8446-only.q04",
+      "verdict": "true",
+      "description": "[reachability] not event(ClientFinished(TLS12,cr_19,sr_13,psk_18,p_8,m_17,o_16,ck_10,sk_6,cb_5,ms_7)) — model tls13-rfc8446-only.pv; ProVerif 2.05 run, fserver, 2026-10-20.",
+      "why": "unexpressed goal: see the property's gap"
+    },
+    {
+      "id": "tls13-rfc8446-only.q05",
+      "verdict": "false",
+      "description": "[reachability] not event(ServerFinished(TLS13,cr_19,sr_13,psk_18,p_8,m_17,o_16,ck_10,sk_6,cb_5,ms_7)) — model tls13-rfc8446-only.pv; ProVerif 2.05 run, fserver, 2026-10-20.",
+      "why": "unexpressed goal: see the property's gap"
+    },
+    {
+      "id": "tls13-rfc8446-only.q06",
+      "verdict": "false",
+      "description": "[reachability] not event(PreServerFinished(TLS13,cr_19,sr_13,psk_18,p_8,m_17,o_16,ck_10,sk_6,cb_5)) — model tls13-rfc8446-only.pv; ProVerif 2.05 run, fserver, 2026-10-20.",
+      "why": "unexpressed goal: see the property's gap"
+    },
+    {
+      "id": "tls13-rfc8446-only.q07",
+      "verdict": "false",
+      "description": "[reachability] not event(ClientFinished(TLS13,cr_19,sr_13,psk_18,p_8,m_17,o_16,ck_10,sk_6,cb_5,ms_7)) — model tls13-rfc8446-only.pv; ProVerif 2.05 run, fserver, 2026-10-20.",
+      "why": "unexpressed goal: see the property's gap"
+    },
+    {
+      "id": "tls13-rfc8446-only.q08",
+      "verdict": "false",
+      "description": "event(ClientAEKeyLeaked(TLS13,cr_19,sr_13,psk_18,p_8)) ==> (event(WeakOrCompromisedKey(p_8)) && (psk_18 = NoPSK || event(CompromisedPreSharedKey(psk_18)))) || event(ServerChoosesKEX(cr_19,sr_13,p_8,TLS13,DHE_13(WeakDH,e))) — model tls13-rfc8446-only.pv; ProVerif 2.05 run, fserver, 2026-10-20.",
+      "why": "unexpressed point: missing assumption: the server key and the PSK of the tested session are not both compromised. The query (the client application key leak event) excuses a session only when its server key is the attacker's (WeakOrCompromisedKey) and its PSK is compromised or absent (every session of this model uses a PSK), so either credential alone must protect it: the conjunction of the points 'sk_Server disclosed, PSK none' and 'PSK disclosed, sk_Server none', which no single point expresses. Other conditions: the attacker can register server keys and create PSKs of its own, which honest clients and servers use (server_certificates and psk_identities open); a weak (EC)DHE group chosen for the tested session is excepted (dh_group ideal); a weak hash is not excepted (hash_algorithm weak_member); a weak AEAD algorithm is not excepted (aead_algorithm weak_member)."
+    },
+    {
+      "id": "tls13-rfc8446-only.q09",
+      "verdict": "false",
+      "description": "event(ClientAEKeyLeaked(TLS13,cr_19,sr_13,psk_18,p_8)) ==> (event(WeakOrCompromisedKey(p_8)) && (psk_18 = NoPSK || event(CompromisedPreSharedKey(psk_18)))) || event(ServerChoosesHash(cr'_6,sr'_4,p_8,TLS13,WeakHash)) — model tls13-rfc8446-only.pv; ProVerif 2.05 run, fserver, 2026-10-20.",
+      "why": "unexpressed point: missing assumption: the server key and the PSK of the tested session are not both compromised. The query (the client application key leak event) excuses a session only when its server key is the attacker's (WeakOrCompromisedKey) and its PSK is compromised or absent (every session of this model uses a PSK), so either credential alone must protect it: the conjunction of the points 'sk_Server disclosed, PSK none' and 'PSK disclosed, sk_Server none', which no single point expresses. Other conditions: the attacker can register server keys and create PSKs of its own, which honest clients and servers use (server_certificates and psk_identities open); a weak (EC)DHE group is not excepted (dh_group weak_member); a weak hash chosen in any session with the server key is excepted (hash_algorithm ideal); a weak AEAD algorithm is not excepted (aead_algorithm weak_member)."
+    },
+    {
+      "id": "tls13-rfc8446-only.q11",
+      "verdict": "false",
+      "description": "inj-event(ClientFinished(TLS13,cr_19,sr_13,psk_18,p_8,o_16,m_17,ck_10,sk_6,cb_5,ms_7)) ==> inj-event(PreServerFinished(TLS13,cr_19,sr_13,psk_18,p_8,o_16,m_17,ck_10,sk_6,cb_5)) || (event(WeakOrCompromisedKey(p_8)) && (psk_18 = NoPSK || event(CompromisedPreSharedKey(psk_18)))) — model tls13-rfc8446-only.pv; ProVerif 2.05 run, fserver, 2026-10-20.",
+      "why": "unexpressed point: missing assumption: the server key and the PSK of the tested session are not both compromised. The query (injective ClientFinished ==> PreServerFinished) excuses a session only when its server key is the attacker's (WeakOrCompromisedKey) and its PSK is compromised or absent (every session of this model uses a PSK), so either credential alone must protect it: the conjunction of the points 'sk_Server disclosed, PSK none' and 'PSK disclosed, sk_Server none', which no single point expresses. Other conditions: the attacker can register server keys and create PSKs of its own, which honest clients and servers use (server_certificates and psk_identities open); a weak (EC)DHE group is not excepted (dh_group weak_member); a weak hash is not excepted (hash_algorithm weak_member); a weak AEAD algorithm is not excepted (aead_algorithm weak_member)."
+    },
+    {
+      "id": "tls13-rfc8446-only.q12",
+      "verdict": "false",
+      "description": "inj-event(ClientFinished(TLS13,cr_19,sr_13,psk_18,p_8,o_16,m_17,ck_10,sk_6,cb_5,ms_7)) ==> inj-event(PreServerFinished(TLS13,cr_19,sr_13,psk_18,p_8,o_16,m_17,ck_10,sk_6,cb_5)) || (event(WeakOrCompromisedKey(p_8)) && (psk_18 = NoPSK || event(CompromisedPreSharedKey(psk_18)))) || event(ServerChoosesKEX(cr_19,sr_13,p_8,TLS13,DHE_13(WeakDH,e))) — model tls13-rfc8446-only.pv; ProVerif 2.05 run, fserver, 2026-10-20.",
+      "why": "unexpressed point: missing assumption: the server key and the PSK of the tested session are not both compromised. The query (injective ClientFinished ==> PreServerFinished) excuses a session only when its server key is the attacker's (WeakOrCompromisedKey) and its PSK is compromised or absent (every session of this model uses a PSK), so either credential alone must protect it: the conjunction of the points 'sk_Server disclosed, PSK none' and 'PSK disclosed, sk_Server none', which no single point expresses. Other conditions: the attacker can register server keys and create PSKs of its own, which honest clients and servers use (server_certificates and psk_identities open); a weak (EC)DHE group chosen for the tested session is excepted (dh_group ideal); a weak hash is not excepted (hash_algorithm weak_member); a weak AEAD algorithm is not excepted (aead_algorithm weak_member)."
+    },
+    {
+      "id": "tls13-rfc8446-only.q15",
+      "verdict": "true",
+      "description": "[reachability] not event(MatchingChannelBinding(TLS13,cr_19,sr_13,p_8,TLS13,cr'_6,sr'_4,p'_4)) — model tls13-rfc8446-only.pv; ProVerif 2.05 run, fserver, 2026-10-20.",
+      "why": "unexpressed goal: see the property's gap"
+    },
+    {
+      "id": "tls13-rfc8446-only.q16",
+      "verdict": "true",
+      "description": "[reachability] not event(MatchingResumptionSecret(TLS13,cr_19,sr_13,p_8,TLS13,cr'_6,sr'_4,p'_4)) — model tls13-rfc8446-only.pv; ProVerif 2.05 run, fserver, 2026-10-20.",
+      "why": "unexpressed goal: see the property's gap"
+    },
+    {
+      "id": "tls13-rfc8446-only.q17",
+      "verdict": "true",
+      "description": "[reachability] not event(MatchingResumptionPSK(TLS13,cr_19,sr_13,p_8,TLS13,cr'_6,sr'_4,p'_4)) — model tls13-rfc8446-only.pv; ProVerif 2.05 run, fserver, 2026-10-20.",
+      "why": "unexpressed goal: see the property's gap"
+    },
+    {
+      "id": "tls13-rfc8446-only.q18",
+      "verdict": "false",
+      "description": "[reachability] not event(ResumptionPSKDerived(v_76,cr_19,sr_13,p_8,rpsk_1)) — model tls13-rfc8446-only.pv; ProVerif 2.05 run, fserver, 2026-10-20.",
+      "why": "unexpressed goal: see the property's gap"
+    },
+    {
+      "id": "tls13-rfc8446-only.q19",
+      "verdict": "true",
+      "description": "[reachability] not event(MatchingAEKey(TLS13,cr_19,sr_13,p_8,TLS13,cr'_6,sr'_4,p'_4)) — model tls13-rfc8446-only.pv; ProVerif 2.05 run, fserver, 2026-10-20.",
+      "why": "unexpressed goal: see the property's gap"
+    },
+    {
+      "id": "tls13-rfc8446-only.q20",
+      "verdict": "true",
+      "description": "event(ClientAEKeyLeaked(TLS13,cr_19,sr_13,psk_18,p_8)) ==> (event(WeakOrCompromisedKey(p_8)) && (psk_18 = NoPSK || event(CompromisedPreSharedKey(psk_18)))) || event(ServerChoosesKEX(cr_19,sr_13,p_8,TLS13,DHE_13(WeakDH,e))) || event(ServerChoosesHash(cr'_6,sr'_4,p_8,TLS13,WeakHash)) — model tls13-rfc8446-only.pv; ProVerif 2.05 run, fserver, 2026-10-20.",
+      "why": "unexpressed point: missing assumption: the server key and the PSK of the tested session are not both compromised. The query (the client application key leak event) excuses a session only when its server key is the attacker's (WeakOrCompromisedKey) and its PSK is compromised or absent (every session of this model uses a PSK), so either credential alone must protect it: the conjunction of the points 'sk_Server disclosed, PSK none' and 'PSK disclosed, sk_Server none', which no single point expresses. Other conditions: the attacker can register server keys and create PSKs of its own, which honest clients and servers use (server_certificates and psk_identities open); a weak (EC)DHE group chosen for the tested session is excepted (dh_group ideal); a weak hash chosen in any session with the server key is excepted (hash_algorithm ideal); a weak AEAD algorithm is not excepted (aead_algorithm weak_member)."
+    },
+    {
+      "id": "tls13-rfc8446-only.q21",
+      "verdict": "true",
+      "description": "inj-event(ClientFinished(TLS13,cr_19,sr_13,psk_18,p_8,o_16,m_17,ck_10,sk_6,cb_5,ms_7)) ==> inj-event(PreServerFinished(TLS13,cr_19,sr_13,psk_18,p_8,o_16,m_17,ck_10,sk_6,cb_5)) || (event(WeakOrCompromisedKey(p_8)) && (psk_18 = NoPSK || event(CompromisedPreSharedKey(psk_18)))) || event(ServerChoosesKEX(cr_19,sr_13,p_8,TLS13,DHE_13(WeakDH,e))) || event(ServerChoosesHash(cr'_6,sr'_4,p_8,TLS13,WeakHash)) — model tls13-rfc8446-only.pv; ProVerif 2.05 run, fserver, 2026-10-20.",
+      "why": "unexpressed point: missing assumption: the server key and the PSK of the tested session are not both compromised. The query (injective ClientFinished ==> PreServerFinished) excuses a session only when its server key is the attacker's (WeakOrCompromisedKey) and its PSK is compromised or absent (every session of this model uses a PSK), so either credential alone must protect it: the conjunction of the points 'sk_Server disclosed, PSK none' and 'PSK disclosed, sk_Server none', which no single point expresses. Other conditions: the attacker can register server keys and create PSKs of its own, which honest clients and servers use (server_certificates and psk_identities open); a weak (EC)DHE group chosen for the tested session is excepted (dh_group ideal); a weak hash chosen in any session with the server key is excepted (hash_algorithm ideal); a weak AEAD algorithm is not excepted (aead_algorithm weak_member)."
+    },
+    {
+      "id": "tls13-rfc8446-only.q22",
+      "verdict": "true",
+      "description": "attacker_p1(m_c(TLS13,cr_19,sr_13,p_8,psk_18)) ==> (event(WeakOrCompromisedKey(p_8)) && (psk_18 = NoPSK || event(CompromisedPreSharedKey(psk_18)))) || event(ServerChoosesAE(cr_19,sr_13,p_8,TLS13,WeakAE)) || event(ServerChoosesKEX(cr_19,sr_13,p_8,TLS13,DHE_13(WeakDH,e))) || event(ServerChoosesHash(cr'_6,sr'_4,p_8,TLS13,WeakHash)) — model tls13-rfc8446-only.pv; ProVerif 2.05 run, fserver, 2026-10-20.",
+      "why": "unexpressed point: missing assumption: the server key and the PSK of the tested session are not both compromised. The query (attacker knowledge of m_c in phase 1) excuses a session only when its server key is the attacker's (WeakOrCompromisedKey) and its PSK is compromised or absent (every session of this model uses a PSK), so either credential alone must protect it: the conjunction of the points 'sk_Server disclosed, PSK none' and 'PSK disclosed, sk_Server leaked_after_session', which no single point expresses. Other conditions: the attacker can register server keys and create PSKs of its own, which honest clients and servers use (server_certificates and psk_identities open); a weak (EC)DHE group chosen for the tested session is excepted (dh_group ideal); a weak hash chosen in any session with the server key is excepted (hash_algorithm ideal); a weak AEAD algorithm for the tested session is excepted (aead_algorithm ideal). The query reads the attacker's knowledge in phase 1, after the server's key leaks (PostSessionCompromisedKey)."
+    },
+    {
+      "id": "tls13-rfc8446-only.q24",
+      "verdict": "true",
+      "description": "event(ClientReceives(TLS13,cr_19,sr_13,psk_18,p_8,n_7,ad_7,m_17)) ==> event(ServerSends(TLS13,cr_19,sr_13,psk_18,p_8,n_7,ad_7,m_17)) || (event(WeakOrCompromisedKey(p_8)) && (psk_18 = NoPSK || event(CompromisedPreSharedKey(psk_18)))) || event(ServerChoosesAE(cr_19,sr_13,p_8,TLS13,WeakAE)) || event(ServerChoosesKEX(cr_19,sr_13,p_8,TLS13,DHE_13(WeakDH,e))) || event(ServerChoosesHash(cr'_6,sr'_4,p_8,TLS13,WeakHash)) — model tls13-rfc8446-only.pv; ProVerif 2.05 run, fserver, 2026-10-20.",
+      "why": "unexpressed point: missing assumption: the server key and the PSK of the tested session are not both compromised. The query (ClientReceives ==> ServerSends) excuses a session only when its server key is the attacker's (WeakOrCompromisedKey) and its PSK is compromised or absent (every session of this model uses a PSK), so either credential alone must protect it: the conjunction of the points 'sk_Server disclosed, PSK none' and 'PSK disclosed, sk_Server none', which no single point expresses. Other conditions: the attacker can register server keys and create PSKs of its own, which honest clients and servers use (server_certificates and psk_identities open); a weak (EC)DHE group chosen for the tested session is excepted (dh_group ideal); a weak hash chosen in any session with the server key is excepted (hash_algorithm ideal); a weak AEAD algorithm for the tested session is excepted (aead_algorithm ideal)."
+    }
+  ]
+}

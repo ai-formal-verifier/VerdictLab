@@ -1,0 +1,71 @@
+{
+  "principals": [
+    {
+      "name": "A",
+      "description": "the initiator: holds the long-term key KA shared with AS, decrypts AS's response, forwards B's ticket, and answers B's CK-protected nonce challenge."
+    },
+    {
+      "name": "B",
+      "description": "the correspondent: holds the long-term key KB shared with AS, decrypts the ticket, generates a nonce challenge under CK, and verifies A's response."
+    },
+    {
+      "name": "AS",
+      "description": "the trusted authentication server: holds the long-term keys KA and KB, generates the fresh conversation key CK, and sends A an encrypted response containing B's ticket."
+    }
+  ],
+  "values": [
+    {
+      "name": "A",
+      "derived_from": [],
+      "description": "A is a protocol identity.",
+      "holders": [
+        "A",
+        "B",
+        "AS"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "B",
+      "derived_from": [],
+      "description": "B is a protocol identity.",
+      "holders": [
+        "A",
+        "B",
+        "AS"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "AS",
+      "derived_from": [],
+      "description": "The authentication server AS's identity.",
+      "holders": [
+        "A",
+        "B",
+        "AS"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "KA",
+      "derived_from": [],
+      "description": "KA is a pre-run symmetric key or keying value.",
+      "holders": [
+        "A",
+        "AS"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "KB",
+      "derived_from": [],
+      "description": "KB is a pre-run symmetric key or keying value.",
+      "holders": [
+        "B",
+        "AS"
+      ],
+      "source": "generated"
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "principals": [
+    {
+      "name": "A",
+      "description": "The initiator: holds its identity and the long-term symmetric key K_as shared with S; generates N_a, decrypts S's response under K_as, and forwards the ticket to B."
+    },
+    {
+      "name": "B",
+      "description": "The responder: holds its identity and the long-term symmetric key K_bs shared with S; generates N_b, sends the server request, and verifies the final K_ab-protected confirmation."
+    },
+    {
+      "name": "S",
+      "description": "The trusted authentication server: holds its identity and both long-term symmetric keys K_as and K_bs; generates the fresh session key K_ab and distributes it encrypted for A and B."
+    }
+  ],
+  "values": [
+    {
+      "name": "A",
+      "derived_from": [],
+      "description": "A is a protocol identity.",
+      "holders": [
+        "A",
+        "B",
+        "S"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "B",
+      "derived_from": [],
+      "description": "B is a protocol identity.",
+      "holders": [
+        "A",
+        "B",
+        "S"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "S",
+      "derived_from": [],
+      "description": "S is a protocol identity.",
+      "holders": [
+        "A",
+        "B",
+        "S"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "K_as",
+      "derived_from": [],
+      "description": "K_as is a pre-run symmetric key or keying value.",
+      "holders": [
+        "A",
+        "S"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "K_bs",
+      "derived_from": [],
+      "description": "K_bs is a pre-run symmetric key or keying value.",
+      "holders": [
+        "B",
+        "S"
+      ],
+      "source": "generated"
+    }
+  ]
+}

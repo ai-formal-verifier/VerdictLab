@@ -1,0 +1,206 @@
+{
+  "vocab_version": "4.0.0",
+  "protocol_id": "wide-mouth-frog",
+  "names": {
+    "A": "The initiator, sharing K_as with S, who chooses the session key, and its identity A sent in message 1 and forwarded to B in message 2 (§2, §3, §4).",
+    "B": "The recipient of the session key, sharing K_bs with S, and its identity B inside message 1 (§2, §3, §4).",
+    "K_as": "The key A shares with the server S (§3, §5).",
+    "K_bs": "The key B shares with the server S (§3, §5).",
+    "S": "The trusted authentication server that receives message 1 from A and forwards the key to B in message 2 (§2, §4).",
+    "K_ab": "The session key chosen by A and sent to S in message 1, which S forwards to B in message 2 (§3, §4)."
+  },
+  "scenarios": [
+    {
+      "name": "baseline",
+      "world": [
+        {
+          "axis": "data",
+          "target": {
+            "of": "A"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "B"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "K_as"
+          },
+          "level": "none"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "K_bs"
+          },
+          "level": "none"
+        },
+        {
+          "axis": "seating",
+          "target": {
+            "principal": "A"
+          },
+          "level": "any_role"
+        },
+        {
+          "axis": "population",
+          "target": {
+            "principal": "A"
+          },
+          "level": "unbounded"
+        },
+        {
+          "axis": "seating",
+          "target": {
+            "principal": "B"
+          },
+          "level": "any_role"
+        },
+        {
+          "axis": "population",
+          "target": {
+            "principal": "B"
+          },
+          "level": "unbounded"
+        }
+      ]
+    }
+  ],
+  "goals": [
+    {
+      "name": "secrecy_Kab",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "K_ab"
+        ],
+        "holders": [
+          "A",
+          "B",
+          "S"
+        ]
+      }
+    },
+    {
+      "name": "noninjective_agreement_B",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "B",
+        "subject": "A",
+        "of": [
+          "A",
+          "B",
+          "K_ab"
+        ]
+      }
+    },
+    {
+      "name": "noninjective_agreement_S",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "S",
+        "subject": "A",
+        "of": [
+          "A",
+          "B",
+          "K_ab"
+        ]
+      }
+    },
+    {
+      "name": "injective_agreement_B",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "B",
+        "subject": "A",
+        "of": [
+          "A",
+          "B",
+          "K_ab"
+        ]
+      }
+    },
+    {
+      "name": "injective_agreement_S",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "S",
+        "subject": "A",
+        "of": [
+          "A",
+          "B",
+          "K_ab"
+        ]
+      }
+    }
+  ],
+  "questions": [
+    {
+      "id": "secrecy_Kab",
+      "goal": "secrecy_Kab",
+      "scenarios": [
+        "baseline"
+      ],
+      "verdict": "true",
+      "evidence": {
+        "file": "formal/proverif/main.pv"
+      }
+    },
+    {
+      "id": "noninjective_agreement_B",
+      "goal": "noninjective_agreement_B",
+      "scenarios": [
+        "baseline"
+      ],
+      "verdict": "true",
+      "evidence": {
+        "file": "formal/proverif/main.pv"
+      }
+    },
+    {
+      "id": "noninjective_agreement_S",
+      "goal": "noninjective_agreement_S",
+      "scenarios": [
+        "baseline"
+      ],
+      "verdict": "true",
+      "evidence": {
+        "file": "formal/proverif/main.pv"
+      }
+    },
+    {
+      "id": "injective_agreement_B",
+      "goal": "injective_agreement_B",
+      "scenarios": [
+        "baseline"
+      ],
+      "verdict": "false",
+      "evidence": {
+        "file": "formal/proverif/main.pv"
+      }
+    },
+    {
+      "id": "injective_agreement_S",
+      "goal": "injective_agreement_S",
+      "scenarios": [
+        "baseline"
+      ],
+      "verdict": "false",
+      "evidence": {
+        "file": "formal/proverif/main.pv"
+      }
+    }
+  ],
+  "unexpressed": []
+}

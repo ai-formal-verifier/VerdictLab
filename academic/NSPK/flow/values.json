@@ -1,0 +1,472 @@
+{
+  "vocab_version": "4.0.0",
+  "values": [
+    {
+      "name": "A",
+      "evidence": [],
+      "description": "A's identity, the initiator.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "A",
+        "replicated": false
+      },
+      "holders": {
+        "A": [
+          {
+            "id": "A",
+            "how": "initial",
+            "from": "A"
+          }
+        ],
+        "B": [
+          {
+            "id": "A",
+            "how": "initial",
+            "from": "A"
+          },
+          {
+            "id": "Y",
+            "how": "received"
+          }
+        ],
+        "S": [
+          {
+            "id": "A",
+            "how": "initial",
+            "from": "A"
+          }
+        ]
+      }
+    },
+    {
+      "name": "B",
+      "evidence": [],
+      "description": "B's identity, the responder.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "B",
+        "replicated": false
+      },
+      "holders": {
+        "A": [
+          {
+            "id": "B",
+            "how": "initial",
+            "from": "B"
+          }
+        ],
+        "B": [
+          {
+            "id": "B",
+            "how": "initial",
+            "from": "B"
+          }
+        ],
+        "S": [
+          {
+            "id": "B",
+            "how": "initial",
+            "from": "B"
+          }
+        ]
+      }
+    },
+    {
+      "name": "S",
+      "evidence": [],
+      "description": "S's identity, the authentication server.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "S",
+        "replicated": false
+      },
+      "holders": {
+        "A": [
+          {
+            "id": "S",
+            "how": "initial",
+            "from": "S"
+          }
+        ],
+        "B": [
+          {
+            "id": "S",
+            "how": "initial",
+            "from": "S"
+          }
+        ],
+        "S": [
+          {
+            "id": "S",
+            "how": "initial",
+            "from": "S"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SKas",
+      "evidence": [],
+      "description": "S's private signing key.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "SKas",
+        "replicated": false
+      },
+      "holders": {
+        "S": [
+          {
+            "id": "SKas",
+            "how": "initial",
+            "from": "SKas"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SKA",
+      "evidence": [],
+      "description": "A's private decryption key.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "SKA",
+        "replicated": false
+      },
+      "holders": {
+        "A": [
+          {
+            "id": "SKA",
+            "how": "initial",
+            "from": "SKA"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SKB",
+      "evidence": [],
+      "description": "B's private decryption key.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "SKB",
+        "replicated": false
+      },
+      "holders": {
+        "B": [
+          {
+            "id": "SKB",
+            "how": "initial",
+            "from": "SKB"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PKas",
+      "evidence": [],
+      "description": "S's public signature-verification key, which A and B hold before the run.",
+      "source": {
+        "scope": "main",
+        "by": "let",
+        "id": "PKas",
+        "replicated": false,
+        "derived_from": [
+          "SKas"
+        ]
+      },
+      "holders": {
+        "A": [
+          {
+            "id": "PKas",
+            "how": "initial",
+            "from": "PKas"
+          }
+        ],
+        "B": [
+          {
+            "id": "PKas",
+            "how": "initial",
+            "from": "PKas"
+          }
+        ],
+        "S": [
+          {
+            "id": "PKas",
+            "how": "initial",
+            "from": "PKas"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PKA",
+      "evidence": [],
+      "description": "A's public encryption key; S stores it.",
+      "source": {
+        "scope": "main",
+        "by": "let",
+        "id": "PKA",
+        "replicated": false,
+        "derived_from": [
+          "SKA"
+        ]
+      },
+      "holders": {
+        "A": [
+          {
+            "id": "PKA",
+            "how": "initial",
+            "from": "PKA"
+          }
+        ],
+        "S": [
+          {
+            "id": "PKA",
+            "how": "initial",
+            "from": "PKA"
+          }
+        ],
+        "B": [
+          {
+            "id": "PKY",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PKB",
+      "evidence": [],
+      "description": "B's public encryption key; S stores it.",
+      "source": {
+        "scope": "main",
+        "by": "let",
+        "id": "PKB",
+        "replicated": false,
+        "derived_from": [
+          "SKB"
+        ]
+      },
+      "holders": {
+        "B": [
+          {
+            "id": "PKB",
+            "how": "initial",
+            "from": "PKB"
+          }
+        ],
+        "S": [
+          {
+            "id": "PKB",
+            "how": "initial",
+            "from": "PKB"
+          }
+        ],
+        "A": [
+          {
+            "id": "PKX",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "I_A",
+      "evidence": [],
+      "description": "A's nonce for this run.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "I_A",
+        "role": "A",
+        "replicated": true
+      },
+      "holders": {
+        "A": [
+          {
+            "id": "I_A",
+            "how": "generated"
+          }
+        ],
+        "B": [
+          {
+            "id": "I_A_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "request_A",
+      "evidence": [],
+      "description": "Message 1: A asks S for the key of its peer.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "(A, B)",
+        "role": "A",
+        "replicated": true
+      },
+      "holders": {
+        "S": [
+          {
+            "id": "msg_a_s_1",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "msg3",
+      "evidence": [],
+      "description": "Message 3: A's nonce and identity under the peer's public key.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "aenc((I_A, A), PKX)",
+        "role": "A",
+        "replicated": true
+      },
+      "holders": {
+        "B": [
+          {
+            "id": "msg_a_b_1",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "msg7",
+      "evidence": [],
+      "description": "Message 7: B's nonce returned under B's public key.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "aenc(nonce_to_bitstring(I_B_recv), PKX)",
+        "role": "A",
+        "replicated": true
+      },
+      "holders": {
+        "B": [
+          {
+            "id": "msg_a_b_2",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "I_B",
+      "evidence": [],
+      "description": "B's nonce for this run.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "I_B",
+        "role": "B",
+        "replicated": true
+      },
+      "holders": {
+        "B": [
+          {
+            "id": "I_B",
+            "how": "generated"
+          }
+        ],
+        "A": [
+          {
+            "id": "I_B_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "request_B",
+      "evidence": [],
+      "description": "Message 4: B asks S for the key of the claimed initiator.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "(B, Y)",
+        "role": "B",
+        "replicated": true
+      },
+      "holders": {
+        "S": [
+          {
+            "id": "msg_b_s_1",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "msg6",
+      "evidence": [],
+      "description": "Message 6: both nonces under A's public key.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "aenc((I_A_recv, I_B), PKY)",
+        "role": "B",
+        "replicated": true
+      },
+      "holders": {
+        "A": [
+          {
+            "id": "msg_b_a_1",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "binding_B_S",
+      "evidence": [],
+      "description": "Message 2: S's signature binding the requested peer's key to its identity.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "sign((PKB, B), SKas)",
+        "role": "S",
+        "replicated": true
+      },
+      "holders": {
+        "A": [
+          {
+            "id": "msg_s_a_1",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "binding_A_S",
+      "evidence": [],
+      "description": "Message 5: S's signature binding the claimed initiator's key to its identity.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "sign((PKA, A), SKas)",
+        "role": "S",
+        "replicated": true
+      },
+      "holders": {
+        "B": [
+          {
+            "id": "msg_s_b_1",
+            "how": "received"
+          }
+        ]
+      }
+    }
+  ]
+}

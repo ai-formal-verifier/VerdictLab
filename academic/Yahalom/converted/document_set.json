@@ -1,0 +1,93 @@
+{
+  "main_doc_id": "Yahalom",
+  "subprotocol_list": {
+    "Yahalom": "the whole protocol (protocol.yaml lists no sub-protocols)"
+  },
+  "documents": {
+    "generic": [
+      {
+        "doc_id": "Yahalom",
+        "path": "main/Yahalom.md",
+        "fingerprint": "c6f0087460f8dd38000d06ec1347a717f90ba40e095e366a344b4f4a56891551",
+        "ids": [
+          "Yahalom"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "1": {
+      "subprotocols": [
+        "Yahalom"
+      ],
+      "reason": ""
+    },
+    "2": {
+      "subprotocols": [
+        "Yahalom"
+      ],
+      "reason": "Identifies the protocol participants and their roles, including the server's shared-key relationships and key-generation role, which define the protocol's principals and initial knowledge."
+    },
+    "3": {
+      "subprotocols": [
+        "Yahalom"
+      ],
+      "reason": ""
+    },
+    "4": {
+      "subprotocols": [
+        "Yahalom"
+      ],
+      "reason": "Specifies the ordered message exchanges, message contents, key usage, nonce generation, and participant checks that form the protocol run."
+    },
+    "5": {
+      "subprotocols": [
+        "Yahalom"
+      ],
+      "reason": "Defines open peer admission and the long-term-key disclosure scenarios, which specify the protocol's analyzed initial conditions and attacker access."
+    },
+    "6": {
+      "subprotocols": [
+        "Yahalom"
+      ],
+      "reason": "States the session-key secrecy and injective-agreement goals and the scenarios in which each goal is evaluated."
+    },
+    "7": {
+      "subprotocols": [
+        "Yahalom"
+      ],
+      "reason": ""
+    }
+  },
+  "references": {
+    "Yahalom": {
+      "generic": {
+        "1": {
+          "id": null,
+          "file": null,
+          "status": "unknown"
+        },
+        "2": {
+          "id": null,
+          "file": null,
+          "status": "unknown"
+        },
+        "3": {
+          "id": null,
+          "file": null,
+          "status": "unknown"
+        },
+        "4": {
+          "id": "work:relations-between-secrets-two-formal-analyses-of-the-yahalom-protocol@2001",
+          "file": null,
+          "status": "unknown"
+        },
+        "5": {
+          "id": null,
+          "file": null,
+          "status": "unknown"
+        }
+      }
+    }
+  }
+}

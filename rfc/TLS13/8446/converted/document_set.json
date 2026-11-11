@@ -1,0 +1,1715 @@
+{
+  "main_doc_id": "rfc8446",
+  "subprotocol_list": {
+    "handshake": "The TLS 1.3 handshake between a client and a server, followed by application data in both directions and the NewSessionTicket the server issues."
+  },
+  "documents": {
+    "ietf": [
+      {
+        "doc_id": "rfc8446",
+        "path": "main/rfc8446.md",
+        "fingerprint": "00c0320a34c54f802078e9d8976c3afa85e1ef13befd5f302057ef1e421bc754",
+        "ids": [
+          "rfc8446"
+        ]
+      },
+      {
+        "doc_id": "rfc2104",
+        "path": "library:public/converted/rfc2104.md",
+        "fingerprint": "6236a96e06723bb89d8a8baa13575eb11e0421d3b629f9227218c687bac8ff37",
+        "ids": [
+          "rfc2104"
+        ]
+      },
+      {
+        "doc_id": "rfc5116",
+        "path": "library:public/converted/rfc5116.md",
+        "fingerprint": "7bee001adcccf9014d43be712bca4ab812bf211b80ad0834e9408d86880f040d",
+        "ids": [
+          "rfc5116"
+        ]
+      },
+      {
+        "doc_id": "rfc5280",
+        "path": "library:public/converted/rfc5280.md",
+        "fingerprint": "5628c735dd1b13bb88c18de79df34878798ed8029d2ae1d638c23720c83f66f4",
+        "ids": [
+          "rfc5280"
+        ]
+      },
+      {
+        "doc_id": "rfc5705",
+        "path": "library:public/converted/rfc5705.md",
+        "fingerprint": "5f78f84ce4d8d7de2ad09d6c1a485739a28cba3c6ac75fd7e3115e5091c9c82a",
+        "ids": [
+          "rfc5705"
+        ]
+      },
+      {
+        "doc_id": "rfc5869",
+        "path": "library:public/converted/rfc5869.md",
+        "fingerprint": "79dd720fce161c1511258aa6b7f341e8eb089562bb813a45b574fdce647449f4",
+        "ids": [
+          "rfc5869"
+        ]
+      },
+      {
+        "doc_id": "rfc6066",
+        "path": "library:public/converted/rfc6066.md",
+        "fingerprint": "a1eec731a6ac9a2b4aea17b8d3fc6faed70f4067d811aa8a956dd0ed80b4f9a5",
+        "ids": [
+          "rfc6066"
+        ]
+      },
+      {
+        "doc_id": "rfc6655",
+        "path": "library:public/converted/rfc6655.md",
+        "fingerprint": "21a28a0831cd4225859c671e9040be4ee5bfe00349e3da1593b2baf588abfd78",
+        "ids": [
+          "rfc6655"
+        ]
+      },
+      {
+        "doc_id": "rfc6960",
+        "path": "library:public/converted/rfc6960.md",
+        "fingerprint": "6ce159710087dbe2a0d2ab549aef5bb002e429a0693111a137cf8b90017f851c",
+        "ids": [
+          "rfc6960"
+        ]
+      },
+      {
+        "doc_id": "rfc6961",
+        "path": "library:public/converted/rfc6961.md",
+        "fingerprint": "75d956bbb6a453c135b9e79f85bb15e2190a2a72ac6c7715319ebb22a382ddfd",
+        "ids": [
+          "rfc6961"
+        ]
+      },
+      {
+        "doc_id": "rfc6962",
+        "path": "library:public/converted/rfc6962.md",
+        "fingerprint": "55b58630856aa7f3ae938fe33381de1ec74c3074369d6c86072d0ec06d4b16dd",
+        "ids": [
+          "rfc6962"
+        ]
+      },
+      {
+        "doc_id": "rfc6979",
+        "path": "library:public/converted/rfc6979.md",
+        "fingerprint": "8a23bbc5327604def8ad335a222ae1787c43d413246497027dbdcafa35762b67",
+        "ids": [
+          "rfc6979"
+        ]
+      },
+      {
+        "doc_id": "rfc7748",
+        "path": "library:public/converted/rfc7748.md",
+        "fingerprint": "7dcb40c18e387b47ce3c25b07b66d7367ed0a5620c3a2ae1ef7d73dc20ffdc64",
+        "ids": [
+          "rfc7748"
+        ]
+      },
+      {
+        "doc_id": "rfc7919",
+        "path": "library:public/converted/rfc7919.md",
+        "fingerprint": "71424dd773339c287c431bd37a2a36cb515e649de23afc269315fba2c906db3e",
+        "ids": [
+          "rfc7919"
+        ]
+      },
+      {
+        "doc_id": "rfc8017",
+        "path": "library:public/converted/rfc8017.md",
+        "fingerprint": "b7e59c436fe71f08d9231c270a469de56d616a0770dca8ebd3643648be73b0cb",
+        "ids": [
+          "rfc8017"
+        ]
+      },
+      {
+        "doc_id": "rfc8032",
+        "path": "library:public/converted/rfc8032.md",
+        "fingerprint": "5b0c5f7cd805f168e3636179a8d8167a881940cb54ff19e4143df0201d56722e",
+        "ids": [
+          "rfc8032"
+        ]
+      },
+      {
+        "doc_id": "rfc5077",
+        "path": "library:public/converted/rfc5077.md",
+        "fingerprint": "c87ba2bdf42091eaf927591b06dea7874604c7567df5cf16530f53e81c30b2c9",
+        "ids": [
+          "rfc5077"
+        ]
+      },
+      {
+        "doc_id": "rfc5246",
+        "path": "library:public/converted/rfc5246.md",
+        "fingerprint": "67749a95f73867b8e1d7531999fdb427e010c02c52d4be341828d30283655eac",
+        "ids": [
+          "rfc5246"
+        ]
+      },
+      {
+        "doc_id": "rfc6347",
+        "path": "library:public/converted/rfc6347.md",
+        "fingerprint": "e6576cf0c776e24b77124f471e1d9bf3e178bd9e2bba8136544f988e7614790e",
+        "ids": [
+          "rfc6347"
+        ]
+      }
+    ],
+    "nist": [
+      {
+        "doc_id": "NIST-SP-800-56Ar3",
+        "path": "refs/NIST-SP-800-56Ar3.md",
+        "fingerprint": "47a0d41dae38eba9fa16a32cf7c0504e0dfa4417e6aa953b0cc1b72711cc334c",
+        "ids": [
+          "NIST-SP-800-56Ar3",
+          "nist.sp.800-56ar3"
+        ]
+      },
+      {
+        "doc_id": "NIST.FIPS.186-5",
+        "path": "library:public/converted/NIST.FIPS.186-5.md",
+        "fingerprint": "14aaaf3073c9a60849d19726f25e451c9b416a6cf899d1cb2d0b89abbb62ad9c",
+        "ids": [
+          "NIST.FIPS.186-5",
+          "nist.fips.186-5"
+        ]
+      },
+      {
+        "doc_id": "NIST.SP.800-56Br2",
+        "path": "library:public/converted/NIST.SP.800-56Br2.md",
+        "fingerprint": "68553c5961b181813ea6a2721f77914107cf1f17dc97d46f6c7eb9d1a0f8ff2a",
+        "ids": [
+          "NIST.SP.800-56Br2",
+          "nist.sp.800-56br2"
+        ]
+      },
+      {
+        "doc_id": "NIST.SP.800-56Cr2",
+        "path": "library:public/converted/NIST.SP.800-56Cr2.md",
+        "fingerprint": "718bda8f4d1b93cc353935d128bf18f699458b4b41294eaf1ddbce09fae27ef7",
+        "ids": [
+          "NIST.SP.800-56Cr2",
+          "nist.sp.800-56cr2"
+        ]
+      },
+      {
+        "doc_id": "NIST.SP.800-131Ar2",
+        "path": "library:public/converted/NIST.SP.800-131Ar2.md",
+        "fingerprint": "a076f0dcffe9a03e7216e206a9504419750fc2e1f203cea4f25966e06c5d1f69",
+        "ids": [
+          "NIST.SP.800-131Ar2",
+          "nist.sp.800-131ar2"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "States TLS parties and channel security goals and summarizes the handshake and record protocol structures relevant to formal modeling."
+    },
+    "1.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "1.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "1.3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Describes handshake participants, message flows and variants, resumption state, early data, and security limitations."
+    },
+    "2.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "2.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "2.3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "3.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "3.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "3.3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "3.4": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "3.5": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "3.6": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "3.7": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "3.8": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "4": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines handshake message ordering and semantic fields, negotiation, computations, state transitions, and validation branches."
+    },
+    "4.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Describes negotiation messages and how peers select parameters and establish shared secrets."
+    },
+    "4.1.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies offered options, selection and failure branches, and the relationship between PSK and certificate authentication."
+    },
+    "4.1.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines ClientHello contents, client generation and update behavior, and server-side processing and checks."
+    },
+    "4.1.3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines ServerHello fields, server generation, client checks, version selection, and downgrade handling."
+    },
+    "4.1.4": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies the retry exchange, client/server state changes, and required consistency checks."
+    },
+    "4.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines extension message structures and their request-response placement, processing constraints, and negotiation rules."
+    },
+    "4.2.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies version advertisement, selection, and validation by the client and server."
+    },
+    "4.2.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines cookie exchange and server retry/state handling."
+    },
+    "4.2.3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies signature algorithm offers, selection constraints, and associated handshake checks."
+    },
+    "4.2.4": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines certificate-authority information exchanged to guide certificate selection."
+    },
+    "4.2.5": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies certificate filters, client matching behavior, and server handling of an unsatisfied request."
+    },
+    "4.2.6": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines the client's opt-in state and server permission checks for post-handshake authentication."
+    },
+    "4.2.7": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies supported key-exchange groups and how the client and server use and validate that information."
+    },
+    "4.2.8": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines key-share message structures, generation, exchange, and peer consistency checks."
+    },
+    "4.2.8.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies finite-field key-share values and required peer public-key validation."
+    },
+    "4.2.8.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies elliptic-curve key-share values and required peer public-key validation."
+    },
+    "4.2.9": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines client-advertised PSK key-exchange modes and the server's permitted selection and key-share behavior."
+    },
+    "4.2.10": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies early-data negotiation, acceptance and rejection branches, associated state, and retransmission constraints."
+    },
+    "4.2.11": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines PSK identity and binder fields, their association with keys, and client/server validation and selection behavior."
+    },
+    "4.2.11.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies ticket-age state and its computation and use by the client and server."
+    },
+    "4.2.11.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies computation of PSK binders from the PSK and handshake transcript, including retry processing."
+    },
+    "4.2.11.3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies the ordering of early-data and handshake processing needed to avoid deadlocks."
+    },
+    "4.3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines server parameter messages and their place in the handshake under handshake traffic keys."
+    },
+    "4.3.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies EncryptedExtensions timing, contents, and client validation."
+    },
+    "4.3.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines certificate requests, their context and parameters, and when clients may be asked to authenticate."
+    },
+    "4.4": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies authentication messages, their transcript inputs, computed signatures and MACs, and flight ordering."
+    },
+    "4.4.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines which handshake messages form the transcript and how the transcript state changes on retry and post-handshake authentication."
+    },
+    "4.4.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines certificate message contents, sender conditions, and certificate-chain exchange behavior."
+    },
+    "4.4.2.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies the status and SCT information carried in certificate exchanges."
+    },
+    "4.4.2.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines server certificate selection constraints based on the client's offers and validation behavior."
+    },
+    "4.4.2.3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines client certificate selection constraints based on server requests."
+    },
+    "4.4.2.4": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies receiver checks and the continuation or abort branches for certificate messages."
+    },
+    "4.4.3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines CertificateVerify inputs and signature computation, algorithm checks, and receiver verification behavior."
+    },
+    "4.4.4": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines Finished computation and verification, key-confirmation behavior, and when application data may flow."
+    },
+    "4.5": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies when EndOfEarlyData is sent and received and the associated traffic-key transition."
+    },
+    "4.6": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines post-handshake message operation and protection under application traffic keys."
+    },
+    "4.6.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies session-ticket issuance, stored ticket state, ticket-derived PSKs, and resumption constraints."
+    },
+    "4.6.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines post-handshake client-authentication requests, responses, and ordering."
+    },
+    "4.6.3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies KeyUpdate message exchange, traffic-secret state updates, and required processing order."
+    },
+    "5": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines the record protocol's message processing, record exchange rules, and record-type handling."
+    },
+    "5.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies record-layer message structure, fragmentation and ordering rules, and handling of compatibility records."
+    },
+    "5.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines record protection inputs and outputs and the decryption failure branch."
+    },
+    "5.3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies sequence-number state and computation of each record nonce."
+    },
+    "5.4": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines padding generation and receiver processing and validation."
+    },
+    "5.5": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies key-usage limits that govern when traffic keys should be updated."
+    },
+    "6": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines alert message structure and the connection termination and secret-erasure behavior on errors."
+    },
+    "6.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies closure-alert exchange and the state and data-handling consequences of closure."
+    },
+    "6.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines error-alert handling and the abort behavior for protocol and validation failures."
+    },
+    "7": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies how handshake input secrets and transcript state produce TLS keying material."
+    },
+    "7.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines the key schedule, its input secrets, transcript-dependent derivations, and secret-erasure behavior."
+    },
+    "7.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies application traffic-secret updates and deletion of prior secret state."
+    },
+    "7.3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines traffic key and IV derivation from traffic secrets for each record type."
+    },
+    "7.4": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "7.4.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines finite-field Diffie-Hellman shared-secret formation for the key schedule."
+    },
+    "7.4.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines elliptic-curve Diffie-Hellman key generation and shared-secret calculation, including validation."
+    },
+    "7.5": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines exporter values computed from handshake secrets and context."
+    },
+    "8": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies 0-RTT replay threat assumptions and the server's required replay-mitigation state and behavior."
+    },
+    "8.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines single-use ticket state and its consumption and fallback behavior."
+    },
+    "8.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies ClientHello recording, replay detection, storage-key selection, and rejection branches."
+    },
+    "8.3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies ticket-age freshness computation and the server's early-data acceptance decision."
+    },
+    "9": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "9.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "9.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "9.3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "States protocol invariants for parameter advertisements, unknown fields, and handling of TLS-terminating and forwarding middleboxes."
+    },
+    "10": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "11": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "12": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "12.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "12.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "A": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Summarizes legal client and server state transitions, message actions, and traffic-key changes."
+    },
+    "A.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Shows client handshake states, message transitions, and key and application-data state changes."
+    },
+    "A.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Shows server handshake states, message transitions, early-data paths, and key changes."
+    },
+    "B": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "B.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "B.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "B.3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "B.3.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "B.3.1.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "B.3.1.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "B.3.1.3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "B.3.1.4": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "B.3.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "B.3.3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "B.3.4": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "B.3.5": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "B.4": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "C": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "C.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "C.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "States certificate trust and validation premises that determine authentication checks in protocol analysis."
+    },
+    "C.3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "C.4": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "C.5": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "States when unauthenticated operation is possible and its resulting man-in-the-middle security limitation."
+    },
+    "D": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "D.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies client behavior and version-selection branches when negotiating with an older server."
+    },
+    "D.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies server version-selection behavior when negotiating with an older client."
+    },
+    "D.3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies client behavior and retry path for 0-RTT attempts against older servers."
+    },
+    "D.4": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "D.5": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines security constraints on protocol-version and algorithm negotiation for backward compatibility."
+    },
+    "E": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "E.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "States handshake security goals, attacker model, identity and key outputs, and mode-specific security guarantees."
+    },
+    "E.1.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "E.1.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "States the limits of client-authentication confirmation and the identity assurance of post-handshake authentication."
+    },
+    "E.1.3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "States the 0-RTT security guarantees and their forward-secrecy and replay limitations."
+    },
+    "E.1.4": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "E.1.5": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "States the security limitation concerning handshakes after long-term secret compromise."
+    },
+    "E.1.6": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "E.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "States record-layer security goals and the conditions and key-update behavior under which they hold."
+    },
+    "E.2.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "E.3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "States traffic-analysis and length-concealment goals and limitations of TLS padding."
+    },
+    "E.4": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "E.5": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "States security consequences of replayed 0-RTT data and application and server replay-safety requirements."
+    },
+    "E.5.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "States replay-related limits on early exporter use and the resulting key-reuse risk."
+    },
+    "E.6": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "States PSK identity exposure behavior and the conditions under which servers can mitigate it."
+    },
+    "E.7": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "States the constraint and security implications of sharing PSKs across protocol versions."
+    },
+    "E.8": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "States a cross-version impersonation risk and the conditions for static-RSA-related mitigation."
+    },
+    "13": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    }
+  },
+  "references": {
+    "rfc8446": {
+      "generic": {
+        "DH76": {
+          "id": "doi:10.1109/tit.1976.1055638",
+          "file": null,
+          "status": "unknown"
+        },
+        "AEAD-LIMITS": {
+          "id": "work:limits-on-authenticated-encryption-use-in-tls@2017",
+          "file": null,
+          "status": "unknown"
+        },
+        "BBFGKZ16": {
+          "id": "doi:10.1109/sp.2016.37",
+          "file": null,
+          "status": "unknown"
+        },
+        "BBK17": {
+          "id": "doi:10.1109/sp.2017.26",
+          "file": null,
+          "status": "unknown"
+        },
+        "BDFKPPRSZZ16": {
+          "id": "eprint:2016/1178",
+          "file": null,
+          "status": "unknown"
+        },
+        "Ben17a": {
+          "id": "work:presentation-before-the-tls-wg-at-ietf-100@2017",
+          "file": null,
+          "status": "unknown"
+        },
+        "Ben17b": {
+          "id": "work:additional-tls-1-3-results-from-chrome@2017",
+          "file": null,
+          "status": "unknown"
+        },
+        "Blei98": {
+          "id": "work:chosen-ciphertext-attacks-against-protocols-based-on-rsa-encryption-standard-pkc@1998",
+          "file": null,
+          "status": "unknown"
+        },
+        "BMMRT15": {
+          "id": "eprint:2015/394",
+          "file": null,
+          "status": "unknown"
+        },
+        "BT16": {
+          "id": "eprint:2016/564",
+          "file": null,
+          "status": "unknown"
+        },
+        "CCG16": {
+          "id": "doi:10.1109/csf.2016.19",
+          "file": null,
+          "status": "unknown"
+        },
+        "CHECKOWAY": {
+          "id": "doi:10.1145/2976749.2978395",
+          "file": null,
+          "status": "unknown"
+        },
+        "CHHSV17": {
+          "id": "work:awkward-handshake-possible-mismatch-of-client-server-view-on-client-authenticati@2017",
+          "file": null,
+          "status": "unknown"
+        },
+        "CHSV16": {
+          "id": "doi:10.1109/sp.2016.35",
+          "file": null,
+          "status": "unknown"
+        },
+        "CK01": {
+          "id": "doi:10.1007/3-540-44987-6_28",
+          "file": null,
+          "status": "unknown"
+        },
+        "CLINIC": {
+          "id": "doi:10.1007/978-3-319-08506-7_8",
+          "file": null,
+          "status": "unknown"
+        },
+        "DFGS15": {
+          "id": "eprint:2015/914",
+          "file": null,
+          "status": "unknown"
+        },
+        "DFGS16": {
+          "id": "eprint:2016/81",
+          "file": null,
+          "status": "unknown"
+        },
+        "DOW92": {
+          "id": "doi:10.1007/bf00124891",
+          "file": null,
+          "status": "unknown"
+        },
+        "FG17": {
+          "id": "eprint:2017/82",
+          "file": null,
+          "status": "unknown"
+        },
+        "FGSW16": {
+          "id": "doi:10.1109/sp.2016.34",
+          "file": null,
+          "status": "unknown"
+        },
+        "FW15": {
+          "id": "work:factoring-rsa-keys-with-tls-perfect-forward-secrecy@2015",
+          "file": null,
+          "status": "unknown"
+        },
+        "HCJC16": {
+          "id": "doi:10.1186/s13635-016-0030-7",
+          "file": null,
+          "status": "unknown"
+        },
+        "HGFS15": {
+          "id": "work:prying-open-pandora-s-box-kci-attacks-against-tls@2015",
+          "file": null,
+          "status": "unknown"
+        },
+        "JSS15": {
+          "id": "doi:10.1145/2810103.2813657",
+          "file": null,
+          "status": "unknown"
+        },
+        "Kraw10": {
+          "id": "eprint:2010/264",
+          "file": null,
+          "status": "unknown"
+        },
+        "Kraw16": {
+          "id": "eprint:2016/711",
+          "file": null,
+          "status": "unknown"
+        },
+        "KW16": {
+          "id": "eprint:2015/978",
+          "file": null,
+          "status": "unknown"
+        },
+        "LXZFH16": {
+          "id": "doi:10.1109/sp.2016.36",
+          "file": null,
+          "status": "unknown"
+        },
+        "Mac17": {
+          "id": "work:security-review-of-tls1-3-0-rtt@2017",
+          "file": null,
+          "status": "unknown"
+        },
+        "PS18": {
+          "id": "eprint:2018/634",
+          "file": null,
+          "status": "unknown"
+        },
+        "PSK-FINISHED": {
+          "id": "work:revision-10-possible-attack-if-client-authentication-is-allowed-during-psk@2015",
+          "file": null,
+          "status": "unknown"
+        },
+        "REKEY": {
+          "id": "doi:10.1007/3-540-44448-3_42",
+          "file": null,
+          "status": "unknown"
+        },
+        "Res17a": {
+          "id": "work:preliminary-data-on-firefox-tls-1-3-middlebox-experiment@2017",
+          "file": null,
+          "status": "unknown"
+        },
+        "Res17b": {
+          "id": "work:more-compatibility-measurement-results@2017",
+          "file": null,
+          "status": "unknown"
+        },
+        "RSA": {
+          "id": "doi:10.1145/359340.359342",
+          "file": null,
+          "status": "unknown"
+        },
+        "SIGMA": {
+          "id": "doi:10.1007/978-3-540-45146-4_24",
+          "file": null,
+          "status": "unknown"
+        },
+        "SLOTH": {
+          "id": "doi:10.14722/ndss.2016.23418",
+          "file": null,
+          "status": "unknown"
+        },
+        "SSL2": {
+          "id": "work:the-ssl-protocol@1995",
+          "file": null,
+          "status": "unknown"
+        },
+        "TIMING": {
+          "id": "work:remote-timing-attacks-are-practical@2003",
+          "file": null,
+          "status": "unknown"
+        }
+      },
+      "ansi": {
+        "ECDSA": {
+          "id": "ansi-x9.62_2005",
+          "file": null,
+          "status": "absent"
+        }
+      },
+      "nist": {
+        "GCM": {
+          "id": "nist.sp.800-38d",
+          "file": null,
+          "status": "absent"
+        },
+        "SHS": {
+          "id": "nist.fips.180-4",
+          "file": null,
+          "status": "absent"
+        },
+        "DSS": {
+          "id": "nist.fips.186-4",
+          "file": "NIST.FIPS.186-5",
+          "status": "other_version"
+        },
+        "KEYAGREEMENT": {
+          "id": "nist.sp.800-56ar3",
+          "file": "NIST-SP-800-56Ar3",
+          "status": "same_version"
+        }
+      },
+      "ietf": {
+        "RFC2104": {
+          "id": "rfc2104",
+          "file": "rfc2104",
+          "status": "same_version"
+        },
+        "RFC2119": {
+          "id": "rfc2119",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC5116": {
+          "id": "rfc5116",
+          "file": "rfc5116",
+          "status": "same_version"
+        },
+        "RFC5280": {
+          "id": "rfc5280",
+          "file": "rfc5280",
+          "status": "same_version"
+        },
+        "RFC5705": {
+          "id": "rfc5705",
+          "file": "rfc5705",
+          "status": "same_version"
+        },
+        "RFC5756": {
+          "id": "rfc5756",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC5869": {
+          "id": "rfc5869",
+          "file": "rfc5869",
+          "status": "same_version"
+        },
+        "RFC6066": {
+          "id": "rfc6066",
+          "file": "rfc6066",
+          "status": "same_version"
+        },
+        "RFC6655": {
+          "id": "rfc6655",
+          "file": "rfc6655",
+          "status": "same_version"
+        },
+        "RFC6960": {
+          "id": "rfc6960",
+          "file": "rfc6960",
+          "status": "same_version"
+        },
+        "RFC6961": {
+          "id": "rfc6961",
+          "file": "rfc6961",
+          "status": "same_version"
+        },
+        "RFC6962": {
+          "id": "rfc6962",
+          "file": "rfc6962",
+          "status": "same_version"
+        },
+        "RFC6979": {
+          "id": "rfc6979",
+          "file": "rfc6979",
+          "status": "same_version"
+        },
+        "RFC7301": {
+          "id": "rfc7301",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC7507": {
+          "id": "rfc7507",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC7748": {
+          "id": "rfc7748",
+          "file": "rfc7748",
+          "status": "same_version"
+        },
+        "RFC7919": {
+          "id": "rfc7919",
+          "file": "rfc7919",
+          "status": "same_version"
+        },
+        "RFC8017": {
+          "id": "rfc8017",
+          "file": "rfc8017",
+          "status": "same_version"
+        },
+        "RFC8032": {
+          "id": "rfc8032",
+          "file": "rfc8032",
+          "status": "same_version"
+        },
+        "RFC8126": {
+          "id": "rfc8126",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC8174": {
+          "id": "rfc8174",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC8439": {
+          "id": "rfc8439",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC3552": {
+          "id": "rfc3552",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC4086": {
+          "id": "rfc4086",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC4346": {
+          "id": "rfc4346",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC4366": {
+          "id": "rfc4366",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC4492": {
+          "id": "rfc4492",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC5077": {
+          "id": "rfc5077",
+          "file": "rfc5077",
+          "status": "same_version"
+        },
+        "RFC5246": {
+          "id": "rfc5246",
+          "file": "rfc5246",
+          "status": "same_version"
+        },
+        "RFC5764": {
+          "id": "rfc5764",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC5929": {
+          "id": "rfc5929",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC6091": {
+          "id": "rfc6091",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC6101": {
+          "id": "rfc6101",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC6176": {
+          "id": "rfc6176",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC6347": {
+          "id": "rfc6347",
+          "file": "rfc6347",
+          "status": "same_version"
+        },
+        "RFC6520": {
+          "id": "rfc6520",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC7230": {
+          "id": "rfc7230",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC7250": {
+          "id": "rfc7250",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC7465": {
+          "id": "rfc7465",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC7568": {
+          "id": "rfc7568",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC7627": {
+          "id": "rfc7627",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC7685": {
+          "id": "rfc7685",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC7924": {
+          "id": "rfc7924",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC8305": {
+          "id": "rfc8305",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC8422": {
+          "id": "rfc8422",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC8447": {
+          "id": "rfc8447",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC8449": {
+          "id": "rfc8449",
+          "file": null,
+          "status": "absent"
+        },
+        "TLS13-TRACES": {
+          "id": "draft-ietf-tls-tls13-vectors-06",
+          "file": null,
+          "status": "absent"
+        }
+      },
+      "iso": {
+        "X690": {
+          "id": "iso-iec-8825-1_2015",
+          "file": null,
+          "status": "absent"
+        }
+      },
+      "ieee": {
+        "IEEE1363": {
+          "id": "ieee-1363_2000",
+          "file": null,
+          "status": "absent"
+        }
+      },
+      "itu": {
+        "X501": {
+          "id": "itu-t-x.501_2016-10",
+          "file": null,
+          "status": "absent"
+        }
+      }
+    },
+    "NIST-SP-800-56Ar3": {
+      "ansi": {
+        "ANS X9.42": {
+          "id": "ansi-x9.42_2003",
+          "file": null,
+          "status": "absent"
+        },
+        "ANS X9.63": {
+          "id": "ansi-x9.63_2011",
+          "file": null,
+          "status": "absent"
+        }
+      },
+      "nist": {
+        "FIPS 140": {
+          "id": "nist.fips.140-2",
+          "file": null,
+          "status": "absent"
+        },
+        "FIPS 140 IG": {
+          "id": "nist.fips.140-2",
+          "file": null,
+          "status": "absent"
+        },
+        "FIPS 180": {
+          "id": "nist.fips.180-4",
+          "file": null,
+          "status": "absent"
+        },
+        "FIPS 186": {
+          "id": "nist.fips.186-4",
+          "file": "NIST.FIPS.186-5",
+          "status": "other_version"
+        },
+        "FIPS 197": {
+          "id": "nist.fips.197",
+          "file": null,
+          "status": "absent"
+        },
+        "FIPS 198": {
+          "id": "nist.fips.198-1",
+          "file": null,
+          "status": "absent"
+        },
+        "FIPS 202": {
+          "id": "nist.fips.202",
+          "file": null,
+          "status": "absent"
+        },
+        "SP 800-38B": {
+          "id": "nist.sp.800-38b",
+          "file": null,
+          "status": "absent"
+        },
+        "SP 800-38C": {
+          "id": "nist.sp.800-38c",
+          "file": null,
+          "status": "absent"
+        },
+        "SP 800-38F": {
+          "id": "nist.sp.800-38f",
+          "file": null,
+          "status": "absent"
+        },
+        "SP 800-52": {
+          "id": "nist.sp.800-52r2",
+          "file": null,
+          "status": "absent"
+        },
+        "SP 800-56B": {
+          "id": "nist.sp.800-56br1",
+          "file": "NIST.SP.800-56Br2",
+          "status": "other_version"
+        },
+        "SP 800-56C": {
+          "id": "nist.sp.800-56cr1",
+          "file": "NIST.SP.800-56Cr2",
+          "status": "other_version"
+        },
+        "SP 800-57": {
+          "id": "nist.sp.800-57pt1r4",
+          "file": null,
+          "status": "absent"
+        },
+        "SP 800-89": {
+          "id": "nist.sp.800-89",
+          "file": null,
+          "status": "absent"
+        },
+        "SP 800-90": {
+          "id": "nist.sp.800-90",
+          "file": null,
+          "status": "absent"
+        },
+        "SP 800-108": {
+          "id": "nist.sp.800-108",
+          "file": null,
+          "status": "absent"
+        },
+        "SP 800-131A": {
+          "id": "nist.sp.800-131ar1",
+          "file": "NIST.SP.800-131Ar2",
+          "status": "other_version"
+        },
+        "SP 800-133": {
+          "id": "nist.sp.800-133",
+          "file": null,
+          "status": "absent"
+        },
+        "SP 800-135": {
+          "id": "nist.sp.800-135r1",
+          "file": null,
+          "status": "absent"
+        },
+        "SP 800-185": {
+          "id": "nist.sp.800-185",
+          "file": null,
+          "status": "absent"
+        },
+        "SP 800-186": {
+          "id": "nist.sp.800-186",
+          "file": null,
+          "status": "absent"
+        }
+      },
+      "generic": {
+        "FIPS 140 Annex A": {
+          "id": null,
+          "file": null,
+          "status": "unknown"
+        },
+        "FIPS 140 Annex D": {
+          "id": null,
+          "file": null,
+          "status": "unknown"
+        },
+        "SECG": {
+          "id": null,
+          "file": null,
+          "status": "unknown"
+        },
+        "BM 1998": {
+          "id": "work:menezes-unknown-key-share-attacks-on-the-stationto-station-sts-protocol-technica@1998",
+          "file": null,
+          "status": "unknown"
+        },
+        "CMU 2009": {
+          "id": "work:ustaoglu-reusing-static-keys-in-key-agreement-protocols-indocrypt-2009-lncs-vol@2009",
+          "file": null,
+          "status": "unknown"
+        },
+        "CBH 2005": {
+          "id": "eprint:2005/206",
+          "file": null,
+          "status": "unknown"
+        },
+        "ISO/IEC 8825-1": {
+          "id": null,
+          "file": null,
+          "status": "unknown"
+        },
+        "Menezes 2007": {
+          "id": "work:menezes-another-look-at-hmqv@2007",
+          "file": null,
+          "status": "unknown"
+        },
+        "RBB 2001": {
+          "id": "work:boneh-evaluation-of-security-level-of-cryptography-ecmqvs-from-sec-1-jan@2001",
+          "file": null,
+          "status": "unknown"
+        }
+      },
+      "ietf": {
+        "RFC 3526": {
+          "id": "rfc3526",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC 4492": {
+          "id": "rfc4492",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC 5903": {
+          "id": "rfc5903",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC 7919": {
+          "id": "rfc7919",
+          "file": "rfc7919",
+          "status": "same_version"
+        }
+      },
+      "secg": {
+        "SEC2": {
+          "id": "secg-sec2@latest",
+          "file": null,
+          "status": "absent"
+        }
+      }
+    }
+  }
+}

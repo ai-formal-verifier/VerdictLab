@@ -1,0 +1,185 @@
+{
+  "protocol_id": "TLS13-draft20-handshake-reftls",
+  "adjudication_version": "2",
+  "audited": "2026-10-03",
+  "scope": "Where the expert formal model (formal/) departs from the source documents. Only the formal model and the documents are compared; results/, claims/ and flow/ are not part of this file. Entries marked material=false were found in passing; the minor list is not exhaustive.",
+  "categories": {
+    "contradiction": "The formal model does something the documents rule out.",
+    "convention": "The formal model fixes a choice the documents leave open or do not state.",
+    "scope": "The formal model contains content that is not in the documents."
+  },
+  "doc_check": {
+    "confirmed": "The quoted text was checked in the document, or the document was searched and is silent on the point.",
+    "pending": "Not yet confirmed against the whole document set."
+  },
+  "formal_files": [
+    "README.md",
+    "main.pv",
+    "tls-lib-draft20.pvl",
+    "tls13-draft20-only.pv"
+  ],
+  "source_documents": "rfc/TLS13/draft20/source",
+  "entries": [
+    {
+      "id": "F1",
+      "category": "contradiction",
+      "material": true,
+      "formal": {
+        "file": "formal/proverif/main.pv",
+        "lines": "l.616-622, l.646-649",
+        "excerpt": "if m = hmac(StrongHash,kb,msg2bytes(CH(cr,zoffer))) then ... out(io,CRT(p)); let log = (log,CRT(p)) in let sg = sign(sk,hash(h,log)) in out(io,CV(sg));"
+      },
+      "document": {
+        "status": "contradicts",
+        "file": "rfc/TLS13/draft20/converted/main/draft-ietf-tls-tls13-20.txt",
+        "lines": "l.1700-1701 (also l.1168-1169, l.7048-7049)",
+        "quote": "In TLS 1.3 as defined by this document, either a PSK or a certificate is always used, but not both."
+      },
+      "description": "Every TLS 1.3 server session both checks the PSK binder and sends Certificate and CertificateVerify signed with its long-term key, so each modeled handshake is a PSK+certificate hybrid. The document says a PSK-authenticated server sends no Certificate/CertificateVerify, and that external PSKs MUST NOT be combined with certificate authentication.",
+      "related_properties": [
+        "secrecy_client_appdata_1rtt",
+        "secrecy_client_traffic_key_1rtt",
+        "auth_client_to_server_handshake",
+        "auth_client_receives_appdata"
+      ],
+      "doc_check": "confirmed"
+    },
+    {
+      "id": "F2",
+      "category": "convention",
+      "material": true,
+      "formal": {
+        "file": "formal/proverif/main.pv",
+        "lines": "l.165-181, l.616",
+        "excerpt": "(get preSharedKeys(a,b,psk) in"
+      },
+      "document": {
+        "status": "contradicts",
+        "file": "rfc/TLS13/draft20/converted/main/draft-ietf-tls-tls13-20.txt",
+        "lines": "l.1692-1693",
+        "quote": "If PSK is not being used, then (EC)DHE and certificate-based authentication are always used."
+      },
+      "description": "TLS 1.3 client and server always take a PSK from the preSharedKeys table, which only ever receives PSK(new) values, never NoPSK. The document's basic certificate-only full handshake is therefore not modeled.",
+      "related_properties": [
+        "secrecy_client_appdata_1rtt",
+        "secrecy_client_traffic_key_1rtt",
+        "auth_client_to_server_handshake",
+        "auth_client_receives_appdata",
+        "auth_server_receives_appdata"
+      ],
+      "doc_check": "confirmed"
+    },
+    {
+      "id": "F3",
+      "category": "convention",
+      "material": true,
+      "formal": {
+        "file": "formal/proverif/main.pv",
+        "lines": "l.570, l.590-591, l.640-641",
+        "excerpt": "let gxy = e2b(dh_exp(g,gy,x)) in"
+      },
+      "document": {
+        "status": "contradicts",
+        "file": "rfc/TLS13/draft20/converted/main/draft-ietf-tls-tls13-20.txt",
+        "lines": "l.2831-2832 (also l.1126-1127)",
+        "quote": "PSK-only key establishment.  In this mode, the server MUST NOT supply a \"key_share\" value."
+      },
+      "description": "Both endpoints always use psk_dhe_ke: the offer must carry a DHE share and the handshake secret always mixes in g^xy. The document's psk_ke mode (PSK alone, without forward secrecy) is not modeled.",
+      "related_properties": [
+        "secrecy_client_appdata_1rtt",
+        "secrecy_client_traffic_key_1rtt",
+        "auth_client_to_server_handshake",
+        "auth_client_receives_appdata"
+      ],
+      "doc_check": "confirmed"
+    },
+    {
+      "id": "F4",
+      "category": "scope",
+      "material": true,
+      "formal": {
+        "file": "formal/proverif/main.pv",
+        "lines": "l.569-570, l.628-629, l.827-837, l.843-867",
+        "excerpt": "event(ServerChoosesAE(cr,sr,p,TLS13,WeakAE)) ||"
+      },
+      "document": {
+        "status": "partial",
+        "file": "rfc/TLS13/draft20/converted/main/draft-ietf-tls-tls13-20.txt",
+        "lines": "l.1896-1897",
+        "quote": "A client which receives a cipher suite that was not offered MUST abort the handshake."
+      },
+      "description": "The model adds broken primitives (WeakAE, WeakDH, WeakHash) that the attacker can select through the offer and the server mode, and every security query exempts sessions that used them. The document defines no weak algorithms and requires the client to check that the server's cipher suite was offered.",
+      "related_properties": [
+        "secrecy_client_appdata_1rtt",
+        "secrecy_client_traffic_key_1rtt",
+        "secrecy_client_earlydata_0rtt",
+        "auth_client_to_server_handshake",
+        "auth_client_receives_appdata",
+        "auth_server_receives_appdata",
+        "auth_server_receives_earlydata_0rtt"
+      ],
+      "doc_check": "confirmed"
+    },
+    {
+      "id": "F5",
+      "category": "convention",
+      "material": true,
+      "formal": {
+        "file": "formal/proverif/main.pv",
+        "lines": "l.853-857",
+        "excerpt": "((psk = NoPSK || event(CompromisedPreSharedKey(psk)))) ||"
+      },
+      "document": {
+        "status": "partial",
+        "file": "rfc/TLS13/draft20/converted/main/draft-ietf-tls-tls13-20.txt",
+        "lines": "l.986-988",
+        "quote": "This message is omitted if client authentication is not desired."
+      },
+      "description": "The model has no client certificate authentication (CertificateRequest and client Certificate/CertificateVerify are absent); the client is authenticated to the server only through the PSK. The document makes client certificate authentication optional.",
+      "related_properties": [
+        "auth_server_receives_appdata"
+      ],
+      "doc_check": "confirmed"
+    },
+    {
+      "id": "F6",
+      "category": "convention",
+      "material": true,
+      "formal": {
+        "file": "formal/proverif/main.pv",
+        "lines": "l.364-368, l.666-668",
+        "excerpt": "event ClientAEKeyLeaked(v,cr,sr,psk,p))"
+      },
+      "document": {
+        "status": "partial",
+        "file": "rfc/TLS13/draft20/converted/main/draft-ietf-tls-tls13-20.txt",
+        "lines": "l.6979-6983",
+        "quote": "is compromised after the handshake is complete, this does not compromise the security of the session key"
+      },
+      "description": "The process that signals a leaked client traffic key has no phase prefix and runs only in phase 0, while the signing key is published only in phase 1. The model therefore does not observe a traffic-key leak after the long-term key is revealed, i.e. the forward secrecy the document claims for the session key is not covered by this observation.",
+      "related_properties": [
+        "secrecy_client_traffic_key_1rtt"
+      ],
+      "doc_check": "confirmed"
+    },
+    {
+      "id": "F7",
+      "category": "convention",
+      "material": false,
+      "formal": {
+        "file": "formal/proverif/main.pv",
+        "lines": "l.594, l.644",
+        "excerpt": "out(io,(chk,shk));"
+      },
+      "document": {
+        "status": "absent",
+        "file": "rfc/TLS13/draft20/converted/main/draft-ietf-tls-tls13-20.txt",
+        "lines": "",
+        "quote": ""
+      },
+      "description": "Handshake traffic keys are output to the attacker. This only strengthens the attacker and is not described in the document.",
+      "related_properties": [],
+      "doc_check": "confirmed"
+    }
+  ]
+}

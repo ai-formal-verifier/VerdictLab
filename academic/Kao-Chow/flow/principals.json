@@ -1,0 +1,71 @@
+{
+  "principals": [
+    {
+      "name": "A",
+      "description": "the initiator: sends the request and nonce to S, decrypts S's credential, verifies B with the session-key challenge, and proves possession of the session key to B."
+    },
+    {
+      "name": "B",
+      "description": "the responder: decrypts S's credential for B, challenges A using the session key and a fresh nonce, and verifies A's encrypted response."
+    },
+    {
+      "name": "S",
+      "description": "the trusted authentication server: shares long-term master keys with A and B, generates the session key, and encrypts credentials for both principals."
+    }
+  ],
+  "values": [
+    {
+      "name": "A",
+      "derived_from": [],
+      "description": "A is a protocol identity.",
+      "holders": [
+        "A",
+        "B",
+        "S"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "B",
+      "derived_from": [],
+      "description": "B is a protocol identity.",
+      "holders": [
+        "A",
+        "B",
+        "S"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "S",
+      "derived_from": [],
+      "description": "S is a protocol identity.",
+      "holders": [
+        "A",
+        "B",
+        "S"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "K_as",
+      "derived_from": [],
+      "description": "K_as is a pre-run symmetric key or keying value.",
+      "holders": [
+        "A",
+        "S"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "K_bs",
+      "derived_from": [],
+      "description": "K_bs is a pre-run symmetric key or keying value.",
+      "holders": [
+        "B",
+        "S"
+      ],
+      "source": "generated"
+    }
+  ]
+}

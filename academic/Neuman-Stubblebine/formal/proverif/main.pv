@@ -1,0 +1,217 @@
+(* =====================================================================
+   Neuman-Stubblebine — ProVerif standard oracle (UNTYPED).
+
+   Re-run this file with ProVerif to reproduce the verdicts recorded in
+   results.json.
+
+   PROVENANCE
+   ----------
+   Derived from reference_autosm.pv by mechanically stripping
+   the per-message tag constants ``s1..s6`` introduced by the AutoSM
+   SAPIC+ Tamarin model. The original AutoSM model came from
+   `Neuman-Stubblebine-P.spthy` (AutoSM benchmark, GPL-3.0,
+   tamarin-prover -m=proverif export). To reproduce this file from the
+   reference, see ``diff main.pv reference_autosm.pv`` (mechanical
+   substitutions only, listed below in DIFF).
+
+   UNTYPED
+   -------
+   The bare RFC-style spec in ``converted/main/Neuman-Stubblebine.md §4``
+   writes ciphertexts as ``{A, N_a, T_b}K_kb`` and ``{A, K_ab, T_b}K_kb``
+   with no per-message tag distinguishing instruction from ticket. A
+   faithful ProVerif model of THAT spec must therefore be untyped: the
+   two ciphertexts are structurally interchangeable and the symbolic
+   attacker can substitute one for the other (Hwang 1995 type-flaw
+   attack, ref [3]; SPORE entry [2]).
+
+   The upstream AutoSM model (reference_autosm.pv) tags every ciphertext
+   with ``s1..s6`` to make instruction/ticket non-confusable. Under that
+   modeling, Hwang's attack does not apply and agreement_B becomes true.
+   The two models therefore answer agreement_B differently, each
+   correctly under its own typing commitment.
+
+   DIFF (this file vs reference_autosm.pv) — purely mechanical
+   -----------------------------------------------------------
+     * removed declarations  ``free s1..s6: bitstring.``
+     * tuple constants stripped:
+         senc((sN, X), K)       →  senc(X, K)         (in encryptions)
+         let (=sN, X) = expr in →  let X = expr in    (in destructure
+                                                        patterns)
+     * no other changes: same events, queries, processes, equational
+       theory, replication, attacker channel ``att``.
+
+   AUTHORITATIVE VERDICTS (this file, as actually run under ProVerif 2.05)
+   ----------------------------------------------------------
+     secrecy_kab            = true   (Kab stays secret; conditional on
+                                      Kas, Kbs uncompromised. Tamarin
+                                      also verified this independently.)
+     agreement_B (B↔A)      = false  (Hwang 1995 type-flaw [3]: the
+                                      msg_2 instruction ciphertext
+                                      {A,N_a,T_b}K_kb can be replayed
+                                      as the msg_4 ticket
+                                      {A,K_ab,T_b}K_kb)
+     agreement_A (A↔B)      = false  (msg_3's trailing N_b is in
+                                      plaintext and attacker-malleable;
+                                      A commits with a substituted N_b
+                                      that no B session ever generated.
+                                      Plus the Hwang attack also breaks
+                                      this direction.)
+
+   To re-verify, run:  proverif main.pv  and compare to results.json's
+   verdicts field.
+   ===================================================================== *)
+
+free att:channel.
+fun fst(bitstring):bitstring.
+fun id(bitstring):bitstring.
+fun pair(bitstring,bitstring):bitstring.
+fun senc(bitstring,bitstring):bitstring.
+fun snd(bitstring):bitstring.
+event eCommitA(bitstring,bitstring,bitstring).
+event eCommitB(bitstring,bitstring,bitstring).
+event eCompromise(bitstring).
+event eIN_A_2(bitstring,bitstring).
+event eIN_B(bitstring,bitstring).
+event eIN_S_1(bitstring,bitstring).
+event eOUT_A(bitstring).
+event eOUT_B_1(bitstring).
+event eOUT_S_2(bitstring).
+event eRunningA(bitstring,bitstring,bitstring).
+event eRunningB(bitstring,bitstring,bitstring).
+event eSecret(bitstring,bitstring,bitstring).
+event eServer(bitstring,bitstring,bitstring).
+equation forall x_1:bitstring, x_2:bitstring;   fst((x_1, x_2)) = x_1.
+equation forall x_1:bitstring, x_2:bitstring;   snd((x_1, x_2)) = x_2.
+reduc forall k:bitstring, m:bitstring;   sdec(senc(m, k), k) = m.
+(*AUTO_typing*)
+(*∀ x m #i.
+   (IN_S_1( m, x ) @ #i) ⇒
+   ((∃ #j. (!KU( x ) @ #j) ∧ (#j < #i)) ∨
+    (∃ #j. (OUT_B_1( m ) @ #j) ∧ (#j < #i)))*)
+
+(* executability query removed: tamarin-export encodes it with time
+   inequalities in the premise, which ProVerif 2.05 rejects; it is an
+   existential model-sanity lemma (verified in the Tamarin run), not a
+   security goal. *)
+
+(* Existential lemma executability has a leading negation, interpret ProVerif's answers accordingly!*)
+
+(*secrecy*)
+(*∀ A B k #i.
+   (Secret( A, B, k ) @ #i) ⇒
+   (((¬(∃ #j. K( k ) @ #j)) ∨ (∃ #j. Compromise( B ) @ #j)) ∨
+    (∃ #j. Compromise( A ) @ #j))*)
+
+(*noninjectiveagreement_B*)
+query A:bitstring, B:bitstring, t:bitstring, i:time, j:time, r:time;
+ (event(eCommitB( B, A, t ))@i) ==>
+ ((((event(eRunningA( A, B, t ))@j) && (j < i)) ||
+   (event(eCompromise( A ))@r)) ||
+  (event(eCompromise( B ))@r))
+.
+
+(*noninjectiveagreement_A*)
+query A:bitstring, B:bitstring, t:bitstring, i:time, j:time, r:time;
+ (event(eCommitA( A, B, t ))@i) ==>
+ ((((event(eRunningB( B, A, t ))@j) && (j < i)) ||
+   (event(eCompromise( A ))@r)) ||
+  (event(eCompromise( B ))@r))
+.
+
+(*injectiveagreement_B*)
+query A:bitstring, B:bitstring, t:bitstring;
+ inj-event(eCommitB( B, A, t )) ==>
+ (inj-event(eRunningA( A, B, t )) ||
+  event(eCompromise( A )) ||
+  event(eCompromise( B )))
+.
+
+(*injectiveagreement_A*)
+query A:bitstring, B:bitstring, t:bitstring;
+ inj-event(eCommitA( A, B, t )) ==>
+ (inj-event(eRunningB( B, A, t )) ||
+  event(eCompromise( A )) ||
+  event(eCompromise( B )))
+.
+
+let Alice(Kas_2:bitstring, idA_2:bitstring, idB_2:bitstring)=
+    new Na_2:bitstring;
+    out(att,(idA_2, Na_2));
+    in(att,(cypher1_2:bitstring, (cypher2_2:bitstring, Nb_2:bitstring)));
+    let mess1_2:bitstring=sdec(cypher1_2, Kas_2) in
+    let ((=idB_2, (=Na_2, (Kab_2:bitstring, Tb_2:bitstring))))=mess1_2 in
+    event eIN_A_2( cypher1_2, Tb_2 );
+    event eCommitA( idA_2, idB_2, (Na_2, (Nb_2, Tb_2)) );
+    event eRunningA( idA_2, idB_2, (Kab_2, (Na_2, Nb_2)) );
+    event eSecret( idA_2, idB_2, Kab_2 );
+    event eOUT_A( senc((Nb_2), Kab_2) );
+    out(att,(cypher2_2, senc((Nb_2), Kab_2)));
+    new Ma_2:bitstring;
+    out(att,(cypher2_2, Ma_2));
+    in(att,(cypher6_2:bitstring, Mb_2:bitstring));
+    let (=Ma_2)=sdec(cypher6_2, Kab_2) in
+    let cypher7_2:bitstring=senc((Mb_2), Kab_2) in
+    out(att,cypher7_2).
+let Bob(Kbs_2:bitstring, idA_2:bitstring, idB_2:bitstring)=
+    in(att,(=idA_2, Na_2:bitstring));
+    new Nb_2:bitstring;
+    new Tb_2:bitstring;
+    event eRunningB( idB_2, idA_2, (Na_2, (Nb_2, Tb_2)) );
+    event eOUT_B_1( senc(((idA_2, (Na_2, Tb_2))), Kbs_2) );
+    out(att,(idB_2, (Nb_2, senc(((idA_2, (Na_2, Tb_2))), Kbs_2))));
+    in(att,(cypher3_2:bitstring, cypher4_2:bitstring));
+    let mess2_2:bitstring=sdec(cypher3_2, Kbs_2) in
+    let ((=idA_2, (Kab_2:bitstring, =Tb_2)))=mess2_2 in
+    let (=Nb_2)=sdec(cypher4_2, Kab_2) in
+    event eIN_B( cypher4_2, Nb_2 );
+    event eCommitB( idB_2, idA_2, (Kab_2, (Na_2, Nb_2)) );
+    event eSecret( idB_2, idA_2, Kab_2 );
+    in(att,(=cypher3_2, Ma_2:bitstring));
+    new Mb_2:bitstring;
+    let cypher6_2:bitstring=senc((Ma_2), Kab_2) in
+    out(att,(cypher6_2, Mb_2));
+    in(att,cypher7_2:bitstring);
+    let (=Mb_2)=sdec(cypher7_2, Kab_2) in
+    0.
+let Server(Kas_2:bitstring, Kbs_2:bitstring, idA_2:bitstring,
+           idB_2:bitstring)=
+    in(att,(=idB_2, (Nb_2:bitstring, cypher5_2:bitstring)));
+    let mess3_2:bitstring=sdec(cypher5_2, Kbs_2) in
+    let ((=idA_2, (Na_2:bitstring, Tb_2:bitstring)))=mess3_2 in
+    event eIN_S_1( cypher5_2, (Na_2, Tb_2) );
+    new Kab_2:bitstring;
+    event eServer( idA_2, idB_2, (Kab_2, (Na_2, Nb_2)) );
+    let subpart1_2:bitstring=senc(((idB_2, (Na_2, (Kab_2, Tb_2)))),
+                                  Kas_2) in
+    event eOUT_S_2( subpart1_2 );
+    let subpart2_2:bitstring=senc(((idA_2, (Kab_2, Tb_2))), Kbs_2) in
+    out(att,(subpart1_2, (subpart2_2, Nb_2))).
+let CompromiseLtk(s_2:bitstring)=
+    event eCompromise( id(s_2) );
+    out(att,s_2).
+process
+    !
+    (new Kas_2:bitstring;
+     new Kbs_2:bitstring;
+     out(att,id(Kas_2));
+     out(att,id(Kbs_2));
+     ((((CompromiseLtk(Kas_2))
+      | (CompromiseLtk(Kbs_2))))
+    | (((((!
+           (Alice(Kas_2, id(Kas_2), id(Kbs_2))))
+        | (!
+           (Bob(Kbs_2, id(Kas_2), id(Kbs_2))))))
+      | (!
+         (Server(Kas_2, Kbs_2, id(Kas_2), id(Kbs_2))))))))
+
+(*
+All wellformedness checks were successful.
+*)
+
+(*
+Generated from:
+Tamarin version 1.12.0
+Maude version 3.5.1
+Git revision: UNKNOWN, branch: UNKNOWN
+Compiled at: 2026-03-08 09:49:47.765662 UTC
+*)

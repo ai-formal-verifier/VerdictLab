@@ -1,0 +1,102 @@
+(*
+  Denning-Sacco shared-key — ProVerif model aligned with the Tamarin model
+
+  PROVENANCE
+  ----------
+  Rule for rule and lemma for lemma the same as
+  `../tamarin/Denning-Sacco-SK.spthy` (S. Delaune, March 2020): any principal
+  in any role, one long-term key each, and a compromise is an action that can
+  happen at any time, excused inside the query as the lemmas excuse it.
+
+  main.pv and main-compromise-{A,B}.pv are the other form of the same protocol:
+  one model per world, as the pipeline produces them. This file is the check
+  that the world without a compromise answers the Tamarin lemmas.
+
+  GOALS — 1-to-1 with the Tamarin lemmas
+  --------------------------------------
+     Tamarin lemma                expected
+     --------------------------------------------------
+     secrecy                      TRUE
+     noninjectiveagreement_B      TRUE
+     injectiveagreement_B         FALSE (multiplicity attack)
+     executability                (no counterpart here)
+
+  Tamarin tags the ciphertexts because its tuples nest; ProVerif tuples have a
+  fixed arity, so messages 2 and 3 cannot be confused and no tag is needed.
+*)
+
+free c: channel.
+
+type host.
+type key.
+
+fun senc(bitstring, key): bitstring.
+reduc forall x: bitstring, y: key; sdec(senc(x, y), y) = x.
+
+(* rule Init and restriction singlelongtermkeyperuser: one key per principal *)
+fun ltk(host): key [private].
+
+table shortterm(key, host, host).
+
+event RunningA(host, host, key, bitstring).
+event CommitA(host, host, key, bitstring).
+event CommitB(host, host, key, bitstring).
+event Secret(host, host, key).
+event Compromise(host).
+
+(* lemma secrecy *)
+query a: host, b: host, k: key;
+  event(Secret(a, b, k)) && attacker(k)
+  ==> event(Compromise(a)) || event(Compromise(b)).
+
+(* lemma noninjectiveagreement_B *)
+query a: host, b: host, k: key, t: bitstring;
+  event(CommitB(b, a, k, t))
+  ==> event(RunningA(a, b, k, t)) || event(Compromise(a)) || event(Compromise(b)).
+
+(* lemma injectiveagreement_B *)
+query a: host, b: host, k: key, t: bitstring;
+  inj-event(CommitB(b, a, k, t))
+  ==> inj-event(RunningA(a, b, k, t)) || event(Compromise(a)) || event(Compromise(b)).
+
+(* rule Reveal_Longterm_Key *)
+let reveal_long =
+  in(c, x: host);
+  event Compromise(x);
+  out(c, ltk(x)).
+
+(* rule Reveal_Shortterm_Key *)
+let reveal_short =
+  get shortterm(k: key, x: host, y: host) in
+  event Compromise(x);
+  event Compromise(y);
+  out(c, k).
+
+(* rules A_1 and A_2 *)
+let initiator =
+  in(c, (a: host, b: host));
+  out(c, (a, b));
+  in(c, m: bitstring);
+  let (=b, k: key, t: bitstring, tk: bitstring) = sdec(m, ltk(a)) in
+  event CommitA(a, b, k, t);
+  event RunningA(a, b, k, t);
+  event Secret(a, b, k);
+  out(c, tk).
+
+(* rule B_1 *)
+let responder =
+  in(c, (b: host, m: bitstring));
+  let (k: key, a: host, t: bitstring) = sdec(m, ltk(b)) in
+  event CommitB(b, a, k, t);
+  event Secret(b, a, k).
+
+(* rule S_1 *)
+let server =
+  in(c, (x: host, y: host));
+  new k: key;
+  new t: bitstring;
+  insert shortterm(k, x, y);
+  out(c, senc((y, k, t, senc((k, x, t), ltk(y))), ltk(x))).
+
+process
+  ( !initiator | !responder | !server | !reveal_long | !reveal_short )

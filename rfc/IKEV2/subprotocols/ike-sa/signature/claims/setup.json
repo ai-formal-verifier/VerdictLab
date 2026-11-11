@@ -1,0 +1,193 @@
+{
+  "vocab_version": "4.0.0",
+  "names": {
+    "peer_identities": "The identity scope of the IKE peers whose identities in the ID payloads are bound to the keys that verify their AUTH signatures (by certificates, or the policy of the Peer Authorization Database); open means the attacker may hold a legitimate identity and key of its own and take part as a peer (§2.15, §3.5).",
+    "IDi": "IDi, the Identification - Initiator payload with which the initiator asserts its identity in its IKE_AUTH request (§1.2, §3.5).",
+    "IDr": "IDr, the Identification - Responder payload with which the responder asserts its identity in its IKE_AUTH response, and which the initiator may send to name the responder identity it wants to talk to (§1.2, §3.5).",
+    "pk_Initiator": "The initiator's public key, with which the responder verifies the initiator's AUTH signature; a certificate in a CERT payload may show that it belongs to the name in IDi (§1.2, §2.15).",
+    "pk_Responder": "The responder's public key, with which the initiator verifies the responder's AUTH signature; a certificate in a CERT payload may show that it belongs to the name in IDr (§1.2, §2.15).",
+    "SAi1": "SAi1, the SA payload of the IKE_SA_INIT request, stating the cryptographic algorithms the initiator supports for the IKE SA (§1.2).",
+    "TSi": "TSi, the Traffic Selector - Initiator payload carried in both IKE_AUTH messages for the Child SA being negotiated (§1.2, §2.9, §3.13).",
+    "TSr": "TSr, the Traffic Selector - Responder payload carried in both IKE_AUTH messages for the Child SA being negotiated (§1.2, §2.9, §3.13).",
+    "SAi2": "SAi2, the SA payload with which the initiator begins negotiation of the first Child SA in its IKE_AUTH request (§1.2, §1.3.1).",
+    "SAr2": "SAr2, the SA payload with which the responder completes negotiation of the first Child SA in its IKE_AUTH response, carrying the accepted offer (§1.2, §1.3.1).",
+    "Initiator": "The principal Initiator: IKEv2 initiator. Opens IKE_SA_INIT with its DH share and nonce, derives the SKEYSEED tree, then authenticates in IKE_AUTH by signing the IKE_SA_INIT request transcript with its own signature key, and proposes the Child SA.",
+    "Responder": "The principal Responder: IKEv2 responder. Answers IKE_SA_INIT with its own DH share and nonce, verifies the initiator's AUTH signature against the peer public key, signs the IKE_SA_INIT response transcript in return, and answers with its own Child SA selection.",
+    "Child_SA": "The first Child SA that the IKE_AUTH exchange establishes: the offer the initiator sends in its SAi2 payload and the responder accepts in its SAr2 payload (§1.2, §1.3.1).",
+    "SKEYSEED": "SKEYSEED = prf(Ni | Nr, g^ir), computed from the nonces and the Diffie-Hellman shared secret of the IKE_SA_INIT exchange, from which all keys of the IKE SA (SK_d, SK_ai, SK_ar, SK_ei, SK_er, SK_pi, SK_pr) are derived (§1.2, §2.14)."
+  },
+  "assumptions": [
+    {
+      "id": "admission_peer_auth",
+      "axis": "admission",
+      "target": {
+        "scope": "peer_identities"
+      },
+      "default": "open"
+    },
+    {
+      "id": "data_idi_public",
+      "axis": "data",
+      "target": {
+        "of": "IDi"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_idr_public",
+      "axis": "data",
+      "target": {
+        "of": "IDr"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_pki_public",
+      "axis": "data",
+      "target": {
+        "of": "pk_Initiator"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_pkr_public",
+      "axis": "data",
+      "target": {
+        "of": "pk_Responder"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_sai1_public",
+      "axis": "data",
+      "target": {
+        "of": "SAi1"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_tsi_public",
+      "axis": "data",
+      "target": {
+        "of": "TSi"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_tsr_public",
+      "axis": "data",
+      "target": {
+        "of": "TSr"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "chosen_sai2",
+      "axis": "data",
+      "target": {
+        "of": "SAi2"
+      },
+      "default": "none",
+      "levels": [
+        "chosen",
+        "none"
+      ]
+    },
+    {
+      "id": "chosen_sar2",
+      "axis": "data",
+      "target": {
+        "of": "SAr2"
+      },
+      "default": "none",
+      "levels": [
+        "chosen",
+        "none"
+      ]
+    },
+    {
+      "id": "seating_Initiator",
+      "axis": "seating",
+      "target": {
+        "principal": "Initiator"
+      },
+      "default": "any_role"
+    },
+    {
+      "id": "seating_Responder",
+      "axis": "seating",
+      "target": {
+        "principal": "Responder"
+      },
+      "default": "any_role"
+    }
+  ],
+  "properties": [
+    {
+      "id": "secrecy_session_key",
+      "type": "Secrecy",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "SKEYSEED"
+        ],
+        "holders": [
+          "Initiator",
+          "Responder"
+        ]
+      }
+    },
+    {
+      "id": "auth_init_to_resp",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "Initiator",
+        "subject": "Responder",
+        "of": [
+          "IDi",
+          "IDr",
+          "Child_SA",
+          "TSi",
+          "TSr",
+          "SKEYSEED"
+        ]
+      }
+    },
+    {
+      "id": "auth_resp_to_init",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "Responder",
+        "subject": "Initiator",
+        "of": [
+          "IDi",
+          "IDr",
+          "Child_SA",
+          "TSi",
+          "TSr",
+          "SKEYSEED"
+        ]
+      }
+    },
+    {
+      "id": "auth_resp_to_init_on_id_and_seed",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "Responder",
+        "subject": "Initiator",
+        "of": [
+          "IDi",
+          "SKEYSEED"
+        ]
+      }
+    }
+  ],
+  "claims": []
+}

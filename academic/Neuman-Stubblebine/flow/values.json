@@ -1,0 +1,578 @@
+{
+  "vocab_version": "4.0.0",
+  "values": [
+    {
+      "name": "A",
+      "evidence": [],
+      "description": "A's identity, the initiator.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "A",
+        "replicated": false
+      },
+      "holders": {
+        "A": [
+          {
+            "id": "A",
+            "how": "initial",
+            "from": "A"
+          }
+        ],
+        "B": [
+          {
+            "id": "A",
+            "how": "initial",
+            "from": "A"
+          }
+        ],
+        "KDC": [
+          {
+            "id": "A",
+            "how": "initial",
+            "from": "A"
+          }
+        ]
+      }
+    },
+    {
+      "name": "B",
+      "evidence": [],
+      "description": "B's identity, the responder.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "B",
+        "replicated": false
+      },
+      "holders": {
+        "A": [
+          {
+            "id": "B",
+            "how": "initial",
+            "from": "B"
+          }
+        ],
+        "B": [
+          {
+            "id": "B",
+            "how": "initial",
+            "from": "B"
+          }
+        ],
+        "KDC": [
+          {
+            "id": "B",
+            "how": "initial",
+            "from": "B"
+          }
+        ]
+      }
+    },
+    {
+      "name": "KDC",
+      "evidence": [],
+      "description": "The key distribution centre KDC's identity.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "KDC",
+        "replicated": false
+      },
+      "holders": {
+        "A": [
+          {
+            "id": "KDC",
+            "how": "initial",
+            "from": "KDC"
+          }
+        ],
+        "B": [
+          {
+            "id": "KDC",
+            "how": "initial",
+            "from": "KDC"
+          }
+        ],
+        "KDC": [
+          {
+            "id": "KDC",
+            "how": "initial",
+            "from": "KDC"
+          }
+        ]
+      }
+    },
+    {
+      "name": "K_ka",
+      "evidence": [],
+      "description": "Long-term key shared by A and the KDC.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "K_ka",
+        "replicated": false
+      },
+      "holders": {
+        "A": [
+          {
+            "id": "K_ka",
+            "how": "initial",
+            "from": "K_ka"
+          }
+        ],
+        "KDC": [
+          {
+            "id": "K_ka",
+            "how": "initial",
+            "from": "K_ka"
+          }
+        ]
+      }
+    },
+    {
+      "name": "K_kb",
+      "evidence": [],
+      "description": "Long-term key shared by B and the KDC.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "K_kb",
+        "replicated": false
+      },
+      "holders": {
+        "B": [
+          {
+            "id": "K_kb",
+            "how": "initial",
+            "from": "K_kb"
+          }
+        ],
+        "KDC": [
+          {
+            "id": "K_kb",
+            "how": "initial",
+            "from": "K_kb"
+          }
+        ]
+      }
+    },
+    {
+      "name": "N_a",
+      "evidence": [],
+      "description": "A's nonce.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "N_a",
+        "role": "A",
+        "replicated": true
+      },
+      "holders": {
+        "A": [
+          {
+            "id": "N_a",
+            "how": "generated"
+          }
+        ],
+        "B": [
+          {
+            "id": "N_a_recv",
+            "how": "received"
+          }
+        ],
+        "KDC": [
+          {
+            "id": "N_a_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "msg1",
+      "evidence": [],
+      "description": "Message 1: A sends its identity and N_a to B.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "(A, N_a)",
+        "role": "A",
+        "replicated": true
+      },
+      "holders": {
+        "B": [
+          {
+            "id": "msg_a_b_1",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "msg4",
+      "evidence": [],
+      "description": "Message 4: A forwards B's ticket with B's nonce under K_ab.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "(ticket_B, ct_nb)",
+        "role": "A",
+        "replicated": true
+      },
+      "holders": {
+        "B": [
+          {
+            "id": "msg_a_b_2",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "N_b",
+      "evidence": [],
+      "description": "B's nonce.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "N_b",
+        "role": "B",
+        "replicated": true
+      },
+      "holders": {
+        "B": [
+          {
+            "id": "N_b",
+            "how": "generated"
+          },
+          {
+            "id": "N_b_back",
+            "how": "received"
+          }
+        ],
+        "A": [
+          {
+            "id": "N_b_recv",
+            "how": "received"
+          }
+        ],
+        "KDC": [
+          {
+            "id": "N_b_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "T_b",
+      "evidence": [],
+      "description": "B's timestamp for the ticket.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "T_b",
+        "role": "B",
+        "replicated": true
+      },
+      "holders": {
+        "B": [
+          {
+            "id": "T_b",
+            "how": "generated"
+          }
+        ],
+        "A": [
+          {
+            "id": "T_b_recv",
+            "how": "received"
+          }
+        ],
+        "KDC": [
+          {
+            "id": "T_b_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "msg2",
+      "evidence": [],
+      "description": "Message 2: B sends its identity, N_b and a block with A, N_a and T_b under K_kb to the KDC.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "(B, N_b, ct_from_B)",
+        "role": "B",
+        "replicated": true
+      },
+      "holders": {
+        "KDC": [
+          {
+            "id": "msg_b_s_1",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "K_ab",
+      "evidence": [],
+      "description": "Session key generated by the KDC.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "K_ab",
+        "role": "KDC",
+        "replicated": true
+      },
+      "holders": {
+        "KDC": [
+          {
+            "id": "K_ab",
+            "how": "generated"
+          }
+        ],
+        "A": [
+          {
+            "id": "K_ab",
+            "how": "received"
+          }
+        ],
+        "B": [
+          {
+            "id": "K_ab",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "msg3",
+      "evidence": [],
+      "description": "Message 3: the KDC sends A its block, B's ticket and N_b.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "(ct_for_A, ticket_B, N_b_recv)",
+        "role": "KDC",
+        "replicated": true
+      },
+      "holders": {
+        "A": [
+          {
+            "id": "msg_s_a_1",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ct_for_A",
+      "evidence": [],
+      "description": "A's block: B, N_a, K_ab and T_b under K_ka.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "ct_for_A",
+        "role": "KDC",
+        "replicated": true,
+        "derived_from": [
+          "B",
+          "N_a",
+          "K_ab",
+          "T_b",
+          "K_ka"
+        ]
+      },
+      "holders": {
+        "A": [
+          {
+            "id": "ct_for_A",
+            "how": "received"
+          }
+        ],
+        "KDC": [
+          {
+            "id": "ct_for_A",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ticket_B",
+      "evidence": [],
+      "description": "B's ticket: A, K_ab and T_b under K_kb.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "ticket_B",
+        "role": "KDC",
+        "replicated": true,
+        "derived_from": [
+          "A",
+          "K_ab",
+          "T_b",
+          "K_kb"
+        ]
+      },
+      "holders": {
+        "A": [
+          {
+            "id": "ticket_B",
+            "how": "received"
+          }
+        ],
+        "B": [
+          {
+            "id": "ticket_B",
+            "how": "received"
+          }
+        ],
+        "KDC": [
+          {
+            "id": "ticket_B",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "plain_msg3",
+      "evidence": [],
+      "description": "A's block of message 3 decrypted by A with K_ka.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "plain_for_A",
+        "role": "A",
+        "replicated": true,
+        "derived_from": [
+          "ct_for_A",
+          "K_ka"
+        ]
+      },
+      "holders": {
+        "A": [
+          {
+            "id": "plain_for_A",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ct_nb",
+      "evidence": [],
+      "description": "N_b under K_ab, A's proof of the key to B.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "ct_nb",
+        "role": "A",
+        "replicated": true,
+        "derived_from": [
+          "N_b",
+          "K_ab"
+        ]
+      },
+      "holders": {
+        "A": [
+          {
+            "id": "ct_nb",
+            "how": "computed"
+          }
+        ],
+        "B": [
+          {
+            "id": "ct_nb",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ct_from_B",
+      "evidence": [],
+      "description": "The block with A, N_a and T_b under K_kb.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "ct_from_B",
+        "role": "B",
+        "replicated": true,
+        "derived_from": [
+          "A",
+          "N_a",
+          "T_b",
+          "K_kb"
+        ]
+      },
+      "holders": {
+        "B": [
+          {
+            "id": "ct_from_B",
+            "how": "computed"
+          }
+        ],
+        "KDC": [
+          {
+            "id": "ct_from_B",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "plain_ticket_B",
+      "evidence": [],
+      "description": "B's ticket decrypted by B with K_kb.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "plain_ticket_B",
+        "role": "B",
+        "replicated": true,
+        "derived_from": [
+          "ticket_B",
+          "K_kb"
+        ]
+      },
+      "holders": {
+        "B": [
+          {
+            "id": "plain_ticket_B",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "plain_from_B",
+      "evidence": [],
+      "description": "B's block decrypted by the KDC with K_kb.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "plain_from_B",
+        "role": "KDC",
+        "replicated": true,
+        "derived_from": [
+          "ct_from_B",
+          "K_kb"
+        ]
+      },
+      "holders": {
+        "KDC": [
+          {
+            "id": "plain_from_B",
+            "how": "computed"
+          }
+        ]
+      }
+    }
+  ]
+}

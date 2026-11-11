@@ -1,0 +1,245 @@
+{
+  "vocab_version": "4.0.0",
+  "protocol_id": "NSSK",
+  "names": {
+    "peer_auth": "The identity scope of the peer identities honest principals can select; open means the attacker may register a recognised peer identity (§5).",
+    "A": "The initiator, sharing secret key KA with AS, and its identity A sent in message 1.1 and inside the ticket {CK, A}KB (§2, §3, §4).",
+    "B": "The intended correspondent, sharing secret key KB with AS, and its identity B named in message 1.1 and returned in message 1.2 (§2, §3, §4).",
+    "CK": "The conversation key that AS generates and sends to A in message 1.2, and A forwards to B in message 1.3 (§3, §4)."
+  },
+  "scenarios": [
+    {
+      "name": "baseline",
+      "world": [
+        {
+          "axis": "admission",
+          "target": {
+            "scope": "peer_auth"
+          },
+          "level": "open"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "A"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "B"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "CK"
+          },
+          "level": "none"
+        },
+        {
+          "axis": "seating",
+          "target": {
+            "principal": "A"
+          },
+          "level": "any_role"
+        },
+        {
+          "axis": "seating",
+          "target": {
+            "principal": "B"
+          },
+          "level": "any_role"
+        }
+      ]
+    },
+    {
+      "name": "sk_reveal_session_key_skr_others",
+      "world": [
+        {
+          "axis": "admission",
+          "target": {
+            "scope": "peer_auth"
+          },
+          "level": "open"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "A"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "B"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "CK"
+          },
+          "level": "leaked_in_other_instances"
+        },
+        {
+          "axis": "seating",
+          "target": {
+            "principal": "A"
+          },
+          "level": "any_role"
+        },
+        {
+          "axis": "seating",
+          "target": {
+            "principal": "B"
+          },
+          "level": "any_role"
+        }
+      ]
+    }
+  ],
+  "goals": [
+    {
+      "name": "secrecy_CK",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "CK"
+        ],
+        "holders": [
+          "A",
+          "B"
+        ]
+      }
+    },
+    {
+      "name": "auth_A_B_AB",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "A",
+        "subject": "B",
+        "of": [
+          "A",
+          "B"
+        ]
+      }
+    },
+    {
+      "name": "auth_A_B_CK",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "A",
+        "subject": "B",
+        "of": [
+          "A",
+          "B",
+          "CK"
+        ]
+      }
+    },
+    {
+      "name": "auth_B_A_AB",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "B",
+        "subject": "A",
+        "of": [
+          "A",
+          "B"
+        ]
+      }
+    },
+    {
+      "name": "auth_B_A_CK",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "B",
+        "subject": "A",
+        "of": [
+          "A",
+          "B",
+          "CK"
+        ]
+      }
+    }
+  ],
+  "questions": [
+    {
+      "id": "secrecy_CK@baseline",
+      "goal": "secrecy_CK",
+      "scenarios": [
+        "baseline"
+      ],
+      "verdict": "true",
+      "evidence": {
+        "file": "formal/proverif/main.pv"
+      }
+    },
+    {
+      "id": "secrecy_CK@sk_reveal_session_key_skr_others",
+      "goal": "secrecy_CK",
+      "scenarios": [
+        "sk_reveal_session_key_skr_others"
+      ],
+      "verdict": "false",
+      "evidence": {
+        "file": "formal/proverif/main_pfs.pv"
+      }
+    },
+    {
+      "id": "auth_A_B_AB",
+      "goal": "auth_A_B_AB",
+      "scenarios": [
+        "baseline"
+      ],
+      "verdict": "true",
+      "evidence": {
+        "file": "formal/proverif/main.pv"
+      }
+    },
+    {
+      "id": "auth_A_B_CK",
+      "goal": "auth_A_B_CK",
+      "scenarios": [
+        "baseline"
+      ],
+      "verdict": "true",
+      "evidence": {
+        "file": "formal/proverif/main.pv"
+      }
+    },
+    {
+      "id": "auth_B_A_AB",
+      "goal": "auth_B_A_AB",
+      "scenarios": [
+        "baseline"
+      ],
+      "verdict": "true",
+      "evidence": {
+        "file": "formal/proverif/main.pv"
+      }
+    },
+    {
+      "id": "auth_B_A_CK",
+      "goal": "auth_B_A_CK",
+      "scenarios": [
+        "baseline"
+      ],
+      "verdict": "true",
+      "evidence": {
+        "file": "formal/proverif/main.pv"
+      }
+    }
+  ],
+  "unexpressed": []
+}

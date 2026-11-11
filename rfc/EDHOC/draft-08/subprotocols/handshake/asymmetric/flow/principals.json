@@ -1,0 +1,135 @@
+{
+  "principals": [
+    {
+      "name": "U",
+      "description": "The initiator: initially holds its identity and long-term signing key, V's public verification key or credential, and its proposal/application inputs; it sends message_1, verifies V's signature in message_2, and signs message_3."
+    },
+    {
+      "name": "V",
+      "description": "The responder: initially holds its identity and long-term signing key, U's public verification key or credential, and its selection/application inputs; it processes message_1, signs message_2, and verifies U's signature in message_3."
+    }
+  ],
+  "values": [
+    {
+      "name": "sk_U",
+      "derived_from": [],
+      "description": "U's long-term private signature key.",
+      "holders": [
+        "U"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "pk_U",
+      "derived_from": [
+        "sk_U"
+      ],
+      "description": "U's public verification key, computed from sk_U. The document lets ID_U either carry U's credential in message_3 or only identify it, with V retrieving the credential out of band, so V is not assumed to store it beforehand.",
+      "holders": [
+        "U"
+      ]
+    },
+    {
+      "name": "sk_V",
+      "derived_from": [],
+      "description": "V's long-term private signature key.",
+      "holders": [
+        "V"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "pk_V",
+      "derived_from": [
+        "sk_V"
+      ],
+      "description": "V's public verification key, computed from sk_V. The document lets ID_V either carry V's credential in message_2 or only identify it, with U retrieving the credential out of band, so U is not assumed to store it beforehand.",
+      "holders": [
+        "V"
+      ]
+    },
+    {
+      "name": "ID_U",
+      "derived_from": [],
+      "description": "U's identifier for its own public key or credential; it either contains the credential or uniquely identifies it.",
+      "holders": [
+        "U",
+        "V"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "ID_V",
+      "derived_from": [],
+      "description": "V's identifier for its own public key or credential; it either contains the credential or uniquely identifies it.",
+      "holders": [
+        "U",
+        "V"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "ECDH_Curves_U",
+      "derived_from": [],
+      "description": "The ECDH curves U supports, in decreasing order of preference; the list is fixed.",
+      "holders": [
+        "U"
+      ],
+      "source": "specified"
+    },
+    {
+      "name": "HKDFs_U",
+      "derived_from": [],
+      "description": "The ECDH-SS w/ HKDF algorithms U supports.",
+      "holders": [
+        "U"
+      ],
+      "source": "specified"
+    },
+    {
+      "name": "AEADs_U",
+      "derived_from": [],
+      "description": "The AEAD algorithms U supports.",
+      "holders": [
+        "U"
+      ],
+      "source": "specified"
+    },
+    {
+      "name": "SIGs_V",
+      "derived_from": [],
+      "description": "The signature algorithms with which U supports verification.",
+      "holders": [
+        "U"
+      ],
+      "source": "specified"
+    },
+    {
+      "name": "SIGs_U",
+      "derived_from": [],
+      "description": "The signature algorithms with which U supports signing.",
+      "holders": [
+        "U"
+      ],
+      "source": "specified"
+    },
+    {
+      "name": "HINT_ID_U",
+      "derived_from": [],
+      "description": "U's optional information on how to retrieve its own credential (for example a URI).",
+      "holders": [
+        "U"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "HINT_ID_V",
+      "derived_from": [],
+      "description": "V's optional information on how to retrieve its own credential (for example a URI).",
+      "holders": [
+        "V"
+      ],
+      "source": "generated"
+    }
+  ]
+}

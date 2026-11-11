@@ -1,0 +1,1479 @@
+{
+  "vocab_version": "4.0.0",
+  "values": [
+    {
+      "name": "response_type_code",
+      "evidence": [],
+      "description": "The constant response_type_code of the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "response_type_code"
+      },
+      "holders": {
+        "user_agent": [
+          {
+            "id": "response_type_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "grant_type_authorization_code",
+      "evidence": [],
+      "description": "The constant grant_type_authorization_code of the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "grant_type_authorization_code"
+      },
+      "holders": {}
+    },
+    {
+      "name": "grant_type_refresh_token",
+      "evidence": [],
+      "description": "The constant grant_type_refresh_token of the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "grant_type_refresh_token"
+      },
+      "holders": {}
+    },
+    {
+      "name": "token_type_mac",
+      "evidence": [],
+      "description": "The constant token_type_mac of the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "token_type_mac"
+      },
+      "holders": {}
+    },
+    {
+      "name": "mac_algorithm_hmac_sha_256",
+      "evidence": [],
+      "description": "The constant mac_algorithm_hmac_sha_256 of the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "mac_algorithm_hmac_sha_256"
+      },
+      "holders": {}
+    },
+    {
+      "name": "approval_granted",
+      "evidence": [],
+      "description": "The constant approval_granted of the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "approval_granted"
+      },
+      "holders": {
+        "user_agent": [
+          {
+            "id": "decision_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "empty_request_body",
+      "evidence": [],
+      "description": "The constant empty_request_body of the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "empty_request_body"
+      },
+      "holders": {}
+    },
+    {
+      "name": "empty_extension",
+      "evidence": [],
+      "description": "The constant empty_extension of the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "empty_extension"
+      },
+      "holders": {
+        "resource_server": [
+          {
+            "id": "extension_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "authorization_request_tag",
+      "evidence": [],
+      "description": "The constant authorization_request_tag of the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "authorization_request_tag"
+      },
+      "holders": {}
+    },
+    {
+      "name": "authorization_interaction_tag",
+      "evidence": [],
+      "description": "The constant authorization_interaction_tag of the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "authorization_interaction_tag"
+      },
+      "holders": {}
+    },
+    {
+      "name": "authorization_decision_tag",
+      "evidence": [],
+      "description": "The constant authorization_decision_tag of the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "authorization_decision_tag"
+      },
+      "holders": {}
+    },
+    {
+      "name": "authorization_response_tag",
+      "evidence": [],
+      "description": "The constant authorization_response_tag of the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "authorization_response_tag"
+      },
+      "holders": {}
+    },
+    {
+      "name": "token_response_tag",
+      "evidence": [],
+      "description": "The constant token_response_tag of the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "token_response_tag"
+      },
+      "holders": {}
+    },
+    {
+      "name": "resource_response_tag",
+      "evidence": [],
+      "description": "The constant resource_response_tag of the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "resource_response_tag"
+      },
+      "holders": {}
+    },
+    {
+      "name": "method",
+      "evidence": [],
+      "description": "The constant method of the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "method"
+      },
+      "holders": {
+        "resource_server": [
+          {
+            "id": "method_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "resource_owner",
+      "evidence": [],
+      "description": "resource_owner, a fresh value made in the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "resource_owner",
+        "replicated": false
+      },
+      "holders": {
+        "resource_owner": [
+          {
+            "id": "resource_owner",
+            "how": "initial",
+            "from": "resource_owner"
+          }
+        ],
+        "resource_server": [
+          {
+            "id": "resource_owner",
+            "how": "initial",
+            "from": "resource_owner"
+          }
+        ],
+        "client": [
+          {
+            "id": "resource_owner",
+            "how": "initial",
+            "from": "resource_owner"
+          }
+        ],
+        "authorization_server": [
+          {
+            "id": "resource_owner",
+            "how": "initial",
+            "from": "resource_owner"
+          }
+        ],
+        "user_agent": [
+          {
+            "id": "resource_owner",
+            "how": "initial",
+            "from": "resource_owner"
+          }
+        ]
+      }
+    },
+    {
+      "name": "resource_server",
+      "evidence": [],
+      "description": "resource_server, a fresh value made in the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "resource_server",
+        "replicated": false
+      },
+      "holders": {
+        "resource_owner": [
+          {
+            "id": "resource_server",
+            "how": "initial",
+            "from": "resource_server"
+          }
+        ],
+        "resource_server": [
+          {
+            "id": "resource_server",
+            "how": "initial",
+            "from": "resource_server"
+          },
+          {
+            "id": "target_resource_server_recv",
+            "how": "received"
+          }
+        ],
+        "client": [
+          {
+            "id": "resource_server",
+            "how": "initial",
+            "from": "resource_server"
+          }
+        ],
+        "authorization_server": [
+          {
+            "id": "resource_server",
+            "how": "initial",
+            "from": "resource_server"
+          }
+        ],
+        "user_agent": [
+          {
+            "id": "resource_server",
+            "how": "initial",
+            "from": "resource_server"
+          }
+        ]
+      }
+    },
+    {
+      "name": "client",
+      "evidence": [],
+      "description": "client, a fresh value made in the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "client",
+        "replicated": false
+      },
+      "holders": {
+        "resource_owner": [
+          {
+            "id": "client",
+            "how": "initial",
+            "from": "client"
+          }
+        ],
+        "resource_server": [
+          {
+            "id": "client",
+            "how": "initial",
+            "from": "client"
+          }
+        ],
+        "client": [
+          {
+            "id": "client",
+            "how": "initial",
+            "from": "client"
+          }
+        ],
+        "authorization_server": [
+          {
+            "id": "client",
+            "how": "initial",
+            "from": "client"
+          }
+        ],
+        "user_agent": [
+          {
+            "id": "client",
+            "how": "initial",
+            "from": "client"
+          }
+        ]
+      }
+    },
+    {
+      "name": "authorization_server",
+      "evidence": [],
+      "description": "authorization_server, a fresh value made in the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "authorization_server",
+        "replicated": false
+      },
+      "holders": {
+        "resource_owner": [
+          {
+            "id": "authorization_server",
+            "how": "initial",
+            "from": "authorization_server"
+          }
+        ],
+        "resource_server": [
+          {
+            "id": "authorization_server",
+            "how": "initial",
+            "from": "authorization_server"
+          }
+        ],
+        "client": [
+          {
+            "id": "authorization_server",
+            "how": "initial",
+            "from": "authorization_server"
+          }
+        ],
+        "authorization_server": [
+          {
+            "id": "authorization_server",
+            "how": "initial",
+            "from": "authorization_server"
+          }
+        ],
+        "user_agent": [
+          {
+            "id": "authorization_server",
+            "how": "initial",
+            "from": "authorization_server"
+          }
+        ]
+      }
+    },
+    {
+      "name": "user_agent",
+      "evidence": [],
+      "description": "user_agent, a fresh value made in the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "user_agent",
+        "replicated": false
+      },
+      "holders": {
+        "resource_owner": [
+          {
+            "id": "user_agent",
+            "how": "initial",
+            "from": "user_agent"
+          }
+        ],
+        "resource_server": [
+          {
+            "id": "user_agent",
+            "how": "initial",
+            "from": "user_agent"
+          }
+        ],
+        "client": [
+          {
+            "id": "user_agent",
+            "how": "initial",
+            "from": "user_agent"
+          }
+        ],
+        "authorization_server": [
+          {
+            "id": "user_agent",
+            "how": "initial",
+            "from": "user_agent"
+          }
+        ],
+        "user_agent": [
+          {
+            "id": "user_agent",
+            "how": "initial",
+            "from": "user_agent"
+          }
+        ]
+      }
+    },
+    {
+      "name": "client_id",
+      "evidence": [],
+      "description": "client_id, a fresh value made in the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "client_id",
+        "replicated": false
+      },
+      "holders": {
+        "client": [
+          {
+            "id": "client_id",
+            "how": "initial",
+            "from": "client_id"
+          }
+        ],
+        "authorization_server": [
+          {
+            "id": "client_id",
+            "how": "initial",
+            "from": "client_id"
+          },
+          {
+            "id": "client_id_recv",
+            "how": "received"
+          }
+        ],
+        "resource_owner": [
+          {
+            "id": "client_id_recv",
+            "how": "received"
+          }
+        ],
+        "user_agent": [
+          {
+            "id": "client_id_recv",
+            "how": "received"
+          },
+          {
+            "id": "interaction_client_id_recv",
+            "how": "received"
+          },
+          {
+            "id": "decision_client_id_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "client_secret",
+      "evidence": [],
+      "description": "client_secret, a fresh value made in the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "client_secret",
+        "replicated": false
+      },
+      "holders": {
+        "client": [
+          {
+            "id": "client_secret",
+            "how": "initial",
+            "from": "client_secret"
+          }
+        ],
+        "authorization_server": [
+          {
+            "id": "client_secret",
+            "how": "initial",
+            "from": "client_secret"
+          },
+          {
+            "id": "client_secret_recv",
+            "how": "received"
+          },
+          {
+            "id": "registered_client_secret",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "redirect_uri",
+      "evidence": [],
+      "description": "redirect_uri, a fresh value made in the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "redirect_uri",
+        "replicated": false
+      },
+      "holders": {
+        "client": [
+          {
+            "id": "redirect_uri",
+            "how": "initial",
+            "from": "redirect_uri"
+          }
+        ],
+        "resource_owner": [
+          {
+            "id": "redirect_uri_recv",
+            "how": "received"
+          }
+        ],
+        "authorization_server": [
+          {
+            "id": "redirect_uri_recv",
+            "how": "received"
+          },
+          {
+            "id": "registered_redirect_uri_ep",
+            "how": "received"
+          },
+          {
+            "id": "registered_redirect_uri",
+            "how": "received"
+          }
+        ],
+        "user_agent": [
+          {
+            "id": "redirect_uri_recv",
+            "how": "received"
+          },
+          {
+            "id": "interaction_redirect_uri_recv",
+            "how": "received"
+          },
+          {
+            "id": "decision_redirect_uri_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "scope",
+      "evidence": [],
+      "description": "scope, a fresh value made in the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "scope",
+        "replicated": false
+      },
+      "holders": {
+        "client": [
+          {
+            "id": "scope",
+            "how": "initial",
+            "from": "scope"
+          },
+          {
+            "id": "granted_scope_recv",
+            "how": "received"
+          },
+          {
+            "id": "refresh_scope_local",
+            "how": "received"
+          },
+          {
+            "id": "refreshed_scope_recv",
+            "how": "received"
+          },
+          {
+            "id": "granted_scope_local",
+            "how": "received"
+          }
+        ],
+        "resource_owner": [
+          {
+            "id": "scope_recv",
+            "how": "received"
+          }
+        ],
+        "resource_server": [
+          {
+            "id": "granted_scope_recv",
+            "how": "received"
+          }
+        ],
+        "authorization_server": [
+          {
+            "id": "requested_scope_recv",
+            "how": "received"
+          },
+          {
+            "id": "granted_scope",
+            "how": "received"
+          },
+          {
+            "id": "original_scope",
+            "how": "received"
+          }
+        ],
+        "user_agent": [
+          {
+            "id": "scope_recv",
+            "how": "received"
+          },
+          {
+            "id": "interaction_scope_recv",
+            "how": "received"
+          },
+          {
+            "id": "decision_scope_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "state",
+      "evidence": [],
+      "description": "state, a fresh value made in the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "state",
+        "replicated": false
+      },
+      "holders": {
+        "client": [
+          {
+            "id": "state",
+            "how": "initial",
+            "from": "state"
+          },
+          {
+            "id": "state_recv",
+            "how": "received"
+          }
+        ],
+        "user_agent": [
+          {
+            "id": "state",
+            "how": "initial",
+            "from": "state"
+          },
+          {
+            "id": "state_recv",
+            "how": "received"
+          },
+          {
+            "id": "interaction_state_recv",
+            "how": "received"
+          },
+          {
+            "id": "decision_state_recv",
+            "how": "received"
+          },
+          {
+            "id": "response_state_recv",
+            "how": "received"
+          }
+        ],
+        "resource_owner": [
+          {
+            "id": "state_recv",
+            "how": "received"
+          }
+        ],
+        "authorization_server": [
+          {
+            "id": "state_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "request_uri",
+      "evidence": [],
+      "description": "request_uri, a fresh value made in the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "request_uri",
+        "replicated": false
+      },
+      "holders": {
+        "resource_server": [
+          {
+            "id": "request_uri",
+            "how": "initial",
+            "from": "request_uri"
+          }
+        ],
+        "client": [
+          {
+            "id": "request_uri",
+            "how": "initial",
+            "from": "request_uri"
+          }
+        ]
+      }
+    },
+    {
+      "name": "hostname",
+      "evidence": [],
+      "description": "hostname, a fresh value made in the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "hostname",
+        "replicated": false
+      },
+      "holders": {
+        "resource_server": [
+          {
+            "id": "hostname",
+            "how": "initial",
+            "from": "hostname"
+          }
+        ],
+        "client": [
+          {
+            "id": "hostname",
+            "how": "initial",
+            "from": "hostname"
+          }
+        ]
+      }
+    },
+    {
+      "name": "port",
+      "evidence": [],
+      "description": "port, a fresh value made in the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "port",
+        "replicated": false
+      },
+      "holders": {
+        "resource_server": [
+          {
+            "id": "port",
+            "how": "initial",
+            "from": "port"
+          }
+        ],
+        "client": [
+          {
+            "id": "port",
+            "how": "initial",
+            "from": "port"
+          }
+        ]
+      }
+    },
+    {
+      "name": "protected_resource",
+      "evidence": [],
+      "description": "protected_resource, a fresh value made in the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "protected_resource",
+        "replicated": false
+      },
+      "holders": {
+        "resource_server": [
+          {
+            "id": "protected_resource",
+            "how": "initial",
+            "from": "protected_resource"
+          }
+        ],
+        "client": [
+          {
+            "id": "protected_resource_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "msg_resource_owner_user_agent_1",
+      "evidence": [],
+      "description": "The message term ( authorization_decision_tag, client_id_recv, redirect_uri_recv, scope_recv, state_recv, approval_granted ) sent in the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "( authorization_decision_tag, client_id_recv, redirect_uri_recv, scope_recv, state_recv, approval_granted )",
+        "role": "resource_owner",
+        "replicated": true
+      },
+      "holders": {
+        "user_agent": [
+          {
+            "id": "msg_resource_owner_user_agent_1",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "msg_resource_server_client_1",
+      "evidence": [],
+      "description": "The message term (resource_response_tag, protected_resource) sent in the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "(resource_response_tag, protected_resource)",
+        "role": "resource_server",
+        "replicated": true
+      },
+      "holders": {
+        "client": [
+          {
+            "id": "msg_resource_server_client_1",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "request_nonce",
+      "evidence": [],
+      "description": "request_nonce, a fresh value made in the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "request_nonce",
+        "role": "client",
+        "replicated": true
+      },
+      "holders": {
+        "client": [
+          {
+            "id": "request_nonce",
+            "how": "generated"
+          }
+        ],
+        "resource_server": [
+          {
+            "id": "request_nonce_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "msg_client_user_agent_1",
+      "evidence": [],
+      "description": "The message term ( authorization_request_tag, response_type_code, client_id, redirect_uri, scope, state ) sent in the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "( authorization_request_tag, response_type_code, client_id, redirect_uri, scope, state )",
+        "role": "client",
+        "replicated": true
+      },
+      "holders": {
+        "user_agent": [
+          {
+            "id": "msg_client_user_agent_1",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "msg_client_authorization_server_1",
+      "evidence": [],
+      "description": "The message term ( grant_type_authorization_code, authorization_code_recv, redirect_uri, client_id, client_secret ) sent in the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "( grant_type_authorization_code, authorization_code_recv, redirect_uri, client_id, client_secret )",
+        "role": "client",
+        "replicated": true
+      },
+      "holders": {
+        "authorization_server": [
+          {
+            "id": "msg_client_authorization_server_1",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "msg_client_authorization_server_2",
+      "evidence": [],
+      "description": "The message term ( grant_type_refresh_token, refresh_token_local, refresh_scope_local, client_id, client_secret ) sent in the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "( grant_type_refresh_token, refresh_token_local, refresh_scope_local, client_id, client_secret )",
+        "role": "client",
+        "replicated": true
+      },
+      "holders": {
+        "authorization_server": [
+          {
+            "id": "msg_client_authorization_server_2",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "msg_client_resource_server_1",
+      "evidence": [],
+      "description": "The message term ( access_token_local, request_nonce, method, request_uri, hostname, port, body_hash, empty_extension, request_mac ) sent in the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "( access_token_local, request_nonce, method, request_uri, hostname, port, body_hash, empty_extension, request_mac )",
+        "role": "client",
+        "replicated": true
+      },
+      "holders": {
+        "resource_server": [
+          {
+            "id": "msg_client_resource_server_1",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "authorization_code",
+      "evidence": [],
+      "description": "authorization_code, a fresh value made in the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "authorization_code_value",
+        "role": "authorization_server",
+        "replicated": true
+      },
+      "holders": {
+        "authorization_server": [
+          {
+            "id": "authorization_code_value",
+            "how": "generated"
+          },
+          {
+            "id": "authorization_code_recv",
+            "how": "received"
+          }
+        ],
+        "client": [
+          {
+            "id": "authorization_code_recv",
+            "how": "received"
+          }
+        ],
+        "user_agent": [
+          {
+            "id": "authorization_code_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "authorization_code_issued_at",
+      "evidence": [],
+      "description": "authorization_code_issued_at, a fresh value made in the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "authorization_code_issued_at",
+        "role": "authorization_server",
+        "replicated": true
+      },
+      "holders": {
+        "authorization_server": [
+          {
+            "id": "authorization_code_issued_at",
+            "how": "generated"
+          },
+          {
+            "id": "code_issued_at",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "access_token",
+      "evidence": [],
+      "description": "access_token, a fresh value made in the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "access_token_value",
+        "role": "authorization_server",
+        "replicated": true
+      },
+      "holders": {
+        "authorization_server": [
+          {
+            "id": "access_token_value",
+            "how": "generated"
+          }
+        ],
+        "resource_server": [
+          {
+            "id": "access_token_id_recv",
+            "how": "received"
+          }
+        ],
+        "client": [
+          {
+            "id": "access_token_recv",
+            "how": "received"
+          },
+          {
+            "id": "access_token_local",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "mac_key",
+      "evidence": [],
+      "description": "mac_key, a fresh value made in the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "mac_key_value",
+        "role": "authorization_server",
+        "replicated": true
+      },
+      "holders": {
+        "authorization_server": [
+          {
+            "id": "mac_key_value",
+            "how": "generated"
+          }
+        ],
+        "resource_server": [
+          {
+            "id": "mac_key_recv",
+            "how": "received"
+          }
+        ],
+        "client": [
+          {
+            "id": "mac_key_recv",
+            "how": "received"
+          },
+          {
+            "id": "mac_key_local",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "expires_in",
+      "evidence": [],
+      "description": "expires_in, a fresh value made in the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "expires_in_value",
+        "role": "authorization_server",
+        "replicated": true
+      },
+      "holders": {
+        "authorization_server": [
+          {
+            "id": "expires_in_value",
+            "how": "generated"
+          }
+        ],
+        "resource_server": [
+          {
+            "id": "expires_in_recv",
+            "how": "received"
+          }
+        ],
+        "client": [
+          {
+            "id": "expires_in_recv",
+            "how": "received"
+          },
+          {
+            "id": "expires_in_local",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "refresh_token",
+      "evidence": [],
+      "description": "refresh_token, a fresh value made in the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "refresh_token_value",
+        "role": "authorization_server",
+        "replicated": true
+      },
+      "holders": {
+        "authorization_server": [
+          {
+            "id": "refresh_token_value",
+            "how": "generated"
+          },
+          {
+            "id": "refresh_token_recv",
+            "how": "received"
+          }
+        ],
+        "client": [
+          {
+            "id": "refresh_token_recv",
+            "how": "received"
+          },
+          {
+            "id": "refresh_token_local",
+            "how": "received"
+          },
+          {
+            "id": "replacement_refresh_token_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "refreshed_access_token",
+      "evidence": [],
+      "description": "refreshed_access_token, a fresh value made in the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "refreshed_access_token",
+        "role": "authorization_server",
+        "replicated": true
+      },
+      "holders": {
+        "authorization_server": [
+          {
+            "id": "refreshed_access_token",
+            "how": "generated"
+          }
+        ],
+        "client": [
+          {
+            "id": "refreshed_access_token_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "refreshed_mac_key",
+      "evidence": [],
+      "description": "refreshed_mac_key, a fresh value made in the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "refreshed_mac_key",
+        "role": "authorization_server",
+        "replicated": true
+      },
+      "holders": {
+        "authorization_server": [
+          {
+            "id": "refreshed_mac_key",
+            "how": "generated"
+          }
+        ],
+        "client": [
+          {
+            "id": "refreshed_mac_key_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "refreshed_expires_in",
+      "evidence": [],
+      "description": "refreshed_expires_in, a fresh value made in the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "refreshed_expires_in",
+        "role": "authorization_server",
+        "replicated": true
+      },
+      "holders": {
+        "authorization_server": [
+          {
+            "id": "refreshed_expires_in",
+            "how": "generated"
+          }
+        ],
+        "client": [
+          {
+            "id": "refreshed_expires_in_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "msg_authorization_server_user_agent_1",
+      "evidence": [],
+      "description": "The message term ( authorization_interaction_tag, client_id_recv, redirect_uri_recv, requested_scope_recv, state_recv ) sent in the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "( authorization_interaction_tag, client_id_recv, redirect_uri_recv, requested_scope_recv, state_recv )",
+        "role": "authorization_server",
+        "replicated": true
+      },
+      "holders": {
+        "user_agent": [
+          {
+            "id": "msg_authorization_server_user_agent_1",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "msg_authorization_server_user_agent_2",
+      "evidence": [],
+      "description": "The message term ( authorization_response_tag, authorization_code_value, state_recv ) sent in the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "( authorization_response_tag, authorization_code_value, state_recv )",
+        "role": "authorization_server",
+        "replicated": true
+      },
+      "holders": {
+        "user_agent": [
+          {
+            "id": "msg_authorization_server_user_agent_2",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "msg_authorization_server_client_1",
+      "evidence": [],
+      "description": "The message term ( token_response_tag, access_token_value, token_type_mac, expires_in_value, refresh_token_value, granted_scope, mac_key_value, mac_algorithm_hmac_sha_256 ) sent in the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "( token_response_tag, access_token_value, token_type_mac, expires_in_value, refresh_token_value, granted_scope, mac_key_value, mac_algorithm_hmac_sha_256 )",
+        "role": "authorization_server",
+        "replicated": true
+      },
+      "holders": {
+        "client": [
+          {
+            "id": "msg_authorization_server_client_1",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "msg_authorization_server_client_2",
+      "evidence": [],
+      "description": "The message term ( token_response_tag, refreshed_access_token, token_type_mac, refreshed_expires_in, refresh_token_recv, original_scope, refreshed_mac_key, mac_algorithm_hmac_sha_256 ) sent in the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "( token_response_tag, refreshed_access_token, token_type_mac, refreshed_expires_in, refresh_token_recv, original_scope, refreshed_mac_key, mac_algorithm_hmac_sha_256 )",
+        "role": "authorization_server",
+        "replicated": true
+      },
+      "holders": {
+        "client": [
+          {
+            "id": "msg_authorization_server_client_2",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "msg_user_agent_authorization_server_1",
+      "evidence": [],
+      "description": "The message term ( authorization_request_tag, response_type_recv, client_id_recv, redirect_uri_recv, scope_recv, state_recv ) sent in the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "( authorization_request_tag, response_type_recv, client_id_recv, redirect_uri_recv, scope_recv, state_recv )",
+        "role": "user_agent",
+        "replicated": true
+      },
+      "holders": {
+        "authorization_server": [
+          {
+            "id": "msg_user_agent_authorization_server_1",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "msg_user_agent_resource_owner_1",
+      "evidence": [],
+      "description": "The message term ( authorization_interaction_tag, interaction_client_id_recv, interaction_redirect_uri_recv, interaction_scope_recv, interaction_state_recv ) sent in the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "( authorization_interaction_tag, interaction_client_id_recv, interaction_redirect_uri_recv, interaction_scope_recv, interaction_state_recv )",
+        "role": "user_agent",
+        "replicated": true
+      },
+      "holders": {
+        "resource_owner": [
+          {
+            "id": "msg_user_agent_resource_owner_1",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "msg_user_agent_authorization_server_2",
+      "evidence": [],
+      "description": "The message term ( authorization_decision_tag, decision_client_id_recv, decision_redirect_uri_recv, decision_scope_recv, decision_state_recv, decision_recv ) sent in the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "( authorization_decision_tag, decision_client_id_recv, decision_redirect_uri_recv, decision_scope_recv, decision_state_recv, decision_recv )",
+        "role": "user_agent",
+        "replicated": true
+      },
+      "holders": {
+        "authorization_server": [
+          {
+            "id": "msg_user_agent_authorization_server_2",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "msg_user_agent_client_1",
+      "evidence": [],
+      "description": "The message term ( authorization_response_tag, authorization_code_recv, response_state_recv ) sent in the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "( authorization_response_tag, authorization_code_recv, response_state_recv )",
+        "role": "user_agent",
+        "replicated": true
+      },
+      "holders": {
+        "client": [
+          {
+            "id": "msg_user_agent_client_1",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "body_hash",
+      "evidence": [],
+      "description": "body_hash, a value resource_server receives in the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "body_hash",
+        "role": "client",
+        "replicated": true,
+        "derived_from": [
+          "empty_request_body"
+        ]
+      },
+      "holders": {
+        "resource_server": [
+          {
+            "id": "body_hash_recv",
+            "how": "received"
+          }
+        ],
+        "client": [
+          {
+            "id": "body_hash",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "request_mac",
+      "evidence": [],
+      "description": "request_mac, a value resource_server receives in the OAuth 2.0 authorization code flow.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "request_mac",
+        "role": "client",
+        "replicated": true,
+        "derived_from": [
+          "request_nonce",
+          "method",
+          "request_uri",
+          "hostname",
+          "port",
+          "body_hash",
+          "empty_extension",
+          "mac_key"
+        ]
+      },
+      "holders": {
+        "resource_server": [
+          {
+            "id": "request_mac_recv",
+            "how": "received"
+          }
+        ],
+        "client": [
+          {
+            "id": "request_mac",
+            "how": "computed"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "main_doc_id": "wide-mouth-frog",
+  "subprotocol_list": {
+    "wide-mouth-frog": "the whole protocol (protocol.yaml lists no sub-protocols)"
+  },
+  "documents": {
+    "generic": [
+      {
+        "doc_id": "wide-mouth-frog",
+        "path": "main/wide-mouth-frog.md",
+        "fingerprint": "663198011661823e1c3e9cd5be54bd30de4c71b01a7ba4ba8a64123b41fc902e",
+        "ids": [
+          "wide-mouth-frog"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "1": {
+      "subprotocols": [
+        "wide-mouth-frog"
+      ],
+      "reason": ""
+    },
+    "2": {
+      "subprotocols": [
+        "wide-mouth-frog"
+      ],
+      "reason": "Identifies the protocol principals and their roles, including the long-term shared-key relationships and who selects the session key."
+    },
+    "3": {
+      "subprotocols": [
+        "wide-mouth-frog"
+      ],
+      "reason": ""
+    },
+    "4": {
+      "subprotocols": [
+        "wide-mouth-frog"
+      ],
+      "reason": "Specifies the two-message exchange, message contents, encryption, acceptance checks, timestamp checks, and state retained to track clock differences."
+    },
+    "5": {
+      "subprotocols": [
+        "wide-mouth-frog"
+      ],
+      "reason": "Defines the long-term-key disclosure scenarios used to qualify the formal security analysis."
+    },
+    "6": {
+      "subprotocols": [
+        "wide-mouth-frog"
+      ],
+      "reason": "States the secrecy and authentication goals and specifies the scenarios in which each goal is evaluated."
+    },
+    "7": {
+      "subprotocols": [
+        "wide-mouth-frog"
+      ],
+      "reason": ""
+    }
+  },
+  "references": {
+    "wide-mouth-frog": {
+      "generic": {
+        "1": {
+          "id": null,
+          "file": null,
+          "status": "unknown"
+        },
+        "2": {
+          "id": null,
+          "file": null,
+          "status": "unknown"
+        },
+        "3": {
+          "id": null,
+          "file": null,
+          "status": "unknown"
+        },
+        "4": {
+          "id": "work:a-family-of-attacks-upon-authentication-protocols@1997",
+          "file": null,
+          "status": "unknown"
+        }
+      }
+    }
+  }
+}

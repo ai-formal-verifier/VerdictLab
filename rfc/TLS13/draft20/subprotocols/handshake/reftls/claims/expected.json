@@ -1,0 +1,1233 @@
+{
+  "vocab_version": "4.0.0",
+  "protocol_id": "TLS13-draft20-handshake-reftls",
+  "names": {
+    "ALPN_protocol": "The application protocol the server selects, returned in EncryptedExtensions (§4.2, §4.3.1).",
+    "ALPN_protocols_Client": "The application protocols the client offers in its ALPN extension of the ClientHello (§4.2).",
+    "ALPN_protocols_Server": "The application protocols the server accepts in Application-Layer Protocol Negotiation (application_layer_protocol_negotiation, sent in ClientHello and answered in EncryptedExtensions), from which it selects the connection's ALPN protocol (§4.2, §4.2.9).",
+    "Client": "The client, the endpoint initiating the TLS connection (§1.1).",
+    "PSK_KDF_identifier": "The Hash algorithm associated with a PSK, the KDF hash of the connection that established a ticket or the one set when an external PSK is established, defaulting to SHA-256 (§4.2.10).",
+    "PSK_cipher_suite": "The cipher suite for use with a PSK, which must be provisioned with an external PSK used for early data, which the server must select compatibly with the PSK, and which 0-RTT data must use (§2.3, §4.2.9, §4.2.10).",
+    "certificate_authorities_Client": "The distinguished names of the certificate authorities the client accepts, sent in its certificate_authorities extension (§4.2.4).",
+    "certificate_authorities_Server": "The distinguished names of the certificate authorities the server accepts, sent in the certificate_authorities extension of its CertificateRequest (§4.2.4, §4.3.2).",
+    "certificate_list_Client": "The client's certificate chain, the CertificateEntry list of its Certificate message (§4.4.2, §4.4.2.3).",
+    "certificate_list_Server": "The server's certificate chain, the CertificateEntry list of its Certificate message (§4.4.2, §4.4.2.2).",
+    "cipher_suites_Client": "The cipher suites the client supports, listed in ClientHello.cipher_suites in order of preference (§4.1.2).",
+    "cipher_suites_Server": "The cipher suites the server supports, from which it selects ServerHello.cipher_suite (§4.1.1, §4.1.3).",
+    "client_authentication_policy_Server": "Whether the server requests client authentication, by sending a CertificateRequest in the handshake or after it (§4.3.2, §4.6.2).",
+    "identity": "A PSK identity, the opaque label of a PSK sent in PskIdentity.identity of the pre_shared_key extension, a ticket or an external label (§4.2.10).",
+    "max_early_data_size": "The maximum amount of 0-RTT data the client may send with a ticket, carried in the early_data extension of NewSessionTicket (§4.2.9, §4.6.1).",
+    "oid_filters_Server": "The certificate extension OIDs and values the server's oid_filters extension of a CertificateRequest asks the client certificate to match (§4.3.2.1).",
+    "pk_Client": "The client's public key, carried in the end-entity certificate of its Certificate message and used to verify its CertificateVerify signature (§4.4.2, §4.4.3).",
+    "pk_Server": "The server's public key, carried in the end-entity certificate of its Certificate message and used to verify its CertificateVerify signature (§4.4.2, §4.4.3).",
+    "post_handshake_auth_policy_Client": "Whether the client offers post-handshake authentication by sending the post_handshake_auth extension (§4.2.5, §4.6.2).",
+    "psk_key_exchange_modes_Client": "The PSK key exchange modes (psk_ke, psk_dhe_ke) the client supports, sent in its psk_key_exchange_modes extension (§4.2.8).",
+    "psk_key_exchange_modes_Server": "The PSK key exchange modes the server is willing to use with a PSK, against which it checks the client's psk_key_exchange_modes (§4.2.8, §4.2.10).",
+    "server_name": "The name of the server the client is contacting, sent in the server_name (SNI) extension, used to guide server certificate selection, and required to be the same as in the original connection when a ticket is resumed (§4.2, §4.4.2.2, §4.6.1).",
+    "signature_algorithms_Client": "The signature algorithms the client lists in its signature_algorithms extension (§4.2.3).",
+    "signature_algorithms_Server": "The signature algorithms the server supports for client certificates, sent in the signature_algorithms extension of its CertificateRequest (§4.2.3, §4.3.2).",
+    "supported_groups_Client": "The key-exchange groups the client supports, sent in its supported_groups extension (§4.2.6).",
+    "supported_groups_Server": "The key-exchange groups the server supports, from which it selects the group of its key_share and which it may send in supported_groups (§4.2.6, §4.2.7).",
+    "supported_versions_Client": "The TLS versions the client supports, sent in its supported_versions extension (§4.2.1).",
+    "supported_versions_Server": "The TLS versions the server supports, from which it selects the version of its ServerHello (§4.2.1, §4.1.3).",
+    "ticket_lifetime": "The lifetime of a session ticket in seconds, NewSessionTicket.ticket_lifetime; clients must not use a ticket whose age exceeds it (§4.6.1, §4.2.10.1).",
+    "trust_anchor_Client": "The trust anchors the client uses to validate the server's certificate chain, distributed independently of the protocol (§4.4.2, §4.4.2.2, §C.3).",
+    "trust_anchor_Server": "The trust anchors the server uses to validate the client's certificate chain, distributed independently of the protocol (§4.4.2, §4.4.2.4, §C.3).",
+    "sk_Server": "The server's private signing key, matching the public key in its end-entity certificate, with which it signs CertificateVerify (§4.4.2, §4.4.3).",
+    "PSK": "The pre-shared key in use, either established externally or a resumption_master_secret from a previous connection, input to HKDF-Extract to form the Early Secret (zero if no PSK is used) (§2.2, §7.1).",
+    "sk_Client": "The client's private signing key, matching the public key in its end-entity certificate, with which it signs its CertificateVerify (§4.4.2, §4.4.3).",
+    "resumption_master_secret": "resumption_master_secret, Derive-Secret(Master Secret, \"res master\", ClientHello...client Finished), which a NewSessionTicket binds to a ticket as the PSK for later handshakes (§7.1, §4.6.1).",
+    "client_application_traffic_secret_0": "client_application_traffic_secret_0, Derive-Secret(Master Secret, \"c ap traffic\", ClientHello...server Finished), from which the client's first application traffic keys are derived (§7.1, §7.3).",
+    "server_application_traffic_secret_0": "server_application_traffic_secret_0, Derive-Secret(Master Secret, \"s ap traffic\", ClientHello...server Finished), from which the server's first application traffic keys are derived (§7.1, §7.3).",
+    "client_application_traffic_secret_1": "The client's next application traffic secret after a KeyUpdate, HKDF-Expand-Label(client_application_traffic_secret_0, \"traffic upd\", \"\", Hash.length) (§7.2, §4.6.3).",
+    "server_application_traffic_secret_1": "The server's next application traffic secret after a KeyUpdate, HKDF-Expand-Label(server_application_traffic_secret_0, \"traffic upd\", \"\", Hash.length) (§7.2, §4.6.3).",
+    "protocol_version": "The family of protocol versions the endpoints negotiate through supported_versions, TLS 1.3 and the older versions a downgrade would select (§4.1.3, §4.2.1, §D).",
+    "key_exchange": "The family of key exchange methods: (EC)DHE and PSK in this version, and static RSA from earlier versions, against which the downgrade protection does not work (§4.1.3).",
+    "server_certificates": "The identity scope of the server identities clients authenticate through certificates chaining to their trust anchors; open means the attacker may obtain a valid certificate for a server identity of its own (§4.4.2, §4.4.2.2).",
+    "Server": "The server, the endpoint which did not initiate the TLS connection (§1.1).",
+    "random_Client": "ClientHello.random, the client's 32 bytes from a secure random number generator (§4.1.2).",
+    "random_Server": "ServerHello.random, the server's 32 bytes from a secure random number generator (§4.1.3).",
+    "offer_Client": "The client's offer in its ClientHello for the parameters the server will select: the protocol versions, the cipher suites (AEAD algorithm and hash), the key-exchange groups with key_share, and the PSK and its psk_key_exchange_modes (§4.1.1, §4.1.2).",
+    "selected_parameters_Server": "The parameters the server selects from the offer in its ServerHello: the version, the cipher_suite (AEAD algorithm and hash), the key-exchange group of its key_share, and whether and which PSK is used (§4.1.1, §4.1.3).",
+    "application_write_key_Client": "The client application traffic key, client_write_key derived with HKDF-Expand-Label from client_application_traffic_secret_0 (§7.1, §7.3).",
+    "application_write_key_Server": "The server application traffic key, server_write_key derived with HKDF-Expand-Label from server_application_traffic_secret_0 (§7.1, §7.3).",
+    "exporter_master_secret": "exporter_master_secret, Derive-Secret(Master Secret, \"exp master\", ClientHello...server Finished), the secret behind keying material exporters (§7.1, §7.5).",
+    "per_record_nonce": "The per-record nonce of the AEAD-protected record carrying the data, the padded 64-bit sequence number XORed with the sender's write_iv (§5.3).",
+    "additional_data": "The AEAD additional data input of a protected record, which this draft fixes as empty (zero length) (§5.2).",
+    "application_data_Client": "The client's 1-RTT application data (TLSInnerPlaintext.content of a record of type application_data), sent after its Finished under keys derived from client_application_traffic_secret_N (§2, §5.2, §7.3).",
+    "application_data_Server": "The server's application data (TLSInnerPlaintext.content of a record of type application_data), sent under keys derived from server_application_traffic_secret_N (§2, §5.2, §7.3).",
+    "early_data_Client": "The client's 0-RTT early data, application data sent in its first flight under keys from client_early_traffic_secret, whose security properties the document calls weaker than those of other TLS data (§2.3, §4.2.9, §7.3)."
+  },
+  "scenarios": [
+    {
+      "name": "both_credentials_hold",
+      "world": [
+        {
+          "axis": "data",
+          "target": {
+            "of": "ALPN_protocol"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "ALPN_protocols_Client"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "ALPN_protocols_Server"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "Client"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "PSK_KDF_identifier"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "PSK_cipher_suite"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "certificate_authorities_Client"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "certificate_authorities_Server"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "certificate_list_Client"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "certificate_list_Server"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "cipher_suites_Client"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "cipher_suites_Server"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "client_authentication_policy_Server"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "identity"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "max_early_data_size"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "oid_filters_Server"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "pk_Client"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "pk_Server"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "post_handshake_auth_policy_Client"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "psk_key_exchange_modes_Client"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "psk_key_exchange_modes_Server"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "server_name"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "signature_algorithms_Client"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "signature_algorithms_Server"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "supported_groups_Client"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "supported_groups_Server"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "supported_versions_Client"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "supported_versions_Server"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "ticket_lifetime"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "trust_anchor_Client"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "trust_anchor_Server"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "sk_Server"
+          },
+          "level": "leaked_after_session"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "PSK"
+          },
+          "level": "none"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "sk_Client"
+          },
+          "level": "none"
+        },
+        {
+          "axis": "key_reuse",
+          "target": {
+            "of": "sk_Server"
+          },
+          "level": "separated"
+        },
+        {
+          "axis": "key_reuse",
+          "target": {
+            "of": "sk_Client"
+          },
+          "level": "separated"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "resumption_master_secret"
+          },
+          "level": "none"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "client_application_traffic_secret_0"
+          },
+          "level": "none"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "server_application_traffic_secret_0"
+          },
+          "level": "none"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "client_application_traffic_secret_1"
+          },
+          "level": "none"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "server_application_traffic_secret_1"
+          },
+          "level": "none"
+        },
+        {
+          "axis": "primitive",
+          "target": {
+            "family": "protocol_version"
+          },
+          "level": "ideal"
+        },
+        {
+          "axis": "primitive",
+          "target": {
+            "family": "key_exchange"
+          },
+          "level": "ideal"
+        },
+        {
+          "axis": "admission",
+          "target": {
+            "scope": "server_certificates"
+          },
+          "level": "closed"
+        }
+      ]
+    },
+    {
+      "name": "server_key_compromised",
+      "world": [
+        {
+          "axis": "data",
+          "target": {
+            "of": "ALPN_protocol"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "ALPN_protocols_Client"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "ALPN_protocols_Server"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "Client"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "PSK_KDF_identifier"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "PSK_cipher_suite"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "certificate_authorities_Client"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "certificate_authorities_Server"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "certificate_list_Client"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "certificate_list_Server"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "cipher_suites_Client"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "cipher_suites_Server"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "client_authentication_policy_Server"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "identity"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "max_early_data_size"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "oid_filters_Server"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "pk_Client"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "pk_Server"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "post_handshake_auth_policy_Client"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "psk_key_exchange_modes_Client"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "psk_key_exchange_modes_Server"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "server_name"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "signature_algorithms_Client"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "signature_algorithms_Server"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "supported_groups_Client"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "supported_groups_Server"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "supported_versions_Client"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "supported_versions_Server"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "ticket_lifetime"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "trust_anchor_Client"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "trust_anchor_Server"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "sk_Server"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "PSK"
+          },
+          "level": "none"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "sk_Client"
+          },
+          "level": "none"
+        },
+        {
+          "axis": "key_reuse",
+          "target": {
+            "of": "sk_Server"
+          },
+          "level": "separated"
+        },
+        {
+          "axis": "key_reuse",
+          "target": {
+            "of": "sk_Client"
+          },
+          "level": "separated"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "resumption_master_secret"
+          },
+          "level": "none"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "client_application_traffic_secret_0"
+          },
+          "level": "none"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "server_application_traffic_secret_0"
+          },
+          "level": "none"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "client_application_traffic_secret_1"
+          },
+          "level": "none"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "server_application_traffic_secret_1"
+          },
+          "level": "none"
+        },
+        {
+          "axis": "primitive",
+          "target": {
+            "family": "protocol_version"
+          },
+          "level": "ideal"
+        },
+        {
+          "axis": "primitive",
+          "target": {
+            "family": "key_exchange"
+          },
+          "level": "ideal"
+        },
+        {
+          "axis": "admission",
+          "target": {
+            "scope": "server_certificates"
+          },
+          "level": "closed"
+        }
+      ]
+    },
+    {
+      "name": "psk_compromised",
+      "world": [
+        {
+          "axis": "data",
+          "target": {
+            "of": "ALPN_protocol"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "ALPN_protocols_Client"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "ALPN_protocols_Server"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "Client"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "PSK_KDF_identifier"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "PSK_cipher_suite"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "certificate_authorities_Client"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "certificate_authorities_Server"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "certificate_list_Client"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "certificate_list_Server"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "cipher_suites_Client"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "cipher_suites_Server"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "client_authentication_policy_Server"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "identity"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "max_early_data_size"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "oid_filters_Server"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "pk_Client"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "pk_Server"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "post_handshake_auth_policy_Client"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "psk_key_exchange_modes_Client"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "psk_key_exchange_modes_Server"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "server_name"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "signature_algorithms_Client"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "signature_algorithms_Server"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "supported_groups_Client"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "supported_groups_Server"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "supported_versions_Client"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "supported_versions_Server"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "ticket_lifetime"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "trust_anchor_Client"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "trust_anchor_Server"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "sk_Server"
+          },
+          "level": "leaked_after_session"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "PSK"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "sk_Client"
+          },
+          "level": "none"
+        },
+        {
+          "axis": "key_reuse",
+          "target": {
+            "of": "sk_Server"
+          },
+          "level": "separated"
+        },
+        {
+          "axis": "key_reuse",
+          "target": {
+            "of": "sk_Client"
+          },
+          "level": "separated"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "resumption_master_secret"
+          },
+          "level": "none"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "client_application_traffic_secret_0"
+          },
+          "level": "none"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "server_application_traffic_secret_0"
+          },
+          "level": "none"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "client_application_traffic_secret_1"
+          },
+          "level": "none"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "server_application_traffic_secret_1"
+          },
+          "level": "none"
+        },
+        {
+          "axis": "primitive",
+          "target": {
+            "family": "protocol_version"
+          },
+          "level": "ideal"
+        },
+        {
+          "axis": "primitive",
+          "target": {
+            "family": "key_exchange"
+          },
+          "level": "ideal"
+        },
+        {
+          "axis": "admission",
+          "target": {
+            "scope": "server_certificates"
+          },
+          "level": "closed"
+        }
+      ]
+    }
+  ],
+  "goals": [
+    {
+      "name": "secrecy_client_appdata_1rtt",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "application_data_Client"
+        ],
+        "holders": [
+          "Client",
+          "Server"
+        ]
+      }
+    },
+    {
+      "name": "secrecy_client_traffic_key_1rtt",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "application_write_key_Client"
+        ],
+        "holders": [
+          "Client",
+          "Server"
+        ]
+      }
+    },
+    {
+      "name": "secrecy_client_earlydata_0rtt",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "early_data_Client"
+        ],
+        "holders": [
+          "Client",
+          "Server"
+        ]
+      }
+    },
+    {
+      "name": "auth_client_to_server_handshake",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "Client",
+        "subject": "Server",
+        "of": [
+          "random_Client",
+          "random_Server",
+          "PSK",
+          "pk_Server",
+          "offer_Client",
+          "selected_parameters_Server",
+          "application_write_key_Client",
+          "application_write_key_Server",
+          "exporter_master_secret"
+        ]
+      }
+    },
+    {
+      "name": "auth_client_receives_appdata",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "Client",
+        "subject": "Server",
+        "of": [
+          "random_Client",
+          "random_Server",
+          "PSK",
+          "pk_Server",
+          "per_record_nonce",
+          "additional_data",
+          "application_data_Server"
+        ]
+      }
+    },
+    {
+      "name": "auth_server_receives_appdata",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "Server",
+        "subject": "Client",
+        "of": [
+          "random_Client",
+          "random_Server",
+          "PSK",
+          "pk_Server",
+          "per_record_nonce",
+          "additional_data",
+          "application_data_Client"
+        ]
+      }
+    },
+    {
+      "name": "auth_server_receives_earlydata_0rtt",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "Server",
+        "subject": "Client",
+        "of": [
+          "random_Client",
+          "PSK",
+          "per_record_nonce",
+          "additional_data",
+          "early_data_Client"
+        ]
+      }
+    }
+  ],
+  "questions": [
+    {
+      "id": "secrecy_client_appdata_1rtt",
+      "goal": "secrecy_client_appdata_1rtt",
+      "scenarios": [
+        "both_credentials_hold",
+        "server_key_compromised",
+        "psk_compromised"
+      ],
+      "verdict": "true",
+      "evidence": {
+        "file": "formal/proverif/main.pv"
+      }
+    },
+    {
+      "id": "secrecy_client_traffic_key_1rtt",
+      "goal": "secrecy_client_traffic_key_1rtt",
+      "scenarios": [
+        "both_credentials_hold",
+        "server_key_compromised",
+        "psk_compromised"
+      ],
+      "verdict": "true",
+      "evidence": {
+        "file": "formal/proverif/main.pv"
+      }
+    },
+    {
+      "id": "secrecy_client_earlydata_0rtt",
+      "goal": "secrecy_client_earlydata_0rtt",
+      "scenarios": [
+        "both_credentials_hold",
+        "server_key_compromised"
+      ],
+      "verdict": "true",
+      "evidence": {
+        "file": "formal/proverif/main.pv"
+      }
+    },
+    {
+      "id": "secrecy_client_earlydata_0rtt@psk_compromised",
+      "goal": "secrecy_client_earlydata_0rtt",
+      "scenarios": [
+        "psk_compromised"
+      ],
+      "verdict": "false"
+    },
+    {
+      "id": "auth_client_to_server_handshake",
+      "goal": "auth_client_to_server_handshake",
+      "scenarios": [
+        "both_credentials_hold",
+        "server_key_compromised",
+        "psk_compromised"
+      ],
+      "verdict": "true",
+      "evidence": {
+        "file": "formal/proverif/main.pv"
+      }
+    },
+    {
+      "id": "auth_client_receives_appdata",
+      "goal": "auth_client_receives_appdata",
+      "scenarios": [
+        "both_credentials_hold",
+        "server_key_compromised",
+        "psk_compromised"
+      ],
+      "verdict": "true",
+      "evidence": {
+        "file": "formal/proverif/main.pv"
+      }
+    },
+    {
+      "id": "auth_server_receives_appdata",
+      "goal": "auth_server_receives_appdata",
+      "scenarios": [
+        "both_credentials_hold",
+        "server_key_compromised"
+      ],
+      "verdict": "true",
+      "evidence": {
+        "file": "formal/proverif/main.pv"
+      }
+    },
+    {
+      "id": "auth_server_receives_appdata@psk_compromised",
+      "goal": "auth_server_receives_appdata",
+      "scenarios": [
+        "psk_compromised"
+      ],
+      "verdict": "false"
+    },
+    {
+      "id": "auth_server_receives_earlydata_0rtt",
+      "goal": "auth_server_receives_earlydata_0rtt",
+      "scenarios": [
+        "both_credentials_hold",
+        "server_key_compromised"
+      ],
+      "verdict": "true",
+      "evidence": {
+        "file": "formal/proverif/main.pv"
+      }
+    },
+    {
+      "id": "auth_server_receives_earlydata_0rtt@psk_compromised",
+      "goal": "auth_server_receives_earlydata_0rtt",
+      "scenarios": [
+        "psk_compromised"
+      ],
+      "verdict": "false"
+    }
+  ],
+  "unexpressed": []
+}

@@ -1,0 +1,15 @@
+schema_version: "1.0.1"
+protocol: "EDHOC"
+version: "draft-12"
+subprotocols:
+  handshake:
+    description: "EDHOC (draft-12) key exchange between an initiator and a responder; each side's way of authenticating is chosen independently (METHOD, Section 3.2)."
+    mechanisms:
+      initiator_auth:
+        signature: "the initiator authenticates with a signature key: Signature_or_MAC_3 is a signature"
+        static_dh: "the initiator authenticates with a static Diffie-Hellman key: Signature_or_MAC_3 is MAC_3, keyed from G_IY"
+      responder_auth:
+        signature: "the responder authenticates with a signature key: Signature_or_MAC_2 is a signature"
+        static_dh: "the responder authenticates with a static Diffie-Hellman key: Signature_or_MAC_2 is MAC_2, keyed from G_RX"
+    selections:
+      dh: {initiator_auth: ["signature", "static_dh"], responder_auth: ["signature", "static_dh"]}

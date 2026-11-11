@@ -1,0 +1,375 @@
+{
+  "principals": [
+    {
+      "name": "Client",
+      "description": "TLS initiator: initially holds its identity, trust configuration, optional PSK state and certificate signing credential, negotiation policies, and outbound application data; it generates fresh hello/key-share values, computes binders, MACs and derived traffic keys, verifies the server signature and Finished, and encrypts/decrypts records."
+    },
+    {
+      "name": "Server",
+      "description": "TLS responder: initially holds its identity, trust configuration, optional PSK/ticket state and certificate signing credential, negotiation and authentication policies, and outbound application data; it selects parameters, generates fresh hello/key-share values, signs CertificateVerify, verifies client authentication and Finished, derives traffic keys, and encrypts/decrypts records."
+    }
+  ],
+  "values": [
+    {
+      "name": "sk_Client",
+      "derived_from": [],
+      "description": "The client's long-term private signature key for certificate-based client authentication.",
+      "holders": [
+        "Client"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "pk_Client",
+      "derived_from": [
+        "sk_Client"
+      ],
+      "description": "The client's public signature-verification key, computed from sk_Client and carried in its certificate; the server receives the certificate in the Certificate message and validates it against its trust anchors.",
+      "holders": [
+        "Client"
+      ]
+    },
+    {
+      "name": "sk_Server",
+      "derived_from": [],
+      "description": "The server's long-term private signature key for certificate-based authentication.",
+      "holders": [
+        "Server"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "pk_Server",
+      "derived_from": [
+        "sk_Server"
+      ],
+      "description": "The server's public signature-verification key, computed from sk_Server and carried in its certificate; the client receives the certificate in the Certificate message and validates it against its trust anchors.",
+      "holders": [
+        "Server"
+      ]
+    },
+    {
+      "name": "Client",
+      "derived_from": [],
+      "description": "The client's own identity, bound to its certificate; the server learns it from the client's Certificate message.",
+      "holders": [
+        "Client",
+        "Server"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "Server",
+      "derived_from": [],
+      "description": "The server's own identity; the client's configured knowledge of the server is server_name.",
+      "holders": [
+        "Client",
+        "Server"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "PSK",
+      "derived_from": [],
+      "description": "A pre-shared key provisioned out of band to client and server. A PSK established by a previous handshake (resumption) is not this value but comes out of the flow.",
+      "holders": [
+        "Client",
+        "Server"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "identity",
+      "derived_from": [],
+      "description": "The PSK identity, which must be provisioned together with an out-of-band PSK.",
+      "holders": [
+        "Client",
+        "Server"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "PSK_KDF_identifier",
+      "derived_from": [],
+      "description": "The KDF (hash) to be used with the out-of-band PSK, which must be provisioned together with it.",
+      "holders": [
+        "Client",
+        "Server"
+      ],
+      "source": "specified"
+    },
+    {
+      "name": "PSK_cipher_suite",
+      "derived_from": [],
+      "description": "The cipher suite for use with an externally obtained PSK for early data, provisioned to both parties.",
+      "holders": [
+        "Client",
+        "Server"
+      ],
+      "source": "specified"
+    },
+    {
+      "name": "server_name",
+      "derived_from": [],
+      "description": "The server's name: the server's own, and the name the client is configured to connect to and checks against the server certificate.",
+      "holders": [
+        "Client",
+        "Server"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "ALPN_protocol",
+      "derived_from": [],
+      "description": "The ALPN protocol for use with an externally obtained PSK for early data, provisioned to both parties if one is used.",
+      "holders": [
+        "Client",
+        "Server"
+      ],
+      "source": "specified"
+    },
+    {
+      "name": "supported_versions_Client",
+      "derived_from": [],
+      "description": "The protocol versions the client supports.",
+      "holders": [
+        "Client"
+      ],
+      "source": "specified"
+    },
+    {
+      "name": "supported_versions_Server",
+      "derived_from": [],
+      "description": "The protocol versions the server supports.",
+      "holders": [
+        "Server"
+      ],
+      "source": "specified"
+    },
+    {
+      "name": "cipher_suites_Client",
+      "derived_from": [],
+      "description": "The cipher suites the client supports, in preference order.",
+      "holders": [
+        "Client"
+      ],
+      "source": "specified"
+    },
+    {
+      "name": "cipher_suites_Server",
+      "derived_from": [],
+      "description": "The cipher suites the server supports.",
+      "holders": [
+        "Server"
+      ],
+      "source": "specified"
+    },
+    {
+      "name": "supported_groups_Client",
+      "derived_from": [],
+      "description": "The key exchange groups the client supports, in preference order.",
+      "holders": [
+        "Client"
+      ],
+      "source": "specified"
+    },
+    {
+      "name": "supported_groups_Server",
+      "derived_from": [],
+      "description": "The key exchange groups the server supports.",
+      "holders": [
+        "Server"
+      ],
+      "source": "specified"
+    },
+    {
+      "name": "signature_algorithms_Client",
+      "derived_from": [],
+      "description": "The signature algorithms the client supports.",
+      "holders": [
+        "Client"
+      ],
+      "source": "specified"
+    },
+    {
+      "name": "signature_algorithms_Server",
+      "derived_from": [],
+      "description": "The signature algorithms the server supports.",
+      "holders": [
+        "Server"
+      ],
+      "source": "specified"
+    },
+    {
+      "name": "psk_key_exchange_modes_Client",
+      "derived_from": [],
+      "description": "The PSK key exchange modes the client supports.",
+      "holders": [
+        "Client"
+      ],
+      "source": "specified"
+    },
+    {
+      "name": "psk_key_exchange_modes_Server",
+      "derived_from": [],
+      "description": "The PSK key exchange modes the server accepts.",
+      "holders": [
+        "Server"
+      ],
+      "source": "specified"
+    },
+    {
+      "name": "ALPN_protocols_Client",
+      "derived_from": [],
+      "description": "The ALPN protocols the client supports.",
+      "holders": [
+        "Client"
+      ],
+      "source": "specified"
+    },
+    {
+      "name": "ALPN_protocols_Server",
+      "derived_from": [],
+      "description": "The ALPN protocols the server supports.",
+      "holders": [
+        "Server"
+      ],
+      "source": "specified"
+    },
+    {
+      "name": "certificate_list_Client",
+      "derived_from": [],
+      "description": "The client's own certificate chain.",
+      "holders": [
+        "Client"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "certificate_list_Server",
+      "derived_from": [],
+      "description": "The server's own certificate chain.",
+      "holders": [
+        "Server"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "trust_anchor_Client",
+      "derived_from": [],
+      "description": "The client's trust anchors (trusted CA certificates) for validating the server's certificate.",
+      "holders": [
+        "Client"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "trust_anchor_Server",
+      "derived_from": [],
+      "description": "The server's trust anchors (trusted CA certificates) for validating the client's certificate.",
+      "holders": [
+        "Server"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "certificate_authorities_Client",
+      "derived_from": [],
+      "description": "The list of certificate authorities the client accepts, sent in its certificate_authorities extension.",
+      "holders": [
+        "Client"
+      ],
+      "source": "specified"
+    },
+    {
+      "name": "certificate_authorities_Server",
+      "derived_from": [],
+      "description": "The list of certificate authorities the server accepts for client certificates, sent in CertificateRequest.",
+      "holders": [
+        "Server"
+      ],
+      "source": "specified"
+    },
+    {
+      "name": "oid_filters_Server",
+      "derived_from": [],
+      "description": "The server's certificate extension OID filters for client certificates, sent in CertificateRequest.",
+      "holders": [
+        "Server"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "client_authentication_policy_Server",
+      "derived_from": [],
+      "description": "The server's local policy on whether and how to request client authentication.",
+      "holders": [
+        "Server"
+      ],
+      "source": "specified"
+    },
+    {
+      "name": "post_handshake_auth_policy_Client",
+      "derived_from": [],
+      "description": "The client's local policy on whether it offers post-handshake authentication.",
+      "holders": [
+        "Client"
+      ],
+      "source": "specified"
+    },
+    {
+      "name": "early_data_policy_Client",
+      "derived_from": [],
+      "description": "The client's local policy on whether to send 0-RTT data.",
+      "holders": [
+        "Client"
+      ],
+      "source": "specified"
+    },
+    {
+      "name": "early_data_policy_Server",
+      "derived_from": [],
+      "description": "The server's local policy on whether to accept 0-RTT data.",
+      "holders": [
+        "Server"
+      ],
+      "source": "specified"
+    },
+    {
+      "name": "ticket_lifetime",
+      "derived_from": [],
+      "description": "The ticket lifetime the server sets in NewSessionTicket (at most 7 days); the client receives it there.",
+      "holders": [
+        "Server"
+      ],
+      "source": "specified"
+    },
+    {
+      "name": "max_early_data_size",
+      "derived_from": [],
+      "description": "The maximum amount of 0-RTT data the server allows per ticket, sent in the early_data extension of NewSessionTicket; the client receives it there.",
+      "holders": [
+        "Server"
+      ],
+      "source": "specified"
+    },
+    {
+      "name": "cookie_integrity_key_Server",
+      "derived_from": [],
+      "description": "The server's own key for integrity-protecting the HelloRetryRequest cookie.",
+      "holders": [
+        "Server"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "ticket_protection_key_Server",
+      "derived_from": [],
+      "description": "The server's own key for protecting self-encrypted session tickets.",
+      "holders": [
+        "Server"
+      ],
+      "source": "generated"
+    }
+  ]
+}

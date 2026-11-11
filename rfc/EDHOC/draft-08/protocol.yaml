@@ -1,0 +1,13 @@
+schema_version: "1.0.1"
+protocol: "EDHOC"
+version: "draft-08"
+subprotocols:
+  handshake:
+    description: "EDHOC (draft-08) key exchange between an initiator and a responder."
+    mechanisms:
+      authentication:
+        asymmetric: "both parties authenticate with signature keys (asymmetric authentication)"
+        symmetric: "both parties authenticate with a pre-shared key (symmetric authentication)"
+    selections:
+      asymmetric: {authentication: "asymmetric"}
+      symmetric: {authentication: "symmetric"}

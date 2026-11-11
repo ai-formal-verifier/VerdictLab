@@ -1,0 +1,484 @@
+{
+  "vocab_version": "4.0.0",
+  "values": [
+    {
+      "name": "tag_challenge",
+      "evidence": [],
+      "description": "Constant tag marking the challenge message {Nb}CK.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "tag_challenge"
+      },
+      "holders": {}
+    },
+    {
+      "name": "tag_response",
+      "evidence": [],
+      "description": "Constant tag marking the response message {Nb-1}CK.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "tag_response"
+      },
+      "holders": {}
+    },
+    {
+      "name": "A",
+      "evidence": [],
+      "description": "A's identity, the initiator.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "A",
+        "replicated": false
+      },
+      "holders": {
+        "A": [
+          {
+            "id": "A",
+            "how": "initial",
+            "from": "A"
+          }
+        ],
+        "B": [
+          {
+            "id": "A",
+            "how": "initial",
+            "from": "A"
+          },
+          {
+            "id": "A_recv",
+            "how": "received"
+          }
+        ],
+        "AS": [
+          {
+            "id": "A",
+            "how": "initial",
+            "from": "A"
+          }
+        ]
+      }
+    },
+    {
+      "name": "B",
+      "evidence": [],
+      "description": "B's identity, the correspondent.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "B",
+        "replicated": false
+      },
+      "holders": {
+        "A": [
+          {
+            "id": "B",
+            "how": "initial",
+            "from": "B"
+          }
+        ],
+        "B": [
+          {
+            "id": "B",
+            "how": "initial",
+            "from": "B"
+          }
+        ],
+        "AS": [
+          {
+            "id": "B",
+            "how": "initial",
+            "from": "B"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AS",
+      "evidence": [],
+      "description": "The authentication server AS's identity.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "AS",
+        "replicated": false
+      },
+      "holders": {
+        "A": [
+          {
+            "id": "AS",
+            "how": "initial",
+            "from": "AS"
+          }
+        ],
+        "B": [
+          {
+            "id": "AS",
+            "how": "initial",
+            "from": "AS"
+          }
+        ],
+        "AS": [
+          {
+            "id": "AS",
+            "how": "initial",
+            "from": "AS"
+          }
+        ]
+      }
+    },
+    {
+      "name": "KA",
+      "evidence": [],
+      "description": "Long-term key shared by A and AS.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "KA",
+        "replicated": false
+      },
+      "holders": {
+        "A": [
+          {
+            "id": "KA",
+            "how": "initial",
+            "from": "KA"
+          }
+        ],
+        "AS": [
+          {
+            "id": "KA",
+            "how": "initial",
+            "from": "KA"
+          }
+        ]
+      }
+    },
+    {
+      "name": "KB",
+      "evidence": [],
+      "description": "Long-term key shared by B and AS.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "KB",
+        "replicated": false
+      },
+      "holders": {
+        "B": [
+          {
+            "id": "KB",
+            "how": "initial",
+            "from": "KB"
+          }
+        ],
+        "AS": [
+          {
+            "id": "KB",
+            "how": "initial",
+            "from": "KB"
+          }
+        ]
+      }
+    },
+    {
+      "name": "I_A1",
+      "evidence": [],
+      "description": "A's nonce Na for this run.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "Na",
+        "role": "A",
+        "replicated": true
+      },
+      "holders": {
+        "A": [
+          {
+            "id": "Na",
+            "how": "generated"
+          }
+        ],
+        "AS": [
+          {
+            "id": "Na_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "request_A",
+      "evidence": [],
+      "description": "Message 1: A sends its identity, B's identity and Na to AS.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "(A, B, Na)",
+        "role": "A",
+        "replicated": true
+      },
+      "holders": {
+        "AS": [
+          {
+            "id": "msg_a_as_1",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "msg5",
+      "evidence": [],
+      "description": "Message 5: A returns B's nonce under CK, tagged as the response.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "senc((tag_response, Nb_recv), CK)",
+        "role": "A",
+        "replicated": true
+      },
+      "holders": {
+        "B": [
+          {
+            "id": "msg_a_b_2",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Nb",
+      "evidence": [],
+      "description": "B's nonce Nb for this run.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "Nb",
+        "role": "B",
+        "replicated": true
+      },
+      "holders": {
+        "B": [
+          {
+            "id": "Nb",
+            "how": "generated"
+          }
+        ],
+        "A": [
+          {
+            "id": "Nb_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "msg4",
+      "evidence": [],
+      "description": "Message 4: B's nonce challenge under CK.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "senc((tag_challenge, Nb), CK)",
+        "role": "B",
+        "replicated": true
+      },
+      "holders": {
+        "A": [
+          {
+            "id": "msg_b_a_1",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "CK",
+      "evidence": [],
+      "description": "Fresh conversation key generated by AS.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "CK",
+        "role": "AS",
+        "replicated": true
+      },
+      "holders": {
+        "AS": [
+          {
+            "id": "CK",
+            "how": "generated"
+          }
+        ],
+        "A": [
+          {
+            "id": "CK",
+            "how": "received"
+          }
+        ],
+        "B": [
+          {
+            "id": "CK",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "msg2",
+      "evidence": [],
+      "description": "Message 2: AS's reply to A under KA, carrying Na, B, CK and B's ticket.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "senc((Na_recv, B, CK, ticket_B), KA)",
+        "role": "AS",
+        "replicated": true
+      },
+      "holders": {
+        "A": [
+          {
+            "id": "msg_as_a_1",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "plain_msg2_A",
+      "evidence": [],
+      "description": "Message 2 decrypted by A with KA.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "plain_as_a_1",
+        "role": "A",
+        "replicated": true,
+        "derived_from": [
+          "msg2",
+          "KA"
+        ]
+      },
+      "holders": {
+        "A": [
+          {
+            "id": "plain_as_a_1",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ticket_B",
+      "evidence": [],
+      "description": "Message 3: B's ticket, the conversation key CK and A's identity under KB.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "ticket_B",
+        "role": "AS",
+        "replicated": true,
+        "derived_from": [
+          "CK",
+          "A",
+          "KB"
+        ]
+      },
+      "holders": {
+        "A": [
+          {
+            "id": "ticket_B",
+            "how": "received"
+          }
+        ],
+        "B": [
+          {
+            "id": "msg_a_b_1",
+            "how": "received"
+          }
+        ],
+        "AS": [
+          {
+            "id": "ticket_B",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "plain_msg4_A",
+      "evidence": [],
+      "description": "Message 4 decrypted by A with CK.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "plain_b_a_1",
+        "role": "A",
+        "replicated": true,
+        "derived_from": [
+          "msg4",
+          "CK"
+        ]
+      },
+      "holders": {
+        "A": [
+          {
+            "id": "plain_b_a_1",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "plain_ticket_B",
+      "evidence": [],
+      "description": "B's ticket decrypted by B with KB.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "plain_a_b_1",
+        "role": "B",
+        "replicated": true,
+        "derived_from": [
+          "ticket_B",
+          "KB"
+        ]
+      },
+      "holders": {
+        "B": [
+          {
+            "id": "plain_a_b_1",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "plain_msg5_B",
+      "evidence": [],
+      "description": "Message 5 decrypted by B with CK.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "plain_a_b_2",
+        "role": "B",
+        "replicated": true,
+        "derived_from": [
+          "msg5",
+          "CK"
+        ]
+      },
+      "holders": {
+        "B": [
+          {
+            "id": "plain_a_b_2",
+            "how": "computed"
+          }
+        ]
+      }
+    }
+  ]
+}

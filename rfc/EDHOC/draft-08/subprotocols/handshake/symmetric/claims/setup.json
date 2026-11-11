@@ -1,0 +1,467 @@
+{
+  "vocab_version": "4.0.0",
+  "names": {
+    "PSK": "The pre-shared uniformly random key that Party U and Party V are assumed to share, which Party V identifies by KID and which is the salt of the key derivation when EDHOC is authenticated with symmetric keys (§5.1, §3.2).",
+    "K_2": "The key with which Party V encrypts COSE_ENC_2 of message_2 (AEAD_V with K_2 and IV_2), derived as in Section 3.2 (§3.2, §5.3.1, §5.3.2).",
+    "APP_2'": "The payload of K_2's second use outside the protocol, introduced by assumption sym_key_reuse_V (key_reuse of K_2, the message_2 key of §3.2); not defined by the document.",
+    "U": "The principal U: EDHOC initiator in the pre-shared-key mode. Holds the PSK shared with V, sends message_1 with its ephemeral DH share and the PSK identifier, and derives the OSCORE master secret.",
+    "V": "The principal V: EDHOC responder in the pre-shared-key mode. Holds the same PSK, answers with its own ephemeral share in message_2, and derives the same OSCORE master secret. No signature key is used in this mode.",
+    "E_U": "The ECDH ephemeral public key of Party U, sent in data_1 of message_1 and formatted as a COSE_Key (§2, §3.1, §5.2.1).",
+    "E_V": "The ECDH ephemeral public key of Party V, sent in data_2 of message_2 on the same curve as E_U (§2, §5.3.1, §5.3.2).",
+    "S_U": "The variable-length session identifier chosen by Party U, not in use and different from other concurrent session identifiers, sent in message_1 and echoed in data_2 of message_2 (§2, §5.2.1, §5.2.2, §5.3.1).",
+    "S_V": "The variable-length session identifier chosen by Party V, sent in message_2 and echoed in data_3 of message_3 (§2, §5.3.1, §5.3.2, §5.4.1).",
+    "N_U": "The 64-bit random nonce chosen freshly by Party U for each session and sent in message_1 (§2, §5.2.1, §5.2.2).",
+    "N_V": "The 64-bit random nonce chosen freshly by Party V for each session and sent in message_2 (§2, §5.3.1, §5.3.2).",
+    "ECDH_Curves_U": "ECDH-Curves_U in message_1: the EC curves for ECDH that Party U supports, in order of decreasing preference (§5.2.1).",
+    "HKDFs_U": "The list of ECDH-SS w/ HKDF algorithms Party U supports, proposed in message_1 (§5.2.1).",
+    "AEADs_U": "The list of AEAD algorithms Party U supports, proposed in message_1 (§5.2.1).",
+    "HKDF_V": "The single ECDH-SS w/ HKDF algorithm Party V chooses from HKDFs_U, sent in data_2 of message_2 and used for key derivation (§3.2, §5.3.1, §5.3.2).",
+    "AEAD_V": "The single AEAD algorithm Party V chooses from AEADs_U, sent in data_2 of message_2 and used with K_2 and K_3 to compute COSE_ENC_2 and COSE_ENC_3 (§3.2, §5.3.1, §5.3.2, §5.4.2).",
+    "KID": "The identifier of the pre-shared key PSK, sent in message_1, by which Party V identifies the PSK (§5.1, §5.2.1, §8).",
+    "APP_1": "The opaque application data Party U may send unprotected in data_1 of message_1 (§3, §5.2.1).",
+    "APP_2": "The opaque application data Party V sends as the plaintext of COSE_ENC_2 in message_2, encrypted and integrity protected under K_2 and, with symmetric keys, mutually authenticated (§3, §5.3.1, §5.3.2).",
+    "APP_3": "The opaque application data Party U sends as the plaintext of COSE_ENC_3 in message_3, protected under K_3 and mutually authenticated (§3, §5.4.1, §5.4.2).",
+    "OSCORE_Master_Secret": "The OSCORE Master Secret that Party U and Party V derive from EDHOC as specified in Section 3.2 with other = exchange_hash and AlgorithmID = \"EDHOC OSCORE Master Secret\" (§C.2, §3.2)."
+  },
+  "assumptions": [
+    {
+      "id": "ltk_reveal_PSK_post_session",
+      "axis": "data",
+      "target": {
+        "of": "PSK"
+      },
+      "default": "none",
+      "levels": [
+        "leaked_after_session",
+        "none"
+      ]
+    },
+    {
+      "id": "sym_key_reuse_V",
+      "axis": "key_reuse",
+      "target": {
+        "of": "K_2",
+        "payload": "APP_2'"
+      },
+      "default": "observed"
+    },
+    {
+      "id": "population_U",
+      "axis": "population",
+      "target": {
+        "principal": "U"
+      },
+      "default": "unbounded"
+    },
+    {
+      "id": "sessions_U",
+      "axis": "sessions",
+      "target": {
+        "principal": "U"
+      },
+      "default": "twice"
+    },
+    {
+      "id": "population_V",
+      "axis": "population",
+      "target": {
+        "principal": "V"
+      },
+      "default": "unbounded"
+    },
+    {
+      "id": "sessions_V",
+      "axis": "sessions",
+      "target": {
+        "principal": "V"
+      },
+      "default": "twice"
+    }
+  ],
+  "properties": [
+    {
+      "id": "auth_inj_mid_initiator_to_responder",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "U",
+        "subject": "V",
+        "of": [
+          "V",
+          "E_V",
+          "APP_2"
+        ]
+      }
+    },
+    {
+      "id": "auth_inj_end_responder_to_initiator",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "V",
+        "subject": "U",
+        "of": [
+          "U",
+          "V",
+          "E_U",
+          "APP_1",
+          "APP_3"
+        ]
+      }
+    },
+    {
+      "id": "secrecy_app2_phase0",
+      "type": "Secrecy",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "APP_2"
+        ],
+        "holders": [
+          "U",
+          "V"
+        ]
+      }
+    },
+    {
+      "id": "secrecy_app3_phase0",
+      "type": "Secrecy",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "APP_3"
+        ],
+        "holders": [
+          "U",
+          "V"
+        ]
+      }
+    },
+    {
+      "id": "secrecy_app2_resent_phase0",
+      "type": "Secrecy",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "APP_2'"
+        ],
+        "holders": [
+          "V"
+        ]
+      }
+    },
+    {
+      "id": "auth_nia_u_on_v_msg2_coverage",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "U",
+        "subject": "V",
+        "of": [
+          "S_U",
+          "N_U",
+          "E_U",
+          "ECDH_Curves_U",
+          "HKDFs_U",
+          "AEADs_U",
+          "KID",
+          "APP_1",
+          "HKDF_V",
+          "AEAD_V",
+          "APP_2"
+        ]
+      }
+    },
+    {
+      "id": "auth_nia_v_on_u_msg3_coverage",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "V",
+        "subject": "U",
+        "of": [
+          "S_U",
+          "N_U",
+          "E_U",
+          "ECDH_Curves_U",
+          "HKDFs_U",
+          "AEADs_U",
+          "KID",
+          "APP_1",
+          "S_V",
+          "N_V",
+          "E_V",
+          "HKDF_V",
+          "AEAD_V",
+          "APP_2",
+          "APP_3"
+        ]
+      }
+    },
+    {
+      "id": "secrecy_app1",
+      "type": "Secrecy",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "APP_1"
+        ],
+        "holders": [
+          "U",
+          "V"
+        ]
+      }
+    },
+    {
+      "id": "secrecy_kid",
+      "type": "Secrecy",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "KID"
+        ],
+        "holders": [
+          "U",
+          "V"
+        ]
+      }
+    },
+    {
+      "id": "unlinkability_sessions_kid",
+      "type": "Privacy",
+      "axis": "equivalence",
+      "subtype": "unlinkability",
+      "target": {
+        "of": [
+          "KID"
+        ],
+        "subjects": [
+          "U",
+          "V"
+        ]
+      }
+    },
+    {
+      "id": "forward_secrecy_oscore_master_secret",
+      "type": "Secrecy",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "OSCORE_Master_Secret"
+        ],
+        "holders": [
+          "U",
+          "V"
+        ]
+      }
+    },
+    {
+      "id": "auth_nia_v_on_u_ecdh_curves",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "V",
+        "subject": "U",
+        "of": [
+          "ECDH_Curves_U"
+        ]
+      }
+    }
+  ],
+  "claims": [
+    {
+      "id": "app2_encrypted",
+      "property": "secrecy_app2_phase0",
+      "expect": "holds",
+      "conditions": [],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "3",
+          "quote": "APP_1 is unprotected, APP_2 is protected (encrypted and integrity protected), and APP_3 is protected and mutually authenticated."
+        }
+      ]
+    },
+    {
+      "id": "app3_encrypted",
+      "property": "secrecy_app3_phase0",
+      "expect": "holds",
+      "conditions": [],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "3",
+          "quote": "APP_1 is unprotected, APP_2 is protected (encrypted and integrity protected), and APP_3 is protected and mutually authenticated."
+        }
+      ]
+    },
+    {
+      "id": "forward_secrecy_app2_after_psk_compromise",
+      "property": "secrecy_app2_phase0",
+      "expect": "holds",
+      "conditions": [
+        {
+          "id": "ltk_reveal_PSK_post_session",
+          "level": "leaked_after_session"
+        }
+      ],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "1",
+          "quote": "In order for a communication session to provide forward secrecy, the communicating parties can run an Elliptic Curve Diffie-Hellman (ECDH) key exchange protocol with ephemeral keys, from which shared key material can be derived.  This document specifies Ephemeral Diffie- Hellman Over COSE (EDHOC), an authenticated ECDH protocol using CBOR and COSE objects."
+        }
+      ]
+    },
+    {
+      "id": "forward_secrecy_app3_after_psk_compromise",
+      "property": "secrecy_app3_phase0",
+      "expect": "holds",
+      "conditions": [
+        {
+          "id": "ltk_reveal_PSK_post_session",
+          "level": "leaked_after_session"
+        }
+      ],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "1",
+          "quote": "In order for a communication session to provide forward secrecy, the communicating parties can run an Elliptic Curve Diffie-Hellman (ECDH) key exchange protocol with ephemeral keys, from which shared key material can be derived.  This document specifies Ephemeral Diffie- Hellman Over COSE (EDHOC), an authenticated ECDH protocol using CBOR and COSE objects."
+        }
+      ]
+    },
+    {
+      "id": "u_agrees_with_v_on_message2_coverage",
+      "property": "auth_nia_u_on_v_msg2_coverage",
+      "expect": "holds",
+      "conditions": [],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "3",
+          "quote": "When EDHOC is used with asymmetric key authentication APP_2 is sent to an unauthenticated party, but with symmetric key authentication APP_2 is mutually authenticated."
+        },
+        {
+          "document": "main",
+          "section": "3",
+          "quote": "APP_1 is unprotected, APP_2 is protected (encrypted and integrity protected), and APP_3 is protected and mutually authenticated."
+        },
+        {
+          "document": "main",
+          "section": "8",
+          "quote": "EDHOC adds an explicit message type and expands the message authentication coverage to additional elements such as algorithms, application data, and previous messages."
+        }
+      ]
+    },
+    {
+      "id": "v_agrees_with_u_on_message3_coverage",
+      "property": "auth_nia_v_on_u_msg3_coverage",
+      "expect": "holds",
+      "conditions": [],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "3",
+          "quote": "APP_1 is unprotected, APP_2 is protected (encrypted and integrity protected), and APP_3 is protected and mutually authenticated."
+        },
+        {
+          "document": "main",
+          "section": "8",
+          "quote": "EDHOC adds an explicit message type and expands the message authentication coverage to additional elements such as algorithms, application data, and previous messages."
+        }
+      ]
+    },
+    {
+      "id": "app1_not_confidential",
+      "property": "secrecy_app1",
+      "expect": "fails",
+      "conditions": [],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "3",
+          "quote": "APP_1 is unprotected, APP_2 is protected (encrypted and integrity protected), and APP_3 is protected and mutually authenticated."
+        },
+        {
+          "document": "main",
+          "section": "8",
+          "quote": "Party U and V must make sure that unprotected data and metadata do not reveal any sensitive information.  This also applies for encrypted data sent to an unauthenticated party.  In particular, it applies to APP_1 and APP_2 in the asymmetric case, and APP_1 and KID in the symmetric case."
+        }
+      ]
+    },
+    {
+      "id": "kid_not_confidential",
+      "property": "secrecy_kid",
+      "expect": "fails",
+      "conditions": [],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "8",
+          "quote": "Party U and V must make sure that unprotected data and metadata do not reveal any sensitive information.  This also applies for encrypted data sent to an unauthenticated party.  In particular, it applies to APP_1 and APP_2 in the asymmetric case, and APP_1 and KID in the symmetric case."
+        }
+      ]
+    },
+    {
+      "id": "sessions_linkable_by_kid",
+      "property": "unlinkability_sessions_kid",
+      "expect": "fails",
+      "conditions": [],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "8",
+          "quote": "Using the same KID or unprotected application data in several EDHOC sessions allows passive eavesdroppers to correlate the different sessions."
+        }
+      ]
+    },
+    {
+      "id": "forward_secrecy_master_secret_after_psk_compromise",
+      "property": "forward_secrecy_oscore_master_secret",
+      "expect": "holds",
+      "conditions": [
+        {
+          "id": "ltk_reveal_PSK_post_session",
+          "level": "leaked_after_session"
+        }
+      ],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "1",
+          "quote": "In order for a communication session to provide forward secrecy, the communicating parties can run an Elliptic Curve Diffie-Hellman (ECDH) key exchange protocol with ephemeral keys, from which shared key material can be derived.  This document specifies Ephemeral Diffie- Hellman Over COSE (EDHOC), an authenticated ECDH protocol using CBOR and COSE objects."
+        }
+      ]
+    },
+    {
+      "id": "v_agrees_with_u_on_ecdh_curve_preference",
+      "property": "auth_nia_v_on_u_ecdh_curves",
+      "expect": "holds",
+      "conditions": [],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "8",
+          "quote": "EDHOC does not include negotiation of parameters related to the ephemeral key, but it enables Party V to verify that the ECDH curve used in the protocol is the most preferred curve by U which is supported by both U and V."
+        },
+        {
+          "document": "main",
+          "section": "2",
+          "quote": "V verifies that the ECDH curve of the ephemeral key is the most preferred common curve"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "main_doc_id": "Kao-Chow",
+  "subprotocol_list": {
+    "Kao-Chow": "the whole protocol (protocol.yaml lists no sub-protocols)"
+  },
+  "documents": {
+    "generic": [
+      {
+        "doc_id": "Kao-Chow",
+        "path": "main/Kao-Chow.md",
+        "fingerprint": "d523360d4b366a1b62d019a461223e6585f931c61adc3658d2e97ce859470282",
+        "ids": [
+          "Kao-Chow"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "1": {
+      "subprotocols": [
+        "Kao-Chow"
+      ],
+      "reason": ""
+    },
+    "2": {
+      "subprotocols": [
+        "Kao-Chow"
+      ],
+      "reason": "Identifies the initiator, responder, and authentication server roles that participate in protocol runs."
+    },
+    "3": {
+      "subprotocols": [
+        "Kao-Chow"
+      ],
+      "reason": ""
+    },
+    "4": {
+      "subprotocols": [
+        "Kao-Chow"
+      ],
+      "reason": "Specifies the four-message exchange, the credentials and nonce computations and checks, and the protocol’s authentication behavior relevant to formal analysis."
+    },
+    "5": {
+      "subprotocols": [
+        "Kao-Chow"
+      ],
+      "reason": "Defines the long-term-key disclosure scenarios under which protocol goals are analyzed, providing the analysis assumptions."
+    },
+    "6": {
+      "subprotocols": [
+        "Kao-Chow"
+      ],
+      "reason": "States the session-key secrecy and agreement goals, their roles and tuples, and the scenarios in which they are evaluated."
+    },
+    "7": {
+      "subprotocols": [
+        "Kao-Chow"
+      ],
+      "reason": ""
+    }
+  },
+  "references": {
+    "Kao-Chow": {
+      "generic": {
+        "1": {
+          "id": "work:an-efficient-and-secure-authentication-protocol-using-uncertified-keys@1995",
+          "file": null,
+          "status": "unknown"
+        },
+        "2": {
+          "id": null,
+          "file": null,
+          "status": "unknown"
+        },
+        "3": {
+          "id": null,
+          "file": null,
+          "status": "unknown"
+        }
+      }
+    }
+  }
+}

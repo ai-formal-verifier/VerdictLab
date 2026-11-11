@@ -1,0 +1,215 @@
+(* Extracted and lightly normalized from:
+   NICT AKE Zoo, "IKEv2 no ProVerif ni yoru hyouka kekka"
+   https://crypto-protocol.nict.go.jp/AKE_zoo/IKEv2/IKEv2_ProVerif.pdf
+
+   The original PDF states that it models only IKE_SA_INIT key exchange
+   and IKE_AUTH authentication, omitting headers and optional payloads.
+*)
+
+(*
+set attacker = passive.
+*)
+free c: channel.
+
+type host.
+type nonce.
+type skey.
+type pkey.
+type SPI_t.
+type SA_t.
+
+table keys(host, skey, pkey).
+
+(* SIG *)
+fun sign(bitstring, skey): bitstring.
+fun pk(skey): pkey.
+reduc forall x: bitstring, k: skey;
+      check(sign(x, k), pk(k)) = x.
+
+(* MAC and symmetric-key encryption *)
+type symkey.
+fun mac(bitstring, symkey): bitstring.
+reduc forall k: symkey, x: bitstring;
+      checkmac(mac(x, k), k) = x.
+
+fun senc(bitstring, symkey): bitstring.
+reduc forall k: symkey, x: bitstring;
+      sdec(senc(x, k), k) = x.
+
+type number.
+const zero: number.
+fun s(number): number. (* Successor *)
+
+type spi.
+const spi_zero: spi.
+
+const null: bitstring.
+
+type exchangeType.
+const IKE_SA_INIT: exchangeType.
+const IKE_AUTH: exchangeType.
+const CREATE_CHILD_SA: exchangeType.
+const INFORMATIONAL: exchangeType.
+
+(* Diffie-Hellman *)
+type G.
+type exponent.
+const g: G.
+fun exp(G, exponent): G.
+equation forall x: exponent, y: exponent;
+      exp(exp(g, x), y) = exp(exp(g, y), x).
+
+(* PRF *)
+fun G_to_bs(G): bitstring [data, typeConverter].
+fun host_to_bs(host): bitstring [data, typeConverter].
+fun prf(bitstring, bitstring): bitstring.
+fun prf_sk_d(bitstring, bitstring): bitstring.
+fun prf_sk_ai(bitstring, bitstring): symkey.
+fun prf_sk_ar(bitstring, bitstring): symkey.
+fun prf_sk_ei(bitstring, bitstring): symkey.
+fun prf_sk_er(bitstring, bitstring): symkey.
+fun prf_sk_pi(bitstring, bitstring): bitstring.
+fun prf_sk_pr(bitstring, bitstring): bitstring.
+
+(* hosts *)
+free hostA, hostB: host.
+
+(* misc *)
+free secret_for_keys: bitstring [private].
+
+(* events *)
+event begin_init_IKE_AUTH(host, host, SA_t, bitstring, bitstring, bitstring).
+event begin_init_IKE_AUTH_weak(host, bitstring).
+event begin_resp_IKE_AUTH(host, host, SA_t, bitstring, bitstring, bitstring).
+event end_init_IKE_AUTH(host, host, SA_t, bitstring, bitstring, bitstring).
+event end_resp_IKE_AUTH(host, host, SA_t, bitstring, bitstring, bitstring).
+
+(* queries *)
+query attacker(secret_for_keys).
+
+query h1: host, h2: host, sa: SA_t, tsi: bitstring, tsr: bitstring, seed: bitstring;
+      inj-event(end_init_IKE_AUTH(h1, h2, sa, tsi, tsr, seed)) ==>
+      inj-event(begin_resp_IKE_AUTH(h1, h2, sa, tsi, tsr, seed)).
+
+query h1: host, h2: host, sa: SA_t, tsi: bitstring, tsr: bitstring, seed: bitstring;
+      inj-event(end_resp_IKE_AUTH(h1, h2, sa, tsi, tsr, seed)) ==>
+      inj-event(begin_init_IKE_AUTH(h1, h2, sa, tsi, tsr, seed)).
+
+query h1: host, h2: host, sa: SA_t, tsi: bitstring, tsr: bitstring, seed: bitstring;
+      inj-event(end_resp_IKE_AUTH(h1, h2, sa, tsi, tsr, seed)) ==>
+      inj-event(begin_init_IKE_AUTH_weak(h1, seed)).
+
+let initiator =
+    in(c, (SAi1: SA_t, SAi2: SA_t, TSi: bitstring, TSr: bitstring,
+           IDi: host, IDr: host));
+    if IDi = hostA || IDi = hostB then
+    (*
+        IKE_SA_INIT
+        1. I->R: HDR, SAi1, KEi, Ni
+        2. R->I: HDR, SAr1, KEr, Nr, [CERTREQ]
+    *)
+    new SPIi: number;
+    new ei: exponent;
+    let KEi1 = exp(g, ei) in
+    new Ni: nonce;
+    let ike_sa_init_request =
+        ((SPIi, spi_zero, IKE_SA_INIT, zero), SAi1, KEi1, Ni) in
+    out(c, ike_sa_init_request);
+    in(c, ike_sa_init_response: bitstring);
+    let ((=SPIi, SPIr: SPI_t, =IKE_SA_INIT, =zero), SAr1: SA_t,
+         KEr1: G, Nr: nonce) = ike_sa_init_response in
+    (*
+        SKEYSEED = prf(Ni | Nr, g^ir)
+        {SK_d | SK_ai | SK_ar | SK_ei | SK_er | SK_pi | SK_pr}
+          = prf+(SKEYSEED, Ni | Nr | SPIi | SPIr)
+    *)
+    let SKEYSEED = prf((Ni, Nr), G_to_bs(exp(KEr1, ei))) in
+    let SK_d = prf_sk_d(SKEYSEED, (Ni, Nr, SPIi, SPIr)) in
+    let SK_ai = prf_sk_ai(SKEYSEED, (Ni, Nr, SPIi, SPIr)) in
+    let SK_ar = prf_sk_ar(SKEYSEED, (Ni, Nr, SPIi, SPIr)) in
+    let SK_ei = prf_sk_ei(SKEYSEED, (Ni, Nr, SPIi, SPIr)) in
+    let SK_er = prf_sk_er(SKEYSEED, (Ni, Nr, SPIi, SPIr)) in
+    let SK_pi = prf_sk_pi(SKEYSEED, (Ni, Nr, SPIi, SPIr)) in
+    let SK_pr = prf_sk_pr(SKEYSEED, (Ni, Nr, SPIi, SPIr)) in
+    (*
+        IKE_AUTH
+        3. I->R: HDR, SK {IDi, [CERT,] [CERTREQ,] [IDr,] AUTH, SAi2, TSi, TSr}
+        4. R->I: HDR, SK {IDr, [CERT,] AUTH, SAr2, TSi, TSr}
+    *)
+    if SAi1 = SAr1 then
+    get keys(=IDi, ski, pki) in
+    let AUTHi = sign((ike_sa_init_request, Nr, prf(SK_pi, host_to_bs(IDi))), ski) in
+    event begin_init_IKE_AUTH_weak(IDi, SKEYSEED);
+    event begin_init_IKE_AUTH(IDi, IDr, SAi2, TSi, TSr, SKEYSEED);
+    out(c, mac(senc((IDi, AUTHi, SAi2, TSi, TSr), SK_ei), SK_ai));
+    in(c, mct: bitstring);
+    let (=IDr, AUTHr: bitstring, =SAi2, =TSi, =TSr) =
+        sdec(checkmac(mct, SK_ar), SK_er) in
+    get keys(=IDr, skr, pkr) in
+    if (ike_sa_init_response, Ni, prf(SK_pr, host_to_bs(IDr))) = check(AUTHr, pkr) then
+    if IDr = hostA || IDr = hostB then
+    out(c, (senc(secret_for_keys, SK_ai),
+            senc(secret_for_keys, SK_ar),
+            senc(secret_for_keys, SK_ei),
+            senc(secret_for_keys, SK_er)));
+    event end_init_IKE_AUTH(IDi, IDr, SAi2, TSi, TSr, SKEYSEED).
+
+let responder =
+    in(c, (SAr1: SA_t, SAr2: SA_t, IDi: host, IDr: host));
+    if IDr = hostA || IDr = hostB then
+    (*
+        IKE_SA_INIT
+        1. I->R: HDR, SAi1, KEi, Ni
+        2. R->I: HDR, SAr1, KEr, Nr, [CERTREQ]
+    *)
+    in(c, ike_sa_init_request: bitstring);
+    let ((SPIi: bitstring, =spi_zero, =IKE_SA_INIT, =zero),
+         SAi1: SA_t, KEi: G, Ni: nonce) = ike_sa_init_request in
+    new SPIr: number;
+    new er: exponent;
+    new Nr: nonce;
+    let ike_sa_init_response =
+        ((SPIi, SPIr, IKE_SA_INIT, zero), SAr1, exp(g, er), Nr) in
+    let SKEYSEED = prf((Ni, Nr), G_to_bs(exp(KEi, er))) in
+    let SK_d = prf_sk_d(SKEYSEED, (Ni, Nr, SPIi, SPIr)) in
+    let SK_ai = prf_sk_ai(SKEYSEED, (Ni, Nr, SPIi, SPIr)) in
+    let SK_ar = prf_sk_ar(SKEYSEED, (Ni, Nr, SPIi, SPIr)) in
+    let SK_ei = prf_sk_ei(SKEYSEED, (Ni, Nr, SPIi, SPIr)) in
+    let SK_er = prf_sk_er(SKEYSEED, (Ni, Nr, SPIi, SPIr)) in
+    let SK_pi = prf_sk_pi(SKEYSEED, (Ni, Nr, SPIi, SPIr)) in
+    let SK_pr = prf_sk_pr(SKEYSEED, (Ni, Nr, SPIi, SPIr)) in
+    out(c, ike_sa_init_response);
+    (*
+        IKE_AUTH
+        3. I->R: HDR, SK {IDi, [CERT,] [CERTREQ,] [IDr,] AUTH, SAi2, TSi, TSr}
+        4. R->I: HDR, SK {IDr, [CERT,] AUTH, SAr2, TSi, TSr}
+    *)
+    in(c, mct2: bitstring);
+    let (=IDi, AUTHi: bitstring, SAi2: SA_t, TSi: bitstring, TSr: bitstring) =
+        sdec(checkmac(mct2, SK_ai), SK_ei) in
+    get keys(=IDi, ski, pki) in
+    if (ike_sa_init_request, Nr, prf(SK_pi, host_to_bs(IDi))) = check(AUTHi, pki) then
+    get keys(=IDr, skr, pkr) in
+    let AUTHr = sign((ike_sa_init_response, Ni, prf(SK_pr, host_to_bs(IDr))), skr) in
+    event begin_resp_IKE_AUTH(IDi, IDr, SAr2, TSi, TSr, SKEYSEED);
+    out(c, mac(senc((IDr, AUTHr, SAr2, TSi, TSr), SK_er), SK_ar));
+    if IDi = hostA || IDi = hostB then
+    out(c, (senc(secret_for_keys, SK_ai),
+            senc(secret_for_keys, SK_ar),
+            senc(secret_for_keys, SK_ei),
+            senc(secret_for_keys, SK_er)));
+    event end_resp_IKE_AUTH(IDi, IDr, SAr2, TSi, TSr, SKEYSEED).
+
+let keyregistration =
+    in(c, (h: host, ks: skey, kp: pkey));
+    if h <> hostA && h <> hostB then
+    insert keys(h, ks, kp).
+
+process
+    new skA: skey;
+    insert keys(hostA, skA, pk(skA));
+    out(c, pk(skA));
+    new skB: skey;
+    out(c, pk(skB));
+    insert keys(hostB, skB, pk(skB));
+    ((!initiator) | (!responder) | (!keyregistration))

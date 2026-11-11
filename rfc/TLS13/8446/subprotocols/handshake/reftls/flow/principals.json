@@ -1,0 +1,63 @@
+{
+  "principals": [
+    {
+      "name": "Client",
+      "description": "TLS 1.3 client. Sends a ClientHello with its (EC)DHE key share and a PSK offer protected by a binder, sends 0-RTT early data under the client early traffic key, then authenticates the server through its Certificate, CertificateVerify and Finished, answers with its own Finished, exchanges 1-RTT application data and derives a resumption PSK from the server's NewSessionTicket."
+    },
+    {
+      "name": "Server",
+      "description": "TLS 1.3 server. Validates the PSK binder of the ClientHello, accepts the client's 0-RTT early data, answers with its ServerHello key share, its certificate, a CertificateVerify signature over the transcript and its Finished, checks the client's Finished, exchanges 1-RTT application data and issues a NewSessionTicket."
+    }
+  ],
+  "values": [
+    {
+      "name": "Client",
+      "derived_from": [],
+      "description": "The client's identity, the party a pre-shared key is associated with on the client side (§2.2, §4.2.11).",
+      "holders": [
+        "Client",
+        "Server"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "Server",
+      "derived_from": [],
+      "description": "The server's identity, which its end-entity certificate binds to its public key and with which a pre-shared key is associated on the server side (§4.4.2, §4.4.2.2, §2.2).",
+      "holders": [
+        "Client",
+        "Server"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "sk_Server",
+      "derived_from": [],
+      "description": "The server's long-term private signing key, matching the public key of its end-entity certificate, with which it signs CertificateVerify (§4.4.2, §4.4.3).",
+      "holders": [
+        "Server"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "pk_Server",
+      "derived_from": [
+        "sk_Server"
+      ],
+      "description": "The server's public signature-verification key, computed from sk_Server. It reaches the client in the server's Certificate message, and the client accepts it only after validating the certificate against its trust anchors (§4.4.2, §4.4.2.4, §C.2), so the client is not assumed to store it beforehand.",
+      "holders": [
+        "Server"
+      ]
+    },
+    {
+      "name": "PSK",
+      "derived_from": [],
+      "description": "The pre-shared key a client and server share before the handshake, established externally or from an earlier connection's NewSessionTicket; it is the input of HKDF-Extract that forms the Early Secret, from which the binder key and the 0-RTT keys are derived (§2.2, §4.2.11, §7.1).",
+      "holders": [
+        "Client",
+        "Server"
+      ],
+      "source": "generated"
+    }
+  ]
+}

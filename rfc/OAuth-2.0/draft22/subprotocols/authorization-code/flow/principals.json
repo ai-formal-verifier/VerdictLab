@@ -1,0 +1,187 @@
+{
+  "principals": [
+    {
+      "name": "resource_owner",
+      "description": "The authorizing party: it already knows the protocol parties' identities and, through its user_agent, authenticates to the authorization_server and grants or denies the client's requested access."
+    },
+    {
+      "name": "resource_server",
+      "description": "The protected-resource endpoint: it initially hosts the protected_resource and knows its request endpoint data; it receives MAC-authenticated requests, recalculates and verifies their MACs, and returns the resource."
+    },
+    {
+      "name": "client",
+      "description": "The registered OAuth client: it initially holds its client_id, client_secret, redirect_uri, authorization-request state and scope, and protected-resource request inputs; it obtains issued code/token credentials, redeems or refreshes them, computes request MACs, and requests the resource."
+    },
+    {
+      "name": "authorization_server",
+      "description": "The authorization and token endpoint: it initially holds the client's registration data and shared client_secret; it authenticates the resource_owner and client, issues authorization codes, refresh tokens and MAC credentials, and processes refresh requests."
+    },
+    {
+      "name": "user_agent",
+      "description": "The resource owner's independently addressed user-agent endpoint: it shares the authenticated-state binding used by the client, carries the authorization interaction to the authorization_server, and follows the authorization-code redirection back to the client."
+    }
+  ],
+  "values": [
+    {
+      "name": "resource_owner",
+      "derived_from": [],
+      "description": "The resource owner's own identity.",
+      "holders": [
+        "resource_owner",
+        "resource_server",
+        "client",
+        "authorization_server",
+        "user_agent"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "resource_server",
+      "derived_from": [],
+      "description": "The resource server's identity.",
+      "holders": [
+        "resource_owner",
+        "resource_server",
+        "client",
+        "authorization_server",
+        "user_agent"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "client",
+      "derived_from": [],
+      "description": "The client's identity; the client registers with the authorization server before the protocol starts.",
+      "holders": [
+        "resource_owner",
+        "resource_server",
+        "client",
+        "authorization_server",
+        "user_agent"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "authorization_server",
+      "derived_from": [],
+      "description": "The authorization server's identity; the client obtains the location of its endpoints beforehand.",
+      "holders": [
+        "resource_owner",
+        "resource_server",
+        "client",
+        "authorization_server",
+        "user_agent"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "user_agent",
+      "derived_from": [],
+      "description": "The resource owner's user-agent's own identity.",
+      "holders": [
+        "resource_owner",
+        "resource_server",
+        "client",
+        "authorization_server",
+        "user_agent"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "client_id",
+      "derived_from": [],
+      "description": "The client identifier the authorization server issued to the client at registration; not a secret.",
+      "holders": [
+        "client",
+        "authorization_server"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "client_secret",
+      "derived_from": [],
+      "description": "The client password established at registration and shared by the client and the authorization server, used for client authentication at the token endpoint.",
+      "holders": [
+        "client",
+        "authorization_server"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "redirect_uri",
+      "derived_from": [],
+      "description": "The client's redirection endpoint. The document lets it be registered with the authorization server beforehand (SHOULD, and MUST for public clients) or only supplied in the authorization request, so the authorization server is not assumed to store it beforehand.",
+      "holders": [
+        "client"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "scope",
+      "derived_from": [],
+      "description": "The scope of access the client requests.",
+      "holders": [
+        "client"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "state",
+      "derived_from": [],
+      "description": "The client's CSRF binding value, tied to the user-agent's authenticated state with the client (e.g. a hash of its session cookie), which is kept where only the client and the user-agent can access it.",
+      "holders": [
+        "client",
+        "user_agent"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "method",
+      "derived_from": [],
+      "description": "The HTTP method of the client's protected-resource request.",
+      "holders": [
+        "client"
+      ],
+      "source": "specified"
+    },
+    {
+      "name": "request_uri",
+      "derived_from": [],
+      "description": "The request URI of the protected resource, known to the client and served by the resource server.",
+      "holders": [
+        "resource_server",
+        "client"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "hostname",
+      "derived_from": [],
+      "description": "The host name of the resource server, known to the client and to the resource server itself.",
+      "holders": [
+        "resource_server",
+        "client"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "port",
+      "derived_from": [],
+      "description": "The port of the resource server, known to the client and to the resource server itself.",
+      "holders": [
+        "resource_server",
+        "client"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "protected_resource",
+      "derived_from": [],
+      "description": "The protected resource hosted by the resource server.",
+      "holders": [
+        "resource_server"
+      ],
+      "source": "generated"
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "main_doc_id": "NSPK",
+  "subprotocol_list": {
+    "NSPK": "the whole protocol (protocol.yaml lists no sub-protocols)"
+  },
+  "documents": {
+    "generic": [
+      {
+        "doc_id": "NSPK",
+        "path": "main/NSPK.md",
+        "fingerprint": "0231f0e1f271ba541c59f6d739a1d1bfd83d6995e2ea4bbd12f235733386ff88",
+        "ids": [
+          "NSPK"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "1": {
+      "subprotocols": [
+        "NSPK"
+      ],
+      "reason": ""
+    },
+    "2": {
+      "subprotocols": [
+        "NSPK"
+      ],
+      "reason": "Specifies the protocol roles and each participant’s initial keys, registrations, and state, which define the run’s starting knowledge."
+    },
+    "3": {
+      "subprotocols": [
+        "NSPK"
+      ],
+      "reason": ""
+    },
+    "4": {
+      "subprotocols": [
+        "NSPK"
+      ],
+      "reason": "Describes the seven-message run, including identities and key use, message contents, freshness, checks, and execution choices relevant to formal analysis."
+    },
+    "5": {
+      "subprotocols": [
+        "NSPK"
+      ],
+      "reason": "Defines the admission scenarios that condition which principals may participate, shaping the protocol analysis assumptions."
+    },
+    "6": {
+      "subprotocols": [
+        "NSPK"
+      ],
+      "reason": "States the nonce-secrecy and injective-agreement goals evaluated by the formal analysis."
+    },
+    "7": {
+      "subprotocols": [
+        "NSPK"
+      ],
+      "reason": ""
+    }
+  },
+  "references": {
+    "NSPK": {
+      "generic": {
+        "1": {
+          "id": "work:using-encryption-for-authentication-in-large-networks-of-computers@1978",
+          "file": null,
+          "status": "unknown"
+        },
+        "2": {
+          "id": "work:needham-schroeder-public-key@1978",
+          "file": null,
+          "status": "unknown"
+        },
+        "3": {
+          "id": "work:an-attack-on-the-needham-schroeder-public-key-authentication-protocol@1995",
+          "file": null,
+          "status": "unknown"
+        },
+        "4": {
+          "id": "work:breaking-and-fixing-the-needham-schroeder-public-key-protocol-using-fdr@1996",
+          "file": null,
+          "status": "absent"
+        }
+      }
+    }
+  }
+}

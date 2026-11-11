@@ -1,0 +1,829 @@
+{
+  "main_doc_id": "draft-ietf-lake-edhoc-12",
+  "subprotocol_list": {
+    "handshake": "EDHOC (draft-12) key exchange between an initiator and a responder; each side's way of authenticating is chosen independently (METHOD, Section 3.2)."
+  },
+  "documents": {
+    "ietf": [
+      {
+        "doc_id": "draft-ietf-lake-edhoc-12",
+        "path": "main/draft-ietf-lake-edhoc-12.md",
+        "fingerprint": "cb1032432cc157219314842d1e0f9643e8fc3230ea1a3c1dc08d0829a7f7d397",
+        "ids": [
+          "draft-ietf-lake-edhoc-12"
+        ]
+      },
+      {
+        "doc_id": "rfc5116",
+        "path": "library:public/converted/rfc5116.md",
+        "fingerprint": "7bee001adcccf9014d43be712bca4ab812bf211b80ad0834e9408d86880f040d",
+        "ids": [
+          "rfc5116"
+        ]
+      },
+      {
+        "doc_id": "rfc5280",
+        "path": "library:public/converted/rfc5280.md",
+        "fingerprint": "5628c735dd1b13bb88c18de79df34878798ed8029d2ae1d638c23720c83f66f4",
+        "ids": [
+          "rfc5280"
+        ]
+      },
+      {
+        "doc_id": "rfc5869",
+        "path": "library:public/converted/rfc5869.md",
+        "fingerprint": "79dd720fce161c1511258aa6b7f341e8eb089562bb813a45b574fdce647449f4",
+        "ids": [
+          "rfc5869"
+        ]
+      },
+      {
+        "doc_id": "rfc6979",
+        "path": "library:public/converted/rfc6979.md",
+        "fingerprint": "8a23bbc5327604def8ad335a222ae1787c43d413246497027dbdcafa35762b67",
+        "ids": [
+          "rfc6979"
+        ]
+      },
+      {
+        "doc_id": "rfc7748",
+        "path": "library:public/converted/rfc7748.md",
+        "fingerprint": "7dcb40c18e387b47ce3c25b07b66d7367ed0a5620c3a2ae1ef7d73dc20ffdc64",
+        "ids": [
+          "rfc7748"
+        ]
+      },
+      {
+        "doc_id": "rfc9052",
+        "path": "library:public/converted/rfc9052.md",
+        "fingerprint": "9854d158f5cca0272cd7c0b4e6e92b6bd012cc46f3cc9b74aaf24ede729e22e5",
+        "ids": [
+          "rfc9052"
+        ]
+      },
+      {
+        "doc_id": "rfc7296",
+        "path": "library:rfc/IKEV2/converted/main/rfc7296.md",
+        "fingerprint": "83d5a01e82a28531e3cbb3e3574ab35952723abf831c40c9c28b298f4c24420e",
+        "ids": [
+          "rfc7296"
+        ]
+      },
+      {
+        "doc_id": "rfc8446",
+        "path": "library:rfc/TLS13/8446/converted/main/rfc8446.md",
+        "fingerprint": "00c0320a34c54f802078e9d8976c3afa85e1ef13befd5f302057ef1e421bc754",
+        "ids": [
+          "rfc8446"
+        ]
+      },
+      {
+        "doc_id": "rfc2409",
+        "path": "library:public/converted/rfc2409.md",
+        "fingerprint": "0ee525c4f93223048d4b8300b1165fd82eddf4259b1898d0aba4469fcf0c9f8f",
+        "ids": [
+          "rfc2409"
+        ]
+      },
+      {
+        "doc_id": "rfc2104",
+        "path": "library:public/converted/rfc2104.md",
+        "fingerprint": "6236a96e06723bb89d8a8baa13575eb11e0421d3b629f9227218c687bac8ff37",
+        "ids": [
+          "rfc2104"
+        ]
+      }
+    ],
+    "nist": [
+      {
+        "doc_id": "NIST.SP.800-56Ar3",
+        "path": "library:public/converted/NIST.SP.800-56Ar3.md",
+        "fingerprint": "b5eb489e484d57876d040c632cd4fcb676849769f01e2d34c35989fc50949558",
+        "ids": [
+          "NIST.SP.800-56Ar3",
+          "nist.sp.800-56ar3"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "1.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "1.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "1.3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "1.4": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "1.5": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Outlines the initiator-responder exchange, authentication data, derived secrets, and added protocol mechanisms relevant to the run."
+    },
+    "3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "3.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies the parties, message sequence, optional message four, and when application keys become available."
+    },
+    "3.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines the authentication modes independently chosen for the initiator and responder and their effect on the protocol."
+    },
+    "3.3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "3.3.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies how each party chooses and exchanges connection identifiers that persist through the protocol."
+    },
+    "3.3.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "3.4": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "3.4.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Describes how connection identifiers and transport correlation associate received messages with protocol state."
+    },
+    "3.5": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines authentication credentials and keys, their prior availability and their uses in authentication and key derivation."
+    },
+    "3.5.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies identity and trust-anchor inputs and the parties’ identity authorization checks."
+    },
+    "3.5.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines the permissible authentication key types and their role-dependent use in the protocol."
+    },
+    "3.5.3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines the credentials used by each party and the credential agreement needed for integrity verification."
+    },
+    "3.5.4": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies how credentials are identified and retrieved by the peer during the message exchange."
+    },
+    "3.6": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines cipher-suite contents and the supported-suite ordering and selection used in negotiation."
+    },
+    "3.7": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "3.8": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines optional authorization data fields, which messages carry them, and whether they are protected."
+    },
+    "3.9": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies the parameters parties must agree on and the checks and processing governed by that agreement."
+    },
+    "4": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "4.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "4.1.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines the PRK_2e computation from the ephemeral Diffie-Hellman secret and its role in the run."
+    },
+    "4.1.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines how the responder’s static Diffie-Hellman authentication conditionally contributes to PRK_3e2m."
+    },
+    "4.1.3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines how the initiator’s static Diffie-Hellman authentication conditionally contributes to PRK_4x3m."
+    },
+    "4.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies the protocol’s transcript-bound derivation of message keys, IVs, and MACs."
+    },
+    "4.3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines application key export from the protocol’s final key and transcript hash."
+    },
+    "4.4": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines the stateful key-update operation, including nonce agreement and replacement of the stored key."
+    },
+    "5": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "5.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies per-session protocol state, message dispatch, failure cleanup, and duplicate-message handling."
+    },
+    "5.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "5.2.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines the semantic fields of message one, including method, suites, ephemeral key, identifier, and optional authorization data."
+    },
+    "5.2.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies initiator behavior, fresh ephemeral-key generation, identifier state, and cipher-suite selection."
+    },
+    "5.2.3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies responder checks and branching on message one and the resulting failure path."
+    },
+    "5.3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "5.3.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines message two’s semantic contents, including the responder ephemeral key, ciphertext, and connection identifier."
+    },
+    "5.3.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies responder generation of fresh key material, transcript and MAC computations, authentication, encryption, and message construction."
+    },
+    "5.3.3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies initiator processing of message two, including decryption, identity authorization, and authentication checks."
+    },
+    "5.4": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "5.4.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines message three as carrying the protected ciphertext."
+    },
+    "5.4.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies initiator transcript, MAC, signature, and encryption computations, key availability, and key-confirmation state."
+    },
+    "5.4.3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies responder validation of message three and the resulting authentication and key-confirmation state."
+    },
+    "5.5": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines when the optional fourth message is required to provide explicit key confirmation."
+    },
+    "5.5.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines message four’s semantic content as the ciphertext carrying protected data."
+    },
+    "5.5.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies responder computation and encryption of message four, including its key inputs and optional authorization data."
+    },
+    "5.5.3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies initiator processing and verification of message four and handling of failure."
+    },
+    "6": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines fatal error-message behavior, message structure, and how errors affect protocol continuation."
+    },
+    "6.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies that the success code is not part of the protocol exchange."
+    },
+    "6.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "6.3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines the cipher-suite negotiation error branch and the suite information returned by the responder."
+    },
+    "6.3.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies initiator state and suite-selection behavior across subsequent runs after negotiation errors."
+    },
+    "6.3.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "7": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies which roles, methods, features, credentials, and algorithms an implementation may or must support."
+    },
+    "8": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "8.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "States the protocol’s authentication, secrecy, identity-protection, negotiation, and key-confirmation goals and limitations."
+    },
+    "8.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies fresh ephemeral-key requirements and protocol-relevant cryptographic requirements affecting message security."
+    },
+    "8.3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies algorithm support restrictions and minimum security-level considerations for protocol suites."
+    },
+    "8.4": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "8.5": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Identifies which protocol fields are unprotected and the security and privacy constraints on their use."
+    },
+    "8.6": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "8.7": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "10": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "10.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "10.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "A": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "A.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "A.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Defines derivation of the OSCORE security context from EDHOC output and maps the session identifiers to OSCORE roles."
+    },
+    "A.3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies the CoAP message flow, message correlation, role mapping, and transport behavior for EDHOC."
+    },
+    "A.3.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "B": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "C": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "C.1": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "C.2": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "C.3": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "D": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": ""
+    },
+    "E": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies duplicate-message processing, session state retention, and retransmission behavior across protocol steps."
+    },
+    "F": {
+      "subprotocols": [
+        "handshake"
+      ],
+      "reason": "Specifies how transports without native correlation carry identifiers to associate messages with protocol state."
+    }
+  },
+  "references": {
+    "draft-ietf-lake-edhoc-12": {
+      "ietf": {
+        "RFC2119": {
+          "id": "rfc2119",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC5116": {
+          "id": "rfc5116",
+          "file": "rfc5116",
+          "status": "same_version"
+        },
+        "RFC5280": {
+          "id": "rfc5280",
+          "file": "rfc5280",
+          "status": "same_version"
+        },
+        "RFC5869": {
+          "id": "rfc5869",
+          "file": "rfc5869",
+          "status": "same_version"
+        },
+        "RFC6090": {
+          "id": "rfc6090",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC6979": {
+          "id": "rfc6979",
+          "file": "rfc6979",
+          "status": "same_version"
+        },
+        "RFC7252": {
+          "id": "rfc7252",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC7624": {
+          "id": "rfc7624",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC7748": {
+          "id": "rfc7748",
+          "file": "rfc7748",
+          "status": "same_version"
+        },
+        "RFC7959": {
+          "id": "rfc7959",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC8174": {
+          "id": "rfc8174",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC8376": {
+          "id": "rfc8376",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC8392": {
+          "id": "rfc8392",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC8610": {
+          "id": "rfc8610",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC8613": {
+          "id": "rfc8613",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC8724": {
+          "id": "rfc8724",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC8742": {
+          "id": "rfc8742",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC8747": {
+          "id": "rfc8747",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC8949": {
+          "id": "rfc8949",
+          "file": null,
+          "status": "absent"
+        },
+        "I-D.ietf-cose-rfc8152bis-struct": {
+          "id": "draft-ietf-cose-rfc8152bis-struct-15",
+          "file": "rfc9052",
+          "status": "other_version"
+        },
+        "I-D.ietf-cose-rfc8152bis-algs": {
+          "id": "draft-ietf-cose-rfc8152bis-algs-12",
+          "file": null,
+          "status": "absent"
+        },
+        "I-D.ietf-cose-x509": {
+          "id": "draft-ietf-cose-x509-08",
+          "file": null,
+          "status": "absent"
+        },
+        "I-D.ietf-core-echo-request-tag": {
+          "id": "draft-ietf-core-echo-request-tag-14",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC7228": {
+          "id": "rfc7228",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC7258": {
+          "id": "rfc7258",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC7296": {
+          "id": "rfc7296",
+          "file": "rfc7296",
+          "status": "same_version"
+        },
+        "RFC8446": {
+          "id": "rfc8446",
+          "file": "rfc8446",
+          "status": "same_version"
+        },
+        "RFC8937": {
+          "id": "rfc8937",
+          "file": null,
+          "status": "absent"
+        },
+        "I-D.ietf-core-resource-directory": {
+          "id": "draft-ietf-core-resource-directory-28",
+          "file": null,
+          "status": "absent"
+        },
+        "I-D.ietf-core-oscore-edhoc": {
+          "id": "draft-ietf-core-oscore-edhoc-01",
+          "file": null,
+          "status": "absent"
+        },
+        "I-D.ietf-cose-cbor-encoded-cert": {
+          "id": "draft-ietf-cose-cbor-encoded-cert-02",
+          "file": null,
+          "status": "absent"
+        },
+        "I-D.ietf-lake-reqs": {
+          "id": "draft-ietf-lake-reqs-04",
+          "file": null,
+          "status": "absent"
+        },
+        "I-D.ietf-lwig-security-protocol-comparison": {
+          "id": "draft-ietf-lwig-security-protocol-comparison-05",
+          "file": null,
+          "status": "absent"
+        },
+        "I-D.ietf-tls-dtls13": {
+          "id": "draft-ietf-tls-dtls13-43",
+          "file": null,
+          "status": "absent"
+        },
+        "I-D.mattsson-cfrg-det-sigs-with-noise": {
+          "id": "draft-mattsson-cfrg-det-sigs-with-noise-02",
+          "file": null,
+          "status": "absent"
+        },
+        "I-D.selander-ace-ake-authz": {
+          "id": "draft-selander-ace-ake-authz-03",
+          "file": null,
+          "status": "absent"
+        },
+        "I-D.selander-lake-traces": {
+          "id": "draft-selander-lake-traces-01",
+          "file": null,
+          "status": "absent"
+        }
+      },
+      "nist": {
+        "SP-800-56A": {
+          "id": "nist.sp.800-56ar3",
+          "file": "NIST.SP.800-56Ar3",
+          "status": "same_version"
+        }
+      },
+      "secg": {
+        "SECG": {
+          "id": "secg-sec1-v2",
+          "file": null,
+          "status": "absent"
+        }
+      },
+      "generic": {
+        "SIGMA": {
+          "id": "work:sigma-the-sign-and-mac-approach-to-authenticated-diffie-hellman-and-its-use-in-t@2003",
+          "file": null,
+          "status": "absent"
+        },
+        "CNSA": {
+          "id": "work:commercial-national-security-algorithm-suite@2015",
+          "file": null,
+          "status": "unknown"
+        },
+        "Norrman20": {
+          "id": "arxiv:2007.11427",
+          "file": null,
+          "status": "unknown"
+        },
+        "Bruni18": {
+          "id": "work:formal-verification-of-ephemeral-diffie-hellman-over-cose-edhoc@2018",
+          "file": null,
+          "status": "unknown"
+        },
+        "CborMe": {
+          "id": null,
+          "file": null,
+          "status": "unknown"
+        }
+      }
+    }
+  }
+}

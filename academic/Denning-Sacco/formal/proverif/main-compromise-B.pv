@@ -1,0 +1,113 @@
+(*
+  Denning-Sacco shared-key — ProVerif model
+
+  PROVENANCE
+  ----------
+  There is no canonical ProVerif distribution model for the shared-key
+  variant of Denning-Sacco. The 14 DenningSacco*.pv files shipped with
+  ProVerif 2.05 (examples/pitype/{secr-auth,noninterf}/) all encode the
+  public-key signature variant, which is a different protocol family.
+  This file is therefore project-authored, written to mirror the standard
+  Tamarin model in `Denning-Sacco-SK.spthy` (S. Delaune, March
+  2020; protocol description from SPORE,
+  http://www.lsv.fr/Software/spore/denningSacco.html).
+
+  GOALS — 1-to-1 with the Tamarin lemmas
+  --------------------------------------
+     Tamarin lemma                ProVerif query                        expected
+     -----------------------------------------------------------------------------
+     secrecy (Kab)                attacker(secrecy_*_Kab) × 3            TRUE × 3
+     noninjectiveagreement_B      event end ==> event begin              TRUE
+     injectiveagreement_B         inj-event end ==> inj-event begin      FALSE
+                                                              (multiplicity attack)
+     executability                (no PV counterpart; see reachability.pv)
+
+  PROTOCOL (SPORE shared-key DS, timestamp-bearing variant)
+  --------
+     1.  A -> S :  A, B
+     2.  S -> A :  { B, Kab, T, { Kab, A, T }Ksb }Ksa
+     3.  A -> B :  { Kab, A, T }Ksb
+
+  References: Denning & Sacco, CACM 1981; SPORE; Tamarin Delaune 2020.
+*)
+
+free c: channel.
+
+type key.
+
+(* Symmetric encryption *)
+fun senc(bitstring, key): bitstring.
+reduc forall x: bitstring, y: key; sdec(senc(x, y), y) = x.
+
+(* Principals *)
+free A: bitstring.
+free B: bitstring.
+free S: bitstring.
+
+(* Long-term shared keys with the server *)
+free Ksa: key [private].
+free Ksb: key [private].
+
+(* Secrecy probes — each role encrypts a private nonce under Kab so the
+   attacker can only recover the nonce by recovering Kab itself. Mirrors
+   Tamarin Secret(A,B,Kab) emitted at A's and B's view. *)
+free secrecy_Alice_Kab:  bitstring [private].
+free secrecy_Bob_Kab:    bitstring [private].
+free secrecy_Server_Kab: bitstring [private].
+
+(* Agreement events. RunningA / CommitB mirror the same-named Tamarin
+   action facts; the (A, B, Kab, T) tuple is the agreement payload. *)
+event RunningA(bitstring, bitstring, key, bitstring).
+event CommitB (bitstring, bitstring, key, bitstring).
+
+(* === Queries === *)
+query attacker(secrecy_Alice_Kab).
+query attacker(secrecy_Bob_Kab).
+query attacker(secrecy_Server_Kab).
+query x1: bitstring, x2: bitstring, x3: key, x4: bitstring;
+  event(CommitB(x1, x2, x3, x4)) ==> event(RunningA(x1, x2, x3, x4)).
+query x1: bitstring, x2: bitstring, x3: key, x4: bitstring;
+  inj-event(CommitB(x1, x2, x3, x4)) ==> inj-event(RunningA(x1, x2, x3, x4)).
+
+
+(* === Alice (initiator) ===
+     msg 1 out:  (A, B)
+     msg 2 in :  { B, Kab, T, ticket }Ksa
+     msg 3 out:  ticket  ( = { Kab, A, T }Ksb, opaque to A )                  *)
+let process_Alice(A: bitstring, B: bitstring, S: bitstring, Ksa: key) =
+  out(c, (A, B));
+  in(c, Server_msg_1: bitstring);
+  let (=B, Kab: key, T: bitstring, ticket_B: bitstring) = sdec(Server_msg_1, Ksa) in
+  let probe_Alice_Kab: bitstring = senc(secrecy_Alice_Kab, Kab) in
+  event RunningA(A, B, Kab, T);
+  out(c, ticket_B);
+  out(c, probe_Alice_Kab);
+  0.
+
+(* === Bob (responder) ===
+     msg 3 in :  ticket = { Kab, A, T }Ksb                                    *)
+let process_Bob(A: bitstring, B: bitstring, S: bitstring, Ksb: key) =
+  in(c, ticket_B: bitstring);
+  let (Kab: key, A_: bitstring, T: bitstring) = sdec(ticket_B, Ksb) in
+  let probe_Bob_Kab: bitstring = senc(secrecy_Bob_Kab, Kab) in
+  event CommitB(A_, B, Kab, T);
+  out(c, probe_Bob_Kab);
+  0.
+
+(* === Server (KDC) ===
+     msg 1 in :  (A, B)
+     msg 2 out:  { B, Kab, T, ticket }Ksa  where ticket = { Kab, A, T }Ksb    *)
+let process_Server(A: bitstring, B: bitstring, S: bitstring, Ksa: key, Ksb: key) =
+  in(c, (=A, =B));
+  new Kab: key;
+  new T: bitstring;
+  let ticket_B:     bitstring = senc((Kab, A, T), Ksb) in
+  let Server_msg_1: bitstring = senc((B, Kab, T, ticket_B), Ksa) in
+  let probe_Server_Kab: bitstring = senc(secrecy_Server_Kab, Kab) in
+  out(c, Server_msg_1);
+  out(c, probe_Server_Kab);
+  0.
+
+process
+  (!process_Alice(A, B, S, Ksa)) | (!process_Bob(A, B, S, Ksb)) | (!process_Server(A, B, S, Ksa, Ksb))
+  | out(c, Ksb)   (* compromise B: leak Ksb *)

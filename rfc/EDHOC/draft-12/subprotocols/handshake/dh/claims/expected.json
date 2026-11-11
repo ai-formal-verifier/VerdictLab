@@ -1,0 +1,187 @@
+{
+  "vocab_version": "4.0.0",
+  "protocol_id": "EDHOC-draft-12-handshake-dh",
+  "names": {
+    "G_I": "G_I, the Initiator's public authentication key when it authenticates with a static Diffie-Hellman key (the private key being I), contained in its authentication credential CRED_I (§3.5.2, §3.5.3).",
+    "G_R": "G_R, the Responder's public authentication key when it authenticates with a static Diffie-Hellman key (the private key being R), contained in its authentication credential CRED_R (§3.5.2, §3.5.3).",
+    "I": "The principal I: The Initiator: starts EDHOC, contributes its method, supported cipher suites, credential identifier and external authorization data, authenticates with its static Diffie-Hellman key, and verifies the Responder.",
+    "R": "The principal R: The Responder: processes message_1, contributes its supported cipher suites, credential identifier and external authorization data, authenticates with its static Diffie-Hellman key, and verifies the Initiator.",
+    "PRK_4x3m": "PRK_4x3m, the pseudorandom key Extract( PRK_3e2m, G_IY ) when the Initiator authenticates with a static Diffie-Hellman key (else PRK_3e2m), used to produce the MAC in message_3, to encrypt message_4 and to derive application specific data (§4.1.3, §4.3, §8.1)."
+  },
+  "scenarios": [
+    {
+      "name": "baseline",
+      "world": [
+        {
+          "axis": "data",
+          "target": {
+            "of": "G_I"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "G_R"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "seating",
+          "target": {
+            "principal": "I"
+          },
+          "level": "any_role"
+        },
+        {
+          "axis": "population",
+          "target": {
+            "principal": "I"
+          },
+          "level": "unbounded"
+        },
+        {
+          "axis": "seating",
+          "target": {
+            "principal": "R"
+          },
+          "level": "any_role"
+        },
+        {
+          "axis": "population",
+          "target": {
+            "principal": "R"
+          },
+          "level": "unbounded"
+        }
+      ]
+    }
+  ],
+  "goals": [
+    {
+      "name": "secrecy_session_key_I",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "PRK_4x3m"
+        ],
+        "holders": [
+          "I"
+        ]
+      }
+    },
+    {
+      "name": "secrecy_session_key_R",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "PRK_4x3m"
+        ],
+        "holders": [
+          "R"
+        ]
+      }
+    },
+    {
+      "name": "data_auth_R_asserts_I",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "R",
+        "subject": "I",
+        "of": [
+          "PRK_4x3m"
+        ]
+      }
+    },
+    {
+      "name": "data_auth_I_asserts_R",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "I",
+        "subject": "R",
+        "of": [
+          "PRK_4x3m"
+        ]
+      }
+    },
+    {
+      "name": "unique_accept_I",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "I",
+        "subject": "R",
+        "of": [
+          "PRK_4x3m"
+        ]
+      }
+    },
+    {
+      "name": "unique_accept_R",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "R",
+        "subject": "I",
+        "of": [
+          "PRK_4x3m"
+        ]
+      }
+    }
+  ],
+  "questions": [
+    {
+      "id": "secrecy_session_key_I",
+      "goal": "secrecy_session_key_I",
+      "scenarios": [
+        "baseline"
+      ],
+      "verdict": "true"
+    },
+    {
+      "id": "secrecy_session_key_R",
+      "goal": "secrecy_session_key_R",
+      "scenarios": [
+        "baseline"
+      ],
+      "verdict": "true"
+    },
+    {
+      "id": "data_auth_R_asserts_I",
+      "goal": "data_auth_R_asserts_I",
+      "scenarios": [
+        "baseline"
+      ],
+      "verdict": "true"
+    },
+    {
+      "id": "data_auth_I_asserts_R",
+      "goal": "data_auth_I_asserts_R",
+      "scenarios": [
+        "baseline"
+      ],
+      "verdict": "true"
+    },
+    {
+      "id": "unique_accept_I",
+      "goal": "unique_accept_I",
+      "scenarios": [
+        "baseline"
+      ],
+      "verdict": "false"
+    },
+    {
+      "id": "unique_accept_R",
+      "goal": "unique_accept_R",
+      "scenarios": [
+        "baseline"
+      ],
+      "verdict": "false"
+    }
+  ],
+  "unexpressed": []
+}

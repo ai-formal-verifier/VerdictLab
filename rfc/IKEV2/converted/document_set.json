@@ -1,0 +1,893 @@
+{
+  "main_doc_id": "rfc7296",
+  "subprotocol_list": {
+    "ike-sa": "IKEv2 initial exchanges, IKE_SA_INIT and IKE_AUTH, between an initiator and a responder."
+  },
+  "documents": {
+    "ietf": [
+      {
+        "doc_id": "rfc7296",
+        "path": "main/rfc7296.md",
+        "fingerprint": "83d5a01e82a28531e3cbb3e3574ab35952723abf831c40c9c28b298f4c24420e",
+        "ids": [
+          "rfc7296"
+        ]
+      },
+      {
+        "doc_id": "rfc3748",
+        "path": "library:public/converted/rfc3748.md",
+        "fingerprint": "f0cab8219553c8b714f025c9634136e8172afc233f7471ec128d7cf74cfb026f",
+        "ids": [
+          "rfc3748"
+        ]
+      },
+      {
+        "doc_id": "rfc4301",
+        "path": "library:public/converted/rfc4301.md",
+        "fingerprint": "0a9c6e712aa59f0b000f5af6f60fdc29c65ce6a7503e3601231f8860e41a9f01",
+        "ids": [
+          "rfc4301"
+        ]
+      },
+      {
+        "doc_id": "rfc3447",
+        "path": "library:public/converted/rfc3447.md",
+        "fingerprint": "acfefdf4bc2ea984c3860cdbe88f3714ad8e8ac6ab7bb7c7b43cbfece330da4d",
+        "ids": [
+          "rfc3447"
+        ]
+      },
+      {
+        "doc_id": "rfc5280",
+        "path": "library:public/converted/rfc5280.md",
+        "fingerprint": "5628c735dd1b13bb88c18de79df34878798ed8029d2ae1d638c23720c83f66f4",
+        "ids": [
+          "rfc5280"
+        ]
+      },
+      {
+        "doc_id": "rfc3986",
+        "path": "library:public/converted/rfc3986.md",
+        "fingerprint": "d99410650c949933bd823c188af190b3ebbd0623220843dd56a367529c9eccb3",
+        "ids": [
+          "rfc3986"
+        ]
+      },
+      {
+        "doc_id": "rfc2983",
+        "path": "library:public/converted/rfc2983.md",
+        "fingerprint": "6b3bd7ed5894e85202acb9b9976e8ec40ff828f9780dcf5eb3aca680fd8dc41e",
+        "ids": [
+          "rfc2983"
+        ]
+      },
+      {
+        "doc_id": "rfc2104",
+        "path": "library:public/converted/rfc2104.md",
+        "fingerprint": "6236a96e06723bb89d8a8baa13575eb11e0421d3b629f9227218c687bac8ff37",
+        "ids": [
+          "rfc2104"
+        ]
+      },
+      {
+        "doc_id": "rfc2409",
+        "path": "library:public/converted/rfc2409.md",
+        "fingerprint": "0ee525c4f93223048d4b8300b1165fd82eddf4259b1898d0aba4469fcf0c9f8f",
+        "ids": [
+          "rfc2409"
+        ]
+      },
+      {
+        "doc_id": "rfc4555",
+        "path": "library:public/converted/rfc4555.md",
+        "fingerprint": "761cc6038a3d781381786a671e7e24524ba88baf3c0dfce5604d8160e0dbdab7",
+        "ids": [
+          "rfc4555"
+        ]
+      },
+      {
+        "doc_id": "rfc4945",
+        "path": "library:public/converted/rfc4945.md",
+        "fingerprint": "1c16c2479544b6ad859dd1529c12ba08edaab750d760a00e05d0dd5627c2ad1d",
+        "ids": [
+          "rfc4945"
+        ]
+      },
+      {
+        "doc_id": "rfc6989",
+        "path": "library:public/converted/rfc6989.md",
+        "fingerprint": "a5aeb944c2f037f9dee36072177601d7a18936552e84fb59c9a143f5e2bd7d91",
+        "ids": [
+          "rfc6989"
+        ]
+      }
+    ],
+    "nist": [
+      {
+        "doc_id": "NIST.FIPS.186-5",
+        "path": "library:public/converted/NIST.FIPS.186-5.md",
+        "fingerprint": "14aaaf3073c9a60849d19726f25e451c9b416a6cf899d1cb2d0b89abbb62ad9c",
+        "ids": [
+          "NIST.FIPS.186-5",
+          "nist.fips.186-5"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "1": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Describes IKE roles, exchange sequencing and repetition, message purposes, authentication and SA-establishment goals, making this overview core protocol flow."
+    },
+    "1.1": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": ""
+    },
+    "1.1.1": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": ""
+    },
+    "1.1.2": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": ""
+    },
+    "1.1.3": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": ""
+    },
+    "1.1.4": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": ""
+    },
+    "1.2": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Specifies the IKE_SA_INIT and IKE_AUTH messages, payload contents and order, key derivation context, authentication checks, retries, and failure branches."
+    },
+    "1.6": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Defines protocol terminology and normative requirement keywords; this is non-core terminology content and the section is mainly definitions."
+    },
+    "1.7": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": ""
+    },
+    "1.8": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": ""
+    },
+    "2": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Describes protocol behavior over the network, including message handling and requirements, so it contributes execution and state context to analysis."
+    },
+    "2.1": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Defines retransmission behavior, saved request/response state, and handling of initial-exchange retries."
+    },
+    "2.2": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Defines Message ID assignment, state counters, and their role in matching and replay protection."
+    },
+    "2.3": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Specifies negotiation and enforcement of outstanding-request windows and the resulting request-processing state."
+    },
+    "2.4": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Defines liveness checks, state deletion, and the effect of crash/restart and INITIAL_CONTACT notifications."
+    },
+    "2.5": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Specifies version negotiation, compatibility behavior, and branches for unsupported versions or payloads."
+    },
+    "2.6": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Defines SPI selection and cookie challenge/retry behavior, including responder state and validation."
+    },
+    "2.6.1": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Describes retry sequencing when cookie and Diffie-Hellman-group corrections interact."
+    },
+    "2.7": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Defines algorithm proposal structure and responder selection and rejection rules."
+    },
+    "2.10": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Specifies fresh nonce generation and how nonces participate in key derivation and freshness."
+    },
+    "2.11": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Defines address/port handling and response routing behavior."
+    },
+    "2.12": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Describes ephemeral Diffie-Hellman exponent lifecycle and reuse, including state deletion relevant to forward secrecy."
+    },
+    "2.13": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Defines how negotiated cryptographic choices determine key material generation, including the protocol's prf+ computation."
+    },
+    "2.14": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Specifies IKE SA key derivation from exchanged nonces, the Diffie-Hellman secret, and SPIs, and assigns derived keys to protocol uses."
+    },
+    "2.15": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Defines authentication inputs and AUTH computations for each peer, binding identities, nonces, and exchanged messages."
+    },
+    "2.16": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Specifies EAP authentication message sequencing, branching, and the resulting authentication and key use."
+    },
+    "2.17": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Defines Child SA key derivation from exchanged values and assignment of derived key material to negotiated SAs."
+    },
+    "2.19": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Defines configuration-address request and response exchanges, conditions, and failure behavior."
+    },
+    "2.21": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Specifies error response and state-cleanup behavior across protocol phases."
+    },
+    "2.21.1": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Defines error and retry handling before cryptographic protection is established."
+    },
+    "2.21.2": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Defines authentication and Child SA failure branches during IKE_AUTH and their effect on IKE SA state."
+    },
+    "2.21.3": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Defines error responses and fatal-state behavior after IKE SA authentication."
+    },
+    "2.21.4": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Defines handling of errors and notifications outside a known IKE SA, including actions and state preservation."
+    },
+    "2.23": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Specifies NAT detection, notification checks, address updates, and resulting UDP encapsulation behavior."
+    },
+    "2.23.1": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Defines transport-mode NAT traversal processing, traffic-selector substitutions, policy checks, and associated state."
+    },
+    "2.24": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": ""
+    },
+    "3": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Introduces the protocol's message and payload structures; these semantic message fields are core to formal modeling."
+    },
+    "3.1": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Defines IKE message header fields and their roles in exchange selection, peer role, matching, and processing."
+    },
+    "3.2": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Defines generic payload chaining and critical-payload handling that govern message interpretation and rejection."
+    },
+    "3.3": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Defines the semantic structure and negotiation behavior of SA proposals, transforms, and attributes."
+    },
+    "3.3.1": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": ""
+    },
+    "3.3.2": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": ""
+    },
+    "3.3.3": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": ""
+    },
+    "3.3.4": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": ""
+    },
+    "3.3.5": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": ""
+    },
+    "3.3.6": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Specifies offer selection, consistency checks, and rejection branches for SA and transform negotiation."
+    },
+    "3.4": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Defines the key-exchange payload and checks connecting its Diffie-Hellman group and value to the negotiation."
+    },
+    "3.5": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Defines identity payload semantics and their use in policy and authentication decisions."
+    },
+    "3.6": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Defines certificate payload contents and how certificates support authentication in protocol exchanges."
+    },
+    "3.7": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Defines certificate-request content and the conditions governing certificate selection and response."
+    },
+    "3.8": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Defines authentication payload content and the authentication methods it carries."
+    },
+    "3.9": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Defines nonce payload semantics and the fresh values carried during exchanges."
+    },
+    "3.10": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Defines notification message structure and its use for protocol status, errors, and capability signaling."
+    },
+    "3.10.1": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Defines notification meanings and the handling rules for recognized and unrecognized status and error types."
+    },
+    "3.11": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Defines deletion messages and how their protocol identifiers and SPIs identify state to remove."
+    },
+    "3.12": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": ""
+    },
+    "3.13": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Defines traffic-selector message content and the matching semantics used to specify protected flows."
+    },
+    "3.13.1": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": ""
+    },
+    "3.14": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Defines the encrypted payload's semantic contents and cryptographic protection processing for protocol messages."
+    },
+    "3.15": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Defines configuration-message exchange semantics for requesting and supplying peer configuration information."
+    },
+    "3.15.1": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Defines configuration attributes and the request/reply and push/ack exchange behavior."
+    },
+    "3.15.2": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Specifies how subnet configuration data affects traffic routing and creation of additional SAs."
+    },
+    "3.15.3": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": ""
+    },
+    "3.15.4": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Defines address-assignment failure notifications and the resulting IKE and Child SA branches."
+    },
+    "3.16": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Defines EAP payload message fields and the protocol-level request, response, success, and failure meanings."
+    },
+    "4": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "States required protocol capabilities and exchange behavior for conforming implementations, including supported roles and failure alternatives."
+    },
+    "5": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "States claimed security properties and protocol limitations, including authentication, secrecy, and exposure considerations."
+    },
+    "5.1": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Defines the authorization constraint linking authenticated identities and permitted traffic selectors for Child SA creation."
+    },
+    "C": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Summarizes the protocol exchange variants and the payloads that may occur in each message."
+    },
+    "C.1": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Lists IKE_SA_INIT message sequences and payload alternatives, including cookie and group-error branches."
+    },
+    "C.2": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Lists the IKE_AUTH exchange message structure and payload alternatives without EAP."
+    },
+    "C.3": {
+      "subprotocols": [
+        "ike-sa"
+      ],
+      "reason": "Lists the EAP-based IKE_AUTH message sequence, repetition, and final authentication and Child SA payloads."
+    }
+  },
+  "references": {
+    "rfc7296": {
+      "ietf": {
+        "ADDGROUP": {
+          "id": "rfc3526",
+          "file": null,
+          "status": "absent"
+        },
+        "ADDRIPV6": {
+          "id": "rfc4291",
+          "file": null,
+          "status": "absent"
+        },
+        "AEAD": {
+          "id": "rfc5282",
+          "file": null,
+          "status": "absent"
+        },
+        "AESCMACPRF128": {
+          "id": "rfc4615",
+          "file": null,
+          "status": "absent"
+        },
+        "AESXCBCPRF128": {
+          "id": "rfc4434",
+          "file": null,
+          "status": "absent"
+        },
+        "EAP": {
+          "id": "rfc3748",
+          "file": "rfc3748",
+          "status": "same_version"
+        },
+        "ECN": {
+          "id": "rfc3168",
+          "file": null,
+          "status": "absent"
+        },
+        "ESPCBC": {
+          "id": "rfc2451",
+          "file": null,
+          "status": "absent"
+        },
+        "IPSECARCH": {
+          "id": "rfc4301",
+          "file": "rfc4301",
+          "status": "same_version"
+        },
+        "MUSTSHOULD": {
+          "id": "rfc2119",
+          "file": null,
+          "status": "absent"
+        },
+        "PKCS1": {
+          "id": "rfc3447",
+          "file": "rfc3447",
+          "status": "same_version"
+        },
+        "PKIX": {
+          "id": "rfc5280",
+          "file": "rfc5280",
+          "status": "same_version"
+        },
+        "RFC4307": {
+          "id": "rfc4307",
+          "file": null,
+          "status": "absent"
+        },
+        "UDPENCAPS": {
+          "id": "rfc3948",
+          "file": null,
+          "status": "absent"
+        },
+        "URLS": {
+          "id": "rfc3986",
+          "file": "rfc3986",
+          "status": "same_version"
+        },
+        "AH": {
+          "id": "rfc4302",
+          "file": null,
+          "status": "absent"
+        },
+        "ARCHGUIDEPHIL": {
+          "id": "rfc3439",
+          "file": null,
+          "status": "absent"
+        },
+        "ARCHPRINC": {
+          "id": "rfc1958",
+          "file": null,
+          "status": "absent"
+        },
+        "Clarif": {
+          "id": "rfc4718",
+          "file": null,
+          "status": "absent"
+        },
+        "DIFFSERVARCH": {
+          "id": "rfc2475",
+          "file": null,
+          "status": "absent"
+        },
+        "DIFFSERVFIELD": {
+          "id": "rfc2474",
+          "file": null,
+          "status": "absent"
+        },
+        "DIFFTUNNEL": {
+          "id": "rfc2983",
+          "file": "rfc2983",
+          "status": "same_version"
+        },
+        "DOI": {
+          "id": "rfc2407",
+          "file": null,
+          "status": "absent"
+        },
+        "EAI": {
+          "id": "rfc6532",
+          "file": null,
+          "status": "absent"
+        },
+        "ESP": {
+          "id": "rfc4303",
+          "file": null,
+          "status": "absent"
+        },
+        "HMAC": {
+          "id": "rfc2104",
+          "file": "rfc2104",
+          "status": "same_version"
+        },
+        "IDNA": {
+          "id": "rfc5890",
+          "file": null,
+          "status": "absent"
+        },
+        "IKEV1": {
+          "id": "rfc2409",
+          "file": "rfc2409",
+          "status": "same_version"
+        },
+        "IKEV2": {
+          "id": "rfc4306",
+          "file": null,
+          "status": "absent"
+        },
+        "IP": {
+          "id": "rfc791",
+          "file": null,
+          "status": "absent"
+        },
+        "IP-COMP": {
+          "id": "rfc3173",
+          "file": null,
+          "status": "absent"
+        },
+        "IPSECARCH-OLD": {
+          "id": "rfc2401",
+          "file": null,
+          "status": "absent"
+        },
+        "IPV6CONFIG": {
+          "id": "rfc5739",
+          "file": null,
+          "status": "absent"
+        },
+        "ISAKMP": {
+          "id": "rfc2408",
+          "file": null,
+          "status": "absent"
+        },
+        "MAILFORMAT": {
+          "id": "rfc5322",
+          "file": null,
+          "status": "absent"
+        },
+        "MD5": {
+          "id": "rfc1321",
+          "file": null,
+          "status": "absent"
+        },
+        "MIPV6": {
+          "id": "rfc6275",
+          "file": null,
+          "status": "absent"
+        },
+        "MLDV2": {
+          "id": "rfc3810",
+          "file": null,
+          "status": "absent"
+        },
+        "MOBIKE": {
+          "id": "rfc4555",
+          "file": "rfc4555",
+          "status": "same_version"
+        },
+        "NAI": {
+          "id": "rfc4282",
+          "file": null,
+          "status": "absent"
+        },
+        "NATREQ": {
+          "id": "rfc3715",
+          "file": null,
+          "status": "absent"
+        },
+        "OAKLEY": {
+          "id": "rfc2412",
+          "file": null,
+          "status": "absent"
+        },
+        "PFKEY": {
+          "id": "rfc2367",
+          "file": null,
+          "status": "absent"
+        },
+        "PHOTURIS": {
+          "id": "rfc2522",
+          "file": null,
+          "status": "absent"
+        },
+        "RANDOMNESS": {
+          "id": "rfc4086",
+          "file": null,
+          "status": "absent"
+        },
+        "REAUTH": {
+          "id": "rfc4478",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC4945": {
+          "id": "rfc4945",
+          "file": "rfc4945",
+          "status": "same_version"
+        },
+        "RFC5996": {
+          "id": "rfc5996",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC6989": {
+          "id": "rfc6989",
+          "file": "rfc6989",
+          "status": "same_version"
+        },
+        "ROHCV2": {
+          "id": "rfc5857",
+          "file": null,
+          "status": "absent"
+        },
+        "TRANSPARENCY": {
+          "id": "rfc2775",
+          "file": null,
+          "status": "absent"
+        }
+      },
+      "generic": {
+        "IKEV2IANA": {
+          "id": "url:iana.org/assignments/ikev2-parameters@v2",
+          "file": null,
+          "status": "unknown"
+        },
+        "DH": {
+          "id": "work:new-directions-in-cryptography@1977",
+          "file": null,
+          "status": "unknown"
+        },
+        "DOSUDPPROT": {
+          "id": "work:dos-protection-for-udp-based-protocols@2003",
+          "file": null,
+          "status": "unknown"
+        },
+        "EAP-IANA": {
+          "id": null,
+          "file": null,
+          "status": "unknown"
+        },
+        "EAPMITM": {
+          "id": "eprint:2002/163",
+          "file": null,
+          "status": "unknown"
+        },
+        "EXCHANGEANALYSIS": {
+          "id": "work:analysis-of-the-ipsec-key-exchange-standard@2001",
+          "file": null,
+          "status": "unknown"
+        },
+        "H2HIPSEC": {
+          "id": "work:experiences-with-host-to-host-ipsec@2005",
+          "file": null,
+          "status": "unknown"
+        },
+        "IDEA": {
+          "id": "work:on-the-design-and-security-of-block-ciphers@1992",
+          "file": null,
+          "status": "unknown"
+        },
+        "REUSE": {
+          "id": "work:on-reusing-ephemeral-keys-in-diffie-hellman-key-agreement-protocols@2008",
+          "file": null,
+          "status": "unknown"
+        },
+        "SIGMA": {
+          "id": "work:sigma-the-sign-and-mac-approach-to-authenticated-diffie-hellman-and-its-use-in-t@2003",
+          "file": null,
+          "status": "absent"
+        },
+        "SKEME": {
+          "id": "work:skeme-a-versatile-secure-key-exchange-mechanism-for-internet@1996",
+          "file": null,
+          "status": "absent"
+        }
+      },
+      "ansi": {
+        "DES": {
+          "id": "ansi-x3.106_1983",
+          "file": null,
+          "status": "absent"
+        }
+      },
+      "nist": {
+        "DSS": {
+          "id": "nist.fips.186-4",
+          "file": "NIST.FIPS.186-5",
+          "status": "other_version"
+        },
+        "FIPS.180-4.2012": {
+          "id": "nist.fips.180-4",
+          "file": null,
+          "status": "absent"
+        },
+        "MODES": {
+          "id": "nist.sp.800-38a",
+          "file": null,
+          "status": "absent"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "principals": [
+    {
+      "name": "A",
+      "description": "the initiator or responder in a run: generates protocol nonces when serving the initiator role, encrypts requests and decrypts the server-issued credential using the long-term symmetric key K_as."
+    },
+    {
+      "name": "B",
+      "description": "the responder or initiator in a run: generates protocol nonces when serving the responder role, encrypts its request component and decrypts the server-issued credential using the long-term symmetric key K_bs; it forwards A's credential to A."
+    },
+    {
+      "name": "S",
+      "description": "the trusted authentication server: decrypts the two long-term-key-protected request components, checks their identifiers and session marker, generates the session key K_ab, and encrypts the two returned credentials."
+    }
+  ],
+  "values": [
+    {
+      "name": "A",
+      "derived_from": [],
+      "description": "A is a protocol identity.",
+      "holders": [
+        "A",
+        "B",
+        "S"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "B",
+      "derived_from": [],
+      "description": "B is a protocol identity.",
+      "holders": [
+        "A",
+        "B",
+        "S"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "S",
+      "derived_from": [],
+      "description": "S is a protocol identity.",
+      "holders": [
+        "A",
+        "B",
+        "S"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "K_as",
+      "derived_from": [],
+      "description": "K_as is a pre-run symmetric key or keying value.",
+      "holders": [
+        "A",
+        "S"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "K_bs",
+      "derived_from": [],
+      "description": "K_bs is a pre-run symmetric key or keying value.",
+      "holders": [
+        "B",
+        "S"
+      ],
+      "source": "generated"
+    }
+  ]
+}

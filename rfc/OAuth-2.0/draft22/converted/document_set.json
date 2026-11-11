@@ -1,0 +1,581 @@
+{
+  "main_doc_id": "draft-ietf-oauth-v2-22",
+  "subprotocol_list": {
+    "authorization-code": "OAuth 2.0 authorization code grant: a client obtains an access token from the authorization server and uses it at a resource server."
+  },
+  "documents": {
+    "ietf": [
+      {
+        "doc_id": "draft-ietf-oauth-v2-22",
+        "path": "main/draft-ietf-oauth-v2-22.md",
+        "fingerprint": "086c6878f87489cff54aeb450e699441bd78ddabcb39c8783d85732b655c4c81",
+        "ids": [
+          "draft-ietf-oauth-v2-22"
+        ]
+      },
+      {
+        "doc_id": "rfc2616",
+        "path": "library:public/converted/rfc2616.md",
+        "fingerprint": "c99b42bcda18b38b735d926e3b313f0aad04980d604c1991c3a8e45359157260",
+        "ids": [
+          "rfc2616"
+        ]
+      },
+      {
+        "doc_id": "rfc2617",
+        "path": "library:public/converted/rfc2617.md",
+        "fingerprint": "bb01424bc81dc17b04c44fbca7d60db01fe59135b280b921c608bed9a03759e3",
+        "ids": [
+          "rfc2617"
+        ]
+      },
+      {
+        "doc_id": "rfc2818",
+        "path": "library:public/converted/rfc2818.md",
+        "fingerprint": "4d2278deaf003943fb351c42c0696950259ecdea9f3b3876bd30c4fcc0988740",
+        "ids": [
+          "rfc2818"
+        ]
+      },
+      {
+        "doc_id": "rfc3986",
+        "path": "library:public/converted/rfc3986.md",
+        "fingerprint": "d99410650c949933bd823c188af190b3ebbd0623220843dd56a367529c9eccb3",
+        "ids": [
+          "rfc3986"
+        ]
+      },
+      {
+        "doc_id": "rfc4627",
+        "path": "library:public/converted/rfc4627.md",
+        "fingerprint": "8b18017e35db2b31a26b1538f1e7ceea22acb27b0a4671e6fcd39ee940fc8012",
+        "ids": [
+          "rfc4627"
+        ]
+      },
+      {
+        "doc_id": "rfc5246",
+        "path": "library:public/converted/rfc5246.md",
+        "fingerprint": "67749a95f73867b8e1d7531999fdb427e010c02c52d4be341828d30283655eac",
+        "ids": [
+          "rfc5246"
+        ]
+      },
+      {
+        "doc_id": "draft-ietf-oauth-v2-bearer-08",
+        "path": "library:public/converted/draft-ietf-oauth-v2-bearer-08.md",
+        "fingerprint": "64fc21379e1dd4d7faa36f09b3265fcde702fb7c9bdd17fdd42ac5924a1c7c4f",
+        "ids": [
+          "draft-ietf-oauth-v2-bearer-08"
+        ]
+      },
+      {
+        "doc_id": "draft-ietf-oauth-v2-http-mac-00",
+        "path": "library:public/converted/draft-ietf-oauth-v2-http-mac-00.md",
+        "fingerprint": "a931ddb82e2f1168b16ea899d51604eaf0cff3427d2387ddfc526da2712c22bc",
+        "ids": [
+          "draft-ietf-oauth-v2-http-mac-00"
+        ]
+      },
+      {
+        "doc_id": "rfc6819",
+        "path": "library:public/converted/rfc6819.md",
+        "fingerprint": "0213ecfdebddbac353f7f8d24e89c9ef42579907a5067fcf161c207cc70363bc",
+        "ids": [
+          "rfc6819"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "1": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": ""
+    },
+    "1.1": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "Identifies the protocol parties and roles and their relationships, establishing the principals for the formal analysis."
+    },
+    "1.2": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "Sets out the parties' ordered authorization and token exchanges, including validation and resource access."
+    },
+    "1.3": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "Defines the authorization grant concept and the available grant modes that structure protocol execution."
+    },
+    "1.3.1": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "Describes authorization-code issuance and delivery through the authorization server, including the client and resource-owner interactions."
+    },
+    "1.3.2": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "Describes the implicit grant's direct access-token issuance and its distinct authentication and execution path."
+    },
+    "1.3.3": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "Describes use and exchange of resource-owner credentials as an authorization grant."
+    },
+    "1.3.4": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "Describes use of client credentials as a grant and the circumstances under which that protocol mode is used."
+    },
+    "1.4": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "Defines access tokens as authorization-bearing protocol values, including their scope and duration attributes."
+    },
+    "1.5": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "Describes refresh-token issuance, meaning, intended recipient, and role in obtaining later access tokens."
+    },
+    "1.6": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": ""
+    },
+    "2": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": ""
+    },
+    "2.1": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "Defines client types and profiles by their authentication capabilities and credential exposure, which determine protocol behavior."
+    },
+    "2.2": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "Specifies issuance and use constraints for the client identifier, a value used in protocol messages and authentication."
+    },
+    "2.3": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "Defines client authentication requirements and the credentials and authentication state relevant to protocol runs."
+    },
+    "2.3.1": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "Specifies client-password authentication and its message placement and associated endpoint checks."
+    },
+    "2.3.2": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "Describes other client-authentication methods and the required mapping to the client's registration identity."
+    },
+    "2.4": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": ""
+    },
+    "3": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": ""
+    },
+    "3.1": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "Defines authorization-endpoint behavior, including resource-owner authentication, request handling, and validation branches."
+    },
+    "3.1.1": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "Defines the response-type request field and the authorization-flow mode selected by its value."
+    },
+    "3.1.2": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "Describes redirect delivery from the authorization server to the client and the associated URI value and state."
+    },
+    "3.1.2.1": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": ""
+    },
+    "3.1.2.2": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "Specifies which clients register redirection URIs and how the registered URI constrains protocol requests."
+    },
+    "3.1.2.3": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "Defines required redirection-URI message fields and matching checks against registered values."
+    },
+    "3.1.2.4": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "Specifies failure handling when a redirection URI is missing, invalid, or mismatched."
+    },
+    "3.1.2.5": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "Describes how credentials in the redirect response are exposed to endpoint content and constrains handling of them."
+    },
+    "3.2": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "Defines token-endpoint use for exchanging grants or refresh tokens, including request and endpoint behavior."
+    },
+    "3.2.1": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "Specifies when clients authenticate at the token endpoint and how authentication binds codes and refresh tokens to clients."
+    },
+    "3.3": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "Defines the scope request and response values and the authorization server's decisions when granting scope."
+    },
+    "4": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "Introduces the authorization-grant-based protocol execution modes and their role in obtaining access tokens."
+    },
+    "4.1": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "Describes the authorization-code flow's parties, ordered messages, and checks resulting in access and optional refresh tokens."
+    },
+    "4.1.1": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "Defines authorization-request fields, client-generated state, and the server's request validation and authorization decision."
+    },
+    "4.1.2": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "Defines authorization-code and state response fields, their binding, and single-use and expiry behavior."
+    },
+    "4.1.2.1": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "Defines authorization failure response fields and the branches for invalid requests and denied authorization."
+    },
+    "4.1.3": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "Defines the token request fields and client authentication, plus the server's code, client, and redirect-URI checks."
+    },
+    "4.1.4": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "Describes the successful or failed token response after an authorization-code exchange."
+    },
+    "5": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "Defines the authorization server's issuance or error branch for access-token requests."
+    },
+    "5.1": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "Defines the successful token response's semantic fields, including access token, type, lifetime, refresh token, and scope."
+    },
+    "5.2": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "Defines token-request error fields and failure conditions, including invalid client, grant, and scope branches."
+    },
+    "6": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "Describes refresh-token requests, client binding and validation, issuance of replacement tokens, and refresh-token state updates."
+    },
+    "7": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "Defines client presentation of access tokens and resource-server validation of expiry and scope before serving a request."
+    },
+    "7.1": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "Specifies how the token type determines the client's access-token presentation and the relevant request attributes."
+    },
+    "8": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": ""
+    },
+    "8.1": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": ""
+    },
+    "8.2": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": ""
+    },
+    "8.4": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": ""
+    },
+    "8.5": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": ""
+    },
+    "9": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "Describes native-client execution choices and their effects on authorization-flow handling and refresh-token availability."
+    },
+    "10": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": ""
+    },
+    "10.1": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": ""
+    },
+    "10.2": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": ""
+    },
+    "10.3": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "States access-token confidentiality, authorization-server generation constraints, and scope and lifetime security goals."
+    },
+    "10.4": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "Specifies refresh-token confidentiality, client binding, validation, rotation, and resistance to unauthorized token generation."
+    },
+    "10.5": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "States authorization-code confidentiality, expiry, single-use, client binding, and revocation behavior."
+    },
+    "10.6": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "Describes redirection-URI manipulation and the matching and registration checks intended to prevent it."
+    },
+    "10.8": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "States which protocol credentials must not be transmitted in cleartext, a security property of protocol communication."
+    },
+    "10.9": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "Requires authenticated TLS for protocol endpoints and client verification of server identity."
+    },
+    "10.10": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "Specifies resistance goals and entropy requirements for protocol credentials and tokens."
+    },
+    "10.11": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": ""
+    },
+    "10.12": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "Describes CSRF threats and the state-binding values and checks required at client and authorization-server endpoints."
+    },
+    "10.13": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": ""
+    },
+    "10.14": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": "Requires validation and sanitization of protocol inputs, particularly state and redirection-URI values."
+    },
+    "10.15": {
+      "subprotocols": [
+        "authorization-code"
+      ],
+      "reason": ""
+    }
+  },
+  "references": {
+    "draft-ietf-oauth-v2-22": {
+      "ietf": {
+        "RFC2119": {
+          "id": "rfc2119",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC2246": {
+          "id": "rfc2246",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC2616": {
+          "id": "rfc2616",
+          "file": "rfc2616",
+          "status": "same_version"
+        },
+        "RFC2617": {
+          "id": "rfc2617",
+          "file": "rfc2617",
+          "status": "same_version"
+        },
+        "RFC2818": {
+          "id": "rfc2818",
+          "file": "rfc2818",
+          "status": "same_version"
+        },
+        "RFC3986": {
+          "id": "rfc3986",
+          "file": "rfc3986",
+          "status": "same_version"
+        },
+        "RFC4627": {
+          "id": "rfc4627",
+          "file": "rfc4627",
+          "status": "same_version"
+        },
+        "RFC4949": {
+          "id": "rfc4949",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC5226": {
+          "id": "rfc5226",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC5234": {
+          "id": "rfc5234",
+          "file": null,
+          "status": "absent"
+        },
+        "RFC5246": {
+          "id": "rfc5246",
+          "file": "rfc5246",
+          "status": "same_version"
+        },
+        "RFC5849": {
+          "id": "rfc5849",
+          "file": null,
+          "status": "absent"
+        },
+        "I-D.ietf-oauth-v2-bearer": {
+          "id": "draft-ietf-oauth-v2-bearer-08",
+          "file": "draft-ietf-oauth-v2-bearer-08",
+          "status": "same_version"
+        },
+        "I-D.ietf-oauth-saml2-bearer": {
+          "id": "draft-ietf-oauth-saml2-bearer-08",
+          "file": null,
+          "status": "absent"
+        },
+        "I-D.ietf-oauth-v2-http-mac": {
+          "id": "draft-ietf-oauth-v2-http-mac-00",
+          "file": "draft-ietf-oauth-v2-http-mac-00",
+          "status": "same_version"
+        },
+        "I-D.ietf-oauth-v2-threatmodel": {
+          "id": "draft-ietf-oauth-v2-threatmodel-00",
+          "file": "rfc6819",
+          "status": "other_version"
+        },
+        "I-D.draft-hardt-oauth-01": {
+          "id": "draft-hardt-oauth-01",
+          "file": null,
+          "status": "absent"
+        }
+      },
+      "w3c": {
+        "W3C.REC-html401-19991224": {
+          "id": "w3c-rec-html401-19991224",
+          "file": null,
+          "status": "absent"
+        }
+      },
+      "generic": {
+        "OASIS.saml-core-2.0-os": {
+          "id": "work:assertions-and-protocol-for-the-oasis-security-assertion-markup-language-saml-v2@2005",
+          "file": null,
+          "status": "unknown"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "principals": [
+    {
+      "name": "I",
+      "description": "The Initiator: starts EDHOC, contributes its method, supported cipher suites, credential identifier and external authorization data, authenticates with its static Diffie-Hellman key, and verifies the Responder."
+    },
+    {
+      "name": "R",
+      "description": "The Responder: processes message_1, contributes its supported cipher suites, credential identifier and external authorization data, authenticates with its static Diffie-Hellman key, and verifies the Initiator."
+    }
+  ],
+  "values": [
+    {
+      "name": "I",
+      "derived_from": [],
+      "description": "The Initiator's private static Diffie-Hellman authentication key (the document calls it I).",
+      "holders": [
+        "I"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "G_I",
+      "derived_from": [
+        "I"
+      ],
+      "description": "The Initiator's public static Diffie-Hellman authentication key, computed from I and contained in CRED_I. The document lets CRED_I be pre-provisioned to the Responder or transported in message_3 through ID_CRED_I, so the Responder is not assumed to store it beforehand.",
+      "holders": [
+        "I"
+      ]
+    },
+    {
+      "name": "R",
+      "derived_from": [],
+      "description": "The Responder's private static Diffie-Hellman authentication key (the document calls it R).",
+      "holders": [
+        "R"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "G_R",
+      "derived_from": [
+        "R"
+      ],
+      "description": "The Responder's public static Diffie-Hellman authentication key, computed from R and contained in CRED_R. The document lets CRED_R be pre-provisioned to the Initiator or transported in message_2 through ID_CRED_R, so the Initiator is not assumed to store it beforehand.",
+      "holders": [
+        "R"
+      ]
+    },
+    {
+      "name": "identity_I",
+      "derived_from": [],
+      "description": "The Initiator's own identity.",
+      "holders": [
+        "I",
+        "R"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "identity_R",
+      "derived_from": [],
+      "description": "The Responder's own identity.",
+      "holders": [
+        "I",
+        "R"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "METHOD",
+      "derived_from": [],
+      "description": "The authentication method (signature or static DH for each side), agreed between Initiator and Responder out of band through the applicability statement.",
+      "holders": [
+        "I",
+        "R"
+      ],
+      "source": "specified"
+    },
+    {
+      "name": "SUITES_I",
+      "derived_from": [],
+      "description": "The cipher suites the Initiator supports, in order of preference.",
+      "holders": [
+        "I"
+      ],
+      "source": "specified"
+    },
+    {
+      "name": "SUITES_R",
+      "derived_from": [],
+      "description": "The cipher suites the Responder supports.",
+      "holders": [
+        "R"
+      ],
+      "source": "specified"
+    },
+    {
+      "name": "CRED_I",
+      "derived_from": [],
+      "description": "The Initiator's own authentication credential (certificate, CWT or CCS) containing G_I. The document lets it be pre-provisioned to the Responder or transported in message_3, so the Responder is not assumed to store it beforehand.",
+      "holders": [
+        "I"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "CRED_R",
+      "derived_from": [],
+      "description": "The Responder's own authentication credential (certificate, CWT or CCS) containing G_R. The document lets it be pre-provisioned to the Initiator or transported in message_2, so the Initiator is not assumed to store it beforehand.",
+      "holders": [
+        "R"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "ID_CRED_I",
+      "derived_from": [],
+      "description": "The Initiator's identifier of its own credential (e.g. kid or certificate hash), sent in message_3; it may also carry the credential itself.",
+      "holders": [
+        "I"
+      ],
+      "source": "generated"
+    },
+    {
+      "name": "ID_CRED_R",
+      "derived_from": [],
+      "description": "The Responder's identifier of its own credential (e.g. kid or certificate hash), sent in message_2; it may also carry the credential itself.",
+      "holders": [
+        "R"
+      ],
+      "source": "generated"
+    }
+  ]
+}

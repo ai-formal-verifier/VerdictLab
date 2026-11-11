@@ -1,0 +1,225 @@
+{
+  "vocab_version": "4.0.0",
+  "names": {
+    "sk_U": "The private key of Party U, with which it signs COSE_SIG_U of message_3 using algorithm SIG_U (§2, §4.4.2).",
+    "sk_V": "The private key of Party V, with which it signs COSE_SIG_V of message_2 using algorithm SIG_V (§2, §4.3.2).",
+    "APP_2'": "The payload of sk_V's second use outside the protocol, introduced by assumption sig_key_reuse_V (key_reuse of sk_V, the private key with which Party V signs COSE_SIG_V of message_2, §4.3.2); not defined by the document.",
+    "pk_U": "The public key of Party U, identified by ID_U, with which Party V verifies COSE_SIG_U of message_3 (§4.1, §4.4.3).",
+    "pk_V": "The public key of Party V, identified by ID_V, with which Party U verifies COSE_SIG_V of message_2 (§4.1, §4.3.3).",
+    "U": "The principal U: The initiator: initially holds its identity and long-term signing key, V's public verification key or credential, and its proposal/application inputs; it sends message_1, verifies V's signature in message_2, and signs message_3.",
+    "V": "The principal V: The responder: initially holds its identity and long-term signing key, U's public verification key or credential, and its selection/application inputs; it processes message_1, signs message_2, and verifies U's signature in message_3.",
+    "E_U": "The ECDH ephemeral public key of Party U, sent in message_1 and formatted as a COSE_Key (§2, §3.1, §4.2.1).",
+    "E_V": "The ECDH ephemeral public key of Party V, sent in data_2 of message_2 on the same curve as E_U (§2, §4.3.1, §4.3.2).",
+    "ID_U": "ID_U, the identifier for the public key of Party U, which contains or uniquely identifies its authentication credential and is carried in the protected header of COSE_SIG_U inside COSE_ENC_3 of message_3 (§2, §4.1, §4.4.1).",
+    "ID_V": "ID_V, the identifier for the public key of Party V, which contains or uniquely identifies its authentication credential and is carried in the protected header of COSE_SIG_V inside COSE_ENC_2 of message_2 (§2, §4.1, §4.3.1).",
+    "APP_1": "The opaque application data Party U may send unprotected in message_1 (§3, §4.2.1, §8).",
+    "APP_2": "The opaque application data Party V sends in the plaintext of COSE_ENC_2 in message_2, covered by its signature COSE_SIG_V and encrypted and integrity protected under K_2, but, with asymmetric keys, sent to an unauthenticated party (§3, §4.3.1, §4.3.2, §8).",
+    "APP_3": "The opaque application data Party U sends in the plaintext of COSE_ENC_3 in message_3, covered by its signature COSE_SIG_U, protected under K_3 and mutually authenticated (§3, §4.4.1, §4.4.2)."
+  },
+  "assumptions": [
+    {
+      "id": "ltk_reveal_skU_post_session",
+      "axis": "data",
+      "target": {
+        "of": "sk_U"
+      },
+      "default": "none",
+      "levels": [
+        "leaked_after_session",
+        "none"
+      ]
+    },
+    {
+      "id": "ltk_reveal_skV_post_session",
+      "axis": "data",
+      "target": {
+        "of": "sk_V"
+      },
+      "default": "none",
+      "levels": [
+        "leaked_after_session",
+        "none"
+      ]
+    },
+    {
+      "id": "sig_key_reuse_V",
+      "axis": "key_reuse",
+      "target": {
+        "payload": "APP_2'",
+        "of": "sk_V"
+      },
+      "default": "observed"
+    },
+    {
+      "id": "data_pk_u_public",
+      "axis": "data",
+      "target": {
+        "of": "pk_U"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_pk_v_public",
+      "axis": "data",
+      "target": {
+        "of": "pk_V"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "seating_U",
+      "axis": "seating",
+      "target": {
+        "principal": "U"
+      },
+      "default": "any_role"
+    },
+    {
+      "id": "population_U",
+      "axis": "population",
+      "target": {
+        "principal": "U"
+      },
+      "default": "unbounded"
+    },
+    {
+      "id": "sessions_U",
+      "axis": "sessions",
+      "target": {
+        "principal": "U"
+      },
+      "default": "twice"
+    },
+    {
+      "id": "seating_V",
+      "axis": "seating",
+      "target": {
+        "principal": "V"
+      },
+      "default": "any_role"
+    },
+    {
+      "id": "population_V",
+      "axis": "population",
+      "target": {
+        "principal": "V"
+      },
+      "default": "unbounded"
+    },
+    {
+      "id": "sessions_V",
+      "axis": "sessions",
+      "target": {
+        "principal": "V"
+      },
+      "default": "twice"
+    }
+  ],
+  "properties": [
+    {
+      "id": "auth_inj_mid_initiator_to_responder",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "U",
+        "subject": "V",
+        "of": [
+          "V",
+          "E_V",
+          "APP_2"
+        ]
+      }
+    },
+    {
+      "id": "auth_inj_end_responder_to_initiator",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "V",
+        "subject": "U",
+        "of": [
+          "U",
+          "V",
+          "E_U",
+          "APP_1",
+          "APP_3"
+        ]
+      }
+    },
+    {
+      "id": "privacy_initiator_phase0",
+      "type": "Secrecy",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "ID_U"
+        ],
+        "holders": [
+          "U"
+        ]
+      }
+    },
+    {
+      "id": "privacy_responder_phase0",
+      "type": "Secrecy",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "ID_V"
+        ],
+        "holders": [
+          "V"
+        ]
+      }
+    },
+    {
+      "id": "secrecy_app2_phase0",
+      "type": "Secrecy",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "APP_2"
+        ],
+        "holders": [
+          "U",
+          "V"
+        ]
+      }
+    },
+    {
+      "id": "secrecy_app3_phase0",
+      "type": "Secrecy",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "APP_3"
+        ],
+        "holders": [
+          "U",
+          "V"
+        ]
+      }
+    },
+    {
+      "id": "forward_secrecy_app2_resent",
+      "type": "Secrecy",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "APP_2'"
+        ],
+        "holders": [
+          "V"
+        ]
+      }
+    }
+  ],
+  "claims": []
+}

@@ -1,0 +1,1026 @@
+{
+  "vocab_version": "4.0.0",
+  "values": [
+    {
+      "name": "zero",
+      "evidence": [],
+      "description": "The constant zero of the IKEv2 IKE_SA_INIT and IKE_AUTH exchange with signature authentication.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "zero"
+      },
+      "holders": {}
+    },
+    {
+      "name": "spi_zero",
+      "evidence": [],
+      "description": "The constant spi_zero of the IKEv2 IKE_SA_INIT and IKE_AUTH exchange with signature authentication.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "spi_zero"
+      },
+      "holders": {}
+    },
+    {
+      "name": "null",
+      "evidence": [],
+      "description": "The constant null of the IKEv2 IKE_SA_INIT and IKE_AUTH exchange with signature authentication.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "null"
+      },
+      "holders": {}
+    },
+    {
+      "name": "IKE_SA_INIT",
+      "evidence": [],
+      "description": "The constant IKE_SA_INIT of the IKEv2 IKE_SA_INIT and IKE_AUTH exchange with signature authentication.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "IKE_SA_INIT"
+      },
+      "holders": {}
+    },
+    {
+      "name": "IKE_AUTH",
+      "evidence": [],
+      "description": "The constant IKE_AUTH of the IKEv2 IKE_SA_INIT and IKE_AUTH exchange with signature authentication.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "IKE_AUTH"
+      },
+      "holders": {}
+    },
+    {
+      "name": "CREATE_CHILD_SA",
+      "evidence": [],
+      "description": "The constant CREATE_CHILD_SA of the IKEv2 IKE_SA_INIT and IKE_AUTH exchange with signature authentication.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "CREATE_CHILD_SA"
+      },
+      "holders": {}
+    },
+    {
+      "name": "INFORMATIONAL",
+      "evidence": [],
+      "description": "The constant INFORMATIONAL of the IKEv2 IKE_SA_INIT and IKE_AUTH exchange with signature authentication.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "INFORMATIONAL"
+      },
+      "holders": {}
+    },
+    {
+      "name": "g",
+      "evidence": [],
+      "description": "The constant g of the IKEv2 IKE_SA_INIT and IKE_AUTH exchange with signature authentication.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "g"
+      },
+      "holders": {}
+    },
+    {
+      "name": "SAi1",
+      "evidence": [],
+      "description": "The SA proposals in the Initiator's IKE_SA_INIT request.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "SAi1"
+      },
+      "holders": {
+        "Responder": [
+          {
+            "id": "SAi1_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SAi2",
+      "evidence": [],
+      "description": "The SA payload proposing the first Child SA in the IKE_AUTH request.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "SAi2"
+      },
+      "holders": {
+        "Responder": [
+          {
+            "id": "SAi2_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TSi",
+      "evidence": [],
+      "description": "The traffic selectors for the initiator side.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "TSi"
+      },
+      "holders": {
+        "Responder": [
+          {
+            "id": "TSi_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TSr",
+      "evidence": [],
+      "description": "The traffic selectors for the responder side.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "TSr"
+      },
+      "holders": {
+        "Responder": [
+          {
+            "id": "TSr_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "sk_Initiator",
+      "evidence": [],
+      "description": "The Initiator's private signing key.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "sk_Initiator",
+        "replicated": false
+      },
+      "holders": {
+        "Initiator": [
+          {
+            "id": "sk_Initiator",
+            "how": "initial",
+            "from": "sk_Initiator"
+          }
+        ]
+      }
+    },
+    {
+      "name": "sk_Responder",
+      "evidence": [],
+      "description": "The Responder's private signing key.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "sk_Responder",
+        "replicated": false
+      },
+      "holders": {
+        "Responder": [
+          {
+            "id": "sk_Responder",
+            "how": "initial",
+            "from": "sk_Responder"
+          }
+        ]
+      }
+    },
+    {
+      "name": "IDi",
+      "evidence": [],
+      "description": "The Initiator's identity.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "IDi",
+        "replicated": false
+      },
+      "holders": {
+        "Initiator": [
+          {
+            "id": "IDi",
+            "how": "initial",
+            "from": "IDi"
+          }
+        ],
+        "Responder": [
+          {
+            "id": "IDi",
+            "how": "initial",
+            "from": "IDi"
+          }
+        ]
+      }
+    },
+    {
+      "name": "IDr",
+      "evidence": [],
+      "description": "The Responder's identity.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "IDr",
+        "replicated": false
+      },
+      "holders": {
+        "Initiator": [
+          {
+            "id": "IDr",
+            "how": "initial",
+            "from": "IDr"
+          }
+        ],
+        "Responder": [
+          {
+            "id": "IDr",
+            "how": "initial",
+            "from": "IDr"
+          }
+        ]
+      }
+    },
+    {
+      "name": "pk_Initiator",
+      "evidence": [],
+      "description": "The Initiator's public signature-verification key.",
+      "source": {
+        "scope": "main",
+        "by": "let",
+        "id": "pk_Initiator",
+        "replicated": false,
+        "derived_from": [
+          "sk_Initiator"
+        ]
+      },
+      "holders": {
+        "Initiator": [
+          {
+            "id": "pk_Initiator",
+            "how": "initial",
+            "from": "pk_Initiator"
+          }
+        ],
+        "Responder": [
+          {
+            "id": "pk_Initiator",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "pk_Responder",
+      "evidence": [],
+      "description": "The Responder's public signature-verification key.",
+      "source": {
+        "scope": "main",
+        "by": "let",
+        "id": "pk_Responder",
+        "replicated": false,
+        "derived_from": [
+          "sk_Responder"
+        ]
+      },
+      "holders": {
+        "Responder": [
+          {
+            "id": "pk_Responder",
+            "how": "initial",
+            "from": "pk_Responder"
+          }
+        ],
+        "Initiator": [
+          {
+            "id": "pk_Responder",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SPIi",
+      "evidence": [],
+      "description": "The Initiator's SPI.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "SPIi",
+        "role": "Initiator",
+        "replicated": true
+      },
+      "holders": {
+        "Initiator": [
+          {
+            "id": "SPIi",
+            "how": "generated"
+          }
+        ],
+        "Responder": [
+          {
+            "id": "SPIi",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ei",
+      "evidence": [],
+      "description": "The Initiator's ephemeral DH exponent.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "ei",
+        "role": "Initiator",
+        "replicated": true
+      },
+      "holders": {
+        "Initiator": [
+          {
+            "id": "ei",
+            "how": "generated"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Ni",
+      "evidence": [],
+      "description": "The Initiator's nonce.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "Ni",
+        "role": "Initiator",
+        "replicated": true
+      },
+      "holders": {
+        "Initiator": [
+          {
+            "id": "Ni",
+            "how": "generated"
+          }
+        ],
+        "Responder": [
+          {
+            "id": "Ni",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "mct_Initiator",
+      "evidence": [],
+      "description": "The Initiator's protected IKE_AUTH request.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "mac(senc((IDi, AUTHi, SAi2, TSi, TSr), SK_ei), SK_ai)",
+        "role": "Initiator",
+        "replicated": true
+      },
+      "holders": {
+        "Responder": [
+          {
+            "id": "mct2",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SPIr",
+      "evidence": [],
+      "description": "The Responder's SPI.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "SPIr",
+        "role": "Responder",
+        "replicated": true
+      },
+      "holders": {
+        "Responder": [
+          {
+            "id": "SPIr",
+            "how": "generated"
+          }
+        ],
+        "Initiator": [
+          {
+            "id": "SPIr",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "er",
+      "evidence": [],
+      "description": "The Responder's ephemeral DH exponent.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "er",
+        "role": "Responder",
+        "replicated": true
+      },
+      "holders": {
+        "Responder": [
+          {
+            "id": "er",
+            "how": "generated"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Nr",
+      "evidence": [],
+      "description": "The Responder's nonce.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "Nr",
+        "role": "Responder",
+        "replicated": true
+      },
+      "holders": {
+        "Responder": [
+          {
+            "id": "Nr",
+            "how": "generated"
+          }
+        ],
+        "Initiator": [
+          {
+            "id": "Nr",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "mct_Responder",
+      "evidence": [],
+      "description": "The Responder's protected IKE_AUTH response.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "mac(senc((IDr, AUTHr, SAr2, TSi_recv, TSr_recv), SK_er), SK_ar)",
+        "role": "Responder",
+        "replicated": true
+      },
+      "holders": {
+        "Initiator": [
+          {
+            "id": "mct",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Child_SA",
+      "evidence": [],
+      "description": "The first Child SA the IKE_AUTH exchange establishes: the offer in SAi2 and the acceptance in SAr2.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "SAi2",
+          "SAr2"
+        ]
+      },
+      "holders": {
+        "Initiator": [
+          {
+            "id": "Child_SA",
+            "how": "computed"
+          }
+        ],
+        "Responder": [
+          {
+            "id": "Child_SA",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "KEi1",
+      "evidence": [],
+      "description": "The Initiator's DH public value.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "KEi1",
+        "role": "Initiator",
+        "replicated": true,
+        "derived_from": [
+          "g",
+          "ei"
+        ]
+      },
+      "holders": {
+        "Initiator": [
+          {
+            "id": "KEi1",
+            "how": "computed"
+          }
+        ],
+        "Responder": [
+          {
+            "id": "KEi",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ike_sa_init_request",
+      "evidence": [],
+      "description": "The IKE_SA_INIT request.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "ike_sa_init_request",
+        "role": "Initiator",
+        "replicated": true,
+        "derived_from": [
+          "SPIi",
+          "spi_zero",
+          "IKE_SA_INIT",
+          "zero",
+          "SAi1",
+          "KEi1",
+          "Ni"
+        ]
+      },
+      "holders": {
+        "Initiator": [
+          {
+            "id": "ike_sa_init_request",
+            "how": "computed"
+          }
+        ],
+        "Responder": [
+          {
+            "id": "ike_sa_init_request",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ike_sa_init_response",
+      "evidence": [],
+      "description": "The IKE_SA_INIT response.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "ike_sa_init_response",
+        "role": "Responder",
+        "replicated": true,
+        "derived_from": [
+          "SPIi",
+          "SPIr",
+          "IKE_SA_INIT",
+          "zero",
+          "SAr1",
+          "KEr1",
+          "Nr"
+        ]
+      },
+      "holders": {
+        "Initiator": [
+          {
+            "id": "ike_sa_init_response",
+            "how": "received"
+          }
+        ],
+        "Responder": [
+          {
+            "id": "ike_sa_init_response",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "KEr1",
+      "evidence": [],
+      "description": "The Responder's DH public value.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "KEr1",
+        "role": "Responder",
+        "replicated": true,
+        "derived_from": [
+          "g",
+          "er"
+        ]
+      },
+      "holders": {
+        "Initiator": [
+          {
+            "id": "KEr1",
+            "how": "received"
+          }
+        ],
+        "Responder": [
+          {
+            "id": "KEr1",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SAr1",
+      "evidence": [],
+      "description": "The SA the Responder accepts in IKE_SA_INIT.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "SAr1",
+        "role": "Responder",
+        "replicated": true,
+        "derived_from": [
+          "SAi1"
+        ]
+      },
+      "holders": {
+        "Initiator": [
+          {
+            "id": "SAr1",
+            "how": "received"
+          }
+        ],
+        "Responder": [
+          {
+            "id": "SAr1",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SKEYSEED",
+      "evidence": [],
+      "description": "The seed from which both parties derive the IKE SA keys.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "Ni",
+          "Nr",
+          "KEr1",
+          "ei",
+          "KEi1",
+          "er"
+        ]
+      },
+      "holders": {
+        "Initiator": [
+          {
+            "id": "SKEYSEED",
+            "how": "computed"
+          }
+        ],
+        "Responder": [
+          {
+            "id": "SKEYSEED",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SK_d",
+      "evidence": [],
+      "description": "SK_d, a value Initiator computes in the IKEv2 IKE_SA_INIT and IKE_AUTH exchange with signature authentication.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "SKEYSEED",
+          "Ni",
+          "Nr",
+          "SPIi",
+          "SPIr"
+        ]
+      },
+      "holders": {
+        "Initiator": [
+          {
+            "id": "SK_d",
+            "how": "computed"
+          }
+        ],
+        "Responder": [
+          {
+            "id": "SK_d",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SK_ai",
+      "evidence": [],
+      "description": "SK_ai, a value Initiator computes in the IKEv2 IKE_SA_INIT and IKE_AUTH exchange with signature authentication.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "SKEYSEED",
+          "Ni",
+          "Nr",
+          "SPIi",
+          "SPIr"
+        ]
+      },
+      "holders": {
+        "Initiator": [
+          {
+            "id": "SK_ai",
+            "how": "computed"
+          }
+        ],
+        "Responder": [
+          {
+            "id": "SK_ai",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SK_ar",
+      "evidence": [],
+      "description": "SK_ar, a value Initiator computes in the IKEv2 IKE_SA_INIT and IKE_AUTH exchange with signature authentication.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "SKEYSEED",
+          "Ni",
+          "Nr",
+          "SPIi",
+          "SPIr"
+        ]
+      },
+      "holders": {
+        "Initiator": [
+          {
+            "id": "SK_ar",
+            "how": "computed"
+          }
+        ],
+        "Responder": [
+          {
+            "id": "SK_ar",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SK_ei",
+      "evidence": [],
+      "description": "SK_ei, a value Initiator computes in the IKEv2 IKE_SA_INIT and IKE_AUTH exchange with signature authentication.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "SKEYSEED",
+          "Ni",
+          "Nr",
+          "SPIi",
+          "SPIr"
+        ]
+      },
+      "holders": {
+        "Initiator": [
+          {
+            "id": "SK_ei",
+            "how": "computed"
+          }
+        ],
+        "Responder": [
+          {
+            "id": "SK_ei",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SK_er",
+      "evidence": [],
+      "description": "SK_er, a value Initiator computes in the IKEv2 IKE_SA_INIT and IKE_AUTH exchange with signature authentication.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "SKEYSEED",
+          "Ni",
+          "Nr",
+          "SPIi",
+          "SPIr"
+        ]
+      },
+      "holders": {
+        "Initiator": [
+          {
+            "id": "SK_er",
+            "how": "computed"
+          }
+        ],
+        "Responder": [
+          {
+            "id": "SK_er",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SK_pi",
+      "evidence": [],
+      "description": "SK_pi, a value Initiator computes in the IKEv2 IKE_SA_INIT and IKE_AUTH exchange with signature authentication.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "SKEYSEED",
+          "Ni",
+          "Nr",
+          "SPIi",
+          "SPIr"
+        ]
+      },
+      "holders": {
+        "Initiator": [
+          {
+            "id": "SK_pi",
+            "how": "computed"
+          }
+        ],
+        "Responder": [
+          {
+            "id": "SK_pi",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SK_pr",
+      "evidence": [],
+      "description": "SK_pr, a value Initiator computes in the IKEv2 IKE_SA_INIT and IKE_AUTH exchange with signature authentication.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "SKEYSEED",
+          "Ni",
+          "Nr",
+          "SPIi",
+          "SPIr"
+        ]
+      },
+      "holders": {
+        "Initiator": [
+          {
+            "id": "SK_pr",
+            "how": "computed"
+          }
+        ],
+        "Responder": [
+          {
+            "id": "SK_pr",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AUTHi",
+      "evidence": [],
+      "description": "The Initiator's signature authenticating IKE_SA_INIT.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "AUTHi",
+        "role": "Initiator",
+        "replicated": true,
+        "derived_from": [
+          "ike_sa_init_request",
+          "Nr",
+          "SK_pi",
+          "IDi",
+          "sk_Initiator"
+        ]
+      },
+      "holders": {
+        "Initiator": [
+          {
+            "id": "AUTHi",
+            "how": "computed"
+          }
+        ],
+        "Responder": [
+          {
+            "id": "AUTHi",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AUTHr",
+      "evidence": [],
+      "description": "The Responder's signature.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "AUTHr",
+        "role": "Responder",
+        "replicated": true,
+        "derived_from": [
+          "ike_sa_init_response",
+          "Ni",
+          "SK_pr",
+          "IDr",
+          "sk_Responder"
+        ]
+      },
+      "holders": {
+        "Initiator": [
+          {
+            "id": "AUTHr",
+            "how": "received"
+          }
+        ],
+        "Responder": [
+          {
+            "id": "AUTHr",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SAr2",
+      "evidence": [],
+      "description": "The Responder's SA payload accepting the first Child SA.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "SAr2",
+        "role": "Responder",
+        "replicated": true,
+        "derived_from": [
+          "SAi2"
+        ]
+      },
+      "holders": {
+        "Responder": [
+          {
+            "id": "SAr2",
+            "how": "computed"
+          }
+        ]
+      }
+    }
+  ]
+}

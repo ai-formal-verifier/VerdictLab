@@ -1,0 +1,209 @@
+{
+  "vocab_version": "4.0.0",
+  "protocol_id": "Kao-Chow",
+  "names": {
+    "A": "The initiator, sharing master key K_as with S, and its identity A sent in message 1 and inside both credentials (§2, §3, §4).",
+    "B": "The responder, sharing master key K_bs with S, and its identity B sent in message 1 and inside both credentials (§2, §3, §4).",
+    "K_as": "The master key shared between principal A and the server S (§3, §5).",
+    "K_bs": "The master key shared between principal B and the server S (§3, §5).",
+    "S": "The principal S: the trusted authentication server: shares long-term master keys with A and B, generates the session key, and encrypts credentials for both principals.",
+    "K_ab": "The session key S generates and places in both credentials of message 2 (§3, §4).",
+    "N_a": "The nonce A generates and sends to S in message 1, carried in both credentials and returned by B encrypted under K_ab in message 3 (§3, §4).",
+    "N_b": "The nonce B generates and sends in the clear to A in message 3, returned by A encrypted under K_ab in message 4 (§3, §4)."
+  },
+  "scenarios": [
+    {
+      "name": "baseline",
+      "world": [
+        {
+          "axis": "data",
+          "target": {
+            "of": "A"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "B"
+          },
+          "level": "disclosed"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "K_as"
+          },
+          "level": "none"
+        },
+        {
+          "axis": "data",
+          "target": {
+            "of": "K_bs"
+          },
+          "level": "none"
+        },
+        {
+          "axis": "population",
+          "target": {
+            "principal": "A"
+          },
+          "level": "unbounded"
+        },
+        {
+          "axis": "population",
+          "target": {
+            "principal": "B"
+          },
+          "level": "unbounded"
+        },
+        {
+          "axis": "population",
+          "target": {
+            "principal": "S"
+          },
+          "level": "unbounded"
+        }
+      ]
+    }
+  ],
+  "goals": [
+    {
+      "name": "secrecy_Kab",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "K_ab"
+        ],
+        "holders": [
+          "A",
+          "B",
+          "S"
+        ]
+      }
+    },
+    {
+      "name": "noninjective_agreement_B",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "B",
+        "subject": "A",
+        "of": [
+          "A",
+          "B",
+          "N_a",
+          "N_b",
+          "K_ab"
+        ]
+      }
+    },
+    {
+      "name": "noninjective_agreement_A",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "A",
+        "subject": "B",
+        "of": [
+          "A",
+          "B",
+          "N_a",
+          "N_b",
+          "K_ab"
+        ]
+      }
+    },
+    {
+      "name": "injective_agreement_B",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "B",
+        "subject": "A",
+        "of": [
+          "A",
+          "B",
+          "N_a",
+          "N_b",
+          "K_ab"
+        ]
+      }
+    },
+    {
+      "name": "injective_agreement_A",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "A",
+        "subject": "B",
+        "of": [
+          "A",
+          "B",
+          "N_a",
+          "N_b",
+          "K_ab"
+        ]
+      }
+    }
+  ],
+  "questions": [
+    {
+      "id": "secrecy_Kab",
+      "goal": "secrecy_Kab",
+      "scenarios": [
+        "baseline"
+      ],
+      "verdict": "true",
+      "evidence": {
+        "file": "formal/proverif/main.pv"
+      }
+    },
+    {
+      "id": "noninjective_agreement_B",
+      "goal": "noninjective_agreement_B",
+      "scenarios": [
+        "baseline"
+      ],
+      "verdict": "true",
+      "evidence": {
+        "file": "formal/proverif/main.pv"
+      }
+    },
+    {
+      "id": "noninjective_agreement_A",
+      "goal": "noninjective_agreement_A",
+      "scenarios": [
+        "baseline"
+      ],
+      "verdict": "false",
+      "evidence": {
+        "file": "formal/proverif/main.pv"
+      }
+    },
+    {
+      "id": "injective_agreement_B",
+      "goal": "injective_agreement_B",
+      "scenarios": [
+        "baseline"
+      ],
+      "verdict": "true",
+      "evidence": {
+        "file": "formal/proverif/main.pv"
+      }
+    },
+    {
+      "id": "injective_agreement_A",
+      "goal": "injective_agreement_A",
+      "scenarios": [
+        "baseline"
+      ],
+      "verdict": "false",
+      "evidence": {
+        "file": "formal/proverif/main.pv"
+      }
+    }
+  ],
+  "unexpressed": []
+}

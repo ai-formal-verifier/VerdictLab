@@ -1,0 +1,2027 @@
+{
+  "vocab_version": "4.0.0",
+  "values": [
+    {
+      "name": "g",
+      "evidence": [],
+      "description": "The generator of the Diffie-Hellman group used for the ephemeral keys.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "g"
+      },
+      "holders": {}
+    },
+    {
+      "name": "MSG_TYPE_0",
+      "evidence": [],
+      "description": "Message type 0, the error message.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "MSG_TYPE_0"
+      },
+      "holders": {}
+    },
+    {
+      "name": "MSG_TYPE_1",
+      "evidence": [],
+      "description": "Message type 1, the first handshake message.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "MSG_TYPE_1"
+      },
+      "holders": {}
+    },
+    {
+      "name": "MSG_TYPE_2",
+      "evidence": [],
+      "description": "Message type 2, the second handshake message.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "MSG_TYPE_2"
+      },
+      "holders": {}
+    },
+    {
+      "name": "MSG_TYPE_3",
+      "evidence": [],
+      "description": "Message type 3, the third handshake message.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "MSG_TYPE_3"
+      },
+      "holders": {}
+    },
+    {
+      "name": "empty_salt",
+      "evidence": [],
+      "description": "The empty salt of the key derivation.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "empty_salt"
+      },
+      "holders": {}
+    },
+    {
+      "name": "nil_party_info",
+      "evidence": [],
+      "description": "The nil party-information fields of the key derivation context.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "nil_party_info"
+      },
+      "holders": {}
+    },
+    {
+      "name": "empty_protected",
+      "evidence": [],
+      "description": "The empty protected header of the key derivation context.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "empty_protected"
+      },
+      "holders": {}
+    },
+    {
+      "name": "IV_GENERATION",
+      "evidence": [],
+      "description": "The label for deriving the AEAD initialisation vector.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "IV_GENERATION"
+      },
+      "holders": {}
+    },
+    {
+      "name": "ERR_GENERIC",
+      "evidence": [],
+      "description": "The generic error text carried in an error message.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "ERR_GENERIC"
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "ERR_MSG_2_recv",
+            "how": "received"
+          }
+        ],
+        "V": [
+          {
+            "id": "ERR_MSG_3_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ERR_CURVE_NOT_SUPPORTED",
+      "evidence": [],
+      "description": "The error text for an unsupported ECDH curve.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "ERR_CURVE_NOT_SUPPORTED"
+      },
+      "holders": {}
+    },
+    {
+      "name": "ECDH_Curves_U",
+      "evidence": [],
+      "description": "U's list of supported ECDH curves, most preferred first.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "ECDH_Curves_U"
+      },
+      "holders": {
+        "V": [
+          {
+            "id": "ECDH_Curves_U_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "HKDFs_U",
+      "evidence": [],
+      "description": "U's list of supported HKDF algorithms.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "HKDFs_U"
+      },
+      "holders": {
+        "V": [
+          {
+            "id": "HKDFs_U_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AEADs_U",
+      "evidence": [],
+      "description": "U's list of supported AEAD algorithms.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "AEADs_U"
+      },
+      "holders": {
+        "V": [
+          {
+            "id": "AEADs_U_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SIGs_V",
+      "evidence": [],
+      "description": "The signature algorithms U supports for V's signature.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "SIGs_V"
+      },
+      "holders": {
+        "V": [
+          {
+            "id": "SIGs_V_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SIGs_U",
+      "evidence": [],
+      "description": "The signature algorithms U is willing to sign with.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "SIGs_U"
+      },
+      "holders": {
+        "V": [
+          {
+            "id": "SIGs_U_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "sk_U",
+      "evidence": [],
+      "description": "U's private signing key.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "sk_U",
+        "replicated": false
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "sk_U",
+            "how": "initial",
+            "from": "sk_U"
+          }
+        ]
+      }
+    },
+    {
+      "name": "sk_V",
+      "evidence": [],
+      "description": "V's private signing key.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "sk_V",
+        "replicated": false
+      },
+      "holders": {
+        "V": [
+          {
+            "id": "sk_V",
+            "how": "initial",
+            "from": "sk_V"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ID_U",
+      "evidence": [],
+      "description": "U's identity.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "ID_U",
+        "replicated": false
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "ID_U",
+            "how": "initial",
+            "from": "ID_U"
+          }
+        ],
+        "V": [
+          {
+            "id": "ID_U",
+            "how": "initial",
+            "from": "ID_U"
+          },
+          {
+            "id": "ID_U_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ID_V",
+      "evidence": [],
+      "description": "V's identity.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "ID_V",
+        "replicated": false
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "ID_V",
+            "how": "initial",
+            "from": "ID_V"
+          },
+          {
+            "id": "ID_V_recv",
+            "how": "received"
+          }
+        ],
+        "V": [
+          {
+            "id": "ID_V",
+            "how": "initial",
+            "from": "ID_V"
+          }
+        ]
+      }
+    },
+    {
+      "name": "HINT_ID_U",
+      "evidence": [],
+      "description": "The hint that lets V find U's credential.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "HINT_ID_U",
+        "replicated": false
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "HINT_ID_U",
+            "how": "initial",
+            "from": "HINT_ID_U"
+          }
+        ],
+        "V": [
+          {
+            "id": "HINT_ID_U_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "HINT_ID_V",
+      "evidence": [],
+      "description": "The hint that lets U find V's credential.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "HINT_ID_V",
+        "replicated": false
+      },
+      "holders": {
+        "V": [
+          {
+            "id": "HINT_ID_V",
+            "how": "initial",
+            "from": "HINT_ID_V"
+          }
+        ],
+        "U": [
+          {
+            "id": "HINT_ID_V_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "pk_U",
+      "evidence": [],
+      "description": "U's public signature-verification key.",
+      "source": {
+        "scope": "main",
+        "by": "let",
+        "id": "pk_U",
+        "replicated": false,
+        "derived_from": [
+          "sk_U"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "pk_U",
+            "how": "initial",
+            "from": "pk_U"
+          }
+        ],
+        "V": [
+          {
+            "id": "pk_U_bound",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "pk_V",
+      "evidence": [],
+      "description": "V's public signature-verification key.",
+      "source": {
+        "scope": "main",
+        "by": "let",
+        "id": "pk_V",
+        "replicated": false,
+        "derived_from": [
+          "sk_V"
+        ]
+      },
+      "holders": {
+        "V": [
+          {
+            "id": "pk_V",
+            "how": "initial",
+            "from": "pk_V"
+          }
+        ],
+        "U": [
+          {
+            "id": "pk_V_bound",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "APP_1",
+      "evidence": [],
+      "description": "U's application data in message 1.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "APP_1",
+        "role": "U",
+        "replicated": true
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "APP_1",
+            "how": "generated"
+          }
+        ],
+        "V": [
+          {
+            "id": "APP_1_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "APP_3",
+      "evidence": [],
+      "description": "U's application data in message 3.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "APP_3",
+        "role": "U",
+        "replicated": true
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "APP_3",
+            "how": "generated"
+          }
+        ],
+        "V": [
+          {
+            "id": "APP_3_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "x_U",
+      "evidence": [],
+      "description": "U's ephemeral Diffie-Hellman exponent.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "x_U",
+        "role": "U",
+        "replicated": true
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "x_U",
+            "how": "generated"
+          }
+        ]
+      }
+    },
+    {
+      "name": "N_U",
+      "evidence": [],
+      "description": "U's nonce.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "N_U",
+        "role": "U",
+        "replicated": true
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "N_U",
+            "how": "generated"
+          }
+        ],
+        "V": [
+          {
+            "id": "N_U_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "S_U",
+      "evidence": [],
+      "description": "U's session identifier.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "S_U",
+        "role": "U",
+        "replicated": true
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "S_U",
+            "how": "generated"
+          }
+        ],
+        "V": [
+          {
+            "id": "S_U_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "term_U_1",
+      "evidence": [],
+      "description": "The message term (MSG_TYPE_0, ERR_GENERIC) sent in the EDHOC draft-08 asymmetric (signature) handshake.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "(MSG_TYPE_0, ERR_GENERIC)",
+        "role": "U",
+        "replicated": true
+      },
+      "holders": {}
+    },
+    {
+      "name": "HKDF_V",
+      "evidence": [],
+      "description": "V's preferred HKDF algorithms.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "HKDF_V",
+        "role": "V",
+        "replicated": true
+      },
+      "holders": {
+        "V": [
+          {
+            "id": "HKDF_V",
+            "how": "generated"
+          }
+        ],
+        "U": [
+          {
+            "id": "HKDF_V_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AEAD_V",
+      "evidence": [],
+      "description": "V's preferred AEAD algorithms.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "AEAD_V",
+        "role": "V",
+        "replicated": true
+      },
+      "holders": {
+        "V": [
+          {
+            "id": "AEAD_V",
+            "how": "generated"
+          }
+        ],
+        "U": [
+          {
+            "id": "AEAD_V_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SIG_V",
+      "evidence": [],
+      "description": "V's preferred signature algorithms for its own signature.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "SIG_V",
+        "role": "V",
+        "replicated": true
+      },
+      "holders": {
+        "V": [
+          {
+            "id": "SIG_V",
+            "how": "generated"
+          }
+        ],
+        "U": [
+          {
+            "id": "SIG_V_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SIG_U",
+      "evidence": [],
+      "description": "V's preferred signature algorithms for U's signature.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "SIG_U",
+        "role": "V",
+        "replicated": true
+      },
+      "holders": {
+        "V": [
+          {
+            "id": "SIG_U",
+            "how": "generated"
+          }
+        ],
+        "U": [
+          {
+            "id": "SIG_U_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "APP_2",
+      "evidence": [],
+      "description": "V's application data in message 2.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "APP_2",
+        "role": "V",
+        "replicated": true
+      },
+      "holders": {
+        "V": [
+          {
+            "id": "APP_2",
+            "how": "generated"
+          }
+        ],
+        "U": [
+          {
+            "id": "APP_2_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "y_V",
+      "evidence": [],
+      "description": "V's ephemeral Diffie-Hellman exponent.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "y_V",
+        "role": "V",
+        "replicated": true
+      },
+      "holders": {
+        "V": [
+          {
+            "id": "y_V",
+            "how": "generated"
+          }
+        ]
+      }
+    },
+    {
+      "name": "N_V",
+      "evidence": [],
+      "description": "V's nonce.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "N_V",
+        "role": "V",
+        "replicated": true
+      },
+      "holders": {
+        "V": [
+          {
+            "id": "N_V",
+            "how": "generated"
+          }
+        ],
+        "U": [
+          {
+            "id": "N_V_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "S_V",
+      "evidence": [],
+      "description": "V's session identifier.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "S_V",
+        "role": "V",
+        "replicated": true
+      },
+      "holders": {
+        "V": [
+          {
+            "id": "S_V",
+            "how": "generated"
+          }
+        ],
+        "U": [
+          {
+            "id": "S_V_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "term_V_2",
+      "evidence": [],
+      "description": "The message term (MSG_TYPE_0, ERR_GENERIC) sent in the EDHOC draft-08 asymmetric (signature) handshake.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "(MSG_TYPE_0, ERR_GENERIC)",
+        "role": "V",
+        "replicated": true
+      },
+      "holders": {}
+    },
+    {
+      "name": "term_V_3",
+      "evidence": [],
+      "description": "The message term (MSG_TYPE_0, ERR_CURVE_NOT_SUPPORTED) sent in the EDHOC draft-08 asymmetric (signature) handshake.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "(MSG_TYPE_0, ERR_CURVE_NOT_SUPPORTED)",
+        "role": "V",
+        "replicated": true
+      },
+      "holders": {}
+    },
+    {
+      "name": "U",
+      "evidence": [],
+      "description": "The principal U (the initiator) as the identity the setup names; the same identity as ID_U.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "ID_U"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "U",
+            "how": "computed"
+          }
+        ],
+        "V": [
+          {
+            "id": "U",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "V",
+      "evidence": [],
+      "description": "The principal V (the responder) as the identity the setup names; the same identity as ID_V.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "ID_V"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "V",
+            "how": "computed"
+          }
+        ],
+        "V": [
+          {
+            "id": "V",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "E_U",
+      "evidence": [],
+      "description": "U's ephemeral Diffie-Hellman public value.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "E_U",
+        "role": "U",
+        "replicated": true,
+        "derived_from": [
+          "g",
+          "x_U"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "E_U",
+            "how": "computed"
+          }
+        ],
+        "V": [
+          {
+            "id": "E_U_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ECDH_Curve_U",
+      "evidence": [],
+      "description": "ECDH_Curve_U, a value U computes in the EDHOC draft-08 asymmetric (signature) handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "ECDH_Curve_U",
+        "role": "U",
+        "replicated": true,
+        "derived_from": [
+          "ECDH_Curves_U"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "ECDH_Curve_U",
+            "how": "computed"
+          },
+          {
+            "id": "ECDH_Curve_V_recv",
+            "how": "received"
+          }
+        ],
+        "V": [
+          {
+            "id": "ECDH_Curve_U_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "E_U_serialized",
+      "evidence": [],
+      "description": "E_U_serialized, a value U computes in the EDHOC draft-08 asymmetric (signature) handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "E_U_serialized",
+        "role": "U",
+        "replicated": true,
+        "derived_from": [
+          "ECDH_Curve_U",
+          "E_U"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "E_U_serialized",
+            "how": "computed"
+          }
+        ],
+        "V": [
+          {
+            "id": "E_U_serialized_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "message_1",
+      "evidence": [],
+      "description": "EDHOC message 1 from U to V.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "message_1",
+        "role": "U",
+        "replicated": true,
+        "derived_from": [
+          "MSG_TYPE_1",
+          "S_U",
+          "N_U",
+          "E_U_serialized",
+          "ECDH_Curves_U",
+          "HKDFs_U",
+          "AEADs_U",
+          "SIGs_V",
+          "SIGs_U",
+          "APP_1"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "message_1",
+            "how": "computed"
+          }
+        ],
+        "V": [
+          {
+            "id": "message_1_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "message_2",
+      "evidence": [],
+      "description": "EDHOC message 2 from V to U.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "message_2",
+        "role": "V",
+        "replicated": true,
+        "derived_from": [
+          "MSG_TYPE_2",
+          "S_U",
+          "S_V",
+          "N_V",
+          "E_V_serialized",
+          "HKDF_V_selected",
+          "AEAD_V_selected",
+          "SIG_V_selected",
+          "SIG_U_selected",
+          "COSE_ENC_2"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "message_2_recv",
+            "how": "received"
+          }
+        ],
+        "V": [
+          {
+            "id": "message_2",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "COSE_ENC_2",
+      "evidence": [],
+      "description": "COSE_ENC_2, a value U receives in the EDHOC draft-08 asymmetric (signature) handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "COSE_ENC_2",
+        "role": "V",
+        "replicated": true,
+        "derived_from": [
+          "plaintext_2",
+          "K_2",
+          "aad_2",
+          "IV_2"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "COSE_ENC_2_recv",
+            "how": "received"
+          }
+        ],
+        "V": [
+          {
+            "id": "COSE_ENC_2",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "E_V_serialized",
+      "evidence": [],
+      "description": "E_V_serialized, a value U receives in the EDHOC draft-08 asymmetric (signature) handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "E_V_serialized",
+        "role": "V",
+        "replicated": true,
+        "derived_from": [
+          "ECDH_Curve_U",
+          "E_V"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "E_V_serialized_recv",
+            "how": "received"
+          }
+        ],
+        "V": [
+          {
+            "id": "E_V_serialized",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "E_V",
+      "evidence": [],
+      "description": "V's ephemeral Diffie-Hellman public value.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "E_V",
+        "role": "V",
+        "replicated": true,
+        "derived_from": [
+          "g",
+          "y_V"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "E_V_recv",
+            "how": "received"
+          }
+        ],
+        "V": [
+          {
+            "id": "E_V",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "HKDF_V_verified",
+      "evidence": [],
+      "description": "HKDF_V_verified, a value U computes in the EDHOC draft-08 asymmetric (signature) handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "HKDF_V_verified",
+        "role": "U",
+        "replicated": true,
+        "derived_from": [
+          "HKDF_V",
+          "HKDFs_U"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "HKDF_V_verified",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AEAD_V_verified",
+      "evidence": [],
+      "description": "AEAD_V_verified, a value U computes in the EDHOC draft-08 asymmetric (signature) handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "AEAD_V_verified",
+        "role": "U",
+        "replicated": true,
+        "derived_from": [
+          "AEAD_V",
+          "AEADs_U"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "AEAD_V_verified",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SIG_V_verified",
+      "evidence": [],
+      "description": "SIG_V_verified, a value U computes in the EDHOC draft-08 asymmetric (signature) handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "SIG_V_verified",
+        "role": "U",
+        "replicated": true,
+        "derived_from": [
+          "SIG_V",
+          "SIGs_V"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "SIG_V_verified",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SIG_U_verified",
+      "evidence": [],
+      "description": "SIG_U_verified, a value U computes in the EDHOC draft-08 asymmetric (signature) handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "SIG_U_verified",
+        "role": "U",
+        "replicated": true,
+        "derived_from": [
+          "SIG_U",
+          "SIGs_U"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "SIG_U_verified",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "data_2_recv",
+      "evidence": [],
+      "description": "data_2_recv, a value U computes in the EDHOC draft-08 asymmetric (signature) handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "data_2_recv",
+        "role": "U",
+        "replicated": true,
+        "derived_from": [
+          "MSG_TYPE_2",
+          "S_U",
+          "S_V",
+          "N_V",
+          "E_V_serialized",
+          "HKDF_V_verified",
+          "AEAD_V_verified",
+          "SIG_V_verified",
+          "SIG_U_verified"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "data_2_recv",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "aad_2",
+      "evidence": [],
+      "description": "The hash of message 1 and message 2's data, used as associated data.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "message_1",
+          "data_2_recv",
+          "data_2"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "aad_2",
+            "how": "computed"
+          }
+        ],
+        "V": [
+          {
+            "id": "aad_2",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "shared_secret_U",
+      "evidence": [],
+      "description": "shared_secret_U, a value U computes in the EDHOC draft-08 asymmetric (signature) handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "shared_secret_U",
+        "role": "U",
+        "replicated": true,
+        "derived_from": [
+          "E_V",
+          "x_U"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "shared_secret_U",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "K_2",
+      "evidence": [],
+      "description": "The key protecting message 2's encrypted part.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "shared_secret_U",
+          "empty_salt",
+          "HKDF_V_verified",
+          "AEAD_V_verified",
+          "nil_party_info",
+          "empty_protected",
+          "aad_2",
+          "shared_secret_V",
+          "HKDF_V_selected",
+          "AEAD_V_selected"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "K_2",
+            "how": "computed"
+          }
+        ],
+        "V": [
+          {
+            "id": "K_2",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "IV_2",
+      "evidence": [],
+      "description": "The initialisation vector for message 2's encryption.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "shared_secret_U",
+          "empty_salt",
+          "HKDF_V_verified",
+          "IV_GENERATION",
+          "AEAD_V_verified",
+          "nil_party_info",
+          "empty_protected",
+          "aad_2",
+          "shared_secret_V",
+          "HKDF_V_selected",
+          "AEAD_V_selected"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "IV_2",
+            "how": "computed"
+          }
+        ],
+        "V": [
+          {
+            "id": "IV_2",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "plaintext_2_recv",
+      "evidence": [],
+      "description": "plaintext_2_recv, a value U computes in the EDHOC draft-08 asymmetric (signature) handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "plaintext_2_recv",
+        "role": "U",
+        "replicated": true,
+        "derived_from": [
+          "COSE_ENC_2",
+          "K_2",
+          "aad_2",
+          "IV_2"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "plaintext_2_recv",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "COSE_SIG_V",
+      "evidence": [],
+      "description": "COSE_SIG_V, a value U receives in the EDHOC draft-08 asymmetric (signature) handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "COSE_SIG_V",
+        "role": "V",
+        "replicated": true,
+        "derived_from": [
+          "protected_V",
+          "signature_V"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "COSE_SIG_V_recv",
+            "how": "received"
+          }
+        ],
+        "V": [
+          {
+            "id": "COSE_SIG_V",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "protected_V",
+      "evidence": [],
+      "description": "protected_V, a value U receives in the EDHOC draft-08 asymmetric (signature) handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "protected_V",
+        "role": "V",
+        "replicated": true,
+        "derived_from": [
+          "ID_V",
+          "HINT_ID_V"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "protected_V_recv",
+            "how": "received"
+          }
+        ],
+        "V": [
+          {
+            "id": "protected_V",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "signature_V",
+      "evidence": [],
+      "description": "signature_V, a value U receives in the EDHOC draft-08 asymmetric (signature) handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "signature_V",
+        "role": "V",
+        "replicated": true,
+        "derived_from": [
+          "SIG_V_selected",
+          "ID_V",
+          "HINT_ID_V",
+          "aad_2",
+          "APP_2",
+          "sk_V"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "signature_V_recv",
+            "how": "received"
+          }
+        ],
+        "V": [
+          {
+            "id": "signature_V",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "data_3",
+      "evidence": [],
+      "description": "data_3, a value U computes in the EDHOC draft-08 asymmetric (signature) handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "data_3",
+        "role": "U",
+        "replicated": true,
+        "derived_from": [
+          "MSG_TYPE_3",
+          "S_V"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "data_3",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "aad_3",
+      "evidence": [],
+      "description": "The hash chaining messages 1, 2 and 3's data, used as associated data.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "message_1",
+          "message_2",
+          "data_3",
+          "data_3_recv"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "aad_3",
+            "how": "computed"
+          }
+        ],
+        "V": [
+          {
+            "id": "aad_3",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "K_3",
+      "evidence": [],
+      "description": "The key protecting message 3's encrypted part.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "shared_secret_U",
+          "empty_salt",
+          "HKDF_V_verified",
+          "AEAD_V_verified",
+          "nil_party_info",
+          "empty_protected",
+          "aad_3",
+          "shared_secret_V",
+          "HKDF_V_selected",
+          "AEAD_V_selected"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "K_3",
+            "how": "computed"
+          }
+        ],
+        "V": [
+          {
+            "id": "K_3",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "IV_3",
+      "evidence": [],
+      "description": "The initialisation vector for message 3's encryption.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "shared_secret_U",
+          "empty_salt",
+          "HKDF_V_verified",
+          "IV_GENERATION",
+          "AEAD_V_verified",
+          "nil_party_info",
+          "empty_protected",
+          "aad_3",
+          "shared_secret_V",
+          "HKDF_V_selected",
+          "AEAD_V_selected"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "IV_3",
+            "how": "computed"
+          }
+        ],
+        "V": [
+          {
+            "id": "IV_3",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "protected_U",
+      "evidence": [],
+      "description": "protected_U, a value U computes in the EDHOC draft-08 asymmetric (signature) handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "protected_U",
+        "role": "U",
+        "replicated": true,
+        "derived_from": [
+          "ID_U",
+          "HINT_ID_U"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "protected_U",
+            "how": "computed"
+          }
+        ],
+        "V": [
+          {
+            "id": "protected_U_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "signature_U",
+      "evidence": [],
+      "description": "signature_U, a value U computes in the EDHOC draft-08 asymmetric (signature) handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "signature_U",
+        "role": "U",
+        "replicated": true,
+        "derived_from": [
+          "SIG_U_verified",
+          "ID_U",
+          "HINT_ID_U",
+          "aad_3",
+          "APP_3",
+          "sk_U"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "signature_U",
+            "how": "computed"
+          }
+        ],
+        "V": [
+          {
+            "id": "signature_U_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "COSE_SIG_U",
+      "evidence": [],
+      "description": "COSE_SIG_U, a value U computes in the EDHOC draft-08 asymmetric (signature) handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "COSE_SIG_U",
+        "role": "U",
+        "replicated": true,
+        "derived_from": [
+          "protected_U",
+          "signature_U"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "COSE_SIG_U",
+            "how": "computed"
+          }
+        ],
+        "V": [
+          {
+            "id": "COSE_SIG_U_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "plaintext_3",
+      "evidence": [],
+      "description": "plaintext_3, a value U computes in the EDHOC draft-08 asymmetric (signature) handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "plaintext_3",
+        "role": "U",
+        "replicated": true,
+        "derived_from": [
+          "COSE_SIG_U",
+          "APP_3"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "plaintext_3",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "COSE_ENC_3",
+      "evidence": [],
+      "description": "COSE_ENC_3, a value U computes in the EDHOC draft-08 asymmetric (signature) handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "COSE_ENC_3",
+        "role": "U",
+        "replicated": true,
+        "derived_from": [
+          "plaintext_3",
+          "K_3",
+          "aad_3",
+          "IV_3"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "COSE_ENC_3",
+            "how": "computed"
+          }
+        ],
+        "V": [
+          {
+            "id": "COSE_ENC_3_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "message_3",
+      "evidence": [],
+      "description": "EDHOC message 3 from U to V.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "message_3",
+        "role": "U",
+        "replicated": true,
+        "derived_from": [
+          "MSG_TYPE_3",
+          "S_V",
+          "COSE_ENC_3"
+        ]
+      },
+      "holders": {
+        "U": [
+          {
+            "id": "message_3",
+            "how": "computed"
+          }
+        ],
+        "V": [
+          {
+            "id": "message_3_recv",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "HKDF_V_selected",
+      "evidence": [],
+      "description": "HKDF_V_selected, a value V computes in the EDHOC draft-08 asymmetric (signature) handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "HKDF_V_selected",
+        "role": "V",
+        "replicated": true,
+        "derived_from": [
+          "HKDFs_U",
+          "HKDF_V"
+        ]
+      },
+      "holders": {
+        "V": [
+          {
+            "id": "HKDF_V_selected",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AEAD_V_selected",
+      "evidence": [],
+      "description": "AEAD_V_selected, a value V computes in the EDHOC draft-08 asymmetric (signature) handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "AEAD_V_selected",
+        "role": "V",
+        "replicated": true,
+        "derived_from": [
+          "AEADs_U",
+          "AEAD_V"
+        ]
+      },
+      "holders": {
+        "V": [
+          {
+            "id": "AEAD_V_selected",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SIG_V_selected",
+      "evidence": [],
+      "description": "SIG_V_selected, a value V computes in the EDHOC draft-08 asymmetric (signature) handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "SIG_V_selected",
+        "role": "V",
+        "replicated": true,
+        "derived_from": [
+          "SIGs_V",
+          "SIG_V"
+        ]
+      },
+      "holders": {
+        "V": [
+          {
+            "id": "SIG_V_selected",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SIG_U_selected",
+      "evidence": [],
+      "description": "SIG_U_selected, a value V computes in the EDHOC draft-08 asymmetric (signature) handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "SIG_U_selected",
+        "role": "V",
+        "replicated": true,
+        "derived_from": [
+          "SIGs_U",
+          "SIG_U"
+        ]
+      },
+      "holders": {
+        "V": [
+          {
+            "id": "SIG_U_selected",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "data_2",
+      "evidence": [],
+      "description": "data_2, a value V computes in the EDHOC draft-08 asymmetric (signature) handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "data_2",
+        "role": "V",
+        "replicated": true,
+        "derived_from": [
+          "MSG_TYPE_2",
+          "S_U",
+          "S_V",
+          "N_V",
+          "E_V_serialized",
+          "HKDF_V_selected",
+          "AEAD_V_selected",
+          "SIG_V_selected",
+          "SIG_U_selected"
+        ]
+      },
+      "holders": {
+        "V": [
+          {
+            "id": "data_2",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "shared_secret_V",
+      "evidence": [],
+      "description": "shared_secret_V, a value V computes in the EDHOC draft-08 asymmetric (signature) handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "shared_secret_V",
+        "role": "V",
+        "replicated": true,
+        "derived_from": [
+          "E_U",
+          "y_V"
+        ]
+      },
+      "holders": {
+        "V": [
+          {
+            "id": "shared_secret_V",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "plaintext_2",
+      "evidence": [],
+      "description": "plaintext_2, a value V computes in the EDHOC draft-08 asymmetric (signature) handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "plaintext_2",
+        "role": "V",
+        "replicated": true,
+        "derived_from": [
+          "COSE_SIG_V",
+          "APP_2"
+        ]
+      },
+      "holders": {
+        "V": [
+          {
+            "id": "plaintext_2",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "data_3_recv",
+      "evidence": [],
+      "description": "data_3_recv, a value V computes in the EDHOC draft-08 asymmetric (signature) handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "data_3_recv",
+        "role": "V",
+        "replicated": true,
+        "derived_from": [
+          "MSG_TYPE_3",
+          "S_V"
+        ]
+      },
+      "holders": {
+        "V": [
+          {
+            "id": "data_3_recv",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "plaintext_3_recv",
+      "evidence": [],
+      "description": "plaintext_3_recv, a value V computes in the EDHOC draft-08 asymmetric (signature) handshake.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "plaintext_3_recv",
+        "role": "V",
+        "replicated": true,
+        "derived_from": [
+          "COSE_ENC_3",
+          "K_3",
+          "aad_3",
+          "IV_3"
+        ]
+      },
+      "holders": {
+        "V": [
+          {
+            "id": "plaintext_3_recv",
+            "how": "computed"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "vocab_version": "4.0.0",
+  "names": {
+    "G_I": "G_I, the Initiator's public authentication key when it authenticates with a static Diffie-Hellman key (the private key being I), contained in its authentication credential CRED_I (§3.5.2, §3.5.3).",
+    "G_R": "G_R, the Responder's public authentication key when it authenticates with a static Diffie-Hellman key (the private key being R), contained in its authentication credential CRED_R (§3.5.2, §3.5.3).",
+    "I": "The principal I: The Initiator: starts EDHOC, contributes its method, supported cipher suites, credential identifier and external authorization data, authenticates with its static Diffie-Hellman key, and verifies the Responder.",
+    "R": "The principal R: The Responder: processes message_1, contributes its supported cipher suites, credential identifier and external authorization data, authenticates with its static Diffie-Hellman key, and verifies the Initiator.",
+    "PRK_4x3m": "PRK_4x3m, the pseudorandom key Extract( PRK_3e2m, G_IY ) when the Initiator authenticates with a static Diffie-Hellman key (else PRK_3e2m), used to produce the MAC in message_3, to encrypt message_4 and to derive application specific data (§4.1.3, §4.3, §8.1)."
+  },
+  "assumptions": [
+    {
+      "id": "data_g_i_public",
+      "axis": "data",
+      "target": {
+        "of": "G_I"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_g_r_public",
+      "axis": "data",
+      "target": {
+        "of": "G_R"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "seating_I",
+      "axis": "seating",
+      "target": {
+        "principal": "I"
+      },
+      "default": "any_role"
+    },
+    {
+      "id": "population_I",
+      "axis": "population",
+      "target": {
+        "principal": "I"
+      },
+      "default": "unbounded"
+    },
+    {
+      "id": "seating_R",
+      "axis": "seating",
+      "target": {
+        "principal": "R"
+      },
+      "default": "any_role"
+    },
+    {
+      "id": "population_R",
+      "axis": "population",
+      "target": {
+        "principal": "R"
+      },
+      "default": "unbounded"
+    }
+  ],
+  "properties": [
+    {
+      "id": "secrecy_session_key_I",
+      "type": "Secrecy",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "PRK_4x3m"
+        ],
+        "holders": [
+          "I"
+        ]
+      }
+    },
+    {
+      "id": "secrecy_session_key_R",
+      "type": "Secrecy",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "PRK_4x3m"
+        ],
+        "holders": [
+          "R"
+        ]
+      }
+    },
+    {
+      "id": "data_auth_R_asserts_I",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "R",
+        "subject": "I",
+        "of": [
+          "PRK_4x3m"
+        ]
+      }
+    },
+    {
+      "id": "data_auth_I_asserts_R",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "I",
+        "subject": "R",
+        "of": [
+          "PRK_4x3m"
+        ]
+      }
+    },
+    {
+      "id": "unique_accept_I",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "I",
+        "subject": "R",
+        "of": [
+          "PRK_4x3m"
+        ]
+      }
+    },
+    {
+      "id": "unique_accept_R",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "R",
+        "subject": "I",
+        "of": [
+          "PRK_4x3m"
+        ]
+      }
+    }
+  ],
+  "claims": []
+}

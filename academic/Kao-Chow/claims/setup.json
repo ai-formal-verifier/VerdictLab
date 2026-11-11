@@ -1,0 +1,420 @@
+{
+  "vocab_version": "4.0.0",
+  "names": {
+    "A": "The initiator, sharing master key K_as with S, and its identity A sent in message 1 and inside both credentials (§2, §3, §4).",
+    "B": "The responder, sharing master key K_bs with S, and its identity B sent in message 1 and inside both credentials (§2, §3, §4).",
+    "K_as": "The master key shared between principal A and the server S (§3, §5).",
+    "K_bs": "The master key shared between principal B and the server S (§3, §5).",
+    "S": "The principal S: the trusted authentication server: shares long-term master keys with A and B, generates the session key, and encrypts credentials for both principals.",
+    "K_ab": "The session key S generates and places in both credentials of message 2 (§3, §4).",
+    "N_a": "The nonce A generates and sends to S in message 1, carried in both credentials and returned by B encrypted under K_ab in message 3 (§3, §4).",
+    "N_b": "The nonce B generates and sends in the clear to A in message 3, returned by A encrypted under K_ab in message 4 (§3, §4)."
+  },
+  "assumptions": [
+    {
+      "id": "data_a_public",
+      "axis": "data",
+      "target": {
+        "of": "A"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "data_b_public",
+      "axis": "data",
+      "target": {
+        "of": "B"
+      },
+      "default": "disclosed"
+    },
+    {
+      "id": "ltk_reveal_A",
+      "axis": "data",
+      "target": {
+        "of": "K_as"
+      },
+      "default": "none",
+      "levels": [
+        "disclosed",
+        "none"
+      ]
+    },
+    {
+      "id": "ltk_reveal_B",
+      "axis": "data",
+      "target": {
+        "of": "K_bs"
+      },
+      "default": "none",
+      "levels": [
+        "disclosed",
+        "none"
+      ]
+    },
+    {
+      "id": "population_A",
+      "axis": "population",
+      "target": {
+        "principal": "A"
+      },
+      "default": "unbounded"
+    },
+    {
+      "id": "population_B",
+      "axis": "population",
+      "target": {
+        "principal": "B"
+      },
+      "default": "unbounded"
+    },
+    {
+      "id": "population_S",
+      "axis": "population",
+      "target": {
+        "principal": "S"
+      },
+      "default": "unbounded"
+    }
+  ],
+  "properties": [
+    {
+      "id": "secrecy_Kab",
+      "type": "Secrecy",
+      "axis": "secret",
+      "subtype": "single",
+      "target": {
+        "of": [
+          "K_ab"
+        ],
+        "holders": [
+          "A",
+          "B",
+          "S"
+        ]
+      }
+    },
+    {
+      "id": "noninjective_agreement_B",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "B",
+        "subject": "A",
+        "of": [
+          "A",
+          "B",
+          "N_a",
+          "N_b",
+          "K_ab"
+        ]
+      }
+    },
+    {
+      "id": "noninjective_agreement_A",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "non_injective_agreement",
+      "target": {
+        "asserter": "A",
+        "subject": "B",
+        "of": [
+          "A",
+          "B",
+          "N_a",
+          "N_b",
+          "K_ab"
+        ]
+      }
+    },
+    {
+      "id": "injective_agreement_B",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "B",
+        "subject": "A",
+        "of": [
+          "A",
+          "B",
+          "N_a",
+          "N_b",
+          "K_ab"
+        ]
+      }
+    },
+    {
+      "id": "injective_agreement_A",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "A",
+        "subject": "B",
+        "of": [
+          "A",
+          "B",
+          "N_a",
+          "N_b",
+          "K_ab"
+        ]
+      }
+    },
+    {
+      "id": "ia_a_b_on_na_kab",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "A",
+        "subject": "B",
+        "of": [
+          "N_a",
+          "K_ab"
+        ]
+      }
+    },
+    {
+      "id": "ia_b_a_on_nb_kab",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "B",
+        "subject": "A",
+        "of": [
+          "N_b",
+          "K_ab"
+        ]
+      }
+    },
+    {
+      "id": "ia_a_s_on_na_kab",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "A",
+        "subject": "S",
+        "of": [
+          "N_a",
+          "K_ab"
+        ]
+      }
+    },
+    {
+      "id": "ia_b_s_on_na_kab",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "B",
+        "subject": "S",
+        "of": [
+          "N_a",
+          "K_ab"
+        ]
+      }
+    },
+    {
+      "id": "ia_a_s_on_kab",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "A",
+        "subject": "S",
+        "of": [
+          "K_ab"
+        ]
+      }
+    },
+    {
+      "id": "ia_b_s_on_kab",
+      "type": "Authentication",
+      "axis": "correspondence",
+      "subtype": "injective_agreement",
+      "target": {
+        "asserter": "B",
+        "subject": "S",
+        "of": [
+          "K_ab"
+        ]
+      }
+    }
+  ],
+  "claims": [
+    {
+      "id": "kab_secret_baseline",
+      "property": "secrecy_Kab",
+      "expect": "holds",
+      "conditions": [],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "4",
+          "quote": "If principal C wants to impersonate A and initiates an authentication process, he is incapable of producing message 4 since K_ab is confidential to C."
+        },
+        {
+          "document": "main",
+          "section": "2",
+          "quote": "S is responsible for generating and securely distributing the session key K_ab."
+        }
+      ]
+    },
+    {
+      "id": "a_detects_replay_on_na_kab_baseline",
+      "property": "ia_a_b_on_na_kab",
+      "expect": "holds",
+      "conditions": [],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "4",
+          "quote": "Furthermore, since nonce N_a is used only for the current session, replay of old messages issued by either S or B will be detected."
+        },
+        {
+          "document": "main",
+          "section": "1",
+          "quote": "both parties can verify the freshness of the session key and the identity of the peer"
+        },
+        {
+          "document": "main",
+          "section": "4",
+          "quote": "A also authenticates B by decrypting the encrypted part with K_ab and comparing the result with N_a."
+        },
+        {
+          "document": "main",
+          "section": "4",
+          "quote": "In the protocol, A verifies the identity of B by checking whether the peer principal is able to encrypt nonce N_a with session key K_ab."
+        },
+        {
+          "document": "main",
+          "section": "4",
+          "quote": "Therefore, the protocol prevents against impersonation of B by the assumptions of the correct behavior of the authentication server and of the secrecy of master keys."
+        }
+      ]
+    },
+    {
+      "id": "b_detects_replay_on_nb_kab_baseline",
+      "property": "ia_b_a_on_nb_kab",
+      "expect": "holds",
+      "conditions": [],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "1",
+          "quote": "effectively preventing replay attacks even if the responder (B) cannot initially verify the server's message."
+        },
+        {
+          "document": "main",
+          "section": "4",
+          "quote": "If message 2 is only a replay (either copy-and-replay or suppress-and-play), A will detect it and thus will not respond with a normal message 4 (instead, A probably sends back an error message to inform B that a replay is possibly occurring), so B knows K_ab is not fresh."
+        },
+        {
+          "document": "main",
+          "section": "4",
+          "quote": "Therefore, B can verify its temporal belief on the authenticity and freshness of message 2 by a nonce challenge/response exchange with A."
+        },
+        {
+          "document": "main",
+          "section": "4",
+          "quote": "If A returns message 4 as expected, B believes in the authenticity and freshness of K_ab."
+        },
+        {
+          "document": "main",
+          "section": "4",
+          "quote": "If principal C wants to impersonate A and initiates an authentication process, he is incapable of producing message 4 since K_ab is confidential to C."
+        },
+        {
+          "document": "main",
+          "section": "4",
+          "quote": "Note that B authenticates A basing upon the beliefs similar to those on which A bases to authenticate B."
+        }
+      ]
+    },
+    {
+      "id": "a_detects_replay_of_server_credential_baseline",
+      "property": "ia_a_s_on_na_kab",
+      "expect": "holds",
+      "conditions": [],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "4",
+          "quote": "Furthermore, since nonce N_a is used only for the current session, replay of old messages issued by either S or B will be detected."
+        }
+      ]
+    },
+    {
+      "id": "b_verifies_authenticity_and_freshness_of_message2_baseline",
+      "property": "ia_b_s_on_na_kab",
+      "expect": "holds",
+      "conditions": [],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "4",
+          "quote": "Therefore, B can verify its temporal belief on the authenticity and freshness of message 2 by a nonce challenge/response exchange with A."
+        },
+        {
+          "document": "main",
+          "section": "4",
+          "quote": "If message 2 is only a replay (either copy-and-replay or suppress-and-play), A will detect it and thus will not respond with a normal message 4 (instead, A probably sends back an error message to inform B that a replay is possibly occurring), so B knows K_ab is not fresh."
+        },
+        {
+          "document": "main",
+          "section": "4",
+          "quote": "If A returns message 4 as expected, B believes in the authenticity and freshness of K_ab."
+        }
+      ]
+    },
+    {
+      "id": "a_verifies_kab_freshness_by_na",
+      "property": "ia_a_s_on_kab",
+      "expect": "holds",
+      "conditions": [],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "1",
+          "quote": "both parties can verify the freshness of the session key and the identity of the peer"
+        },
+        {
+          "document": "main",
+          "section": "4",
+          "quote": "Upon receiving them, A decrypts the credential to get K_ab and verifies its freshness by checking the presence of N_a."
+        },
+        {
+          "document": "main",
+          "section": "4",
+          "quote": "No clock synchronization among machines is assumed, so nonce-based challenge/response exchanges are used to guarantee the freshness of messages."
+        }
+      ]
+    },
+    {
+      "id": "b_verifies_kab_freshness_by_nb",
+      "property": "ia_b_s_on_kab",
+      "expect": "holds",
+      "conditions": [],
+      "evidence": [
+        {
+          "document": "main",
+          "section": "1",
+          "quote": "both parties can verify the freshness of the session key and the identity of the peer"
+        },
+        {
+          "document": "main",
+          "section": "4",
+          "quote": "If A returns message 4 as expected, B believes in the authenticity and freshness of K_ab."
+        },
+        {
+          "document": "main",
+          "section": "4",
+          "quote": "No clock synchronization among machines is assumed, so nonce-based challenge/response exchanges are used to guarantee the freshness of messages."
+        }
+      ]
+    }
+  ]
+}

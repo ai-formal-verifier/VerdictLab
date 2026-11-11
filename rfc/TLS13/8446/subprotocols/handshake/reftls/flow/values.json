@@ -1,0 +1,2121 @@
+{
+  "vocab_version": "4.0.0",
+  "values": [
+    {
+      "name": "zero",
+      "evidence": [],
+      "description": "The constant zero of the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "zero"
+      },
+      "holders": {}
+    },
+    {
+      "name": "empty_string",
+      "evidence": [],
+      "description": "The constant empty_string of the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "empty_string"
+      },
+      "holders": {}
+    },
+    {
+      "name": "StrongAE",
+      "evidence": [],
+      "description": "The constant StrongAE of the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "StrongAE"
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "a",
+            "how": "received"
+          }
+        ],
+        "Server": [
+          {
+            "id": "aaa",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "StrongDH",
+      "evidence": [],
+      "description": "The constant StrongDH of the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "StrongDH"
+      },
+      "holders": {
+        "Server": [
+          {
+            "id": "g",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "G",
+      "evidence": [],
+      "description": "The constant G of the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "G"
+      },
+      "holders": {}
+    },
+    {
+      "name": "StrongHash",
+      "evidence": [],
+      "description": "The constant StrongHash of the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "StrongHash"
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "h",
+            "how": "received"
+          }
+        ],
+        "Server": [
+          {
+            "id": "hhh",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "tls13_client_application_traffic_secret",
+      "evidence": [],
+      "description": "The constant tls13_client_application_traffic_secret of the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "tls13_client_application_traffic_secret"
+      },
+      "holders": {}
+    },
+    {
+      "name": "tls13_client_early_traffic_secret",
+      "evidence": [],
+      "description": "The constant tls13_client_early_traffic_secret of the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "tls13_client_early_traffic_secret"
+      },
+      "holders": {}
+    },
+    {
+      "name": "tls13_client_handshake_traffic_secret",
+      "evidence": [],
+      "description": "The constant tls13_client_handshake_traffic_secret of the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "tls13_client_handshake_traffic_secret"
+      },
+      "holders": {}
+    },
+    {
+      "name": "tls13_derived",
+      "evidence": [],
+      "description": "The constant tls13_derived of the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "tls13_derived"
+      },
+      "holders": {}
+    },
+    {
+      "name": "tls13_early_exporter_master_secret",
+      "evidence": [],
+      "description": "The constant tls13_early_exporter_master_secret of the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "tls13_early_exporter_master_secret"
+      },
+      "holders": {}
+    },
+    {
+      "name": "tls13_exporter_master_secret",
+      "evidence": [],
+      "description": "The constant tls13_exporter_master_secret of the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "tls13_exporter_master_secret"
+      },
+      "holders": {}
+    },
+    {
+      "name": "tls13_finished",
+      "evidence": [],
+      "description": "The constant tls13_finished of the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "tls13_finished"
+      },
+      "holders": {}
+    },
+    {
+      "name": "tls13_iv",
+      "evidence": [],
+      "description": "The constant tls13_iv of the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "tls13_iv"
+      },
+      "holders": {}
+    },
+    {
+      "name": "tls13_key",
+      "evidence": [],
+      "description": "The constant tls13_key of the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "tls13_key"
+      },
+      "holders": {}
+    },
+    {
+      "name": "tls13_resumption",
+      "evidence": [],
+      "description": "The constant tls13_resumption of the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "tls13_resumption"
+      },
+      "holders": {}
+    },
+    {
+      "name": "tls13_resumption_master_secret",
+      "evidence": [],
+      "description": "The constant tls13_resumption_master_secret of the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "tls13_resumption_master_secret"
+      },
+      "holders": {}
+    },
+    {
+      "name": "tls13_resumption_psk_binder_key",
+      "evidence": [],
+      "description": "The constant tls13_resumption_psk_binder_key of the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "tls13_resumption_psk_binder_key"
+      },
+      "holders": {}
+    },
+    {
+      "name": "tls13_server_application_traffic_secret",
+      "evidence": [],
+      "description": "The constant tls13_server_application_traffic_secret of the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "tls13_server_application_traffic_secret"
+      },
+      "holders": {}
+    },
+    {
+      "name": "tls13_server_handshake_traffic_secret",
+      "evidence": [],
+      "description": "The constant tls13_server_handshake_traffic_secret of the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "tls13_server_handshake_traffic_secret"
+      },
+      "holders": {}
+    },
+    {
+      "name": "TLS13",
+      "evidence": [],
+      "description": "The constant TLS13 of the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "TLS13"
+      },
+      "holders": {}
+    },
+    {
+      "name": "NoBinder",
+      "evidence": [],
+      "description": "The constant NoBinder of the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "global",
+        "by": "const",
+        "id": "NoBinder"
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "spt",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Client",
+      "evidence": [],
+      "description": "The client's identity.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "Client",
+        "replicated": false
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "Client",
+            "how": "initial",
+            "from": "Client"
+          }
+        ],
+        "Server": [
+          {
+            "id": "Client",
+            "how": "initial",
+            "from": "Client"
+          },
+          {
+            "id": "psk_a",
+            "how": "initial"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Server",
+      "evidence": [],
+      "description": "The server's identity.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "Server",
+        "replicated": false
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "Server",
+            "how": "initial",
+            "from": "Server"
+          }
+        ],
+        "Server": [
+          {
+            "id": "Server",
+            "how": "initial",
+            "from": "Server"
+          }
+        ]
+      }
+    },
+    {
+      "name": "sk_Server",
+      "evidence": [],
+      "description": "The server's private signing key.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "sk_Server",
+        "replicated": false
+      },
+      "holders": {
+        "Server": [
+          {
+            "id": "sk_Server",
+            "how": "initial",
+            "from": "sk_Server"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PSK",
+      "evidence": [],
+      "description": "The pre-shared key the client and server hold.",
+      "source": {
+        "scope": "main",
+        "by": "new",
+        "id": "PSK",
+        "replicated": false
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "PSK",
+            "how": "initial",
+            "from": "PSK"
+          },
+          {
+            "id": "PSK_row",
+            "how": "initial"
+          }
+        ],
+        "Server": [
+          {
+            "id": "PSK",
+            "how": "initial",
+            "from": "PSK"
+          },
+          {
+            "id": "PSK_row",
+            "how": "initial"
+          }
+        ]
+      }
+    },
+    {
+      "name": "pk_Server",
+      "evidence": [],
+      "description": "The server's public verification key.",
+      "source": {
+        "scope": "main",
+        "by": "let",
+        "id": "pk_Server",
+        "replicated": false,
+        "derived_from": [
+          "sk_Server"
+        ]
+      },
+      "holders": {
+        "Server": [
+          {
+            "id": "pk_Server",
+            "how": "initial",
+            "from": "pk_Server"
+          }
+        ],
+        "Client": [
+          {
+            "id": "p",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "random_Client",
+      "evidence": [],
+      "description": "The client's ClientHello random.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "random_Client",
+        "role": "Client",
+        "replicated": true
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "random_Client",
+            "how": "generated"
+          }
+        ],
+        "Server": [
+          {
+            "id": "random_Client",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "x",
+      "evidence": [],
+      "description": "The client's ephemeral DH exponent.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "x",
+        "role": "Client",
+        "replicated": true
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "x",
+            "how": "generated"
+          }
+        ]
+      }
+    },
+    {
+      "name": "per_record_nonce_early",
+      "evidence": [],
+      "description": "The per-record nonce of the 0-RTT early data record.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "per_record_nonce_early",
+        "role": "Client",
+        "replicated": true
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "per_record_nonce_early",
+            "how": "generated"
+          }
+        ],
+        "Server": [
+          {
+            "id": "n0",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "additional_data_early",
+      "evidence": [],
+      "description": "The additional data of the 0-RTT record.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "additional_data_early",
+        "role": "Client",
+        "replicated": true
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "additional_data_early",
+            "how": "generated"
+          }
+        ],
+        "Server": [
+          {
+            "id": "ad0",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "early_data_Client",
+      "evidence": [],
+      "description": "The client's 0-RTT early data.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "early_data_Client",
+        "role": "Client",
+        "replicated": true
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "early_data_Client",
+            "how": "generated"
+          }
+        ],
+        "Server": [
+          {
+            "id": "early_data_Client",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "per_record_nonce",
+      "evidence": [],
+      "description": "The client's per-record nonce of its application data record.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "per_record_nonce",
+        "role": "Client",
+        "replicated": true
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "per_record_nonce",
+            "how": "generated"
+          }
+        ],
+        "Server": [
+          {
+            "id": "n_c",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "additional_data",
+      "evidence": [],
+      "description": "The additional data of the client's application data record.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "additional_data",
+        "role": "Client",
+        "replicated": true
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "additional_data",
+            "how": "generated"
+          }
+        ],
+        "Server": [
+          {
+            "id": "ad_c",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "application_data_Client",
+      "evidence": [],
+      "description": "The client's application data.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "application_data_Client",
+        "role": "Client",
+        "replicated": true
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "application_data_Client",
+            "how": "generated"
+          }
+        ],
+        "Server": [
+          {
+            "id": "application_data_Client",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "msg_Client_Server_2",
+      "evidence": [],
+      "description": "The message term (per_record_nonce_early, additional_data_early, record_early) sent in the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "(per_record_nonce_early, additional_data_early, record_early)",
+        "role": "Client",
+        "replicated": true
+      },
+      "holders": {}
+    },
+    {
+      "name": "msg_Client_Server_3",
+      "evidence": [],
+      "description": "The message term FIN(m2) sent in the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "FIN(m2)",
+        "role": "Client",
+        "replicated": true
+      },
+      "holders": {}
+    },
+    {
+      "name": "msg_Client_Server_4",
+      "evidence": [],
+      "description": "The message term (per_record_nonce, additional_data, record_Client) sent in the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "(per_record_nonce, additional_data, record_Client)",
+        "role": "Client",
+        "replicated": true
+      },
+      "holders": {}
+    },
+    {
+      "name": "random_Server",
+      "evidence": [],
+      "description": "The server's ServerHello random.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "random_Server",
+        "role": "Server",
+        "replicated": true
+      },
+      "holders": {
+        "Server": [
+          {
+            "id": "random_Server",
+            "how": "generated"
+          }
+        ],
+        "Client": [
+          {
+            "id": "random_Server",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "y",
+      "evidence": [],
+      "description": "The server's ephemeral DH exponent.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "y",
+        "role": "Server",
+        "replicated": true
+      },
+      "holders": {
+        "Server": [
+          {
+            "id": "y",
+            "how": "generated"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ticket_nonce",
+      "evidence": [],
+      "description": "The NewSessionTicket nonce.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "ticket_nonce",
+        "role": "Server",
+        "replicated": true
+      },
+      "holders": {
+        "Server": [
+          {
+            "id": "ticket_nonce",
+            "how": "generated"
+          }
+        ],
+        "Client": [
+          {
+            "id": "ticket_nonce",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "per_record_nonce_Server",
+      "evidence": [],
+      "description": "The server's per-record nonce of its application data record.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "per_record_nonce",
+        "role": "Server",
+        "replicated": true
+      },
+      "holders": {
+        "Server": [
+          {
+            "id": "per_record_nonce",
+            "how": "generated"
+          }
+        ],
+        "Client": [
+          {
+            "id": "n_s",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "additional_data_Server",
+      "evidence": [],
+      "description": "The additional data of the server's application data record.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "additional_data",
+        "role": "Server",
+        "replicated": true
+      },
+      "holders": {
+        "Server": [
+          {
+            "id": "additional_data",
+            "how": "generated"
+          }
+        ],
+        "Client": [
+          {
+            "id": "ad_s",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "application_data_Server",
+      "evidence": [],
+      "description": "The server's application data.",
+      "source": {
+        "scope": "role",
+        "by": "new",
+        "id": "application_data_Server",
+        "role": "Server",
+        "replicated": true
+      },
+      "holders": {
+        "Server": [
+          {
+            "id": "application_data_Server",
+            "how": "generated"
+          }
+        ],
+        "Client": [
+          {
+            "id": "application_data_Server",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "msg_Server_Client_1",
+      "evidence": [],
+      "description": "The message term SH(random_Server, selected_parameters_Server) sent in the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "SH(random_Server, selected_parameters_Server)",
+        "role": "Server",
+        "replicated": true
+      },
+      "holders": {}
+    },
+    {
+      "name": "msg_Server_Client_2",
+      "evidence": [],
+      "description": "The message term CRT(pk_Server) sent in the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "CRT(pk_Server)",
+        "role": "Server",
+        "replicated": true
+      },
+      "holders": {}
+    },
+    {
+      "name": "msg_Server_Client_3",
+      "evidence": [],
+      "description": "The message term CV(sg) sent in the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "CV(sg)",
+        "role": "Server",
+        "replicated": true
+      },
+      "holders": {}
+    },
+    {
+      "name": "msg_Server_Client_4",
+      "evidence": [],
+      "description": "The message term FIN(m1) sent in the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "FIN(m1)",
+        "role": "Server",
+        "replicated": true
+      },
+      "holders": {}
+    },
+    {
+      "name": "msg_Server_Client_6",
+      "evidence": [],
+      "description": "The message term (per_record_nonce, additional_data, record_Server) sent in the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "role",
+        "by": "term",
+        "id": "(per_record_nonce, additional_data, record_Server)",
+        "role": "Server",
+        "replicated": true
+      },
+      "holders": {}
+    },
+    {
+      "name": "gx",
+      "evidence": [],
+      "description": "The client's DH key share.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "gx",
+        "role": "Client",
+        "replicated": true,
+        "derived_from": [
+          "G",
+          "x"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "gx",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "gx",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "early_secret",
+      "evidence": [],
+      "description": "The key schedule's early secret.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "zero",
+          "PSK"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "early_secret",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "early_secret",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "kb",
+      "evidence": [],
+      "description": "kb, a value Client computes in the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "early_secret",
+          "tls13_resumption_psk_binder_key",
+          "empty_string"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "kb",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "kb",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "zoffer",
+      "evidence": [],
+      "description": "zoffer, a value Client computes in the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "TLS13",
+          "StrongDH",
+          "gx",
+          "StrongHash",
+          "StrongAE",
+          "zero"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "zoffer",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "zoffer",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "binder",
+      "evidence": [],
+      "description": "The PSK binder value in the ClientHello.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "binder",
+        "role": "Client",
+        "replicated": true,
+        "derived_from": [
+          "kb",
+          "random_Client",
+          "zoffer"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "binder",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "m",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "pt",
+      "evidence": [],
+      "description": "pt, a value Client computes in the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "pt",
+        "role": "Client",
+        "replicated": true,
+        "derived_from": [
+          "binder"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "pt",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "offer_Client",
+      "evidence": [],
+      "description": "The parameters the client offers in ClientHello, with the PSK binder.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "offer_Client",
+        "role": "Client",
+        "replicated": true,
+        "derived_from": [
+          "TLS13",
+          "StrongDH",
+          "gx",
+          "StrongHash",
+          "StrongAE",
+          "pt"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "offer_Client",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "offer_Client",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ch",
+      "evidence": [],
+      "description": "The ClientHello message.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "ch",
+        "role": "Client",
+        "replicated": true,
+        "derived_from": [
+          "random_Client",
+          "offer_Client"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "ch",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "ch",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "atsc0",
+      "evidence": [],
+      "description": "atsc0, a value Client computes in the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "early_secret",
+          "tls13_client_early_traffic_secret",
+          "ch"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "atsc0",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "atsc0",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "kc0",
+      "evidence": [],
+      "description": "kc0, a value Client computes in the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "atsc0",
+          "tls13_key",
+          "empty_string"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "kc0",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "kc0",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ems0",
+      "evidence": [],
+      "description": "ems0, a value Client computes in the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "early_secret",
+          "tls13_early_exporter_master_secret",
+          "ch"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "ems0",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "ems0",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "record_early",
+      "evidence": [],
+      "description": "record_early, a value Client computes in the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "record_early",
+        "role": "Client",
+        "replicated": true,
+        "derived_from": [
+          "kc0",
+          "per_record_nonce_early",
+          "additional_data_early",
+          "early_data_Client"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "record_early",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "c0",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "selected_parameters_Server",
+      "evidence": [],
+      "description": "The parameters the server selects in ServerHello.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "selected_parameters_Server",
+        "role": "Server",
+        "replicated": true,
+        "derived_from": [
+          "TLS13",
+          "StrongDH",
+          "gy",
+          "StrongHash",
+          "StrongAE",
+          "NoBinder"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "selected_parameters_Server",
+            "how": "received"
+          }
+        ],
+        "Server": [
+          {
+            "id": "selected_parameters_Server",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "gy",
+      "evidence": [],
+      "description": "The server's DH key share.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "gy",
+        "role": "Server",
+        "replicated": true,
+        "derived_from": [
+          "G",
+          "y"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "gy",
+            "how": "received"
+          }
+        ],
+        "Server": [
+          {
+            "id": "gy",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "log",
+      "evidence": [],
+      "description": "log, a value Client computes in the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "ch",
+          "random_Server",
+          "selected_parameters_Server"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "log",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "log",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "gxy",
+      "evidence": [],
+      "description": "The DH shared secret.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "gy",
+          "x",
+          "gx",
+          "y"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "gxy",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "gxy",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "extra",
+      "evidence": [],
+      "description": "extra, a value Client computes in the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "early_secret",
+          "tls13_derived",
+          "empty_string"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "extra",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "extra",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "handshake_secret",
+      "evidence": [],
+      "description": "The key schedule's handshake secret.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "extra",
+          "gxy"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "handshake_secret",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "handshake_secret",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "extra_ms",
+      "evidence": [],
+      "description": "extra_ms, a value Client computes in the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "handshake_secret",
+          "tls13_derived",
+          "empty_string"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "extra_ms",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "extra_ms",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "master_secret",
+      "evidence": [],
+      "description": "The key schedule's master secret.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "extra_ms",
+          "zero"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "master_secret",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "master_secret",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "htsc",
+      "evidence": [],
+      "description": "htsc, a value Client computes in the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "handshake_secret",
+          "tls13_client_handshake_traffic_secret",
+          "log"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "htsc",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "htsc",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "htss",
+      "evidence": [],
+      "description": "htss, a value Client computes in the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "handshake_secret",
+          "tls13_server_handshake_traffic_secret",
+          "log"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "htss",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "htss",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "chk",
+      "evidence": [],
+      "description": "chk, a value Client computes in the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "htsc",
+          "tls13_key",
+          "empty_string"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "chk",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "chk",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "cfin",
+      "evidence": [],
+      "description": "cfin, a value Client computes in the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "htsc",
+          "tls13_finished",
+          "empty_string"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "cfin",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "cfin",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "shk",
+      "evidence": [],
+      "description": "shk, a value Client computes in the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "htss",
+          "tls13_key",
+          "empty_string"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "shk",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "shk",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "sfin",
+      "evidence": [],
+      "description": "sfin, a value Client computes in the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "htss",
+          "tls13_finished",
+          "empty_string"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "sfin",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "sfin",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "log_crt",
+      "evidence": [],
+      "description": "log_crt, a value Client computes in the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "log",
+          "pk_Server"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "log_crt",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "log_crt",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "sg",
+      "evidence": [],
+      "description": "The server's CertificateVerify signature.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "sg",
+        "role": "Server",
+        "replicated": true,
+        "derived_from": [
+          "sk_Server",
+          "log_crt"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "s",
+            "how": "received"
+          }
+        ],
+        "Server": [
+          {
+            "id": "sg",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "log_cv",
+      "evidence": [],
+      "description": "log_cv, a value Client computes in the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "log_crt",
+          "sg"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "log_cv",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "log_cv",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "m1",
+      "evidence": [],
+      "description": "m1, a value Client receives in the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "m1",
+        "role": "Server",
+        "replicated": true,
+        "derived_from": [
+          "sfin",
+          "log_cv"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "m1",
+            "how": "received"
+          }
+        ],
+        "Server": [
+          {
+            "id": "m1",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "log_sfin",
+      "evidence": [],
+      "description": "log_sfin, a value Client computes in the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "log_cv",
+          "m1"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "log_sfin",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "log_sfin",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "atsc",
+      "evidence": [],
+      "description": "atsc, a value Client computes in the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "master_secret",
+          "tls13_client_application_traffic_secret",
+          "log_sfin"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "atsc",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "atsc",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "atss",
+      "evidence": [],
+      "description": "atss, a value Client computes in the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "master_secret",
+          "tls13_server_application_traffic_secret",
+          "log_sfin"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "atss",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "atss",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "exporter_master_secret",
+      "evidence": [],
+      "description": "The exporter master secret.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "master_secret",
+          "tls13_exporter_master_secret",
+          "log_sfin"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "exporter_master_secret",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "exporter_master_secret",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "application_write_key_Client",
+      "evidence": [],
+      "description": "The client's application traffic write key.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "atsc",
+          "tls13_key",
+          "empty_string"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "application_write_key_Client",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "application_write_key_Client",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "application_write_key_Server",
+      "evidence": [],
+      "description": "The server's application traffic write key.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "atss",
+          "tls13_key",
+          "empty_string"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "application_write_key_Server",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "application_write_key_Server",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "m2",
+      "evidence": [],
+      "description": "m2, a value Client computes in the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "m2",
+        "role": "Client",
+        "replicated": true,
+        "derived_from": [
+          "cfin",
+          "log_sfin"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "m2",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "m2",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "log_cfin",
+      "evidence": [],
+      "description": "log_cfin, a value Client computes in the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "log_sfin",
+          "m2"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "log_cfin",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "log_cfin",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "rms",
+      "evidence": [],
+      "description": "The resumption master secret.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "master_secret",
+          "tls13_resumption_master_secret",
+          "log_cfin"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "rms",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "rms",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "record_Client",
+      "evidence": [],
+      "description": "record_Client, a value Client computes in the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "record_Client",
+        "role": "Client",
+        "replicated": true,
+        "derived_from": [
+          "application_write_key_Client",
+          "per_record_nonce",
+          "additional_data",
+          "application_data_Client"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "record_Client",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "c_c",
+            "how": "received"
+          }
+        ]
+      }
+    },
+    {
+      "name": "resumption_psk",
+      "evidence": [],
+      "description": "The resumption PSK derived from the ticket nonce.",
+      "source": {
+        "scope": "roles",
+        "by": "let",
+        "replicated": true,
+        "derived_from": [
+          "rms",
+          "tls13_resumption",
+          "ticket_nonce"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "resumption_psk",
+            "how": "computed"
+          }
+        ],
+        "Server": [
+          {
+            "id": "resumption_psk",
+            "how": "computed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "record_Server",
+      "evidence": [],
+      "description": "record_Server, a value Client receives in the TLS 1.3 (RFC 8446) PSK plus (EC)DHE handshake with server certificate.",
+      "source": {
+        "scope": "role",
+        "by": "let",
+        "id": "record_Server",
+        "role": "Server",
+        "replicated": true,
+        "derived_from": [
+          "application_write_key_Server",
+          "per_record_nonce_Server",
+          "additional_data_Server",
+          "application_data_Server"
+        ]
+      },
+      "holders": {
+        "Client": [
+          {
+            "id": "c_s",
+            "how": "received"
+          }
+        ],
+        "Server": [
+          {
+            "id": "record_Server",
+            "how": "computed"
+          }
+        ]
+      }
+    }
+  ]
+}
